@@ -1,0 +1,6 @@
+{
+  "name": "NEXUS Gaming Bundles - Premium Game Vault",
+  "description": "Exclusive curated PC gaming bundles, instant digital library expansion, verified reviews, and secure deals in Indian Rupees (₹).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
