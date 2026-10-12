@@ -422,18 +422,21 @@ router.get('/admin/reviews', requireAdminAuth, (_req: Request, res: Response) =>
 
 router.post('/admin/reviews', requireAdminAuth, (req: Request, res: Response) => {
   try {
-    const { imageUrl, title, customerHandle, rating, note, hidden, order } = req.body;
-    if (!imageUrl) {
-      res.status(400).json({ error: 'Image URL is required' });
+    const { reviewerName, location, gameTitle, title, customerHandle, rating, note, hidden, order, imageUrl } = req.body;
+    if (!reviewerName && !customerHandle && !note && !title) {
+      res.status(400).json({ error: 'Reviewer name or review note is required' });
       return;
     }
 
     const created = dbService.createReview({
-      imageUrl: String(imageUrl).trim(),
+      reviewerName: reviewerName ? String(reviewerName).trim() : (customerHandle ? String(customerHandle).trim() : 'Verified Gamer'),
+      location: location ? String(location).trim() : undefined,
+      gameTitle: gameTitle ? String(gameTitle).trim() : undefined,
       title: title ? String(title).trim() : undefined,
       customerHandle: customerHandle ? String(customerHandle).trim() : undefined,
       rating: rating ? Number(rating) : 5,
       note: note ? String(note).trim() : undefined,
+      imageUrl: imageUrl ? String(imageUrl).trim() : undefined,
       hidden: Boolean(hidden),
       order: order !== undefined ? Number(order) : 0
     });
@@ -542,9 +545,12 @@ router.post('/admin/channels', requireAdminAuth, (req: Request, res: Response) =
       return;
     }
 
+    const platformStr = String(platform).toLowerCase();
+    const validPlatform = (platformStr === 'discord' || platformStr === 'website') ? platformStr : 'telegram';
+
     const created = dbService.createChannel({
       name: String(name).trim(),
-      platform: platform === 'discord' ? 'discord' : 'telegram',
+      platform: validPlatform as any,
       description: String(description || '').trim(),
       inviteUrl: String(inviteUrl).trim(),
       thumbnailUrl: thumbnailUrl ? String(thumbnailUrl).trim() : undefined,

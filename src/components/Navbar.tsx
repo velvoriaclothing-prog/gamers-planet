@@ -92,6 +92,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Navigation items */}
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
           <a
+            href="#flash-sale"
+            className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all flex items-center gap-1 text-amber-300 font-bold"
+          >
+            <span>⚡ 10h Flash Sale</span>
+          </a>
+          <a
             href="#bundles"
             className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all"
           >
@@ -99,9 +105,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
           <a
             href="#channels"
-            className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all flex items-center gap-1.5 text-amber-300 font-semibold"
+            className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all flex items-center gap-1.5 text-slate-200"
           >
-            <span>Channels</span>
+            <span>Channels & Sites</span>
             <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
               VIP
             </span>
@@ -110,14 +116,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="#reviews"
             className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all flex items-center gap-1.5"
           >
-            <span>Customer Proof</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Reviews</span>
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+              Verified
+            </span>
           </a>
           <a
             href="#features"
             className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all"
           >
-            Why Gamers Planet
+            Why Us
           </a>
           <a
             href="#faq"

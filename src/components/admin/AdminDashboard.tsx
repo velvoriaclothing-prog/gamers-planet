@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Package, Image as ImageIcon, Settings, ShieldCheck, ArrowLeft, LogOut, ExternalLink, Shield, Send } from 'lucide-react';
+import { Package, Star, MessageSquare, Settings, ShieldCheck, ArrowLeft, LogOut, ExternalLink, Shield, Send, Globe } from 'lucide-react';
 import { Bundle, ReviewScreenshot, SiteSettings, Channel } from '../../types/index.js';
 import { AdminBundles } from './AdminBundles.js';
 import { AdminReviews } from './AdminReviews.js';
@@ -105,8 +105,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 : 'glass-card text-slate-300 hover:text-white'
             }`}
           >
-            <Send className="w-4 h-4" />
-            <span>Manage Channels ({channels.length})</span>
+            <Globe className="w-4 h-4" />
+            <span>Channels & Websites ({channels.length})</span>
           </button>
 
           <button
@@ -117,8 +117,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 : 'glass-card text-slate-300 hover:text-white'
             }`}
           >
-            <ImageIcon className="w-4 h-4" />
-            <span>Customer Proof ({reviews.length})</span>
+            <Star className="w-4 h-4" />
+            <span>Text Reviews ({reviews.length})</span>
           </button>
 
           <button

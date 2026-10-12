@@ -41,11 +41,11 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
         {/* Call to Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <a
-            href="#bundles"
+            href="#flash-sale"
             className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-black font-bold text-base shadow-[0_0_30px_rgba(245,158,11,0.4)] hover:shadow-[0_0_40px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide"
           >
-            <Gamepad2 className="w-5 h-5 text-black" />
-            <span>{settings.heroCtaText || 'Browse Vault Bundles'}</span>
+            <Zap className="w-5 h-5 text-black" />
+            <span>{settings.heroCtaText || 'View Flash Sale Bundles'}</span>
           </a>
 
           <a
@@ -53,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
             className="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-slate-200 hover:text-white hover:border-amber-500/40 hover:bg-white/[0.08] font-semibold text-base transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-            <span>{settings.heroSecondaryText || 'View Customer Proof'}</span>
+            <span>{settings.heroSecondaryText || 'View Indian Reviews (65+)'}</span>
           </a>
         </div>
 

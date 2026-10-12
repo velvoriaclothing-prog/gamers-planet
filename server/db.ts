@@ -39,17 +39,20 @@ export interface Bundle {
 
 export interface ReviewScreenshot {
   id: string;
-  imageUrl: string;
-  title?: string;
+  reviewerName?: string; // Indian Name e.g. "Rohan Sharma"
   customerHandle?: string;
+  location?: string; // Indian City / State e.g. "New Delhi"
+  gameTitle?: string;
   rating?: number; // 1-5
-  note?: string;
+  title?: string;
+  note?: string; // Text review
+  imageUrl?: string;
   hidden: boolean;
   order: number;
   createdAt: string;
 }
 
-export type ChannelPlatform = 'telegram' | 'discord';
+export type ChannelPlatform = 'telegram' | 'discord' | 'website';
 
 export interface Channel {
   id: string;

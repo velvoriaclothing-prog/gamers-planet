@@ -75,7 +75,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
         {/* Screenshot View (Left / Main) */}
         <div className="flex-1 bg-black/80 flex items-center justify-center p-2 sm:p-4 max-h-[60vh] md:max-h-[85vh] overflow-hidden">
           <img
-            src={currentReview.imageUrl}
+            src={currentReview.imageUrl || 'https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=800&auto=format&fit=crop'}
             alt={currentReview.title || 'Customer Review Proof'}
             className="max-h-[55vh] md:max-h-[80vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
             onError={(e) => {

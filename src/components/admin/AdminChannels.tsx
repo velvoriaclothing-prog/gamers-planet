@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Edit2, Trash2, Send, MessageSquare, ExternalLink, Eye, EyeOff, Check, X, AlertTriangle, Loader2, ArrowUp, ArrowDown, KeyRound, ShieldCheck } from 'lucide-react';
+import { Plus, Edit2, Trash2, Send, MessageSquare, Globe, ExternalLink, Eye, EyeOff, Check, X, AlertTriangle, Loader2, ArrowUp, ArrowDown, KeyRound, ShieldCheck } from 'lucide-react';
 import { Channel, ChannelPlatform } from '../../types/index.js';
 import { api } from '../../utils/api.js';
 
@@ -228,24 +228,33 @@ export const AdminChannels: React.FC<AdminChannelsProps> = ({ channels, onRefres
                       className={`w-full h-full flex items-center justify-center ${
                         isTelegram
                           ? 'bg-gradient-to-br from-sky-950/80 via-slate-900 to-black'
-                          : 'bg-gradient-to-br from-indigo-950/80 via-slate-900 to-black'
+                          : chan.platform === 'discord'
+                          ? 'bg-gradient-to-br from-indigo-950/80 via-slate-900 to-black'
+                          : 'bg-gradient-to-br from-emerald-950/80 via-slate-900 to-black'
                       }`}
                     >
                       {isTelegram ? (
                         <Send className="w-12 h-12 text-sky-400/40" />
-                      ) : (
+                      ) : chan.platform === 'discord' ? (
                         <MessageSquare className="w-12 h-12 text-indigo-400/40" />
+                      ) : (
+                        <Globe className="w-12 h-12 text-emerald-400/40" />
                       )}
                     </div>
                   )}
 
                   <div className="absolute top-2 left-2 flex items-center gap-1.5">
                     <span
-                      className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                        isTelegram ? 'bg-sky-500 text-black' : 'bg-indigo-600 text-white'
+                      className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase flex items-center gap-1 ${
+                        isTelegram
+                          ? 'bg-sky-500 text-black'
+                          : chan.platform === 'discord'
+                          ? 'bg-indigo-600 text-white'
+                          : 'bg-emerald-500 text-black'
                       }`}
                     >
-                      {chan.platform}
+                      {isTelegram ? <Send className="w-2.5 h-2.5" /> : chan.platform === 'discord' ? <MessageSquare className="w-2.5 h-2.5" /> : <Globe className="w-2.5 h-2.5" />}
+                      <span>{chan.platform}</span>
                     </span>
                     {!chan.published && (
                       <span className="px-2 py-0.5 rounded bg-red-500/80 text-white text-[10px] font-bold">
@@ -387,6 +396,7 @@ export const AdminChannels: React.FC<AdminChannelsProps> = ({ channels, onRefres
                   >
                     <option value="telegram">Telegram Channel</option>
                     <option value="discord">Discord Server</option>
+                    <option value="website">Official / Partner Website</option>
                   </select>
                 </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Lock, KeyRound, Unlock, Send, MessageSquare, ExternalLink, ShieldCheck, AlertTriangle, Loader2, Sparkles, LogOut, CheckCircle2, Copy, Check, Link2, ArrowUpRight } from 'lucide-react';
+import { Lock, KeyRound, Unlock, Send, MessageSquare, Globe, ExternalLink, ShieldCheck, AlertTriangle, Loader2, Sparkles, LogOut, CheckCircle2, Copy, Check, Link2, ArrowUpRight } from 'lucide-react';
 import { Channel, ChannelPlatform, SiteSettings } from '../types/index.js';
 import { api, getChannelsToken, setChannelsToken, clearChannelsToken } from '../utils/api.js';
 
@@ -153,10 +153,10 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
 
             {/* Heading & Instructions */}
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-gaming tracking-wide mb-3">
-              Exclusive Channels
+              Exclusive Channels & Websites
             </h2>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8">
-              Enter your password to access our exclusive Telegram and Discord channels.
+              Enter your password to access our exclusive Telegram channels, Discord servers, and official resource websites.
             </p>
 
             {/* Error & Lockout Alert */}
@@ -239,10 +239,10 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                   <span>Access Granted</span>
                 </div>
                 <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-gaming tracking-tight">
-                  EXCLUSIVE CHANNELS
+                  EXCLUSIVE CHANNELS & WEBSITES
                 </h2>
                 <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
-                  Official community hubs and notification channels on Telegram and Discord. Click any channel to join instantly.
+                  Official community hubs, notification channels on Telegram and Discord, and verified resource websites. Click any link to join or visit directly.
                 </p>
               </div>
 
@@ -253,7 +253,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                     onClick={onOpenAdmin}
                     className="px-3.5 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-semibold transition-colors cursor-pointer"
                   >
-                    Manage Channels
+                    Manage Channels & Websites
                   </button>
                 )}
 
@@ -272,37 +272,49 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
               <button
                 onClick={() => setSelectedPlatform('all')}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   selectedPlatform === 'all'
-                    ? 'bg-amber-500 text-black shadow-md'
+                    ? 'bg-amber-500 text-black shadow-md font-bold'
                     : 'glass-card text-slate-300 hover:text-white'
                 }`}
               >
-                All Channels ({channels.length})
+                All ({channels.length})
               </button>
 
               <button
                 onClick={() => setSelectedPlatform('telegram')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   selectedPlatform === 'telegram'
-                    ? 'bg-sky-500 text-black shadow-md'
+                    ? 'bg-sky-500 text-black shadow-md font-bold'
                     : 'glass-card text-slate-300 hover:text-white'
                 }`}
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>Telegram Channels</span>
+                <span>Telegram ({channels.filter(c => c.platform === 'telegram').length})</span>
               </button>
 
               <button
                 onClick={() => setSelectedPlatform('discord')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
                   selectedPlatform === 'discord'
-                    ? 'bg-indigo-600 text-white shadow-md'
+                    ? 'bg-indigo-600 text-white shadow-md font-bold'
                     : 'glass-card text-slate-300 hover:text-white'
                 }`}
               >
                 <MessageSquare className="w-3.5 h-3.5" />
-                <span>Discord Servers</span>
+                <span>Discord ({channels.filter(c => c.platform === 'discord').length})</span>
+              </button>
+
+              <button
+                onClick={() => setSelectedPlatform('website')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                  selectedPlatform === 'website'
+                    ? 'bg-emerald-500 text-black shadow-md font-bold'
+                    : 'glass-card text-slate-300 hover:text-white'
+                }`}
+              >
+                <Globe className="w-3.5 h-3.5" />
+                <span>Websites & Portals ({channels.filter(c => c.platform === 'website').length})</span>
               </button>
             </div>
 
@@ -329,6 +341,8 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredChannels.map((chan) => {
                   const isTelegram = chan.platform === 'telegram';
+                  const isDiscord = chan.platform === 'discord';
+                  const isWebsite = chan.platform === 'website';
                   const safeUrl = formatSafeUrl(chan.inviteUrl);
                   const displayLink = formatDisplayLink(chan.inviteUrl);
 
@@ -354,7 +368,9 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                               (e.currentTarget as HTMLImageElement).src =
                                 isTelegram
                                   ? 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop'
-                                  : 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop';
+                                  : isDiscord
+                                  ? 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop'
+                                  : 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop';
                             }}
                           />
                         ) : (
@@ -362,13 +378,17 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                             className={`w-full h-full flex items-center justify-center ${
                               isTelegram
                                 ? 'bg-gradient-to-br from-sky-950/80 via-slate-900 to-black'
-                                : 'bg-gradient-to-br from-indigo-950/80 via-slate-900 to-black'
+                                : isDiscord
+                                ? 'bg-gradient-to-br from-indigo-950/80 via-slate-900 to-black'
+                                : 'bg-gradient-to-br from-emerald-950/80 via-slate-900 to-black'
                             }`}
                           >
                             {isTelegram ? (
                               <Send className="w-16 h-16 text-sky-400/40" />
-                            ) : (
+                            ) : isDiscord ? (
                               <MessageSquare className="w-16 h-16 text-indigo-400/40" />
+                            ) : (
+                              <Globe className="w-16 h-16 text-emerald-400/40" />
                             )}
                           </div>
                         )}
@@ -380,11 +400,25 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                           className={`absolute top-3 left-3 px-3 py-1 rounded-lg text-xs font-bold tracking-wider uppercase font-gaming flex items-center gap-1.5 shadow-lg ${
                             isTelegram
                               ? 'bg-sky-500 text-black'
-                              : 'bg-indigo-600 text-white'
+                              : isDiscord
+                              ? 'bg-indigo-600 text-white'
+                              : 'bg-emerald-500 text-black'
                           }`}
                         >
-                          {isTelegram ? <Send className="w-3.5 h-3.5" /> : <MessageSquare className="w-3.5 h-3.5" />}
-                          <span>{isTelegram ? 'Telegram Channel' : 'Discord Server'}</span>
+                          {isTelegram ? (
+                            <Send className="w-3.5 h-3.5" />
+                          ) : isDiscord ? (
+                            <MessageSquare className="w-3.5 h-3.5" />
+                          ) : (
+                            <Globe className="w-3.5 h-3.5" />
+                          )}
+                          <span>
+                            {isTelegram
+                              ? 'Telegram Channel'
+                              : isDiscord
+                              ? 'Discord Server'
+                              : 'Official Website'}
+                          </span>
                         </div>
 
                         {/* Category tag */}
@@ -429,7 +463,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                             <button
                               onClick={() => handleCopyLink(chan)}
                               type="button"
-                              title="Copy Channel Link"
+                              title="Copy Link"
                               className="px-2 py-1 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white text-[11px] font-medium transition-colors shrink-0 flex items-center gap-1 cursor-pointer"
                             >
                               {copiedId === chan.id ? (
@@ -447,7 +481,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                           </div>
                         </div>
 
-                        {/* Direct Channel Link Button with Channel Link in the Button */}
+                        {/* Direct Channel / Website Link Button with Link inside the Button */}
                         <div className="pt-2">
                           <a
                             href={safeUrl}
@@ -456,17 +490,25 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                             className={`w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-between shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer ${
                               isTelegram
                                 ? 'bg-sky-500 hover:bg-sky-400 text-black shadow-sky-500/25'
-                                : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30'
+                                : isDiscord
+                                ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30'
+                                : 'bg-emerald-500 hover:bg-emerald-400 text-black shadow-emerald-500/25'
                             }`}
                           >
                             <div className="flex items-center gap-2 truncate">
                               {isTelegram ? (
                                 <Send className="w-4 h-4 shrink-0" />
-                              ) : (
+                              ) : isDiscord ? (
                                 <MessageSquare className="w-4 h-4 shrink-0" />
+                              ) : (
+                                <Globe className="w-4 h-4 shrink-0" />
                               )}
                               <span className="font-gaming uppercase tracking-wide">
-                                {isTelegram ? 'Join Telegram' : 'Join Discord'}
+                                {isTelegram
+                                  ? 'Join Telegram'
+                                  : isDiscord
+                                  ? 'Join Discord'
+                                  : 'Visit Website'}
                               </span>
                             </div>
 

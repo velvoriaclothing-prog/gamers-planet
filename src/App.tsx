@@ -9,6 +9,7 @@ import { Bundle, ReviewScreenshot, SiteSettings, Channel } from './types/index.j
 import { api, getAuthToken, clearAuthToken } from './utils/api.js';
 import { Navbar } from './components/Navbar.js';
 import { Hero } from './components/Hero.js';
+import { SaleTimerSection } from './components/SaleTimerSection.js';
 import { BundleGrid } from './components/BundleGrid.js';
 import { BundleModal } from './components/BundleModal.js';
 import { ChannelsSection } from './components/ChannelsSection.js';
@@ -191,6 +192,13 @@ export default function App() {
 
       {/* Hero Section */}
       <Hero settings={settings} />
+
+      {/* 10-Hour Repeating Sale Timer & All Bundles With Live Price */}
+      <SaleTimerSection
+        bundles={bundles}
+        settings={settings}
+        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
+      />
 
       {/* Bundles Vault Section */}
       <BundleGrid

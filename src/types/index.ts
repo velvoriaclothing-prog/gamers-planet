@@ -19,11 +19,14 @@ export interface Bundle {
 
 export interface ReviewScreenshot {
   id: string;
-  imageUrl: string;
+  reviewerName?: string; // Indian Name e.g. "Rohan Sharma"
+  customerHandle?: string; // e.g. "@rohan_gamer_delhi"
+  location?: string; // Indian City / State e.g. "New Delhi"
+  gameTitle?: string; // e.g. "Cyberpunk & Sci-Fi AAA Titan Vault"
+  rating?: number; // 1-5
   title?: string;
-  customerHandle?: string;
-  rating?: number;
-  note?: string;
+  note?: string; // Text review content
+  imageUrl?: string; // Optional (text-only reviews)
   hidden: boolean;
   order: number;
   createdAt: string;
@@ -43,7 +46,7 @@ export interface SiteSettings {
   announcementText?: string;
 }
 
-export type ChannelPlatform = 'telegram' | 'discord';
+export type ChannelPlatform = 'telegram' | 'discord' | 'website';
 
 export interface Channel {
   id: string;
