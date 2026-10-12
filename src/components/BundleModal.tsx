@@ -138,7 +138,10 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 <div className="flex items-center gap-3 text-xs text-slate-400 flex-wrap">
                   <span className="flex items-center gap-1 text-slate-300">
                     <Gamepad2 className="w-4 h-4 text-amber-400" />
-                    <strong className="text-white">{bundle.gameCount}</strong> Total Games
+                    <strong className="text-white">
+                      {bundle.gameCount > 1 ? bundle.gameCount.toLocaleString('en-IN') : 'Steam Unlock'}
+                    </strong>{' '}
+                    {bundle.gameCount > 1 ? 'Total Games' : 'Feature'}
                   </span>
                   <span>•</span>
                   <span className="text-emerald-400 font-medium">Instant Digital Delivery</span>
@@ -182,9 +185,9 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             <div className="mb-8">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400 font-gaming">
-                  Included Games & DLCs ({bundle.includedItems?.length || 0})
+                  Included Games & Features ({bundle.includedItems?.length || 0})
                 </h3>
-                <span className="text-xs text-slate-400">All full edition versions</span>
+                <span className="text-xs text-slate-400">Lifetime access guaranteed</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-60 overflow-y-auto pr-1">

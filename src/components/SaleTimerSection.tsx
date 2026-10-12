@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Flame, Zap, Sparkles, Gamepad2, ArrowRight, Eye, CheckCircle2, ShieldCheck, Tag, Repeat } from 'lucide-react';
+import { Clock, Flame, Zap, Sparkles, Gamepad2, ArrowRight, Eye, CheckCircle2, ShieldCheck, Tag } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { openInstagram } from '../utils/api.js';
 
@@ -9,7 +9,7 @@ interface SaleTimerSectionProps {
   onSelectBundle: (bundle: Bundle) => void;
 }
 
-// 10 Hours in milliseconds = 36,000,000 ms
+// 10 Hours in milliseconds for countdown timer
 const TEN_HOURS_MS = 10 * 60 * 60 * 1000;
 
 export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
@@ -43,8 +43,6 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
     return () => clearInterval(timer);
   }, []);
 
-  const progressPercent = Math.max(0, Math.min(100, ((TEN_HOURS_MS - timeLeft.totalMs) / TEN_HOURS_MS) * 100));
-
   const formatDigit = (num: number) => num.toString().padStart(2, '0');
 
   // Filter active bundles
@@ -62,19 +60,18 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 border border-amber-500/40 text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 shadow-[0_0_20px_rgba(245,158,11,0.2)]">
             <Flame className="w-4 h-4 text-amber-400 fill-amber-400 animate-pulse" />
-            <span>10-HOUR FLASH SALE • SPECIAL VAULT PRICING</span>
-            <Repeat className="w-3.5 h-3.5 text-amber-300 ml-1 opacity-80" />
+            <span>LIMITED TIME SALE • SPECIAL VAULT PRICING</span>
           </div>
 
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white font-gaming tracking-tight mb-3">
             LIMITED TIME SALE ENDS IN
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Special reduced pricing on all AAA gaming vaults. When the 10-hour timer reaches zero, it automatically restarts a new flash cycle. Lock in your bundle price below!
+            Special reduced pricing on all premium gaming vaults. Direct verified delivery guaranteed to your account in minutes. Lock in your bundle price below!
           </p>
         </div>
 
-        {/* 10-Hour Repeating Live Digital Timer */}
+        {/* Live Digital Timer */}
         <div className="max-w-2xl mx-auto mb-14">
           <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 shadow-[0_0_50px_rgba(245,158,11,0.15)] bg-gradient-to-b from-amber-500/[0.07] to-black/80">
             <div className="flex items-center justify-center gap-3 sm:gap-6 text-center">
@@ -128,25 +125,6 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                 </div>
               </div>
 
-            </div>
-
-            {/* Repeating Progress Line */}
-            <div className="mt-6 pt-5 border-t border-white/10 flex flex-col gap-2">
-              <div className="flex items-center justify-between text-[11px] text-slate-400">
-                <span className="flex items-center gap-1.5 font-medium text-amber-300">
-                  <Clock className="w-3.5 h-3.5 text-amber-400" />
-                  <span>10-Hour Repeating Cycle Active</span>
-                </span>
-                <span className="font-mono text-slate-300">
-                  Resets in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                </span>
-              </div>
-              <div className="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-300 transition-all duration-1000 ease-linear shadow-[0_0_10px_rgba(245,158,11,0.5)]"
-                  style={{ width: `${100 - progressPercent}%` }}
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -216,7 +194,7 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                     {/* Game count tag */}
                     <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-xs text-slate-200">
                       <Gamepad2 className="w-3.5 h-3.5 text-amber-400" />
-                      <span>{bundle.gameCount} Games</span>
+                      <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
                     </div>
                   </div>
 

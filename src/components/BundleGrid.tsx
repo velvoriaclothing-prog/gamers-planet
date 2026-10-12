@@ -168,7 +168,7 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                   {/* Game Count overlay */}
                   <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-xs text-slate-200">
                     <Gamepad2 className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{bundle.gameCount} Games Included</span>
+                    <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games Included` : 'Steam Unlock Feature'}</span>
                   </div>
                 </div>
 
@@ -190,7 +190,7 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                     {/* Quick highlights from included items */}
                     {bundle.includedItems && bundle.includedItems.length > 0 && (
                       <div className="space-y-1.5 mb-6">
-                        {bundle.includedItems.slice(0, 3).map((item, idx) => (
+                        {bundle.includedItems.slice(0, 4).map((item, idx) => (
                           <div
                             key={idx}
                             className="flex items-center gap-2 text-xs text-slate-300"
@@ -199,9 +199,9 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                             <span className="truncate">{item}</span>
                           </div>
                         ))}
-                        {bundle.includedItems.length > 3 && (
+                        {bundle.includedItems.length > 4 && (
                           <div className="text-[11px] text-amber-400/90 font-medium pl-5">
-                            + {bundle.includedItems.length - 3} more titles in bundle
+                            + {bundle.includedItems.length - 4} more features in bundle
                           </div>
                         )}
                       </div>

@@ -193,7 +193,7 @@ export default function App() {
       {/* Hero Section */}
       <Hero settings={settings} />
 
-      {/* 10-Hour Repeating Sale Timer & All Bundles With Live Price */}
+      {/* Flash Sale Timer & All Bundles With Live Price */}
       <SaleTimerSection
         bundles={bundles}
         settings={settings}

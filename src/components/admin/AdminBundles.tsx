@@ -180,7 +180,7 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
             <div className="p-4 flex-1 flex flex-col justify-between">
               <div>
                 <div className="text-[10px] uppercase font-semibold text-amber-400/80 mb-1">
-                  {bundle.category || 'Game Bundle'} • {bundle.gameCount} Games
+                  {bundle.category || 'Game Bundle'} • {bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}
                 </div>
                 <h4 className="text-base font-bold text-white font-gaming mb-1">
                   {bundle.title}
