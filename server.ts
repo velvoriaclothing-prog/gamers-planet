@@ -4,6 +4,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import apiRouter from './server/routes.js';
+import { dbService } from './server/db.js';
 
 dotenv.config();
 
@@ -13,6 +14,17 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const isProduction = process.env.NODE_ENV === 'production';
+
+// Security: Disable x-powered-by header
+app.disable('x-powered-by');
+
+// Security headers middleware
+app.use((_req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
 
 // Ensure data & upload directories exist
 const UPLOADS_DIR = path.resolve(__dirname, 'uploads');
@@ -36,6 +48,30 @@ app.use('/uploads', express.static(UPLOADS_DIR, {
   immutable: false
 }));
 
+// Serve static public assets (robots.txt, sitemap.xml)
+const PUBLIC_DIR = path.resolve(__dirname, 'public');
+if (fs.existsSync(PUBLIC_DIR)) {
+  app.use(express.static(PUBLIC_DIR));
+}
+
+app.get('/robots.txt', (_req, res) => {
+  const robotsPath = path.resolve(__dirname, 'public/robots.txt');
+  if (fs.existsSync(robotsPath)) {
+    res.type('text/plain').sendFile(robotsPath);
+  } else {
+    res.type('text/plain').send('User-agent: *\nAllow: /\n');
+  }
+});
+
+app.get('/sitemap.xml', (_req, res) => {
+  const sitemapPath = path.resolve(__dirname, 'public/sitemap.xml');
+  if (fs.existsSync(sitemapPath)) {
+    res.type('application/xml').sendFile(sitemapPath);
+  } else {
+    res.status(404).end();
+  }
+});
+
 // API Routes
 app.use('/api', apiRouter);
 
@@ -45,6 +81,9 @@ app.use('/api', (_req: express.Request, res: express.Response) => {
 });
 
 async function startServer() {
+  // Initialize persistent Firestore database connection
+  await dbService.initFirebase();
+
   const distPath = path.resolve(__dirname, 'dist');
   const indexHtmlPath = path.resolve(distPath, 'index.html');
 

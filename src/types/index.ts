@@ -48,6 +48,33 @@ export interface SiteSettings {
 
 export type ChannelPlatform = 'telegram' | 'discord' | 'website';
 
+export type KeyStatus = 'active' | 'used' | 'inactive';
+
+export interface GameKey {
+  id: string;
+  bundleId: string;
+  bundleTitle?: string;
+  code: string;
+  status: KeyStatus;
+  usedBy?: string;
+  usedAt?: string;
+  createdAt: string;
+  notes?: string;
+}
+
+export interface DatabaseStatus {
+  firebaseConnected: boolean;
+  provider: string;
+  databaseId?: string;
+  projectId?: string;
+  bundlesCount: number;
+  channelsCount: number;
+  reviewsCount: number;
+  keysCount?: number;
+  lastSyncTime: string;
+  localCacheValid: boolean;
+}
+
 export interface Channel {
   id: string;
   name: string;

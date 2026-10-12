@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Package, Star, MessageSquare, Settings, ShieldCheck, ArrowLeft, LogOut, ExternalLink, Shield, Send, Globe } from 'lucide-react';
+import { Package, Star, MessageSquare, Settings, ShieldCheck, ArrowLeft, LogOut, ExternalLink, Shield, Send, Globe, Key, Database, Cloud } from 'lucide-react';
 import { Bundle, ReviewScreenshot, SiteSettings, Channel } from '../../types/index.js';
 import { AdminBundles } from './AdminBundles.js';
 import { AdminReviews } from './AdminReviews.js';
 import { AdminSettings } from './AdminSettings.js';
 import { AdminSecurity } from './AdminSecurity.js';
 import { AdminChannels } from './AdminChannels.js';
+import { AdminKeys } from './AdminKeys.js';
+import { AdminDatabase } from './AdminDatabase.js';
 
 interface AdminDashboardProps {
   bundles: Bundle[];
@@ -17,7 +19,7 @@ interface AdminDashboardProps {
   onLogout: () => void;
 }
 
-type TabType = 'bundles' | 'channels' | 'reviews' | 'settings' | 'security';
+type TabType = 'bundles' | 'channels' | 'reviews' | 'keys' | 'database' | 'settings' | 'security';
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   bundles,
@@ -119,6 +121,33 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           >
             <Star className="w-4 h-4" />
             <span>Text Reviews ({reviews.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('keys')}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
+              activeTab === 'keys'
+                ? 'bg-amber-500 text-black shadow-[0_0_20px_rgba(245,158,11,0.3)]'
+                : 'glass-card text-slate-300 hover:text-white'
+            }`}
+          >
+            <Key className="w-4 h-4" />
+            <span>Game Keys & Codes</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('database')}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap cursor-pointer ${
+              activeTab === 'database'
+                ? 'bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.3)]'
+                : 'glass-card text-slate-300 hover:text-white'
+            }`}
+          >
+            <Database className="w-4 h-4 text-emerald-400" />
+            <span className="flex items-center gap-1.5">
+              <span>Cloud Database</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
+            </span>
           </button>
 
           <button

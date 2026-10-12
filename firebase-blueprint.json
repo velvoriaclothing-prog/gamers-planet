@@ -1,0 +1,124 @@
+{
+  "entities": {
+    "Bundle": {
+      "title": "Bundle",
+      "description": "Curated gaming bundle with pricing, games list, and media",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "gameCount": { "type": "number" },
+        "shortDescription": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "coverImage": { "type": "string" },
+        "videoPreview": { "type": "string" },
+        "category": { "type": "string" },
+        "badge": { "type": "string" },
+        "featured": { "type": "boolean" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "price", "gameCount", "active"]
+    },
+    "GameKey": {
+      "title": "GameKey",
+      "description": "Digital game access key or code with status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "bundleId": { "type": "string" },
+        "bundleTitle": { "type": "string" },
+        "code": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "used", "inactive"] },
+        "usedBy": { "type": "string" },
+        "usedAt": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "bundleId", "code", "status", "createdAt"]
+    },
+    "ReviewScreenshot": {
+      "title": "ReviewScreenshot",
+      "description": "Customer feedback and review entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "reviewerName": { "type": "string" },
+        "customerHandle": { "type": "string" },
+        "location": { "type": "string" },
+        "gameTitle": { "type": "string" },
+        "rating": { "type": "number" },
+        "title": { "type": "string" },
+        "note": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "hidden": { "type": "boolean" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "hidden", "order", "createdAt"]
+    },
+    "Channel": {
+      "title": "Channel",
+      "description": "Social media community or website channel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "platform": { "type": "string", "enum": ["telegram", "discord", "website"] },
+        "description": { "type": "string" },
+        "inviteUrl": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "published": { "type": "boolean" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "platform", "inviteUrl", "published", "order"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Global application branding and presentation settings",
+      "type": "object",
+      "properties": {
+        "siteTitle": { "type": "string" },
+        "logoText": { "type": "string" },
+        "heroHeading": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "heroCtaText": { "type": "string" },
+        "heroSecondaryText": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "footerText": { "type": "string" },
+        "supportNote": { "type": "string" },
+        "announcementText": { "type": "string" }
+      },
+      "required": ["siteTitle", "heroHeading", "instagramUrl"]
+    }
+  },
+  "firestore": {
+    "/bundles/{bundleId}": {
+      "schema": "Bundle",
+      "description": "Collection of PC game bundles"
+    },
+    "/keys/{keyId}": {
+      "schema": "GameKey",
+      "description": "Collection of digital access keys and tokens"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "ReviewScreenshot",
+      "description": "Customer testimonials and reviews"
+    },
+    "/channels/{channelId}": {
+      "schema": "Channel",
+      "description": "Telegram, Discord, and website links"
+    },
+    "/settings/{settingId}": {
+      "schema": "SiteSettings",
+      "description": "Site global settings and admin credentials"
+    }
+  }
+}

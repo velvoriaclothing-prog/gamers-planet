@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /api/admin/
+
+# AI Crawlers explicitly enabled for indexing & search assistants
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://ais-dev-jfqwsxlyfbgwauanfrt3qj-651662287064.asia-east1.run.app/sitemap.xml

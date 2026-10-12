@@ -713,6 +713,110 @@ router.post('/admin/upload/reviews-batch', requireAdminAuth, (req: Request, res:
   });
 });
 
+// Database Status & Cloud Firestore Sync
+router.get('/admin/database-status', requireAdminAuth, (_req: Request, res: Response) => {
+  try {
+    const status = dbService.getDatabaseStatus();
+    res.json(status);
+  } catch (err: any) {
+    res.status(500).json({ error: 'Failed to retrieve database status' });
+  }
+});
+
+router.post('/admin/database-sync', requireAdminAuth, async (_req: Request, res: Response) => {
+  try {
+    await dbService.syncWithFirestore();
+    const status = dbService.getDatabaseStatus();
+    res.json({ success: true, message: 'Synchronized with Firebase Firestore', status });
+  } catch (err: any) {
+    res.status(500).json({ error: 'Failed to sync with cloud database: ' + err.message });
+  }
+});
+
+// Digital Keys & Codes CRUD
+router.get('/admin/keys', requireAdminAuth, (req: Request, res: Response) => {
+  try {
+    const bundleId = req.query.bundleId ? String(req.query.bundleId) : undefined;
+    const keys = dbService.getKeys(bundleId);
+    res.json(keys);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve keys' });
+  }
+});
+
+router.post('/admin/keys', requireAdminAuth, (req: Request, res: Response) => {
+  try {
+    const { bundleId, bundleTitle, code, status, notes } = req.body;
+    if (!bundleId || !code) {
+      res.status(400).json({ error: 'bundleId and code are required' });
+      return;
+    }
+
+    const created = dbService.createKey({
+      bundleId: String(bundleId).trim(),
+      bundleTitle: bundleTitle ? String(bundleTitle).trim() : undefined,
+      code: String(code).trim().toUpperCase(),
+      status: (status === 'used' || status === 'inactive') ? status : 'active',
+      notes: notes ? String(notes).trim() : undefined
+    });
+
+    res.status(201).json(created);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to create game key' });
+  }
+});
+
+router.post('/admin/keys/batch-generate', requireAdminAuth, (req: Request, res: Response) => {
+  try {
+    const { bundleId, bundleTitle, count, prefix } = req.body;
+    if (!bundleId) {
+      res.status(400).json({ error: 'bundleId is required' });
+      return;
+    }
+
+    const numCount = Math.min(Math.max(Number(count) || 5, 1), 50);
+    const generated = dbService.generateBatchKeys(
+      String(bundleId).trim(),
+      bundleTitle ? String(bundleTitle).trim() : 'Vault Bundle',
+      numCount,
+      prefix ? String(prefix).trim().toUpperCase() : 'VAULT'
+    );
+
+    res.status(201).json({ success: true, count: generated.length, keys: generated });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to batch generate keys' });
+  }
+});
+
+router.put('/admin/keys/:id', requireAdminAuth, (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const updates = { ...req.body };
+    const updated = dbService.updateKey(id, updates);
+    if (!updated) {
+      res.status(404).json({ error: 'Key not found' });
+      return;
+    }
+    res.json(updated);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update key' });
+  }
+});
+
+router.delete('/admin/keys/:id', requireAdminAuth, (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const deleted = dbService.deleteKey(id);
+    if (!deleted) {
+      res.status(404).json({ error: 'Key not found' });
+      return;
+    }
+    res.json({ success: true, message: 'Key deleted successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete key' });
+  }
+});
+
 // Explicit 404 for any unregistered /api routes
 router.use((_req: Request, res: Response) => {
   res.status(404).json({ error: 'API route not found' });

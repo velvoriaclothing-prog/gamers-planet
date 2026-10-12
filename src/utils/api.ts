@@ -182,6 +182,39 @@ export const api = {
       body: JSON.stringify({ newPassword }),
     }),
 
+  // Database Status & Cloud Firestore Sync
+  getDatabaseStatus: () =>
+    apiFetch<import('../types/index.js').DatabaseStatus>('/api/admin/database-status'),
+  syncDatabase: () =>
+    apiFetch<{ success: boolean; message: string; status: import('../types/index.js').DatabaseStatus }>('/api/admin/database-sync', {
+      method: 'POST',
+    }),
+
+  // Digital Keys & Codes
+  getKeys: (bundleId?: string) => {
+    const query = bundleId ? `?bundleId=${encodeURIComponent(bundleId)}` : '';
+    return apiFetch<import('../types/index.js').GameKey[]>(`/api/admin/keys${query}`);
+  },
+  createKey: (key: Partial<import('../types/index.js').GameKey>) =>
+    apiFetch<import('../types/index.js').GameKey>('/api/admin/keys', {
+      method: 'POST',
+      body: JSON.stringify(key),
+    }),
+  batchGenerateKeys: (bundleId: string, bundleTitle: string, count: number, prefix?: string) =>
+    apiFetch<{ success: boolean; count: number; keys: import('../types/index.js').GameKey[] }>('/api/admin/keys/batch-generate', {
+      method: 'POST',
+      body: JSON.stringify({ bundleId, bundleTitle, count, prefix }),
+    }),
+  updateKey: (id: string, updates: Partial<import('../types/index.js').GameKey>) =>
+    apiFetch<import('../types/index.js').GameKey>(`/api/admin/keys/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(updates),
+    }),
+  deleteKey: (id: string) =>
+    apiFetch<{ success: boolean; message: string }>(`/api/admin/keys/${id}`, {
+      method: 'DELETE',
+    }),
+
   // Upload single bundle asset (cover or video)
   uploadBundleFile: async (file: File) => {
     const formData = new FormData();
