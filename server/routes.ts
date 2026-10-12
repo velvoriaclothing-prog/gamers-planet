@@ -707,4 +707,9 @@ router.post('/admin/upload/reviews-batch', requireAdminAuth, (req: Request, res:
   });
 });
 
+// Explicit 404 for any unregistered /api routes
+router.use((_req: Request, res: Response) => {
+  res.status(404).json({ error: 'API route not found' });
+});
+
 export default router;

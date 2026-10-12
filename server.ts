@@ -39,8 +39,49 @@ app.use('/uploads', express.static(UPLOADS_DIR, {
 // API Routes
 app.use('/api', apiRouter);
 
+// Explicit 404 for unmatched /api requests (do not return index.html for unknown API endpoints)
+app.use('/api', (_req: express.Request, res: express.Response) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
 async function startServer() {
-  if (!isProduction) {
+  const distPath = path.resolve(__dirname, 'dist');
+  const indexHtmlPath = path.resolve(distPath, 'index.html');
+
+  if (isProduction) {
+    // Production mode: serve built Vite assets from dist
+    if (fs.existsSync(distPath)) {
+      // Serve static assets from dist
+      app.use(express.static(distPath, {
+        index: false // we handle HTML sending via root and fallback
+      }));
+
+      // Root route serves index.html explicitly
+      app.get('/', (_req, res) => {
+        if (fs.existsSync(indexHtmlPath)) {
+          res.sendFile(indexHtmlPath);
+        } else {
+          res.status(503).send('Production build not found. Please run "npm run build".');
+        }
+      });
+
+      // Client-side routing fallback for non-API routes (Express 4 compatible)
+      app.use((req, res, next) => {
+        // Only handle GET/HEAD requests and skip /api and /uploads
+        if ((req.method === 'GET' || req.method === 'HEAD') && !req.path.startsWith('/api') && !req.path.startsWith('/uploads')) {
+          if (fs.existsSync(indexHtmlPath)) {
+            return res.sendFile(indexHtmlPath);
+          }
+        }
+        next();
+      });
+    } else {
+      console.warn('⚠️ Production mode requested but "dist" folder not found. Please execute "npm run build" before starting the production server.');
+      app.get('/', (_req, res) => {
+        res.status(503).send('Website is building. Please ensure "npm run build" ran before "npm start".');
+      });
+    }
+  } else {
     // Development mode: attach Vite middleware
     try {
       const { createServer } = await import('vite');
@@ -55,17 +96,6 @@ async function startServer() {
       app.use(vite.middlewares);
     } catch (err) {
       console.error('Failed to initialize Vite development middleware:', err);
-    }
-  } else {
-    // Production mode: serve built assets from dist
-    const distPath = path.resolve(__dirname, 'dist');
-    if (fs.existsSync(distPath)) {
-      app.use(express.static(distPath));
-      app.get('*', (_req, res) => {
-        res.sendFile(path.resolve(distPath, 'index.html'));
-      });
-    } else {
-      console.warn('Production mode requested but dist folder not found. Building or fallback advised.');
     }
   }
 

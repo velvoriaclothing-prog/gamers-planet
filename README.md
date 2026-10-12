@@ -105,27 +105,30 @@ NODE_ENV="development"
 
 ---
 
-## 🚀 Public Production Deployment Guide
+## 🚀 Render Web Service Deployment Guide
 
-When deploying to a public server (Ubuntu VPS, Railway, Render, DigitalOcean, or AWS):
+To deploy **Gamers Planet** on Render (Web Service):
 
-1. **Set Environment Variables**:
-   ```bash
-   NODE_ENV=production
-   PORT=3000
-   ADMIN_ACCESS_CODE="YourStrongPassword123"
-   ```
-2. **Build the Frontend Assets**:
-   ```bash
-   npm run build
-   ```
-3. **Start the Production Server**:
-   ```bash
-   npm start
-   ```
-4. **Persistent Volumes**: Ensure the `/data` and `/uploads` folders are mounted on persistent storage or backup volumes so your uploaded screenshots and database are retained across container redeploys.
+### 1. Web Service Settings on Render
+- **Environment**: `Node`
+- **Build Command**: `npm install && npm run build`
+- **Start Command**: `npm start` (or `npx tsx server.ts`)
+
+### 2. Environment Variables on Render
+Configure these in the Render Dashboard under **Environment**:
+| Variable | Value | Description |
+|---|---|---|
+| `NODE_ENV` | `production` | Enables Express static asset delivery and SPA routing |
+| `ADMIN_ACCESS_CODE` | `1710` (or your secret passkey) | Passcode to enter Admin Vault (click logo 5x) |
+| `CHANNELS_ACCESS_PASSWORD` | `2703` | Passcode to unlock exclusive VIP Channels |
+| `PORT` | *(Leave empty or Render provides automatically)* | Express automatically binds to `process.env.PORT` on `0.0.0.0` |
+
+### 3. Persistent Disk (Recommended on Render)
+Render free web services have an ephemeral filesystem. To persist uploaded bundle screenshots, custom videos, and database edits across deploys, attach a Render Persistent Disk mounted at `/data` and `/uploads` or back up `./data/store.json`.
 
 ---
+
+## 🚀 General Production Deployment Guide (VPS, Railway, Render, DigitalOcean)
 
 ## 🛠️ Verification & Testing Log
 
