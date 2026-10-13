@@ -172,7 +172,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             </div>
 
             {/* Description */}
-            <div className="mb-8">
+            <div className="mb-6">
               <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400 font-gaming mb-2">
                 Bundle Overview
               </h3>
@@ -180,6 +180,50 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 {bundle.fullDescription || bundle.shortDescription || 'Exclusive premium PC gaming collection.'}
               </p>
             </div>
+
+            {/* Popular Titles in this Bundle Showcase */}
+            {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
+              <div className="mb-8 p-4 rounded-2xl bg-[#090d19]/90 border border-amber-500/30 shadow-lg">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                    <h3 className="text-sm font-black uppercase tracking-wider text-white font-gaming">
+                      TOP POPULAR BLOCKBUSTERS INCLUDED
+                    </h3>
+                  </div>
+                  <span className="text-xs text-amber-400/90 font-medium font-sans">
+                    All playable with lifetime access
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {bundle.popularTitlesPreview.map((game, idx) => (
+                    <div
+                      key={idx}
+                      className="group/pop relative rounded-xl overflow-hidden border border-white/10 bg-slate-950 aspect-[16/10] hover:border-amber-400 transition-all hover:-translate-y-0.5 shadow-md"
+                    >
+                      <img
+                        src={game.coverImage}
+                        alt={game.title}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover/pop:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent flex flex-col justify-end p-2">
+                        <span className="text-[11px] font-bold text-white leading-tight drop-shadow line-clamp-1">
+                          {game.title}
+                        </span>
+                        {game.genre && (
+                          <span className="text-[9px] text-amber-300 font-medium">
+                            {game.genre}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Included Games / Items list */}
             <div className="mb-8">

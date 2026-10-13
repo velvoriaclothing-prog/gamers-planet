@@ -141,9 +141,10 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                   <img
                     src={bundle.coverImage}
                     alt={bundle.title}
+                    referrerPolicy="no-referrer"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src =
-                        'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop';
+                        'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
                     }}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                     loading="lazy"
@@ -190,6 +191,43 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                     <p className="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed mb-4">
                       {bundle.shortDescription}
                     </p>
+
+                    {/* Popular Titles Preview in Bundle */}
+                    {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
+                      <div className="mb-5 bg-black/50 rounded-xl p-3 border border-amber-500/25">
+                        <div className="flex items-center justify-between text-[11px] font-bold text-amber-400 mb-2 font-gaming tracking-wide">
+                          <span className="flex items-center gap-1.5">
+                            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                            <span>POPULAR TITLES INCLUDED</span>
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-sans font-normal">
+                            +{bundle.gameCount > 10 ? `${(bundle.gameCount - bundle.popularTitlesPreview.length).toLocaleString('en-IN')} more` : 'All unlocked'}
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-2">
+                          {bundle.popularTitlesPreview.slice(0, 3).map((game, gIdx) => (
+                            <div 
+                              key={gIdx} 
+                              className="group/game relative rounded-lg overflow-hidden border border-white/10 bg-slate-950 aspect-[16/10] shadow-sm hover:border-amber-400/50 transition-colors"
+                              title={game.title}
+                            >
+                              <img
+                                src={game.coverImage}
+                                alt={game.title}
+                                referrerPolicy="no-referrer"
+                                className="w-full h-full object-cover group-hover/game:scale-105 transition-transform duration-300"
+                                loading="lazy"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent flex items-end p-1">
+                                <span className="text-[9px] font-semibold text-white truncate leading-tight w-full drop-shadow">
+                                  {game.title}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Quick highlights from included items */}
                     {bundle.includedItems && bundle.includedItems.length > 0 && (

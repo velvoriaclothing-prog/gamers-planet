@@ -17,7 +17,7 @@
       "badge": "FEATURED OFFER",
       "createdAt": "2026-10-12T13:47:14.610Z",
       "shortDescription": "1,000 games with Steam Unlock feature, lifetime access, and complete personal support.",
-      "coverImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
       "updatedAt": "2026-10-12T13:47:14.611Z",
       "gameCount": 1000,
       "category": "Starter Vault",
@@ -35,7 +35,39 @@
       "originalPrice": 1499,
       "price": 399,
       "featured": true,
-      "fullDescription": "GAMERS PLANET BASIC GAMING BUNDLE\n• 1,000 games\n• Lifetime access\n• Steam Unlock Feature\n• Complete setup assistance\n• Personal customer support\n\nInstant digital access to 1,000 top PC games with lifetime validity. Includes Steam Unlock feature, complete step-by-step setup assistance, and personal customer support."
+      "fullDescription": "GAMERS PLANET BASIC GAMING BUNDLE\n• 1,000 games\n• Lifetime access\n• Steam Unlock Feature\n• Complete setup assistance\n• Personal customer support\n\nInstant digital access to 1,000 top PC games with lifetime validity. Includes Steam Unlock feature, complete step-by-step setup assistance, and personal customer support.",
+      "popularTitlesPreview": [
+        {
+          "title": "Grand Theft Auto V",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+          "genre": "Open World"
+        },
+        {
+          "title": "Cyberpunk 2077",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+          "genre": "Sci-Fi RPG"
+        },
+        {
+          "title": "Red Dead Redemption 2",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+          "genre": "Open World Western"
+        },
+        {
+          "title": "God of War",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg",
+          "genre": "Action Adventure"
+        },
+        {
+          "title": "Forza Horizon 5",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
+          "genre": "Racing"
+        },
+        {
+          "title": "The Witcher 3: Wild Hunt",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
+          "genre": "RPG"
+        }
+      ]
     },
     {
       "fullDescription": "GAMERS PLANET STEAM UNLOCK BUNDLE\n• Steam Unlock Feature\n• Lifetime access\n• Setup assistance\n• Personal customer support\n\nDedicated Steam Unlock package from GAMERS PLANET. Unlock premium Steam features and game libraries with lifetime validity, guided step-by-step setup assistance, and personal customer support.",
@@ -43,7 +75,7 @@
       "originalPrice": 1999,
       "category": "Steam Unlock",
       "active": true,
-      "coverImage": "https://images.unsplash.com/photo-1612287271452-f67f67be8eb0?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
       "badge": "STEAM UNLOCK",
       "featured": false,
       "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
@@ -58,7 +90,49 @@
       "gameCount": 1,
       "createdAt": "2026-10-12T13:47:14.611Z",
       "id": "bundle-steam-unlock",
-      "title": "STEAM UNLOCK BUNDLE"
+      "title": "STEAM UNLOCK BUNDLE",
+      "popularTitlesPreview": [
+        {
+          "title": "Black Myth: Wukong",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+          "genre": "Action RPG"
+        },
+        {
+          "title": "Resident Evil 9 (RE9)",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+          "genre": "Survival Horror"
+        },
+        {
+          "title": "Pragmata (Capcom)",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3357650/header.jpg",
+          "genre": "Sci-Fi Action"
+        },
+        {
+          "title": "007 First Light",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg",
+          "genre": "Stealth / Espionage"
+        },
+        {
+          "title": "Forza 6 (Horizon 6)",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2483190/header.jpg",
+          "genre": "Open World Racing"
+        },
+        {
+          "title": "Space Marine 2",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
+          "genre": "Action Shooter"
+        },
+        {
+          "title": "Dragon Ball: Sparking! ZERO",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1790600/header.jpg",
+          "genre": "Anime Fighting"
+        },
+        {
+          "title": "Silent Hill 2 Remake",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg",
+          "genre": "Horror"
+        }
+      ]
     },
     {
       "featured": true,
@@ -79,13 +153,45 @@
         "Complete setup assistance",
         "Personal customer support"
       ],
-      "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
       "category": "Full Unlock",
       "title": "FULL UNLOCK BUNDLE",
       "fullDescription": "GAMERS PLANET FULL UNLOCK BUNDLE\n• 1,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe comprehensive full unlock suite from GAMERS PLANET. Includes 1,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, website game ID and password listings, complete setup assistance, and personal customer support.",
       "originalPrice": 2999,
       "price": 699,
-      "active": true
+      "active": true,
+      "popularTitlesPreview": [
+        {
+          "title": "Black Myth: Wukong",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+          "genre": "Action RPG"
+        },
+        {
+          "title": "God of War Ragnarök",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
+          "genre": "Action Myth"
+        },
+        {
+          "title": "Marvel's Spider-Man Remastered",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg",
+          "genre": "Superhero Action"
+        },
+        {
+          "title": "Ghost of Tsushima",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg",
+          "genre": "Samurai Action"
+        },
+        {
+          "title": "EA SPORTS FC 25",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2669320/header.jpg",
+          "genre": "Football / Sports"
+        },
+        {
+          "title": "Tekken 8",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg",
+          "genre": "Fighting"
+        }
+      ]
     },
     {
       "active": true,
@@ -108,11 +214,43 @@
       ],
       "category": "Mega Vault",
       "price": 799,
-      "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
       "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
       "shortDescription": "27,000 games + Steam Unlock + VIP website channels & Game ID/Password section access.",
       "originalPrice": 3999,
-      "title": "MEGA GAMING BUNDLE"
+      "title": "MEGA GAMING BUNDLE",
+      "popularTitlesPreview": [
+        {
+          "title": "Call of Duty: Black Ops 6",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
+          "genre": "Shooter"
+        },
+        {
+          "title": "Assassin's Creed Mirage",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2842420/header.jpg",
+          "genre": "Action Stealth"
+        },
+        {
+          "title": "Resident Evil 4 Gold Edition",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+          "genre": "Survival Horror"
+        },
+        {
+          "title": "Hogwarts Legacy",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg",
+          "genre": "Action RPG"
+        },
+        {
+          "title": "Baldur's Gate 3",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+          "genre": "RPG"
+        },
+        {
+          "title": "S.T.A.L.K.E.R. 2",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1643320/header.jpg",
+          "genre": "Survival FPS"
+        }
+      ]
     },
     {
       "category": "Ultimate Vault",
@@ -135,11 +273,43 @@
       "createdAt": "2026-10-12T13:47:14.611Z",
       "featured": true,
       "badge": "ULTIMATE BUNDLE",
-      "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
+      "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
       "originalPrice": 4999,
       "id": "bundle-ultimate-gaming",
       "gameCount": 60000,
-      "updatedAt": "2026-10-12T13:47:14.611Z"
+      "updatedAt": "2026-10-12T13:47:14.611Z",
+      "popularTitlesPreview": [
+        {
+          "title": "Grand Theft Auto VI",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+          "genre": "Crime Epic"
+        },
+        {
+          "title": "Black Myth: Wukong",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+          "genre": "Action RPG"
+        },
+        {
+          "title": "Cyberpunk 2077: Phantom Liberty",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+          "genre": "Sci-Fi"
+        },
+        {
+          "title": "Monster Hunter Wilds",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2246340/header.jpg",
+          "genre": "Action RPG"
+        },
+        {
+          "title": "Elden Ring: Shadow of the Erdtree",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+          "genre": "Action RPG"
+        },
+        {
+          "title": "God of War Ragnarök",
+          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
+          "genre": "Myth Action"
+        }
+      ]
     }
   ],
   "reviews": [

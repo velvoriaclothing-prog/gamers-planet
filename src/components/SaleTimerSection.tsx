@@ -172,10 +172,11 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                     <img
                       src={bundle.coverImage}
                       alt={bundle.title}
+                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
                         (e.currentTarget as HTMLImageElement).src =
-                          'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop';
+                          'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#090c16] via-transparent to-black/40" />
@@ -213,9 +214,32 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                       <h4 className="text-lg font-bold text-white font-gaming mb-2 group-hover:text-amber-300 transition-colors line-clamp-1">
                         {bundle.title}
                       </h4>
-                      <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-4">
+                      <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-3">
                         {bundle.shortDescription}
                       </p>
+
+                      {/* Popular Titles Mini Strip */}
+                      {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
+                        <div className="mb-3 p-2 rounded-xl bg-black/50 border border-amber-500/20">
+                          <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+                            <span>Top Titles Preview</span>
+                            <span className="text-slate-400 font-normal">Included in Vault</span>
+                          </div>
+                          <div className="grid grid-cols-3 gap-1.5">
+                            {bundle.popularTitlesPreview.slice(0, 3).map((g, gIdx) => (
+                              <div key={gIdx} className="rounded-md overflow-hidden aspect-[16/10] bg-black border border-white/10">
+                                <img
+                                  src={g.coverImage}
+                                  alt={g.title}
+                                  referrerPolicy="no-referrer"
+                                  className="w-full h-full object-cover"
+                                  loading="lazy"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
 
                       {/* Included Items preview */}
                       {bundle.includedItems && bundle.includedItems.length > 0 && (

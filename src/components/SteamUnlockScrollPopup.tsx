@@ -139,6 +139,28 @@ export const SteamUnlockScrollPopup: React.FC<SteamUnlockScrollPopupProps> = ({
             Get <span className="text-amber-400 font-bold">Steam Unlock</span> & add <span className="text-white font-bold">ANY PC game</span> of your choice directly to your personal Steam account instantly!
           </p>
 
+          {/* Mini Popular Game Covers Strip */}
+          <div className="grid grid-cols-4 gap-1.5 py-1">
+            {[
+              { title: 'Wukong', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg' },
+              { title: 'RE9', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg' },
+              { title: 'Pragmata', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/3357650/header.jpg' },
+              { title: 'GTA 6', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg' }
+            ].map((g, idx) => (
+              <div key={idx} className="relative rounded-lg overflow-hidden aspect-[16/10] bg-black border border-white/10">
+                <img
+                  src={g.src}
+                  alt={g.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-black/80 text-[8px] text-white font-bold text-center py-0.5 truncate px-0.5">
+                  {g.title}
+                </div>
+              </div>
+            ))}
+          </div>
+
           {/* Key perks */}
           <div className="grid grid-cols-2 gap-1.5 text-[11px] text-slate-300 font-semibold py-1">
             <div className="flex items-center gap-1.5 bg-black/50 border border-amber-500/20 px-2 py-1.5 rounded-xl">

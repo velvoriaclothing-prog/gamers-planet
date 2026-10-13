@@ -13,6 +13,11 @@ export interface Bundle {
   badge?: string;
   featured?: boolean;
   active: boolean;
+  popularTitlesPreview?: {
+    title: string;
+    coverImage: string;
+    genre?: string;
+  }[];
   createdAt: string;
   updatedAt: string;
 }

@@ -287,7 +287,12 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
                     <img
                       src={game.coverImage}
                       alt={game.title}
+                      referrerPolicy="no-referrer"
                       loading="lazy"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src =
+                          'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
+                      }}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#090c16] via-transparent to-black/40" />
