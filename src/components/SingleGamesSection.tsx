@@ -223,11 +223,11 @@ export const SingleGamesSection: React.FC<SingleGamesSectionProps> = ({
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex items-center justify-center gap-2 mb-10 overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex items-center justify-start sm:justify-center gap-2 mb-10 overflow-x-auto pb-2 px-1 scrollbar-none w-full touch-pan-x">
           <button
             type="button"
             onClick={() => setSelectedTab('all')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-95 ${
               selectedTab === 'all'
                 ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.4)]'
                 : 'glass-card text-slate-300 hover:text-white hover:border-white/20'
@@ -238,7 +238,7 @@ export const SingleGamesSection: React.FC<SingleGamesSectionProps> = ({
           <button
             type="button"
             onClick={() => setSelectedTab('personal')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-95 ${
               selectedTab === 'personal'
                 ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.4)]'
                 : 'glass-card text-slate-300 hover:text-white hover:border-white/20'
@@ -249,7 +249,7 @@ export const SingleGamesSection: React.FC<SingleGamesSectionProps> = ({
           <button
             type="button"
             onClick={() => setSelectedTab('account')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer active:scale-95 ${
               selectedTab === 'account'
                 ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.4)]'
                 : 'glass-card text-slate-300 hover:text-white hover:border-white/20'

@@ -18,6 +18,7 @@ import { ReviewGallery } from './components/ReviewGallery.js';
 import { FeaturesSection } from './components/FeaturesSection.js';
 import { FaqSection } from './components/FaqSection.js';
 import { Footer } from './components/Footer.js';
+import { MobileQuickBar } from './components/MobileQuickBar.js';
 import { AdminLoginModal } from './components/AdminLoginModal.js';
 import { AdminDashboard } from './components/admin/AdminDashboard.js';
 
@@ -249,6 +250,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer settings={settings} />
+
+      {/* Mobile Floating Quick Bar */}
+      <MobileQuickBar settings={settings} />
 
       {/* Bundle Details & Video Preview Modal */}
       {selectedBundle && (

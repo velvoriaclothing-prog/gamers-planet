@@ -42,8 +42,21 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
+                <a href="#flash-sale" className="hover:text-amber-400 transition-colors text-amber-300 font-semibold">
+                  ⚡ 10h Flash Sale
+                </a>
+              </li>
+              <li>
+                <a href="#single-games" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Single Games Bundle</span>
+                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    ₹80+
+                  </span>
+                </a>
+              </li>
+              <li>
                 <a href="#bundles" className="hover:text-amber-400 transition-colors">
-                  Gaming Vault Bundles
+                  Gaming Vault Bundles (₹399+)
                 </a>
               </li>
               <li>

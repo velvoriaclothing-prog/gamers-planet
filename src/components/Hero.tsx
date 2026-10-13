@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
         </p>
 
         {/* Call to Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
           <a
             href="#flash-sale"
             className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 text-black font-bold text-base shadow-[0_0_30px_rgba(245,158,11,0.4)] hover:shadow-[0_0_40px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide"
@@ -49,19 +49,33 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
           </a>
 
           <a
-            href="#reviews"
+            href="#single-games"
             className="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-slate-200 hover:text-white hover:border-amber-500/40 hover:bg-white/[0.08] font-semibold text-base transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-            <span>{settings.heroSecondaryText || 'View Indian Reviews (65+)'}</span>
+            <Gamepad2 className="w-5 h-5 text-amber-400" />
+            <span>Single Games (From ₹80)</span>
+          </a>
+        </div>
+
+        <div className="mb-12">
+          <a
+            href="#reviews"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-400 hover:text-amber-300 transition-colors py-1"
+          >
+            <div className="flex text-amber-400">
+              {'★★★★★'.split('').map((star, i) => (
+                <span key={i}>{star}</span>
+              ))}
+            </div>
+            <span>Rated 4.9/5 by 150+ Gamers across India • View Proof</span>
           </a>
         </div>
 
         {/* Trust Badges / Quick Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-white/10">
           <div className="glass-card p-4 rounded-xl text-center">
-            <div className="text-2xl sm:text-3xl font-bold font-gaming text-amber-400 mb-0.5">500+</div>
-            <div className="text-xs text-slate-400 font-medium uppercase tracking-wider">AAA & Indie Titles</div>
+            <div className="text-2xl sm:text-3xl font-bold font-gaming text-amber-400 mb-0.5">60,000+</div>
+            <div className="text-xs text-slate-400 font-medium uppercase tracking-wider">PC Games & Vaults</div>
           </div>
           <div className="glass-card p-4 rounded-xl text-center">
             <div className="text-2xl sm:text-3xl font-bold font-gaming text-emerald-400 mb-0.5">&lt; 5 Mins</div>

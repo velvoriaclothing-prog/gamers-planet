@@ -22,6 +22,14 @@ export const FaqSection: React.FC = () => {
       a: 'We provide active 1-on-1 Instagram technical support. If your hardware meets the game’s minimum specifications and you encounter any launch or DirectX error, we guide you through fixing dependencies or offer an alternative title guarantee.'
     },
     {
+      q: 'How do the Single Games options (₹80 - ₹349) work?',
+      a: 'If you only want specific titles instead of a full vault, you can add 1 game (₹120), 2 games (₹199), 3 games (₹249), or 5 games (₹349) directly to your personal Steam account, keeping your personal username, trophies, and profile. Or get ready-to-play pre-activated Steam credentials for just ₹80.'
+    },
+    {
+      q: 'What is included in the ₹399 Basic Gaming Bundle featured offer?',
+      a: 'The ₹399 Basic Gaming Bundle gives you instant digital access to 1,000 games, the Steam Unlock Feature, lifetime validity, complete step-by-step setup assistance, and personal 1-on-1 customer support.'
+    },
+    {
       q: 'Can I request specific games that are not in the existing bundles?',
       a: 'Yes! Send us a DM on Instagram with your desired wishlist of games. We can create custom tailored bundle packages for you at discounted bundle rates.'
     }
