@@ -14,7 +14,7 @@
   },
   "bundles": [
     {
-      "badge": "STARTER PACK",
+      "badge": "FEATURED OFFER",
       "createdAt": "2026-10-12T13:47:14.610Z",
       "shortDescription": "1,000 games with Steam Unlock feature, lifetime access, and complete personal support.",
       "coverImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
@@ -34,7 +34,7 @@
       "id": "bundle-basic-gaming",
       "originalPrice": 1499,
       "price": 399,
-      "featured": false,
+      "featured": true,
       "fullDescription": "GAMERS PLANET BASIC GAMING BUNDLE\n• 1,000 games\n• Lifetime access\n• Steam Unlock Feature\n• Complete setup assistance\n• Personal customer support\n\nInstant digital access to 1,000 top PC games with lifetime validity. Includes Steam Unlock feature, complete step-by-step setup assistance, and personal customer support."
     },
     {

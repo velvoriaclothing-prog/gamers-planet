@@ -168,8 +168,8 @@ const DEFAULT_BUNDLES: Bundle[] = [
       "Personal customer support"
     ],
     category: "Starter Vault",
-    badge: "STARTER PACK",
-    featured: false,
+    badge: "FEATURED OFFER",
+    featured: true,
     active: true,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString()

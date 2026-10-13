@@ -157,7 +157,11 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
               return (
                 <div
                   key={bundle.id}
-                  className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-white/10 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-1 shadow-xl group bg-[#090c16]/90"
+                  className={`glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl group bg-[#090c16]/90 ${
+                    bundle.featured
+                      ? 'border-2 border-amber-500/70 shadow-[0_0_35px_rgba(245,158,11,0.25)] ring-1 ring-amber-400/40'
+                      : 'border border-white/10 hover:border-amber-500/40'
+                  }`}
                 >
                   {/* Image Header with Price Tag Overlay */}
                   <div

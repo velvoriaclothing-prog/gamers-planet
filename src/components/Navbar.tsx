@@ -98,6 +98,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>⚡ 10h Flash Sale</span>
           </a>
           <a
+            href="#single-games"
+            className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all flex items-center gap-1 text-slate-200"
+          >
+            <span>Single Games</span>
+            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30">
+              ₹80+
+            </span>
+          </a>
+          <a
             href="#bundles"
             className="hover:text-amber-400 transition-colors py-1 relative hover:after:w-full after:w-0 after:h-[2px] after:bg-amber-400 after:absolute after:bottom-0 after:left-0 after:transition-all"
           >

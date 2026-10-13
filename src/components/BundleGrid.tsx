@@ -126,7 +126,11 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
             return (
               <div
                 key={bundle.id}
-                className="group glass-card rounded-2xl overflow-hidden flex flex-col relative"
+                className={`group glass-card rounded-2xl overflow-hidden flex flex-col relative transition-all duration-300 ${
+                  bundle.featured
+                    ? 'border-2 border-amber-500/70 shadow-[0_0_35px_rgba(245,158,11,0.25)] ring-1 ring-amber-400/40 -translate-y-1'
+                    : 'border border-white/10 hover:border-amber-500/30'
+                }`}
               >
                 {/* Cover Image & Media Preview container */}
                 <div

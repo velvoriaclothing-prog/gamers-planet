@@ -10,6 +10,7 @@ import { api, getAuthToken, clearAuthToken } from './utils/api.js';
 import { Navbar } from './components/Navbar.js';
 import { Hero } from './components/Hero.js';
 import { SaleTimerSection } from './components/SaleTimerSection.js';
+import { SingleGamesSection } from './components/SingleGamesSection.js';
 import { BundleGrid } from './components/BundleGrid.js';
 import { BundleModal } from './components/BundleModal.js';
 import { ChannelsSection } from './components/ChannelsSection.js';
@@ -197,6 +198,13 @@ export default function App() {
       <SaleTimerSection
         bundles={bundles}
         settings={settings}
+        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
+      />
+
+      {/* Single Games Bundle Section */}
+      <SingleGamesSection
+        settings={settings}
+        featuredBundle={bundles.find(b => b.price === 399) || bundles[0]}
         onSelectBundle={(bundle) => setSelectedBundle(bundle)}
       />
 
