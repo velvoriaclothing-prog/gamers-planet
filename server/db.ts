@@ -1,18 +1,33 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app';
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-  setDoc,
-  deleteDoc,
-  getDocFromServer,
-  type Firestore
-} from 'firebase/firestore';
+
+// Dynamic type definitions & modules for Firebase
+type FirebaseApp = any;
+type Firestore = any;
+
+let fbAppMod: any = null;
+let fbFsMod: any = null;
+
+async function loadFirebaseModules() {
+  if (fbAppMod && fbFsMod) {
+    return { fbApp: fbAppMod, fbFs: fbFsMod };
+  }
+  try {
+    // Dynamically import Firebase without static resolution errors
+    // @ts-ignore
+    const appPromise = import('firebase/app');
+    // @ts-ignore
+    const fsPromise = import('firebase/firestore');
+    const [appModule, fsModule] = await Promise.all([appPromise, fsPromise]);
+    fbAppMod = appModule;
+    fbFsMod = fsModule;
+    return { fbApp: fbAppMod, fbFs: fbFsMod };
+  } catch (err: any) {
+    console.warn('[Firebase] Firebase SDK module not found or unavailable:', err?.message || err);
+    return null;
+  }
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -330,6 +345,8 @@ class DatabaseService {
   private db: AppDatabase;
   private firebaseApp: FirebaseApp | null = null;
   private firestore: Firestore | null = null;
+  private fbApp: any = null;
+  private fbFs: any = null;
   private isFirebaseConnected = false;
   private projectId = '';
   private databaseId = '';
@@ -369,15 +386,23 @@ class DatabaseService {
         return false;
       }
 
+      const modules = await loadFirebaseModules();
+      if (!modules) {
+        console.log('[Firebase] Firebase modules not available in current runtime. Operating on mirrored local storage.');
+        return false;
+      }
+      this.fbApp = modules.fbApp;
+      this.fbFs = modules.fbFs;
+
       this.projectId = config.projectId;
       this.databaseId = config.firestoreDatabaseId || '(default)';
 
-      this.firebaseApp = getApps().length === 0 ? initializeApp(config) : getApp();
-      this.firestore = getFirestore(this.firebaseApp, this.databaseId);
+      this.firebaseApp = this.fbApp.getApps().length === 0 ? this.fbApp.initializeApp(config) : this.fbApp.getApp();
+      this.firestore = this.fbFs.getFirestore(this.firebaseApp, this.databaseId);
 
       // Verify connection with server read
       try {
-        await getDocFromServer(doc(this.firestore, 'test', 'connection'));
+        await this.fbFs.getDocFromServer(this.fbFs.doc(this.firestore, 'test', 'connection'));
       } catch (e: any) {
         // Connection test doc may not exist or is fine, as long as client is not offline
         if (e.message && e.message.includes('client is offline')) {
@@ -404,13 +429,13 @@ class DatabaseService {
    * If Firestore is empty, seeds all existing local data into Firestore.
    */
   public async syncWithFirestore(): Promise<void> {
-    if (!this.firestore) return;
+    if (!this.firestore || !this.fbFs) return;
 
     try {
       // 1. Fetch Bundles
-      const bundlesSnap = await getDocs(collection(this.firestore, 'bundles'));
+      const bundlesSnap = await this.fbFs.getDocs(this.fbFs.collection(this.firestore, 'bundles'));
       const remoteBundles: Bundle[] = [];
-      bundlesSnap.forEach(d => {
+      bundlesSnap.forEach((d: any) => {
         const data = d.data() as Bundle;
         remoteBundles.push({ ...data, id: d.id });
       });
@@ -418,33 +443,33 @@ class DatabaseService {
       remoteBundles.sort((a, b) => a.price - b.price);
 
       // 2. Fetch Channels
-      const channelsSnap = await getDocs(collection(this.firestore, 'channels'));
+      const channelsSnap = await this.fbFs.getDocs(this.fbFs.collection(this.firestore, 'channels'));
       const remoteChannels: Channel[] = [];
-      channelsSnap.forEach(d => {
+      channelsSnap.forEach((d: any) => {
         const data = d.data() as Channel;
         remoteChannels.push({ ...data, id: d.id });
       });
 
       // 3. Fetch Reviews
-      const reviewsSnap = await getDocs(collection(this.firestore, 'reviews'));
+      const reviewsSnap = await this.fbFs.getDocs(this.fbFs.collection(this.firestore, 'reviews'));
       const remoteReviews: ReviewScreenshot[] = [];
-      reviewsSnap.forEach(d => {
+      reviewsSnap.forEach((d: any) => {
         const data = d.data() as ReviewScreenshot;
         remoteReviews.push({ ...data, id: d.id });
       });
 
       // 4. Fetch Keys
-      const keysSnap = await getDocs(collection(this.firestore, 'keys'));
+      const keysSnap = await this.fbFs.getDocs(this.fbFs.collection(this.firestore, 'keys'));
       const remoteKeys: GameKey[] = [];
-      keysSnap.forEach(d => {
+      keysSnap.forEach((d: any) => {
         const data = d.data() as GameKey;
         remoteKeys.push({ ...data, id: d.id });
       });
 
       // 5. Fetch Settings & Security & Metadata
-      const metaSnap = await getDoc(doc(this.firestore, 'settings', 'metadata'));
-      const settingsSnap = await getDoc(doc(this.firestore, 'settings', 'site_settings'));
-      const securitySnap = await getDoc(doc(this.firestore, 'settings', 'security'));
+      const metaSnap = await this.fbFs.getDoc(this.fbFs.doc(this.firestore, 'settings', 'metadata'));
+      const settingsSnap = await this.fbFs.getDoc(this.fbFs.doc(this.firestore, 'settings', 'site_settings'));
+      const securitySnap = await this.fbFs.getDoc(this.fbFs.doc(this.firestore, 'settings', 'security'));
 
       const isCloudInitialized = metaSnap.exists() || settingsSnap.exists() || remoteBundles.length > 0;
 
@@ -482,12 +507,12 @@ class DatabaseService {
    * Seeds all current bundles, channels, reviews, keys, and settings to Firestore.
    */
   private async seedAllToFirestore(): Promise<void> {
-    if (!this.firestore) return;
+    if (!this.firestore || !this.fbFs) return;
 
     // Seed Bundles
     for (const b of this.db.bundles) {
       try {
-        await setDoc(doc(this.firestore, 'bundles', b.id), cleanFirestoreData(b));
+        await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'bundles', b.id), cleanFirestoreData(b));
       } catch (e: any) {
         console.warn(`[Firebase] Failed to seed bundle ${b.id}:`, e.message);
       }
@@ -496,7 +521,7 @@ class DatabaseService {
     // Seed Channels
     for (const c of (this.db.channels || [])) {
       try {
-        await setDoc(doc(this.firestore, 'channels', c.id), cleanFirestoreData(c));
+        await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'channels', c.id), cleanFirestoreData(c));
       } catch (e: any) {
         console.warn(`[Firebase] Failed to seed channel ${c.id}:`, e.message);
       }
@@ -505,7 +530,7 @@ class DatabaseService {
     // Seed Reviews
     for (const r of (this.db.reviews || [])) {
       try {
-        await setDoc(doc(this.firestore, 'reviews', r.id), cleanFirestoreData(r));
+        await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'reviews', r.id), cleanFirestoreData(r));
       } catch (e: any) {
         console.warn(`[Firebase] Failed to seed review ${r.id}:`, e.message);
       }
@@ -514,7 +539,7 @@ class DatabaseService {
     // Seed Keys
     for (const k of (this.db.keys || [])) {
       try {
-        await setDoc(doc(this.firestore, 'keys', k.id), cleanFirestoreData(k));
+        await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'keys', k.id), cleanFirestoreData(k));
       } catch (e: any) {
         console.warn(`[Firebase] Failed to seed key ${k.id}:`, e.message);
       }
@@ -522,17 +547,17 @@ class DatabaseService {
 
     // Seed Settings & Security & Metadata
     try {
-      await setDoc(doc(this.firestore, 'settings', 'metadata'), {
+      await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'settings', 'metadata'), {
         initialized: true,
         seededAt: new Date().toISOString(),
         version: '1.0.0'
       });
-      await setDoc(doc(this.firestore, 'settings', 'site_settings'), cleanFirestoreData(this.db.settings));
+      await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'settings', 'site_settings'), cleanFirestoreData(this.db.settings));
       const secData: any = {};
       if (this.db.adminPasswordHash) secData.adminPasswordHash = this.db.adminPasswordHash;
       if (this.db.channelsPasswordHash) secData.channelsPasswordHash = this.db.channelsPasswordHash;
       if (Object.keys(secData).length > 0) {
-        await setDoc(doc(this.firestore, 'settings', 'security'), secData);
+        await this.fbFs.setDoc(this.fbFs.doc(this.firestore, 'settings', 'security'), secData);
       }
     } catch (e: any) {
       console.warn('[Firebase] Failed to seed settings:', e.message);
@@ -586,18 +611,18 @@ class DatabaseService {
 
   // Persist a document directly to Firestore with error resilience
   private async persistToFirestore(col: string, docId: string, data: Record<string, any>): Promise<void> {
-    if (!this.firestore) return;
+    if (!this.firestore || !this.fbFs) return;
     try {
-      await setDoc(doc(this.firestore, col, docId), cleanFirestoreData(data));
+      await this.fbFs.setDoc(this.fbFs.doc(this.firestore, col, docId), cleanFirestoreData(data));
     } catch (err: any) {
       console.error(`[Firebase] Failed to persist ${col}/${docId}:`, err.message);
     }
   }
 
   private async deleteFromFirestore(col: string, docId: string): Promise<void> {
-    if (!this.firestore) return;
+    if (!this.firestore || !this.fbFs) return;
     try {
-      await deleteDoc(doc(this.firestore, col, docId));
+      await this.fbFs.deleteDoc(this.fbFs.doc(this.firestore, col, docId));
     } catch (err: any) {
       console.error(`[Firebase] Failed to delete ${col}/${docId}:`, err.message);
     }
