@@ -19,8 +19,14 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://ais-dev-jfqwsxlyfbgwauanfrt3qj-651662287064.asia-east1.run.app/#game-explorer</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ais-dev-jfqwsxlyfbgwauanfrt3qj-651662287064.asia-east1.run.app/#bundles</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>

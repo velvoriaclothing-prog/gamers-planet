@@ -11,6 +11,7 @@ import { Navbar } from './components/Navbar.js';
 import { Hero } from './components/Hero.js';
 import { SaleTimerSection } from './components/SaleTimerSection.js';
 import { SingleGamesSection } from './components/SingleGamesSection.js';
+import { GameCatalogExplorer } from './components/GameCatalogExplorer.js';
 import { BundleGrid } from './components/BundleGrid.js';
 import { BundleModal } from './components/BundleModal.js';
 import { ChannelsSection } from './components/ChannelsSection.js';
@@ -19,8 +20,10 @@ import { FeaturesSection } from './components/FeaturesSection.js';
 import { FaqSection } from './components/FaqSection.js';
 import { Footer } from './components/Footer.js';
 import { MobileQuickBar } from './components/MobileQuickBar.js';
+import { RecentOrdersTicker } from './components/RecentOrdersTicker.js';
 import { AdminLoginModal } from './components/AdminLoginModal.js';
 import { AdminDashboard } from './components/admin/AdminDashboard.js';
+import { SteamUnlockScrollPopup } from './components/SteamUnlockScrollPopup.js';
 
 export default function App() {
   const [settings, setSettings] = useState<SiteSettings>({
@@ -209,6 +212,14 @@ export default function App() {
         onSelectBundle={(bundle) => setSelectedBundle(bundle)}
       />
 
+      {/* Game Search & Catalog Explorer */}
+      <GameCatalogExplorer
+        settings={settings}
+        featuredBundle={bundles.find(b => b.price === 399) || bundles[0]}
+        steamUnlockBundle={bundles.find(b => b.id === 'bundle-steam-unlock' || b.price === 449) || null}
+        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
+      />
+
       {/* Bundles Vault Section */}
       <BundleGrid
         bundles={bundles}
@@ -253,6 +264,16 @@ export default function App() {
 
       {/* Mobile Floating Quick Bar */}
       <MobileQuickBar settings={settings} />
+
+      {/* Live Recent Orders Ticker (Social Proof) */}
+      <RecentOrdersTicker />
+
+      {/* Floating Scroll Popup Offer for ₹449 Steam Unlock & ₹80 ID/Pass */}
+      <SteamUnlockScrollPopup
+        settings={settings}
+        steamUnlockBundle={bundles.find(b => b.id === 'bundle-steam-unlock' || b.price === 449) || null}
+        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
+      />
 
       {/* Bundle Details & Video Preview Modal */}
       {selectedBundle && (

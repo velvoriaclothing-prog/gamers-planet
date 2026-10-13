@@ -43,12 +43,13 @@ const SINGLE_OPTIONS: SingleGameOption[] = [
     id: 'single-steam-account',
     price: 80,
     originalPrice: 299,
-    title: 'Steam Account ID & Password',
-    badge: 'INSTANT ACCESS',
+    title: 'Steam Account ID & Password (ANY Game)',
+    badge: 'ANY GAME • ₹80',
     type: 'account',
-    subtitle: 'Pre-activated Steam Account credentials ready to play',
+    subtitle: 'Pre-activated Steam Account credentials for ANY PC game ready to play',
     features: [
-      'Steam Account ID & Password provided',
+      'Steam Account ID & Password for ANY PC game',
+      'RE9, Pragmata, 007, Forza 6, GTA V & all AAA',
       '100% login guarantee & verified access',
       'Instant digital credentials in 3-5 mins',
       'Full setup assistance & 1-on-1 support'

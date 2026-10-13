@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <a href="#flash-sale" className="hover:text-amber-400 transition-colors text-amber-300 font-semibold">
-                  ⚡ 10h Flash Sale
+                  ⚡ Flash Sale Vault
                 </a>
               </li>
               <li>
@@ -51,6 +51,14 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
                   <span>Single Games Bundle</span>
                   <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
                     ₹80+
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="#game-explorer" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Game Catalog Explorer</span>
+                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    Search
                   </span>
                 </a>
               </li>
