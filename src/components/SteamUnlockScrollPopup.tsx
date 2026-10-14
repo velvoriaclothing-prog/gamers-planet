@@ -142,10 +142,10 @@ export const SteamUnlockScrollPopup: React.FC<SteamUnlockScrollPopupProps> = ({
           {/* Mini Popular Game Covers Strip */}
           <div className="grid grid-cols-4 gap-1.5 py-1">
             {[
+              { title: 'GTA 5', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg' },
               { title: 'Wukong', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg' },
-              { title: 'RE9', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg' },
-              { title: 'Pragmata', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/3357650/header.jpg' },
-              { title: 'GTA 6', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg' }
+              { title: 'RE4 Remake', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg' },
+              { title: 'Cyberpunk', src: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg' }
             ].map((g, idx) => (
               <div key={idx} className="relative rounded-lg overflow-hidden aspect-[16/10] bg-black border border-white/10">
                 <img

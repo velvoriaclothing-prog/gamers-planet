@@ -49,39 +49,11 @@ interface PopularSingleGame {
 
 const POPULAR_SINGLE_GAMES: PopularSingleGame[] = [
   {
-    title: 'Resident Evil 9: Apocalypse (RE9)',
-    genre: 'Survival Horror',
-    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg',
-    year: 2025,
-    badge: 'ANTICIPATED'
-  },
-  {
-    title: 'Pragmata (Capcom Sci-Fi)',
-    genre: 'Sci-Fi Action',
-    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/3357650/header.jpg',
-    year: 2025,
-    badge: 'NEW 2025'
-  },
-  {
-    title: '007 First Light (Project 007)',
-    genre: 'Stealth / Espionage',
-    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg',
-    year: 2025,
-    badge: 'HOT'
-  },
-  {
-    title: 'Forza 6 (Forza Horizon 6)',
-    genre: 'Open World Racing',
-    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2483190/header.jpg',
-    year: 2025,
-    badge: 'TOP RACING'
-  },
-  {
-    title: 'Grand Theft Auto VI (GTA 6)',
-    genre: 'Open World Crime',
+    title: 'Grand Theft Auto V: Premium Edition (GTA 5)',
+    genre: 'Open World Crime Action',
     coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg',
-    year: 2025,
-    badge: 'BLOCKBUSTER'
+    year: 2024,
+    badge: 'ALL-TIME BESTSELLER'
   },
   {
     title: 'Black Myth: Wukong',
@@ -89,6 +61,34 @@ const POPULAR_SINGLE_GAMES: PopularSingleGame[] = [
     coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg',
     year: 2024,
     badge: 'GOTY WINNER'
+  },
+  {
+    title: 'Resident Evil 4 Remake (Gold Edition)',
+    genre: 'Survival Horror',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg',
+    year: 2024,
+    badge: 'TOP HORROR'
+  },
+  {
+    title: 'Forza Horizon 5: Premium Edition',
+    genre: 'Open World Racing',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg',
+    year: 2024,
+    badge: 'TOP RACING'
+  },
+  {
+    title: 'Cyberpunk 2077: Phantom Liberty',
+    genre: 'Open World RPG',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg',
+    year: 2024,
+    badge: 'RAY TRACING'
+  },
+  {
+    title: 'God of War Ragnarök',
+    genre: 'Mythological Action',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg',
+    year: 2024,
+    badge: 'PLAYSTATION HIT'
   },
   {
     title: 'Warhammer 40k: Space Marine 2',
@@ -119,18 +119,46 @@ const POPULAR_SINGLE_GAMES: PopularSingleGame[] = [
     badge: 'TOP SPORTS'
   },
   {
-    title: 'God of War Ragnarök',
-    genre: 'Mythological Action',
-    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg',
+    title: 'Red Dead Redemption 2',
+    genre: 'Open World Western',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg',
+    year: 2024,
+    badge: 'MASTERPIECE'
+  },
+  {
+    title: 'Ghost of Tsushima DIRECTOR\'S CUT',
+    genre: 'Samurai Action',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg',
     year: 2024,
     badge: 'PLAYSTATION HIT'
   },
   {
-    title: 'Cyberpunk 2077: Phantom Liberty',
-    genre: 'Open World RPG',
-    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg',
+    title: "Marvel's Spider-Man Remastered",
+    genre: 'Superhero Action',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg',
     year: 2024,
-    badge: 'RAY TRACING'
+    badge: 'BLOCKBUSTER'
+  },
+  {
+    title: 'Elden Ring: Shadow of the Erdtree',
+    genre: 'Action RPG',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg',
+    year: 2024,
+    badge: 'DARK FANTASY'
+  },
+  {
+    title: 'Resident Evil Village',
+    genre: 'Survival Horror',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1196590/header.jpg',
+    year: 2024,
+    badge: 'GOTHIC HORROR'
+  },
+  {
+    title: 'Hitman: World of Assassination (Agent 47)',
+    genre: 'Stealth / Espionage',
+    coverImage: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg',
+    year: 2024,
+    badge: 'STEALTH HIT'
   }
 ];
 
@@ -145,7 +173,7 @@ const SINGLE_OPTIONS: SingleGameOption[] = [
     subtitle: 'Pre-activated Steam Account credentials for ANY PC game ready to play',
     features: [
       'Steam Account ID & Password for ANY PC game',
-      'RE9, Pragmata, 007, Forza 6, GTA V & all AAA',
+      'GTA 5, RE4 Remake, Forza Horizon 5, Hitman & all AAA',
       '100% login guarantee & verified access',
       'Instant digital credentials in 3-5 mins',
       'Full setup assistance & 1-on-1 support'
@@ -153,10 +181,10 @@ const SINGLE_OPTIONS: SingleGameOption[] = [
     deliveryTime: 'Instant (3-5 mins)',
     icon: 'key',
     sampleCovers: [
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg',
       'https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg',
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/3357650/header.jpg',
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg',
-      'https://cdn.cloudflare.steamstatic.com/steam/apps/2483190/header.jpg'
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg',
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg'
     ]
   },
   {

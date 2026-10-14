@@ -47,7 +47,7 @@ const RECENT_ORDERS: RecentOrder[] = [
     id: 'ord-4',
     customerName: 'Varun P.',
     city: 'Pune',
-    item: 'Resident Evil 9 (Steam ID & Pass)',
+    item: 'Grand Theft Auto V (Steam ID & Pass)',
     price: 80,
     timeAgo: '11m ago'
   },
@@ -55,7 +55,7 @@ const RECENT_ORDERS: RecentOrder[] = [
     id: 'ord-4b',
     customerName: 'Dhruv M.',
     city: 'Noida',
-    item: 'Forza 6 (Steam ID & Pass)',
+    item: 'Resident Evil 4 Remake (Steam ID & Pass)',
     price: 80,
     timeAgo: '14m ago'
   },

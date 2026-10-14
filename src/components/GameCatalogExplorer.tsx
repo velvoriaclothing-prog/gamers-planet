@@ -209,7 +209,7 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
                 setSearchQuery(e.target.value);
                 setDisplayCount(INITIAL_DISPLAY_COUNT);
               }}
-              placeholder="Search title or short form (e.g. re9, gta, 007, forza 6, pragmata, wukong, cod, gow, rdr2)..."
+              placeholder="Search title or short form (e.g. gta 5, wukong, re4, cyberpunk, forza 5, cod, gow, rdr2)..."
               className="flex-1 bg-transparent border-none text-white placeholder-slate-500 text-sm sm:text-base focus:outline-none py-2 px-1 font-medium"
             />
 
