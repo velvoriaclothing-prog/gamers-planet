@@ -4,26 +4,226 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Loader2, AlertTriangle, RefreshCw } from 'lucide-react';
 import { Bundle, ReviewScreenshot, SiteSettings, Channel } from './types/index.js';
 import { api, getAuthToken, clearAuthToken } from './utils/api.js';
+
+import { ScrollToTop } from './components/ScrollToTop.js';
 import { Navbar } from './components/Navbar.js';
-import { Hero } from './components/Hero.js';
-import { SaleTimerSection } from './components/SaleTimerSection.js';
-import { SingleGamesSection } from './components/SingleGamesSection.js';
-import { GameCatalogExplorer } from './components/GameCatalogExplorer.js';
-import { BundleGrid } from './components/BundleGrid.js';
-import { BundleModal } from './components/BundleModal.js';
-import { ChannelsSection } from './components/ChannelsSection.js';
-import { ReviewGallery } from './components/ReviewGallery.js';
-import { FeaturesSection } from './components/FeaturesSection.js';
-import { FaqSection } from './components/FaqSection.js';
 import { Footer } from './components/Footer.js';
 import { MobileQuickBar } from './components/MobileQuickBar.js';
 import { RecentOrdersTicker } from './components/RecentOrdersTicker.js';
 import { AdminLoginModal } from './components/AdminLoginModal.js';
 import { AdminDashboard } from './components/admin/AdminDashboard.js';
 import { SteamUnlockScrollPopup } from './components/SteamUnlockScrollPopup.js';
+import { BundleModal } from './components/BundleModal.js';
+
+// Live Edit & Real-Time Sync
+import { LiveEditProvider, useLiveEdit } from './components/live-edit/LiveEditContext.js';
+import { LiveEditToolbar } from './components/live-edit/LiveEditToolbar.js';
+import { BundleQuickEditModal } from './components/live-edit/BundleQuickEditModal.js';
+import { useRealtimeSync } from './hooks/useRealtimeSync.js';
+
+import { HomePage } from './pages/HomePage.js';
+import { BundlesPage } from './pages/BundlesPage.js';
+import { SingleGamesPage } from './pages/SingleGamesPage.js';
+import { CatalogPage } from './pages/CatalogPage.js';
+import { ChannelsPage } from './pages/ChannelsPage.js';
+import { ReviewsPage } from './pages/ReviewsPage.js';
+import { FaqPage } from './pages/FaqPage.js';
+
+interface StorefrontProps {
+  bundles: Bundle[];
+  reviews: ReviewScreenshot[];
+  isAdmin: boolean;
+  onOpenAdminLogin: () => void;
+  onOpenAdminDashboard: () => void;
+  onLogout: () => void;
+  selectedBundle: Bundle | null;
+  onSelectBundle: (bundle: Bundle | null) => void;
+  showAdminLogin: boolean;
+  onCloseAdminLogin: () => void;
+  onLoginSuccess: () => Promise<void>;
+}
+
+const Storefront: React.FC<StorefrontProps> = ({
+  bundles,
+  reviews,
+  isAdmin,
+  onOpenAdminLogin,
+  onOpenAdminDashboard,
+  onLogout,
+  selectedBundle,
+  onSelectBundle,
+  showAdminLogin,
+  onCloseAdminLogin,
+  onLoginSuccess,
+}) => {
+  const { getEffectiveSettings, getEffectiveBundles } = useLiveEdit();
+  const effectiveSettings = getEffectiveSettings();
+  const effectiveBundles = getEffectiveBundles(bundles);
+
+  const featuredBundle = effectiveBundles.find(b => b.price === 399) || effectiveBundles[0] || null;
+  const steamUnlockBundle = effectiveBundles.find(b => b.id === 'bundle-steam-unlock' || b.price === 449) || null;
+
+  return (
+    <div className="min-h-screen bg-[#050608] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black pb-16 lg:pb-0">
+      {/* Auto scroll to top on page navigation */}
+      <ScrollToTop />
+
+      {/* Admin Live In-Place Edit Floating Bar */}
+      <LiveEditToolbar
+        onOpenDashboard={onOpenAdminDashboard}
+        onLogout={onLogout}
+      />
+
+      {/* Quick modal for editing bundle prices & names live on page */}
+      <BundleQuickEditModal />
+
+      {/* Global Navbar with 5-click easter egg on logo */}
+      <Navbar
+        settings={effectiveSettings}
+        isAdmin={isAdmin}
+        onOpenAdminModal={onOpenAdminLogin}
+        onOpenDashboard={onOpenAdminDashboard}
+        onLogout={onLogout}
+      />
+
+      {/* Multi-Page Routes */}
+      <main className="flex-1">
+        <Routes>
+          {/* 1. Home Page */}
+          <Route
+            path="/"
+            element={
+              <HomePage
+                bundles={effectiveBundles}
+                reviews={reviews}
+                settings={effectiveSettings}
+                onSelectBundle={onSelectBundle}
+              />
+            }
+          />
+
+          {/* 2. Bundles Vault Page */}
+          <Route
+            path="/bundles"
+            element={
+              <BundlesPage
+                bundles={effectiveBundles}
+                settings={effectiveSettings}
+                isAdmin={isAdmin}
+                onSelectBundle={onSelectBundle}
+                onOpenAdmin={() => {
+                  if (isAdmin) onOpenAdminDashboard();
+                  else onOpenAdminLogin();
+                }}
+              />
+            }
+          />
+
+          {/* 3. Single Games Page */}
+          <Route
+            path="/single-games"
+            element={
+              <SingleGamesPage
+                settings={effectiveSettings}
+                featuredBundle={featuredBundle}
+                onSelectBundle={onSelectBundle}
+              />
+            }
+          />
+
+          {/* 4. Search 60K+ Catalog Page */}
+          <Route
+            path="/catalog"
+            element={
+              <CatalogPage
+                settings={effectiveSettings}
+                featuredBundle={featuredBundle}
+                steamUnlockBundle={steamUnlockBundle}
+                onSelectBundle={onSelectBundle}
+              />
+            }
+          />
+
+          {/* 5. VIP Channels & Sites Page */}
+          <Route
+            path="/channels"
+            element={
+              <ChannelsPage
+                settings={effectiveSettings}
+                isAdmin={isAdmin}
+                onOpenAdmin={() => {
+                  if (isAdmin) onOpenAdminDashboard();
+                  else onOpenAdminLogin();
+                }}
+              />
+            }
+          />
+
+          {/* 6. Customer Proof & Reviews Page */}
+          <Route
+            path="/reviews"
+            element={
+              <ReviewsPage
+                reviews={reviews}
+                settings={effectiveSettings}
+                isAdmin={isAdmin}
+                onOpenAdmin={() => {
+                  if (isAdmin) onOpenAdminDashboard();
+                  else onOpenAdminLogin();
+                }}
+              />
+            }
+          />
+
+          {/* 7. FAQ & Setup Guide Page */}
+          <Route
+            path="/faq"
+            element={<FaqPage settings={effectiveSettings} />}
+          />
+
+          {/* Fallback to Home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+
+      {/* Global Footer */}
+      <Footer settings={effectiveSettings} />
+
+      {/* Mobile Bottom Navigation Bar with Active Route Highlighting */}
+      <MobileQuickBar settings={effectiveSettings} />
+
+      {/* Live Recent Orders Ticker (Social Proof - Desktop Only) */}
+      <RecentOrdersTicker />
+
+      {/* Floating Scroll Popup Offer (Desktop Only - Strictly Disabled on Mobile) */}
+      <SteamUnlockScrollPopup
+        settings={effectiveSettings}
+        steamUnlockBundle={steamUnlockBundle}
+        onSelectBundle={onSelectBundle}
+      />
+
+      {/* Bundle Details & Video Preview Modal */}
+      {selectedBundle && (
+        <BundleModal
+          bundle={selectedBundle}
+          settings={effectiveSettings}
+          onClose={() => onSelectBundle(null)}
+        />
+      )}
+
+      {/* Hidden Admin Login Modal */}
+      <AdminLoginModal
+        isOpen={showAdminLogin}
+        onClose={onCloseAdminLogin}
+        onLoginSuccess={onLoginSuccess}
+      />
+    </div>
+  );
+};
 
 export default function App() {
   const [settings, setSettings] = useState<SiteSettings>({
@@ -34,6 +234,8 @@ export default function App() {
     heroCtaText: 'Browse Vault Bundles',
     heroSecondaryText: 'View Customer Proof',
     instagramUrl: 'https://instagram.com/gamersplanet20.26',
+    primaryChannelType: 'instagram',
+    channelHandle: '@gamersplanet20.26',
     accentColor: '#f59e0b',
     footerText: '© 2026 Gamers Planet. Direct verified delivery guaranteed.',
     supportNote: 'DM us on Instagram @gamersplanet20.26 for instant setup support.',
@@ -92,7 +294,6 @@ export default function App() {
       const status = await api.checkAuthStatus();
       if (status.authenticated) {
         setIsAdmin(true);
-        // Load admin bundles, reviews, and channels (including inactive & unpublished)
         const [aBundles, aReviews, aChannels] = await Promise.all([
           api.getAdminBundles(),
           api.getAdminReviews(),
@@ -115,6 +316,12 @@ export default function App() {
     loadData();
     checkAdminAuth();
   }, [loadData, checkAdminAuth]);
+
+  // Real-time synchronization: poll server version and trigger auto-update
+  useRealtimeSync({
+    onSync: loadData,
+    intervalMs: 4000
+  });
 
   // Handle successful login
   const handleLoginSuccess = async () => {
@@ -183,113 +390,29 @@ export default function App() {
     );
   }
 
-  // Public Storefront
+  // Multi-Page Public Storefront with Live In-Place Edit Provider
   return (
-    <div className="min-h-screen bg-[#050608] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black">
-      {/* Navbar with 5-click easter egg */}
-      <Navbar
-        settings={settings}
-        isAdmin={isAdmin}
-        onOpenAdminModal={() => setShowAdminLogin(true)}
-        onOpenDashboard={() => setShowAdminDashboard(true)}
-        onLogout={handleLogout}
-      />
-
-      {/* Hero Section */}
-      <Hero settings={settings} />
-
-      {/* Flash Sale Timer & All Bundles With Live Price */}
-      <SaleTimerSection
+    <LiveEditProvider
+      settings={settings}
+      bundles={bundles}
+      isAdmin={isAdmin}
+      onRefreshAll={handleRefreshAll}
+      onSettingsUpdate={(newSettings) => setSettings(newSettings)}
+      onBundlesUpdate={(newBundles) => setBundles(newBundles)}
+    >
+      <Storefront
         bundles={bundles}
-        settings={settings}
-        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-      />
-
-      {/* Single Games Bundle Section */}
-      <SingleGamesSection
-        settings={settings}
-        featuredBundle={bundles.find(b => b.price === 399) || bundles[0]}
-        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-      />
-
-      {/* Game Search & Catalog Explorer */}
-      <GameCatalogExplorer
-        settings={settings}
-        featuredBundle={bundles.find(b => b.price === 399) || bundles[0]}
-        steamUnlockBundle={bundles.find(b => b.id === 'bundle-steam-unlock' || b.price === 449) || null}
-        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-      />
-
-      {/* Bundles Vault Section */}
-      <BundleGrid
-        bundles={bundles}
-        settings={settings}
-        isAdmin={isAdmin}
-        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-        onOpenAdmin={() => {
-          if (isAdmin) setShowAdminDashboard(true);
-          else setShowAdminLogin(true);
-        }}
-      />
-
-      {/* Password-Protected Exclusive Channels Section */}
-      <ChannelsSection
-        settings={settings}
-        isAdmin={isAdmin}
-        onOpenAdmin={() => {
-          if (isAdmin) setShowAdminDashboard(true);
-          else setShowAdminLogin(true);
-        }}
-      />
-
-      {/* Customer Reviews & Screenshot Proof Gallery */}
-      <ReviewGallery
         reviews={reviews}
-        settings={settings}
         isAdmin={isAdmin}
-        onOpenAdmin={() => {
-          if (isAdmin) setShowAdminDashboard(true);
-          else setShowAdminLogin(true);
-        }}
-      />
-
-      {/* Why Choose Us */}
-      <FeaturesSection />
-
-      {/* Frequently Asked Questions */}
-      <FaqSection />
-
-      {/* Footer */}
-      <Footer settings={settings} />
-
-      {/* Mobile Floating Quick Bar */}
-      <MobileQuickBar settings={settings} />
-
-      {/* Live Recent Orders Ticker (Social Proof) */}
-      <RecentOrdersTicker />
-
-      {/* Floating Scroll Popup Offer for ₹449 Steam Unlock & ₹80 ID/Pass */}
-      <SteamUnlockScrollPopup
-        settings={settings}
-        steamUnlockBundle={bundles.find(b => b.id === 'bundle-steam-unlock' || b.price === 449) || null}
+        onOpenAdminLogin={() => setShowAdminLogin(true)}
+        onOpenAdminDashboard={() => setShowAdminDashboard(true)}
+        onLogout={handleLogout}
+        selectedBundle={selectedBundle}
         onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-      />
-
-      {/* Bundle Details & Video Preview Modal */}
-      {selectedBundle && (
-        <BundleModal
-          bundle={selectedBundle}
-          settings={settings}
-          onClose={() => setSelectedBundle(null)}
-        />
-      )}
-
-      {/* Hidden Admin Login Modal */}
-      <AdminLoginModal
-        isOpen={showAdminLogin}
-        onClose={() => setShowAdminLogin(false)}
+        showAdminLogin={showAdminLogin}
+        onCloseAdminLogin={() => setShowAdminLogin(false)}
         onLoginSuccess={handleLoginSuccess}
       />
-    </div>
+    </LiveEditProvider>
   );
 }

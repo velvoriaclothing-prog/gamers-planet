@@ -19,7 +19,7 @@ import {
 import { Bundle, SiteSettings } from '../types/index.js';
 import { POPULAR_GAMES_CATALOG, CatalogGame } from '../data/popularGames.js';
 import { matchGameSearch } from '../utils/searchEngine.js';
-import { openInstagram } from '../utils/api.js';
+import { getChannelRedirectInfo, navigateToChannel } from '../utils/channelRedirect.js';
 
 interface GameCatalogExplorerProps {
   settings: SiteSettings;
@@ -78,31 +78,41 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
     { id: 'horror-survival', label: 'Survival & Horror' },
   ];
 
+  const unlockPrice = steamUnlockBundle?.price || 449;
+  const unlockTitle = steamUnlockBundle?.title || 'Steam Unlock Bundle';
+
   const handleOrderSteamUnlockBundle = (gameTitle?: string) => {
     if (steamUnlockBundle && onSelectBundle) {
       onSelectBundle(steamUnlockBundle);
     } else {
       const message = gameTitle 
-        ? `Hi! I want to get the ₹449 Steam Unlock Bundle to add ${gameTitle} and access all games in my personal Steam account.`
-        : `Hi! I want to get the ₹449 Steam Unlock Bundle and add games to my personal Steam account.`;
-      openInstagram(settings.instagramUrl, message, 449);
+        ? `Hi! I want to get the ₹${unlockPrice} ${unlockTitle} to add ${gameTitle} and access all games in my personal Steam account.`
+        : `Hi! I want to get the ₹${unlockPrice} ${unlockTitle} and add games to my personal Steam account.`;
+      navigateToChannel(settings, {
+        bundleTitle: unlockTitle,
+        price: unlockPrice,
+        message,
+        actionType: 'purchase'
+      });
     }
   };
 
   const handleSingleGameIdPass = (gameTitle: string) => {
-    openInstagram(
-      settings.instagramUrl,
-      `Hi! I want to get Steam Account ID & Password for ${gameTitle} (₹80).`,
-      80
-    );
+    navigateToChannel(settings, {
+      bundleTitle: `Steam ID & Pass (${gameTitle})`,
+      message: `Hi! I want to get Steam Account ID & Password for ${gameTitle} (₹80).`,
+      price: 80,
+      actionType: 'single'
+    });
   };
 
   const handleSingleGamePersonalSteam = (gameTitle: string) => {
-    openInstagram(
-      settings.instagramUrl,
-      `Hi! I want to add ${gameTitle} directly to my personal Steam account (₹120).`,
-      120
-    );
+    navigateToChannel(settings, {
+      bundleTitle: `Personal Steam (${gameTitle})`,
+      message: `Hi! I want to add ${gameTitle} directly to my personal Steam account (₹120).`,
+      price: 120,
+      actionType: 'single'
+    });
   };
 
   return (
@@ -273,17 +283,17 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
           ))}
         </div>
 
-        {/* Results Grid */}
+        {/* Results Grid (Compact, High-Density Cards) */}
         {filteredGames.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 mb-10">
               {visibleGames.map((game) => (
                 <div
                   key={game.id}
-                  className="group glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-white/10 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 shadow-xl bg-[#090c16]/95 relative"
+                  className="group bg-[#080b15]/95 rounded-xl overflow-hidden flex flex-col justify-between border border-white/10 hover:border-amber-500/40 transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-xl relative"
                 >
-                  {/* Game Thumbnail with authentic real image */}
-                  <div className="relative h-48 overflow-hidden bg-black/60">
+                  {/* Game Thumbnail: Compact 16/10 */}
+                  <div className="relative aspect-[16/10] max-h-24 sm:max-h-28 overflow-hidden bg-black/80">
                     <img
                       src={game.coverImage}
                       alt={game.title}
@@ -295,103 +305,76 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
                       }}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#090c16] via-transparent to-black/40" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080b15] via-transparent to-black/40" />
 
                     {/* Badges on poster */}
-                    <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                      <span className="px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-md text-amber-300 border border-amber-500/30 text-[10px] font-bold uppercase font-gaming">
+                    <div className="absolute top-1 left-1 flex flex-wrap gap-1">
+                      <span className="px-1 py-0.2 rounded bg-black/80 backdrop-blur-md text-amber-300 border border-amber-500/30 text-[7.5px] font-bold uppercase font-gaming truncate max-w-[80px]">
                         {game.genre}
                       </span>
                       {game.popular && (
-                        <span className="px-2 py-0.5 rounded-md bg-amber-500 text-black text-[10px] font-black uppercase font-gaming flex items-center gap-1 shadow-md">
-                          <Flame className="w-3 h-3 fill-black text-black" />
+                        <span className="px-1 py-0.2 rounded bg-amber-500 text-black text-[7.5px] font-black uppercase font-gaming flex items-center gap-0.5 shadow-sm">
+                          <Flame className="w-2 h-2 fill-black text-black" />
                           <span>HOT</span>
                         </span>
                       )}
                     </div>
 
-                    {/* Top-Right Badge: Pricing quick preview */}
-                    <div className="absolute top-3 right-3">
-                      <span className="px-2 py-0.5 rounded-md bg-emerald-500/90 text-black text-[10px] font-black uppercase font-gaming shadow-md flex items-center gap-1">
-                        <Unlock className="w-3 h-3 text-black" />
-                        <span>₹449 ALL • ₹80 ID/PASS</span>
-                      </span>
-                    </div>
-
-                    <div className="absolute bottom-2 right-3 text-[10px] text-slate-300 font-semibold bg-black/60 px-2 py-0.5 rounded backdrop-blur-md">
-                      {game.releaseYear} Edition
+                    <div className="absolute bottom-1 right-1 text-[7.5px] text-slate-300 font-medium bg-black/75 px-1 py-0.2 rounded backdrop-blur-md">
+                      {game.releaseYear}
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between">
+                  {/* Content: Compact & Clean */}
+                  <div className="p-2 sm:p-2.5 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors mb-2 leading-snug">
+                      <h3 className="text-[11px] sm:text-xs font-bold text-white font-gaming group-hover:text-amber-300 transition-colors mb-0.5 leading-snug line-clamp-1" title={game.title}>
                         {game.title}
                       </h3>
                       
-                      <p className="text-xs text-slate-400 leading-relaxed mb-4 line-clamp-2">
+                      <p className="text-[9.5px] sm:text-[10px] text-slate-400 leading-tight mb-1.5 line-clamp-1">
                         {game.description}
                       </p>
 
-                      {/* Pricing Tier Box */}
-                      <div className="space-y-1.5 bg-black/50 rounded-xl p-3 border border-amber-500/20 mb-4 text-xs">
-                        <div className="flex items-center justify-between text-amber-300 font-bold border-b border-white/5 pb-1.5">
-                          <span className="flex items-center gap-1.5">
-                            <Unlock className="w-3.5 h-3.5 text-amber-400" />
-                            <span>Steam Unlock Bundle</span>
-                          </span>
-                          <span className="text-amber-400">₹449 (All 60k Games)</span>
-                        </div>
-                        <div className="flex items-center justify-between text-slate-200 font-semibold pt-0.5">
-                          <span className="flex items-center gap-1.5">
-                            <KeyRound className="w-3.5 h-3.5 text-emerald-400" />
-                            <span>Single Game ID & Password</span>
-                          </span>
-                          <span className="text-emerald-400 font-bold">₹80</span>
-                        </div>
-                        <div className="flex items-center justify-between text-slate-300 font-medium">
-                          <span className="flex items-center gap-1.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-sky-400" />
-                            <span>Add to Personal Steam</span>
-                          </span>
-                          <span className="text-sky-300 font-bold">₹120</span>
-                        </div>
+                      {/* Pricing Mini Tag */}
+                      <div className="flex items-center justify-between text-[9px] bg-black/40 rounded px-1.5 py-0.5 border border-white/5 mb-1.5">
+                        <span className="text-amber-400 font-bold font-gaming">Vault ₹{unlockPrice}</span>
+                        <span className="text-emerald-400 font-bold font-gaming">ID/Pass ₹80</span>
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="space-y-2 pt-2 border-t border-white/10">
-                      {/* 1. All Games Steam Unlock Bundle Button */}
+                    {/* Compact Action Buttons */}
+                    <div className="space-y-1 pt-1 border-t border-white/[0.08]">
+                      {/* Unlock in Bundle Button */}
                       <button
                         type="button"
                         onClick={() => handleOrderSteamUnlockBundle(game.title)}
-                        className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-xs flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(245,158,11,0.35)] transition-all cursor-pointer"
+                        className="w-full py-1 px-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 active:scale-95 text-black font-black text-[9.5px] sm:text-[10px] font-gaming flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer"
                       >
-                        <Zap className="w-3.5 h-3.5 fill-black text-black" />
-                        <span>Unlock in ₹449 Steam Bundle</span>
+                        <Zap className="w-2.5 h-2.5 fill-black text-black" />
+                        <span className="truncate">Unlock in ₹{unlockPrice} Vault</span>
                       </button>
 
-                      {/* 2. Split Single Game Options (₹80 ID/Pass vs ₹120 Personal Steam) */}
-                      <div className="grid grid-cols-2 gap-2">
+                      {/* Split Single Game Options */}
+                      <div className="grid grid-cols-2 gap-1">
                         <button
                           type="button"
                           onClick={() => handleSingleGameIdPass(game.title)}
-                          className="py-2 px-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 hover:text-emerald-200 font-bold text-[11px] flex items-center justify-center gap-1 transition-all cursor-pointer"
-                          title="Instant ID & Password login credentials ready to play"
+                          className="py-1 px-1 rounded bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 font-bold text-[8.5px] sm:text-[9.5px] flex items-center justify-center gap-0.5 transition-all cursor-pointer truncate"
+                          title="Instant ID & Pass credentials"
                         >
-                          <KeyRound className="w-3 h-3 text-emerald-400" />
-                          <span>ID & Pass • ₹80</span>
+                          <KeyRound className="w-2 h-2 text-emerald-400 shrink-0" />
+                          <span className="truncate">ID ₹80</span>
                         </button>
 
                         <button
                           type="button"
                           onClick={() => handleSingleGamePersonalSteam(game.title)}
-                          className="py-2 px-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white font-bold text-[11px] flex items-center justify-center gap-1 border border-white/10 transition-colors cursor-pointer"
-                          title="Added directly to your personal Steam account"
+                          className="py-1 px-1 rounded bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 font-bold text-[8.5px] sm:text-[9.5px] flex items-center justify-center gap-0.5 transition-colors cursor-pointer truncate"
+                          title="Add to personal Steam account"
                         >
-                          <Instagram className="w-3 h-3 text-amber-400" />
-                          <span>Personal • ₹120</span>
+                          <CheckCircle2 className="w-2 h-2 text-sky-400 shrink-0" />
+                          <span className="truncate">Steam ₹120</span>
                         </button>
                       </div>
                     </div>
@@ -433,7 +416,7 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
             <p className="text-xs sm:text-sm text-slate-300 mb-6 max-w-lg mx-auto leading-relaxed">
               We have over <span className="text-amber-400 font-bold">60,000+ PC games in stock</span>. All games are available:
               <br />
-              • <span className="text-amber-400 font-bold">Steam Unlock Bundle for just ₹449</span> (All games on personal account)
+              • <span className="text-amber-400 font-bold">{unlockTitle} for just ₹{unlockPrice}</span> (All games on personal account)
               <br />
               • <span className="text-emerald-400 font-bold">Single Game ID & Password for just ₹80</span>
               <br />
@@ -443,16 +426,26 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5">
               <button
                 type="button"
-                onClick={() => openInstagram(settings.instagramUrl, `Hi! I want the ₹449 Steam Unlock Bundle and add ${searchQuery} to my personal account.`, 449)}
+                onClick={() => navigateToChannel(settings, {
+                  bundleTitle: unlockTitle,
+                  price: unlockPrice,
+                  message: `Hi! I want the ₹${unlockPrice} ${unlockTitle} and add ${searchQuery} to my personal account.`,
+                  actionType: 'purchase'
+                })}
                 className="w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs sm:text-sm inline-flex items-center justify-center gap-1.5 shadow-[0_0_25px_rgba(245,158,11,0.4)] transition-all cursor-pointer"
               >
                 <Zap className="w-4 h-4 fill-black text-black" />
-                <span>Get in ₹449 Steam Bundle</span>
+                <span>Get in ₹{unlockPrice} Steam Bundle</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => openInstagram(settings.instagramUrl, `Hi! I want Single Game Steam ID & Password for: ${searchQuery}`, 80)}
+                onClick={() => navigateToChannel(settings, {
+                  bundleTitle: `Single ID & Pass (${searchQuery})`,
+                  price: 80,
+                  message: `Hi! I want Single Game Steam ID & Password for: ${searchQuery}`,
+                  actionType: 'single'
+                })}
                 className="w-full sm:w-auto px-4 py-3 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-1.5 transition-all cursor-pointer"
               >
                 <KeyRound className="w-4 h-4 text-emerald-400" />
@@ -461,10 +454,15 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
 
               <button
                 type="button"
-                onClick={() => openInstagram(settings.instagramUrl, `Custom Game Request (Add to personal Steam): ${searchQuery}`, 120)}
+                onClick={() => navigateToChannel(settings, {
+                  bundleTitle: `Personal Steam (${searchQuery})`,
+                  price: 120,
+                  message: `Custom Game Request (Add to personal Steam): ${searchQuery}`,
+                  actionType: 'single'
+                })}
                 className="w-full sm:w-auto px-4 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs sm:text-sm inline-flex items-center justify-center gap-1.5 border border-white/20 transition-all cursor-pointer"
               >
-                <Instagram className="w-4 h-4 text-amber-400" />
+                <CheckCircle2 className="w-4 h-4 text-sky-400" />
                 <span>Personal Steam • ₹120</span>
               </button>
             </div>
@@ -482,7 +480,7 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
                 Need Any Specific Game Not Listed in Preview?
               </div>
               <div className="text-xs text-slate-300">
-                All 60,000+ titles available! Single ID & Pass for just <span className="text-emerald-400 font-bold">₹80</span>, add to personal account for <span className="text-sky-300 font-bold">₹120</span>, or unlock ALL games for <span className="text-amber-400 font-bold">₹449</span>!
+                All 60,000+ titles available! Single ID & Pass for just <span className="text-emerald-400 font-bold">₹80</span>, add to personal account for <span className="text-sky-300 font-bold">₹120</span>, or unlock ALL games for <span className="text-amber-400 font-bold">₹{unlockPrice}</span>!
               </div>
             </div>
           </div>
@@ -490,21 +488,35 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => openInstagram(settings.instagramUrl, 'Hi! I want to get single game ID & Password for ₹80', 80)}
+              onClick={() => navigateToChannel(settings, {
+                bundleTitle: 'Single Game ID & Password',
+                price: 80,
+                message: 'Hi! I want to get single game ID & Password for ₹80',
+                actionType: 'single'
+              })}
               className="px-4 py-2.5 rounded-xl bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 border border-emerald-500/40 font-bold text-xs whitespace-nowrap flex items-center gap-1 transition-colors cursor-pointer"
             >
               <KeyRound className="w-3.5 h-3.5 text-emerald-400" />
               <span>ID & Pass ₹80</span>
             </button>
 
-            <button
-              type="button"
-              onClick={() => openInstagram(settings.instagramUrl, 'Custom Wishlist Inquiry: I want to add games to my personal Steam account', 449)}
-              className="px-4 py-2.5 rounded-xl bg-amber-500 text-black hover:bg-amber-400 font-black text-xs whitespace-nowrap flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.3)]"
-            >
-              <Instagram className="w-3.5 h-3.5 text-black" />
-              <span>Ask on DM</span>
-            </button>
+            {(() => {
+              const redirectInfo = getChannelRedirectInfo(settings, {
+                actionType: 'dm',
+                message: 'Custom Wishlist Inquiry: I want to add games to my personal Steam account'
+              });
+              return (
+                <a
+                  href={redirectInfo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-amber-500 text-black hover:bg-amber-400 font-black text-xs whitespace-nowrap flex items-center gap-1.5 transition-colors cursor-pointer shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.3)] text-center"
+                  title={redirectInfo.actionLabel}
+                >
+                  <span>{redirectInfo.actionLabel}</span>
+                </a>
+              );
+            })()}
           </div>
         </div>
 

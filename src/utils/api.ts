@@ -73,6 +73,7 @@ export const api = {
   getBundles: () => apiFetch<Bundle[]>('/api/bundles'),
   getBundle: (id: string) => apiFetch<Bundle>(`/api/bundles/${id}`),
   getReviews: () => apiFetch<ReviewScreenshot[]>('/api/reviews'),
+  getSyncVersion: () => apiFetch<{ version: number; lastUpdated: string }>('/api/sync/version'),
 
   // Auth
   login: (code: string) =>
@@ -128,11 +129,21 @@ export const api = {
       body: JSON.stringify({ orderedIds }),
     }),
 
-  // Admin Settings
+  // Admin Settings & Live Batch Save
   updateSettings: (settings: Partial<SiteSettings>) =>
     apiFetch<SiteSettings>('/api/admin/settings', {
       method: 'PUT',
       body: JSON.stringify(settings),
+    }),
+  liveBatchSave: (payload: import('../types/index.js').LiveBatchSavePayload) =>
+    apiFetch<{
+      settings: SiteSettings;
+      bundles: Bundle[];
+      version: number;
+      lastUpdated: string;
+    }>('/api/admin/live-save', {
+      method: 'PUT',
+      body: JSON.stringify(payload),
     }),
   changeAdminCode: (currentCode: string, newCode: string) =>
     apiFetch<{ success: boolean; message: string }>('/api/admin/change-code', {

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Star, ShieldCheck, MessageSquare, Instagram, Sparkles, Search, CheckCircle2, ThumbsUp, MapPin, Gamepad2, ChevronDown } from 'lucide-react';
+import { Star, ShieldCheck, MessageSquare, Instagram, Send, PhoneCall, Globe, Sparkles, Search, CheckCircle2, ThumbsUp, MapPin, Gamepad2, ChevronDown } from 'lucide-react';
 import { ReviewScreenshot, SiteSettings } from '../types/index.js';
-import { openInstagram } from '../utils/api.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
 interface ReviewGalleryProps {
   reviews: ReviewScreenshot[];
@@ -203,7 +203,7 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {displayedReviews.map((review, idx) => {
               const name = review.reviewerName || review.customerHandle?.replace('@', '') || 'Verified Gamer';
               const initials = getInitials(name);
@@ -213,11 +213,11 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
               return (
                 <div
                   key={review.id || idx}
-                  className="glass-card rounded-2xl p-6 flex flex-col justify-between border border-white/5 hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-1 shadow-lg group relative"
+                  className="bg-[#090d18]/90 rounded-xl sm:rounded-2xl p-4 sm:p-5 flex flex-col justify-between border border-white/5 hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-0.5 shadow-md group relative"
                 >
                   <div>
                     {/* User Header with Avatar & Details */}
-                    <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="flex items-start justify-between gap-2.5 mb-3">
                       <div className="flex items-center gap-3">
                         {/* Gradient Initials Circle */}
                         <div

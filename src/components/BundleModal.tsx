@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, ArrowRight, Video } from 'lucide-react';
+import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
-import { openInstagram } from '../utils/api.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
 interface BundleModalProps {
   bundle: Bundle | null;
@@ -277,16 +277,29 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 Back to Bundles
               </button>
 
-              <button
-                onClick={() => {
-                  openInstagram(settings.instagramUrl, bundle.title, bundle.price);
-                }}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer font-gaming"
-              >
-                <Instagram className="w-5 h-5 text-black" />
-                <span>Claim on Instagram (₹{bundle.price})</span>
-                <ArrowRight className="w-4 h-4 text-black" />
-              </button>
+              {(() => {
+                const redirectInfo = getChannelRedirectInfo(settings, {
+                  bundleTitle: bundle.title,
+                  price: bundle.price,
+                  actionType: 'purchase'
+                });
+                return (
+                  <a
+                    href={redirectInfo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer font-gaming text-center"
+                    title={`Claim on ${redirectInfo.platformName}`}
+                  >
+                    {redirectInfo.isWhatsApp && <PhoneCall className="w-5 h-5 text-black shrink-0" />}
+                    {redirectInfo.isTelegram && <Send className="w-5 h-5 text-black shrink-0" />}
+                    {redirectInfo.isInstagram && <Instagram className="w-5 h-5 text-black shrink-0" />}
+                    {redirectInfo.isCustom && <Globe className="w-5 h-5 text-black shrink-0" />}
+                    <span>Claim on {redirectInfo.platformName} (₹{bundle.price})</span>
+                    <ArrowRight className="w-4 h-4 text-black shrink-0" />
+                  </a>
+                );
+              })()}
             </div>
 
           </div>

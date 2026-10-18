@@ -37,6 +37,10 @@ export interface ReviewScreenshot {
   createdAt: string;
 }
 
+export type Review = ReviewScreenshot;
+
+export type PrimaryChannelType = 'instagram' | 'telegram' | 'whatsapp' | 'custom';
+
 export interface SiteSettings {
   siteTitle: string;
   logoText: string;
@@ -49,6 +53,24 @@ export interface SiteSettings {
   footerText: string;
   supportNote: string;
   announcementText?: string;
+
+  // Smart Multi-Channel Switcher Settings
+  primaryChannelType?: PrimaryChannelType; // 'instagram' | 'telegram' | 'whatsapp' | 'custom'
+  channelHandle?: string; // e.g. "@gamersplanet20.26" or "+919876543210"
+  channelUrl?: string; // direct channel or DM link
+  channelCustomLabel?: string; // e.g. "Chat with Us", "Direct DM", etc.
+
+  // Dynamic In-Place Page Texts
+  customTexts?: Record<string, string>;
+
+  // Real-time synchronization
+  version?: number;
+  lastUpdated?: string;
+}
+
+export interface LiveBatchSavePayload {
+  settingsUpdates?: Partial<SiteSettings>;
+  bundleUpdates?: Array<{ id: string; updates: Partial<Bundle> }>;
 }
 
 export type ChannelPlatform = 'telegram' | 'discord' | 'website';

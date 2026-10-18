@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Gamepad2, Play, ExternalLink, Sparkles, Eye, CheckCircle2, Search, ArrowRight } from 'lucide-react';
+import { Gamepad2, Play, ExternalLink, Sparkles, Eye, CheckCircle2, Search, ArrowRight, Edit3 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
-import { openInstagram } from '../utils/api.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLiveEdit } from './live-edit/LiveEditContext.js';
 
 interface BundleGridProps {
   bundles: Bundle[];
@@ -46,6 +47,8 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
       return matchCat && (matchTitle || matchDesc || matchItems);
     });
   }, [bundles, selectedCategory, searchQuery]);
+
+  const { isLiveEditMode, openBundleQuickEdit, getEffectiveBundle } = useLiveEdit();
 
   return (
     <section id="bundles" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,12 +99,12 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
         </div>
       )}
 
-      {/* Bundles Grid */}
+      {/* Bundles Grid (Compact, Smaller Cards) */}
       {filteredBundles.length === 0 ? (
-        <div className="glass-panel rounded-2xl p-12 text-center max-w-md mx-auto my-12">
-          <Gamepad2 className="w-12 h-12 text-slate-500 mx-auto mb-4" />
-          <h3 className="text-lg font-bold text-white mb-2 font-gaming">No Bundles Found</h3>
-          <p className="text-xs text-slate-400 mb-6">
+        <div className="bg-[#090d18] rounded-2xl p-8 text-center max-w-md mx-auto my-8 border border-white/10">
+          <Gamepad2 className="w-10 h-10 text-slate-500 mx-auto mb-3" />
+          <h3 className="text-base font-bold text-white mb-1.5 font-gaming">No Bundles Found</h3>
+          <p className="text-xs text-slate-400 mb-4">
             {searchQuery
               ? `No bundles matching "${searchQuery}". Try a different keyword.`
               : 'No gaming bundles are currently active in the vault.'}
@@ -116,8 +119,9 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
           )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBundles.map((bundle) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {filteredBundles.map((rawBundle) => {
+            const bundle = getEffectiveBundle(rawBundle);
             const savingsPercent =
               bundle.originalPrice && bundle.originalPrice > bundle.price
                 ? Math.round(((bundle.originalPrice - bundle.price) / bundle.originalPrice) * 100)
@@ -126,16 +130,31 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
             return (
               <div
                 key={bundle.id}
-                className={`group glass-card rounded-2xl overflow-hidden flex flex-col relative transition-all duration-300 ${
+                className={`group bg-[#090d18]/95 rounded-xl sm:rounded-2xl overflow-hidden flex flex-col relative transition-all duration-300 hover:-translate-y-1 ${
                   bundle.featured
-                    ? 'border-2 border-amber-500/70 shadow-[0_0_35px_rgba(245,158,11,0.25)] ring-1 ring-amber-400/40 -translate-y-1'
-                    : 'border border-white/10 hover:border-amber-500/30'
+                    ? 'border-2 border-amber-500/80 shadow-[0_0_30px_rgba(245,158,11,0.2)] ring-1 ring-amber-400/30'
+                    : 'border border-white/10 hover:border-amber-500/40'
                 }`}
               >
-                {/* Cover Image & Media Preview container */}
+                {/* Live Edit Mode Trigger Button */}
+                {isLiveEditMode && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openBundleQuickEdit(bundle);
+                    }}
+                    className="absolute top-2 right-2 z-30 px-2 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-[10px] font-black flex items-center gap-1 shadow-xl cursor-pointer animate-pulse"
+                    title="Click to edit bundle title, prices, or badge"
+                  >
+                    <Edit3 className="w-3 h-3" />
+                    <span>Edit Live</span>
+                  </button>
+                )}
+                {/* Cover Image & Media Preview container (Compact 16/10) */}
                 <div
                   onClick={() => onSelectBundle(bundle)}
-                  className="relative aspect-[16/10] overflow-hidden bg-slate-950 cursor-pointer"
+                  className="relative aspect-[16/10] max-h-36 sm:max-h-40 overflow-hidden bg-slate-950 cursor-pointer"
                   title="Click to view details & video trailer"
                 >
                   <img
@@ -151,11 +170,11 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                   />
 
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d111d] via-transparent to-black/40" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090d18] via-transparent to-black/35" />
 
                   {/* Badge */}
                   {bundle.badge && (
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-amber-500 text-black text-[11px] font-extrabold tracking-wider font-gaming shadow-lg z-10">
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500 text-black text-[9px] font-black tracking-wider font-gaming shadow-sm z-10">
                       {bundle.badge}
                     </div>
                   )}
@@ -163,52 +182,52 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                   {/* Video preview indicator */}
                   {bundle.videoPreview && (
                     <div
-                      className="absolute top-3 right-3 p-2 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-amber-400 border border-white/20 transition-transform group-hover:scale-110 flex items-center gap-1.5 text-[11px] font-semibold px-2.5 shadow-lg z-10"
+                      className="absolute top-2 right-2 p-1 rounded-md bg-black/80 hover:bg-black/95 backdrop-blur-md text-amber-400 border border-white/20 transition-transform group-hover:scale-105 flex items-center gap-1 text-[9px] font-bold px-2 shadow-sm z-10"
                     >
-                      <Play className="w-3.5 h-3.5 fill-amber-400" />
-                      <span>Watch Trailer</span>
+                      <Play className="w-2.5 h-2.5 fill-amber-400" />
+                      <span>Trailer</span>
                     </div>
                   )}
 
                   {/* Game Count overlay */}
-                  <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/10 text-xs text-slate-200">
-                    <Gamepad2 className="w-3.5 h-3.5 text-amber-400" />
-                    <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games Included` : 'Steam Unlock Feature'}</span>
+                  <div className="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/10 text-[10px] text-slate-200">
+                    <Gamepad2 className="w-3 h-3 text-amber-400" />
+                    <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
                   </div>
                 </div>
 
-                {/* Card Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                {/* Card Content (Compact & Sleek) */}
+                <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
                   <div>
                     {bundle.category && (
-                      <div className="text-[11px] font-semibold tracking-wider text-amber-400/80 uppercase mb-1">
+                      <div className="text-[9px] font-bold tracking-wider text-amber-400/90 uppercase mb-0.5">
                         {bundle.category}
                       </div>
                     )}
-                    <h3 className="text-xl font-bold text-white font-gaming group-hover:text-amber-300 transition-colors line-clamp-1 mb-2">
+                    <h3 className="text-sm sm:text-base font-bold text-white font-gaming group-hover:text-amber-300 transition-colors line-clamp-1 mb-1">
                       {bundle.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed mb-4">
+                    <p className="text-[11px] sm:text-xs text-slate-300 line-clamp-2 leading-relaxed mb-2.5">
                       {bundle.shortDescription}
                     </p>
 
-                    {/* Popular Titles Preview in Bundle */}
+                    {/* Popular Titles Preview in Bundle (Sleek Mini Strip) */}
                     {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
-                      <div className="mb-5 bg-black/50 rounded-xl p-3 border border-amber-500/25">
-                        <div className="flex items-center justify-between text-[11px] font-bold text-amber-400 mb-2 font-gaming tracking-wide">
-                          <span className="flex items-center gap-1.5">
-                            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                            <span>POPULAR TITLES INCLUDED</span>
+                      <div className="mb-2.5 bg-black/40 rounded-lg p-1.5 border border-white/[0.07]">
+                        <div className="flex items-center justify-between text-[9px] font-bold text-amber-400 mb-1 font-gaming tracking-wide">
+                          <span className="flex items-center gap-1">
+                            <Sparkles className="w-2.5 h-2.5 text-amber-400" />
+                            <span>POPULAR TITLES</span>
                           </span>
-                          <span className="text-[10px] text-slate-400 font-sans font-normal">
+                          <span className="text-[8px] text-slate-400 font-sans font-normal">
                             +{bundle.gameCount > 10 ? `${(bundle.gameCount - bundle.popularTitlesPreview.length).toLocaleString('en-IN')} more` : 'All unlocked'}
                           </span>
                         </div>
-                        <div className="grid grid-cols-3 gap-2">
+                        <div className="grid grid-cols-3 gap-1">
                           {bundle.popularTitlesPreview.slice(0, 3).map((game, gIdx) => (
                             <div 
                               key={gIdx} 
-                              className="group/game relative rounded-lg overflow-hidden border border-white/10 bg-slate-950 aspect-[16/10] shadow-sm hover:border-amber-400/50 transition-colors"
+                              className="group/game relative rounded overflow-hidden border border-white/10 bg-slate-950 aspect-[16/10] shadow-sm hover:border-amber-400/50 transition-colors"
                               title={game.title}
                             >
                               <img
@@ -218,8 +237,8 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                                 className="w-full h-full object-cover group-hover/game:scale-105 transition-transform duration-300"
                                 loading="lazy"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent flex items-end p-1">
-                                <span className="text-[9px] font-semibold text-white truncate leading-tight w-full drop-shadow">
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent flex items-end p-0.5">
+                                <span className="text-[7.5px] font-semibold text-white truncate leading-tight w-full drop-shadow">
                                   {game.title}
                                 </span>
                               </div>
@@ -229,40 +248,35 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                       </div>
                     )}
 
-                    {/* Quick highlights from included items */}
+                    {/* Quick highlights from included items (2 items) */}
                     {bundle.includedItems && bundle.includedItems.length > 0 && (
-                      <div className="space-y-1.5 mb-6">
-                        {bundle.includedItems.slice(0, 4).map((item, idx) => (
+                      <div className="space-y-0.5 mb-2.5">
+                        {bundle.includedItems.slice(0, 2).map((item, idx) => (
                           <div
                             key={idx}
-                            className="flex items-center gap-2 text-xs text-slate-300"
+                            className="flex items-center gap-1 text-[11px] text-slate-300 truncate"
                           >
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                            <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
                             <span className="truncate">{item}</span>
                           </div>
                         ))}
-                        {bundle.includedItems.length > 4 && (
-                          <div className="text-[11px] text-amber-400/90 font-medium pl-5">
-                            + {bundle.includedItems.length - 4} more features in bundle
-                          </div>
-                        )}
                       </div>
                     )}
                   </div>
 
                   {/* Pricing and Action Buttons */}
-                  <div className="pt-4 border-t border-white/10">
-                    <div className="flex items-baseline justify-between mb-4">
+                  <div className="pt-2.5 border-t border-white/[0.08]">
+                    <div className="flex items-baseline justify-between mb-2.5">
                       <div>
-                        <div className="text-[11px] text-slate-400 uppercase tracking-wider">
+                        <div className="text-[9px] text-slate-400 uppercase tracking-wider">
                           Vault Price
                         </div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-2xl sm:text-3xl font-extrabold text-white font-gaming tracking-tight">
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-lg sm:text-xl font-black text-white font-gaming tracking-tight">
                             ₹{bundle.price.toLocaleString('en-IN')}
                           </span>
                           {bundle.originalPrice && (
-                            <span className="text-sm text-slate-500 line-through">
+                            <span className="text-[11px] text-slate-500 line-through">
                               ₹{bundle.originalPrice.toLocaleString('en-IN')}
                             </span>
                           )}
@@ -270,33 +284,42 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                       </div>
 
                       {savingsPercent && (
-                        <div className="px-2 py-1 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+                        <div className="px-1.5 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">
                           Save {savingsPercent}%
                         </div>
                       )}
                     </div>
 
                     {/* Dual Action Buttons */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-1.5">
                       <button
                         type="button"
                         onClick={() => onSelectBundle(bundle)}
-                        className="w-full py-2.5 px-3 rounded-xl glass-panel text-slate-200 hover:text-white hover:border-amber-500/30 font-medium text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                        className="w-full py-1.5 px-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition-all cursor-pointer"
                       >
-                        <Eye className="w-4 h-4 text-slate-300" />
-                        <span>View More</span>
+                        <Eye className="w-3 h-3 text-slate-300" />
+                        <span>Details</span>
                       </button>
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          openInstagram(settings.instagramUrl, bundle.title, bundle.price)
-                        }
-                        className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:shadow-[0_0_20px_rgba(245,158,11,0.5)] transition-all cursor-pointer"
-                      >
-                        <span>Buy Now</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-black" />
-                      </button>
+                      {(() => {
+                        const redirectInfo = getChannelRedirectInfo(settings, {
+                          bundleTitle: bundle.title,
+                          price: bundle.price,
+                          actionType: 'purchase'
+                        });
+                        return (
+                          <a
+                            href={redirectInfo.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-1.5 px-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-[11px] flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer active:scale-95 text-center"
+                            title={`Buy via ${redirectInfo.platformName}`}
+                          >
+                            <span>Buy Now</span>
+                            <ArrowRight className="w-3 h-3 text-black shrink-0" />
+                          </a>
+                        );
+                      })()}
                     </div>
 
                   </div>

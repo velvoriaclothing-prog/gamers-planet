@@ -493,7 +493,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "venom"
     ],
     "franchise": "Spider-Man",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2651280/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -757,7 +757,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "resident evil 1"
     ],
     "franchise": "Resident Evil",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/304240/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -775,7 +775,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "resident evil zero"
     ],
     "franchise": "Resident Evil",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/339340/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -833,7 +833,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "forza australia"
     ],
     "franchise": "Forza",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4439800/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -911,7 +911,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gta san andreas"
     ],
     "franchise": "Grand Theft Auto",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1546990/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -929,7 +929,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "tommy vercetti"
     ],
     "franchise": "Grand Theft Auto",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1546970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -947,7 +947,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gta iii"
     ],
     "franchise": "Grand Theft Auto",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1546960/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1019,7 +1019,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "nfs reboot"
     ],
     "franchise": "Need for Speed",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262540/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1036,7 +1036,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "rivals"
     ],
     "franchise": "Need for Speed",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262600/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1055,7 +1055,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mw2012"
     ],
     "franchise": "Need for Speed",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262560/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1129,7 +1129,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "warzone 1"
     ],
     "franchise": "Call of Duty",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1148,7 +1148,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "black ops cold war"
     ],
     "franchise": "Call of Duty",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1166,7 +1166,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "black ops 4"
     ],
     "franchise": "Call of Duty",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1203,7 +1203,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "black ops 2"
     ],
     "franchise": "Call of Duty",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1220,7 +1220,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "vanguard"
     ],
     "franchise": "Call of Duty",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1256,7 +1256,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mw remastered"
     ],
     "franchise": "Call of Duty",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1275,7 +1275,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "assassins creed shadows"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3159980/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1367,7 +1367,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "london"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/368500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1385,7 +1385,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "paris arno"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/289650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1404,7 +1404,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "edward kenway"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/242050/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1421,7 +1421,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "rogue"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/311560/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1439,7 +1439,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "connor"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/911400/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1458,7 +1458,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ac revelations"
     ],
     "franchise": "Assassin's Creed",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/33230/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1496,7 +1496,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "lordran"
     ],
     "franchise": "FromSoftware / Souls",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/570940/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1588,7 +1588,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "lords of the fallen"
     ],
     "franchise": "FromSoftware / Souls",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1501750/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1883,7 +1883,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "fifa22"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1506830/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1900,7 +1900,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "fifa 18"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1918,7 +1918,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "efootball"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1937,7 +1937,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "wwe"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2315690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1955,7 +1955,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "john cena"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1972,7 +1972,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "rey mysterio"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -1990,7 +1990,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "basketball"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2878950/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2008,7 +2008,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "kobe"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2060,7 +2060,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "motogp"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2581700/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2095,7 +2095,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "assetto corsa modded"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/244210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2113,7 +2113,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the crew 3"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2698940/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2130,7 +2130,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crew 2"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/646910/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2148,7 +2148,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "rally"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/690790/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2165,7 +2165,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "wrc generations"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1953520/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2274,7 +2274,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mortal kombat x"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/307780/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2292,7 +2292,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "naruto connections"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1020790/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2310,7 +2310,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "naruto storm 4"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2327,7 +2327,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "guilty gear strive"
     ],
     "franchise": "Sports & Arena Fighting",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1384160/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2496,7 +2496,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "tes4"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2623190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2550,7 +2550,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "fallout 3"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/22370/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2603,7 +2603,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "pillars of eternity"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2457220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2621,7 +2621,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "albion"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2769570/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2658,7 +2658,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ff7r2"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2909400/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2783,7 +2783,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dragon age inquisition"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1222690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -2801,7 +2801,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yokotaro"
     ],
     "franchise": "RPG & Open World Fantasy",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/524220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3065,7 +3065,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ark remake"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2399830/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3082,7 +3082,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ark survival evolved"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/346110/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3187,7 +3187,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "scrap hunting"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1966720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3206,7 +3206,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "freddy fazbear"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3294,7 +3294,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "frictional games"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1944430/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3312,7 +3312,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sebastian castellanos"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/601430/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3329,7 +3329,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "evil within"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/268050/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3347,7 +3347,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "supermassive"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/860510/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3364,7 +3364,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "little nightmares 2"
     ],
     "franchise": "Horror & Survival Vault",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/860510/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3434,7 +3434,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "deathstroke"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/209000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3470,7 +3470,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "star lord"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1088850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3487,7 +3487,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "marvel avengers"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/405310/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3541,7 +3541,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "kay vess"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2842040/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3576,7 +3576,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "jack joyce"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/474960/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3629,7 +3629,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dishonored"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/205100/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3699,7 +3699,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bj blazkowicz"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/612880/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3716,7 +3716,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "new order"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/201810/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3771,7 +3771,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "jack cooper"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1237970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3789,7 +3789,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crytek nanosuit"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3807,7 +3807,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crysis 1 2 3"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1715940/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3826,7 +3826,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "naked snake"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3845,7 +3845,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "big boss"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/132479/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3939,7 +3939,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "takkar"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/371660/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3957,7 +3957,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "warlords of new york"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2222570/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3974,7 +3974,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ghost recon"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2231380/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -3991,7 +3991,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bolivia ghost recon"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/460930/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4010,7 +4010,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "siege"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/359550/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4047,7 +4047,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "xray killcam"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1029690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4064,7 +4064,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sgw contracts"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1338770/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4082,7 +4082,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "borderlands"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1285190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4117,7 +4117,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "wonderlands"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1286680/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4135,7 +4135,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "pre sequel"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4190,7 +4190,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "last light"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4242,7 +4242,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "from the ashes"
     ],
     "franchise": "Action, Superhero & Shooters",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/617290/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4297,7 +4297,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "firaxis"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/289070/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4315,7 +4315,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "civilization 6"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/289070/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4367,7 +4367,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "age of mythology"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1934680/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4420,7 +4420,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "immortal empires"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1142710/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4437,7 +4437,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "total war 3k"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/779340/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4454,7 +4454,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "total war medieval"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4700/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4471,7 +4471,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "total war rome"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/214950/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4489,7 +4489,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "paradox ww2"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/394360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4507,7 +4507,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "medieval dynastic"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1158310/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4524,7 +4524,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "europa universalis 4"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/236850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4542,7 +4542,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "grand strategy"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/281990/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4577,7 +4577,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "american truck"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/270880/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4630,7 +4630,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "giants"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2300320/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4647,7 +4647,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "farming simulator 22"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1248130/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4664,7 +4664,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "offroad mud truck"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1465360/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4681,7 +4681,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "spintires"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/675010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4717,7 +4717,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ea sims"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1222670/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4734,7 +4734,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "zoo builder"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3219030/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4751,7 +4751,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "theme park"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2688950/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4769,7 +4769,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dinosaur park"
     ],
     "franchise": "Strategy & Simulation Vault",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1244460/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4839,7 +4839,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "just cause"
     ],
     "franchise": "Just Cause",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/517630/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4857,7 +4857,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "just cause"
     ],
     "franchise": "Just Cause",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/225540/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4875,7 +4875,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sleeping dogs"
     ],
     "franchise": "Sleeping Dogs",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/307690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4893,7 +4893,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mad max"
     ],
     "franchise": "Mad Max",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/234140/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4911,7 +4911,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "darksiders iii"
     ],
     "franchise": "Darksiders III",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/606280/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4929,7 +4929,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "darksiders warmastered"
     ],
     "franchise": "Darksiders Warmastered",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4947,7 +4947,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "kingdoms of"
     ],
     "franchise": "Kingdoms of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1041720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4965,7 +4965,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "greedfall gold"
     ],
     "franchise": "GreedFall Gold",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/606880/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -4983,7 +4983,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "a plague"
     ],
     "franchise": "A Plague",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1182900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5001,7 +5001,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "a plague"
     ],
     "franchise": "A Plague",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/752590/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5019,7 +5019,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "hellblade senua"
     ],
     "franchise": "Hellblade Senua",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/414340/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5037,7 +5037,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "senua's saga"
     ],
     "franchise": "Senua's Saga",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2461850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5055,7 +5055,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "lords of"
     ],
     "franchise": "Lords of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1501750/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5073,7 +5073,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mortal shell"
     ],
     "franchise": "Mortal Shell",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2584270/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5091,7 +5091,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "wo long"
     ],
     "franchise": "Wo Long",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1448440/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5109,7 +5109,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "nioh 2"
     ],
     "franchise": "Nioh 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1326470/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5127,7 +5127,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "nioh complete"
     ],
     "franchise": "Nioh Complete",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/485510/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5144,7 +5144,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "strangers of"
     ],
     "franchise": "Strangers of",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5161,7 +5161,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crisis core"
     ],
     "franchise": "Crisis Core",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1608070/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5179,7 +5179,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "valkyrie elysium"
     ],
     "franchise": "Valkyrie Elysium",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1963210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5197,7 +5197,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "star ocean"
     ],
     "franchise": "Star Ocean",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1776380/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5233,7 +5233,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "scarlet nexus"
     ],
     "franchise": "Scarlet Nexus",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/775500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5251,7 +5251,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "code vein"
     ],
     "franchise": "Code Vein",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/678960/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5269,7 +5269,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "god eater"
     ],
     "franchise": "God Eater",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/899440/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5287,7 +5287,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sword art"
     ],
     "franchise": "Sword Art",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1566880/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5305,7 +5305,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "one piece"
     ],
     "franchise": "One Piece",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/814000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5323,7 +5323,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "one piece"
     ],
     "franchise": "One Piece",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1089090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5341,7 +5341,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "jump force"
     ],
     "franchise": "JUMP FORCE",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5358,7 +5358,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "demon slayer"
     ],
     "franchise": "Demon Slayer",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2928600/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5375,7 +5375,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "attack on"
     ],
     "franchise": "Attack on",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1001060/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5393,7 +5393,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "my hero"
     ],
     "franchise": "My Hero",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1058450/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5410,7 +5410,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "jojo bizarre"
     ],
     "franchise": "JoJo Bizarre",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1372110/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5427,7 +5427,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bleach brave"
     ],
     "franchise": "Bleach Brave",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5479,7 +5479,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "like a"
     ],
     "franchise": "Like a",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2375550/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5497,7 +5497,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza 0"
     ],
     "franchise": "Yakuza 0",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/638970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5515,7 +5515,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza kiwami"
     ],
     "franchise": "Yakuza Kiwami",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/834530/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5533,7 +5533,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza kiwami"
     ],
     "franchise": "Yakuza Kiwami",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/834530/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5551,7 +5551,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza 3"
     ],
     "franchise": "Yakuza 3",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1088710/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5569,7 +5569,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza 4"
     ],
     "franchise": "Yakuza 4",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1105500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5587,7 +5587,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza 5"
     ],
     "franchise": "Yakuza 5",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1105510/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5604,7 +5604,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "yakuza 6"
     ],
     "franchise": "Yakuza 6",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1388590/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5622,7 +5622,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "judgment pc"
     ],
     "franchise": "Judgment PC",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2058190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5640,7 +5640,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "lost judgment"
     ],
     "franchise": "Lost Judgment",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5658,7 +5658,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ghostwire tokyo"
     ],
     "franchise": "Ghostwire Tokyo",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1475810/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5675,7 +5675,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "shadow of"
     ],
     "franchise": "Shadow of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/750920/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5692,7 +5692,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "rise of"
     ],
     "franchise": "Rise of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/391220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5710,7 +5710,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "tomb raider"
     ],
     "franchise": "Tomb Raider",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/203160/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5728,7 +5728,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "deus ex"
     ],
     "franchise": "Deus Ex",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/337000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5745,7 +5745,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "deus ex"
     ],
     "franchise": "Deus Ex",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/238010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5763,7 +5763,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "thief master"
     ],
     "franchise": "Thief Master",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/704850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5817,7 +5817,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "splinter cell"
     ],
     "franchise": "Splinter Cell",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/235600/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5835,7 +5835,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "splinter cell"
     ],
     "franchise": "Splinter Cell",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/33220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5853,7 +5853,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "metal gear"
     ],
     "franchise": "Metal Gear",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/235460/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5870,7 +5870,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "castlevania lords"
     ],
     "franchise": "Castlevania Lords",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5888,7 +5888,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bayonetta 4k"
     ],
     "franchise": "Bayonetta 4K",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/460790/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5904,7 +5904,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "vanquish"
     ],
     "franchise": "Vanquish",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/460810/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -5956,7 +5956,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dmc devil"
     ],
     "franchise": "DmC Devil",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/220440/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6008,7 +6008,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dragon ball"
     ],
     "franchise": "Dragon Ball",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/851850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6026,7 +6026,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dead rising"
     ],
     "franchise": "Dead Rising",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2527390/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6043,7 +6043,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dead rising"
     ],
     "franchise": "Dead Rising",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/543460/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6061,7 +6061,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dead rising"
     ],
     "franchise": "Dead Rising",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/265550/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6078,7 +6078,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "state of"
     ],
     "franchise": "State of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/495420/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6095,7 +6095,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "state of"
     ],
     "franchise": "State of",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/397220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6113,7 +6113,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "days of"
     ],
     "franchise": "Days of",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6148,7 +6148,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "left 4"
     ],
     "franchise": "Left 4",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6166,7 +6166,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "back 4"
     ],
     "franchise": "Back 4",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/924970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6184,7 +6184,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "world war"
     ],
     "franchise": "World War",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2243210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6202,7 +6202,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "killing floor"
     ],
     "franchise": "Killing Floor",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/232090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6219,7 +6219,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "killing floor"
     ],
     "franchise": "Killing Floor",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1430190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6273,7 +6273,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gtfo full"
     ],
     "franchise": "GTFO Full",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/493520/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6308,7 +6308,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "helldivers dive"
     ],
     "franchise": "Helldivers Dive",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/394510/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6326,7 +6326,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "alien fireteam"
     ],
     "franchise": "Alien Fireteam",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3448650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6344,7 +6344,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "aliens dark"
     ],
     "franchise": "Aliens Dark",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1150440/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6362,7 +6362,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "predator hunting"
     ],
     "franchise": "Predator Hunting",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1556200/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6379,7 +6379,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "friday the"
     ],
     "franchise": "Friday the",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6396,7 +6396,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dead by"
     ],
     "franchise": "Dead by",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/381210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6414,7 +6414,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "texas chain"
     ],
     "franchise": "Texas Chain",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1433140/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6432,7 +6432,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dark deception"
     ],
     "franchise": "Dark Deception",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6449,7 +6449,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "poppy playtime"
     ],
     "franchise": "Poppy Playtime",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6467,7 +6467,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bendy and"
     ],
     "franchise": "Bendy and",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1063660/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6485,7 +6485,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bendy and"
     ],
     "franchise": "Bendy and",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/622650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6503,7 +6503,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "hello neighbor"
     ],
     "franchise": "Hello Neighbor",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6521,7 +6521,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "hello neighbor"
     ],
     "franchise": "Hello Neighbor",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/521890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6538,7 +6538,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "slender the"
     ],
     "franchise": "Slender The",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/252330/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6556,7 +6556,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "cry of"
     ],
     "franchise": "Cry of",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/223710/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6574,7 +6574,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "tormented souls"
     ],
     "franchise": "Tormented Souls",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2464280/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6592,7 +6592,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "signalis retro"
     ],
     "franchise": "Signalis Retro",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1262350/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6610,7 +6610,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crow country"
     ],
     "franchise": "Crow Country",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1996010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6627,7 +6627,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "fatal frame"
     ],
     "franchise": "Fatal Frame",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1732190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6644,7 +6644,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "fatal frame"
     ],
     "franchise": "Fatal Frame",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2130460/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6662,7 +6662,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "siren blood"
     ],
     "franchise": "Siren Blood",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6680,7 +6680,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "condemned criminal"
     ],
     "franchise": "Condemned Criminal",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6697,7 +6697,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "f.e.a.r. platinum"
     ],
     "franchise": "F.E.A.R. Platinum",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6715,7 +6715,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bioshock infinite"
     ],
     "franchise": "BioShock Infinite",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/8870/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6733,7 +6733,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bioshock remastered"
     ],
     "franchise": "BioShock Remastered",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/409710/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6751,7 +6751,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bioshock 2"
     ],
     "franchise": "BioShock 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/409720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6767,7 +6767,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "singularity"
     ],
     "franchise": "Singularity",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/977400/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6785,7 +6785,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "spec ops"
     ],
     "franchise": "Spec Ops",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6802,7 +6802,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "max payne"
     ],
     "franchise": "Max Payne",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/204100/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6819,7 +6819,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "max payne"
     ],
     "franchise": "Max Payne",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6855,7 +6855,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "heavy rain"
     ],
     "franchise": "Heavy Rain",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/960910/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6873,7 +6873,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "beyond two"
     ],
     "franchise": "Beyond Two",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/960990/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6909,7 +6909,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "life is"
     ],
     "franchise": "Life is",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/936790/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6927,7 +6927,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "life is"
     ],
     "franchise": "Life is",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1537870/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6945,7 +6945,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "life is"
     ],
     "franchise": "Life is",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/532210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6963,7 +6963,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "life is"
     ],
     "franchise": "Life is",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1874000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6980,7 +6980,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the walking"
     ],
     "franchise": "The Walking",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1449690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -6997,7 +6997,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the wolf"
     ],
     "franchise": "The Wolf",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1884870/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7015,7 +7015,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the wolf"
     ],
     "franchise": "The Wolf",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3884860/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7033,7 +7033,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "tales from"
     ],
     "franchise": "Tales from",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/330830/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7050,7 +7050,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "batman the"
     ],
     "franchise": "Batman The",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/498240/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7067,7 +7067,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "game of"
     ],
     "franchise": "Game of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7085,7 +7085,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "until dawn"
     ],
     "franchise": "Until Dawn",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2172010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7103,7 +7103,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the quarry"
     ],
     "franchise": "The Quarry",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1577120/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7120,7 +7120,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the dark"
     ],
     "franchise": "The Dark",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1567020/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7137,7 +7137,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the dark"
     ],
     "franchise": "The Dark",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1281590/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7155,7 +7155,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the dark"
     ],
     "franchise": "The Dark",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1194630/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7172,7 +7172,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the dark"
     ],
     "franchise": "The Dark",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/939850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7190,7 +7190,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "soma sci"
     ],
     "franchise": "SOMA Sci",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/282140/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7208,7 +7208,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "observer system"
     ],
     "franchise": "Observer System",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1386900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7225,7 +7225,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "layers of"
     ],
     "franchise": "Layers of",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1946700/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7243,7 +7243,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "layers of"
     ],
     "franchise": "Layers of",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1029890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7261,7 +7261,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "blair witch"
     ],
     "franchise": "Blair Witch",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1092660/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7279,7 +7279,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the medium"
     ],
     "franchise": "The Medium",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1293160/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7297,7 +7297,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ghostrunner 2"
     ],
     "franchise": "Ghostrunner 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2144740/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7315,7 +7315,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ghostrunner complete"
     ],
     "franchise": "Ghostrunner Complete",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2144740/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7333,7 +7333,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "severed steel"
     ],
     "franchise": "Severed Steel",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1227690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7351,7 +7351,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bright memory"
     ],
     "franchise": "Bright Memory",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1178830/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7369,7 +7369,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "trek to"
     ],
     "franchise": "Trek to",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1370050/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7405,7 +7405,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "midnight fight"
     ],
     "franchise": "Midnight Fight",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1390410/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7422,7 +7422,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ruined king"
     ],
     "franchise": "Ruined King",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1276790/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7439,7 +7439,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the mageseeker"
     ],
     "franchise": "The Mageseeker",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1457080/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7456,7 +7456,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "song of"
     ],
     "franchise": "Song of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1333200/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7473,7 +7473,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "convergence a"
     ],
     "franchise": "Convergence A",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1276800/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7580,7 +7580,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ori and"
     ],
     "franchise": "Ori and",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1057090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7597,7 +7597,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ori and"
     ],
     "franchise": "Ori and",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/387290/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7632,7 +7632,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "blasphemous 2"
     ],
     "franchise": "Blasphemous 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2114740/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7648,7 +7648,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "blasphemous"
     ],
     "franchise": "Blasphemous",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2114740/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7666,7 +7666,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bloodstained ritual"
     ],
     "franchise": "Bloodstained Ritual",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/692850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7684,7 +7684,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "nine sols"
     ],
     "franchise": "Nine Sols",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1809540/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7702,7 +7702,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "animal well"
     ],
     "franchise": "Animal Well",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/813230/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7737,7 +7737,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dredge the"
     ],
     "franchise": "Dredge The",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7791,7 +7791,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "monster train"
     ],
     "franchise": "Monster Train",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2742830/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7807,7 +7807,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "inscryption"
     ],
     "franchise": "Inscryption",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1092790/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7825,7 +7825,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "darkest dungeon"
     ],
     "franchise": "Darkest Dungeon",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1940340/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7843,7 +7843,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "darkest dungeon"
     ],
     "franchise": "Darkest Dungeon",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7861,7 +7861,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "loop hero"
     ],
     "franchise": "Loop Hero",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1282730/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7879,7 +7879,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "vampire survivors"
     ],
     "franchise": "Vampire Survivors",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2690330/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7895,7 +7895,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "brotato"
     ],
     "franchise": "Brotato",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4498220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7913,7 +7913,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "death must"
     ],
     "franchise": "Death Must",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2334730/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7930,7 +7930,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "risk of"
     ],
     "franchise": "Risk of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1607890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7948,7 +7948,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "risk of"
     ],
     "franchise": "Risk of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1337520/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7966,7 +7966,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gunfire reborn"
     ],
     "franchise": "Gunfire Reborn",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1217060/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -7982,7 +7982,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "roboquest"
     ],
     "franchise": "Roboquest",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/692890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8000,7 +8000,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ultrakill full"
     ],
     "franchise": "Ultrakill Full",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1229490/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8018,7 +8018,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "turbo overkill"
     ],
     "franchise": "Turbo Overkill",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1328350/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8034,7 +8034,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dusk"
     ],
     "franchise": "Dusk",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/519860/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8052,7 +8052,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "amid evil"
     ],
     "franchise": "Amid Evil",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/673130/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8070,7 +8070,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ion fury"
     ],
     "franchise": "Ion Fury",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8086,7 +8086,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "prodeus"
     ],
     "franchise": "Prodeus",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/964800/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8104,7 +8104,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "warhammer 40"
     ],
     "franchise": "Warhammer 40",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2005010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8122,7 +8122,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "quake ii"
     ],
     "franchise": "Quake II",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8140,7 +8140,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "quake champions"
     ],
     "franchise": "Quake Champions",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/611500/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8158,7 +8158,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "unreal tournament"
     ],
     "franchise": "Unreal Tournament",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8176,7 +8176,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "enlisted reinforced"
     ],
     "franchise": "Enlisted Reinforced",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8194,7 +8194,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "hell let"
     ],
     "franchise": "Hell Let",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/686810/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8248,7 +8248,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "arma reforger"
     ],
     "franchise": "Arma Reforger",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1874880/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8265,7 +8265,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "arma 3"
     ],
     "franchise": "Arma 3",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/107410/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8318,7 +8318,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "six days"
     ],
     "franchise": "Six Days",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1548850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8336,7 +8336,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "zero hour"
     ],
     "franchise": "Zero Hour",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1359090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8354,7 +8354,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bodycam hyper"
     ],
     "franchise": "Bodycam Hyper",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2406770/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8372,7 +8372,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "unrecord pre"
     ],
     "franchise": "Unrecord Pre",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8390,7 +8390,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gray zone"
     ],
     "franchise": "Gray Zone",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2479810/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8408,7 +8408,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "escape from"
     ],
     "franchise": "Escape from",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3932890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8424,7 +8424,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "marauders"
     ],
     "franchise": "Marauders",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1482820/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8459,7 +8459,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "star wars"
     ],
     "franchise": "Star Wars",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1237950/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8495,7 +8495,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "star wars"
     ],
     "franchise": "Star Wars",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8512,7 +8512,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "star wars"
     ],
     "franchise": "Star Wars",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8529,7 +8529,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "star wars"
     ],
     "franchise": "Star Wars",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8547,7 +8547,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mass effect"
     ],
     "franchise": "Mass Effect",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8565,7 +8565,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "outer wilds"
     ],
     "franchise": "Outer Wilds",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8582,7 +8582,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the outer"
     ],
     "franchise": "The Outer",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1449110/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8599,7 +8599,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "no man"
     ],
     "franchise": "No Man",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/275850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8617,7 +8617,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "elite dangerous"
     ],
     "franchise": "Elite Dangerous",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1336350/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8635,7 +8635,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "everspace 2"
     ],
     "franchise": "Everspace 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1128920/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8653,7 +8653,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "chorus deep"
     ],
     "franchise": "Chorus Deep",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/5060920/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8671,7 +8671,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "rebel galaxy"
     ],
     "franchise": "Rebel Galaxy",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/910830/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8689,7 +8689,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "hardspace shipbreaker"
     ],
     "franchise": "Hardspace Shipbreaker",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1161580/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8743,7 +8743,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dyson sphere"
     ],
     "franchise": "Dyson Sphere",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1366540/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8761,7 +8761,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "kerbal space"
     ],
     "franchise": "Kerbal Space",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/954850/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8779,7 +8779,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "kerbal space"
     ],
     "franchise": "Kerbal Space",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/220200/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8797,7 +8797,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "oxygen not"
     ],
     "franchise": "Oxygen Not",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/457140/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8833,7 +8833,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "prison architect"
     ],
     "franchise": "Prison Architect",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/233450/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8851,7 +8851,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "surviving mars"
     ],
     "franchise": "Surviving Mars",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/3215050/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8887,7 +8887,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "they are"
     ],
     "franchise": "They Are",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/644930/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8905,7 +8905,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "northgard viking"
     ],
     "franchise": "Northgard Viking",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4487060/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8923,7 +8923,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dune spice"
     ],
     "franchise": "Dune Spice",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1605220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8941,7 +8941,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dune awakening"
     ],
     "franchise": "Dune Awakening",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8959,7 +8959,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "warcraft iii"
     ],
     "franchise": "Warcraft III",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8977,7 +8977,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "starcraft ii"
     ],
     "franchise": "StarCraft II",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -8995,7 +8995,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "command &"
     ],
     "franchise": "Command &",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1213210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9013,7 +9013,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "company of"
     ],
     "franchise": "Company of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1677280/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9030,7 +9030,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "company of"
     ],
     "franchise": "Company of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/231430/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9047,7 +9047,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "command &"
     ],
     "franchise": "Command &",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2732960/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9065,7 +9065,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "stronghold definitive"
     ],
     "franchise": "Stronghold Definitive",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2153760/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9083,7 +9083,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "stronghold crusader"
     ],
     "franchise": "Stronghold Crusader",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/40970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9101,7 +9101,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crusader kings"
     ],
     "franchise": "Crusader Kings",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9119,7 +9119,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mount &"
     ],
     "franchise": "Mount &",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/261550/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9137,7 +9137,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mount &"
     ],
     "franchise": "Mount &",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/48700/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9173,7 +9173,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "chivalry 2"
     ],
     "franchise": "Chivalry 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1824220/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9189,7 +9189,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mordhau"
     ],
     "franchise": "Mordhau",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/629760/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9207,7 +9207,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "for honor"
     ],
     "franchise": "For Honor",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/304390/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9225,7 +9225,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "absolver downfall"
     ],
     "franchise": "Absolver Downfall",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9243,7 +9243,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "warband viking"
     ],
     "franchise": "Warband Viking",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/321300/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9261,7 +9261,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ancestors the"
     ],
     "franchise": "Ancestors The",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/536270/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9279,7 +9279,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "medieval dynasty"
     ],
     "franchise": "Medieval Dynasty",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1129580/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9297,7 +9297,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sengoku dynasty"
     ],
     "franchise": "Sengoku Dynasty",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1702010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9315,7 +9315,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bellwright medieval"
     ],
     "franchise": "Bellwright Medieval",
-    "coverImage": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1812450/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9333,7 +9333,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "enshrouded full"
     ],
     "franchise": "Enshrouded Full",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1203620/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9369,7 +9369,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "conan exiles"
     ],
     "franchise": "Conan Exiles",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/440900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9404,7 +9404,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "smalland survive"
     ],
     "franchise": "Smalland Survive",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/768200/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9422,7 +9422,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "grounded fully"
     ],
     "franchise": "Grounded Fully",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/962130/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9440,7 +9440,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "raft final"
     ],
     "franchise": "Raft Final",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/648800/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9458,7 +9458,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "stranded deep"
     ],
     "franchise": "Stranded Deep",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/313120/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9476,7 +9476,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "green hell"
     ],
     "franchise": "Green Hell",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/815370/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9494,7 +9494,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the long"
     ],
     "franchise": "The Long",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/305620/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9530,7 +9530,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "cataclysm dark"
     ],
     "franchise": "Cataclysm Dark",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9547,7 +9547,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "7 days"
     ],
     "franchise": "7 Days",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/251570/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9565,7 +9565,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "mist survival"
     ],
     "franchise": "Mist Survival",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/914620/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9583,7 +9583,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "scum complete"
     ],
     "franchise": "Scum Complete",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/513710/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9599,7 +9599,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "deadside"
     ],
     "franchise": "Deadside",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/895400/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9617,7 +9617,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sunkenland water"
     ],
     "franchise": "Sunkenland Water",
-    "coverImage": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9635,7 +9635,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "forever skies"
     ],
     "franchise": "Forever Skies",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1641960/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9653,7 +9653,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "pacific drive"
     ],
     "franchise": "Pacific Drive",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1458140/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9671,7 +9671,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "jalopy road"
     ],
     "franchise": "Jalopy Road",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/646780/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9689,7 +9689,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "my summer"
     ],
     "franchise": "My Summer",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/516750/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9707,7 +9707,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "car mechanic"
     ],
     "franchise": "Car Mechanic",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1190000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9725,7 +9725,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "pc building"
     ],
     "franchise": "PC Building",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9743,7 +9743,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "house flipper"
     ],
     "franchise": "House Flipper",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1190970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9761,7 +9761,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "powerwash simulator"
     ],
     "franchise": "PowerWash Simulator",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2968420/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9779,7 +9779,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gas station"
     ],
     "franchise": "Gas Station",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1149620/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9797,7 +9797,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "supermarket simulator"
     ],
     "franchise": "Supermarket Simulator",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2670630/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9815,7 +9815,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "internet cafe"
     ],
     "franchise": "Internet Cafe",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1563180/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9833,7 +9833,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "contraband police"
     ],
     "franchise": "Contraband Police",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/756800/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9851,7 +9851,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "police simulator"
     ],
     "franchise": "Police Simulator",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/997010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9887,7 +9887,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "bus simulator"
     ],
     "franchise": "Bus Simulator",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/976590/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9905,7 +9905,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "train sim"
     ],
     "franchise": "Train Sim",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2362300/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9923,7 +9923,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "subway sim"
     ],
     "franchise": "Subway Sim",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1925090/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9941,7 +9941,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "construction simulator"
     ],
     "franchise": "Construction Simulator",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1273400/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9959,7 +9959,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "expeditions a"
     ],
     "franchise": "Expeditions A",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2477340/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9977,7 +9977,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "wreckfest complete"
     ],
     "franchise": "Wreckfest Complete",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1203190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -9995,7 +9995,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "burnout paradise"
     ],
     "franchise": "Burnout Paradise",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1238080/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10013,7 +10013,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "flatout 2"
     ],
     "franchise": "FlatOut 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2990/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10031,7 +10031,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "carmageddon max"
     ],
     "franchise": "Carmageddon Max",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/505170/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10049,7 +10049,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crashday redline"
     ],
     "franchise": "Crashday Redline",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/508980/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10067,7 +10067,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "hot wheels"
     ],
     "franchise": "Hot Wheels",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2051120/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10084,7 +10084,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sonic &"
     ],
     "franchise": "Sonic &",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/212480/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10102,7 +10102,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "team sonic"
     ],
     "franchise": "Team Sonic",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/785260/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10120,7 +10120,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sonic frontiers"
     ],
     "franchise": "Sonic Frontiers",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1237320/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10138,7 +10138,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sonic x"
     ],
     "franchise": "Sonic X",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2513280/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10156,7 +10156,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "sonic mania"
     ],
     "franchise": "Sonic Mania",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10174,7 +10174,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crash bandicoot"
     ],
     "franchise": "Crash Bandicoot",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/731490/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10191,7 +10191,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "crash bandicoot"
     ],
     "franchise": "Crash Bandicoot",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1378990/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10209,7 +10209,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "spyro reignited"
     ],
     "franchise": "Spyro Reignited",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/996580/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10227,7 +10227,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "kena bridge"
     ],
     "franchise": "Kena Bridge",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1954200/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10245,7 +10245,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "stray cyberpunk"
     ],
     "franchise": "Stray Cyberpunk",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1332010/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10261,7 +10261,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "tunic"
     ],
     "franchise": "Tunic",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/553420/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10279,7 +10279,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "death door"
     ],
     "franchise": "Death Door",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/894020/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10297,7 +10297,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "solar ash"
     ],
     "franchise": "Solar Ash",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1867530/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10315,7 +10315,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the pathless"
     ],
     "franchise": "The Pathless",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1492680/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10331,7 +10331,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "abzû"
     ],
     "franchise": "Abzû",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/384190/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10349,7 +10349,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "journey pc"
     ],
     "franchise": "Journey PC",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4195600/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10366,7 +10366,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "outer wilds"
     ],
     "franchise": "Outer Wilds",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1622100/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10382,7 +10382,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "firewatch"
     ],
     "franchise": "Firewatch",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/383870/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10400,7 +10400,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "what remains"
     ],
     "franchise": "What Remains",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/501300/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10417,7 +10417,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the vanishing"
     ],
     "franchise": "The Vanishing",
-    "coverImage": "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/400430/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10435,7 +10435,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "dear esther"
     ],
     "franchise": "Dear Esther",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/520720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10453,7 +10453,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "everybody gone"
     ],
     "franchise": "Everybody Gone",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/417880/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10469,7 +10469,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "gris"
     ],
     "franchise": "Gris",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/683320/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10487,7 +10487,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "spiritfarer farewell"
     ],
     "franchise": "Spiritfarer Farewell",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/972660/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10504,7 +10504,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "to the"
     ],
     "franchise": "To the",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1028420/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10520,7 +10520,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "omori"
     ],
     "franchise": "Omori",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1150690/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10536,7 +10536,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "undertale"
     ],
     "franchise": "Undertale",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/391540/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10552,7 +10552,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "deltarune"
     ],
     "franchise": "Deltarune",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1671210/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10570,7 +10570,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "disco elysium"
     ],
     "franchise": "Disco Elysium",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/632470/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10588,7 +10588,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "pentiment obsidian"
     ],
     "franchise": "Pentiment Obsidian",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1205520/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10606,7 +10606,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "citizen sleeper"
     ],
     "franchise": "Citizen Sleeper",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10624,7 +10624,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "return of"
     ],
     "franchise": "Return of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/653530/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10642,7 +10642,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "case of"
     ],
     "franchise": "Case of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1677770/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10660,7 +10660,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "chants of"
     ],
     "franchise": "Chants of",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1931770/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10676,7 +10676,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "viewfinder"
     ],
     "franchise": "Viewfinder",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1382070/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10692,7 +10692,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "superliminal"
     ],
     "franchise": "Superliminal",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1049410/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10710,7 +10710,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the talos"
     ],
     "franchise": "The Talos",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/835960/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10727,7 +10727,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the talos"
     ],
     "franchise": "The Talos",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/358470/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10745,7 +10745,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "the witness"
     ],
     "franchise": "The Witness",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/210970/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10761,7 +10761,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "antichamber"
     ],
     "franchise": "Antichamber",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/219890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10779,7 +10779,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "portal with"
     ],
     "franchise": "Portal with",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2012840/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10813,7 +10813,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "half life"
     ],
     "franchise": "Half Life",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/546560/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10847,7 +10847,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "black mesa"
     ],
     "franchise": "Black Mesa",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/362890/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10865,7 +10865,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "team fortress"
     ],
     "franchise": "Team Fortress",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/440/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10882,7 +10882,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "counter strike"
     ],
     "franchise": "Counter Strike",
-    "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10917,7 +10917,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "garry mod"
     ],
     "franchise": "Garry Mod",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/4000/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10953,7 +10953,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "ark 2"
     ],
     "franchise": "Ark 2",
-    "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050420/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   },
@@ -10970,7 +10970,7 @@ export const POPULAR_GAMES_CATALOG: CatalogGame[] = [
       "grand theft"
     ],
     "franchise": "Grand Theft",
-    "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
     "steamAvailable": true,
     "includedIn399Bundle": true
   }

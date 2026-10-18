@@ -1,60 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { Instagram, Sparkles, Gamepad2, ArrowUp } from 'lucide-react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Home, Zap, KeyRound, Search, Star, Instagram } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
-import { openInstagram } from '../utils/api.js';
 
 interface MobileQuickBarProps {
   settings: SiteSettings;
 }
 
 export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ settings }) => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show floating bar after scrolling past 300px
-      if (window.scrollY > 300) {
-        setVisible(true);
-      } else {
-        setVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  if (!visible) return null;
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `flex flex-col items-center justify-center flex-1 py-1.5 px-1 rounded-xl transition-all duration-200 select-none ${
+      isActive
+        ? 'text-amber-400 bg-amber-500/15 font-black shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+        : 'text-slate-400 hover:text-white font-medium hover:bg-white/5'
+    }`;
 
   return (
-    <div className="md:hidden fixed bottom-3 inset-x-3 z-30 transition-all duration-300 animate-in fade-in slide-in-from-bottom-3 pointer-events-auto">
-      <div className="glass-panel p-2.5 rounded-2xl border border-amber-500/40 bg-[#070a14]/95 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.25)] flex items-center justify-between gap-2">
-        <a
-          href="#single-games"
-          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-200 text-xs font-bold active:scale-95 transition-all shrink-0"
-        >
-          <Gamepad2 className="w-3.5 h-3.5 text-amber-400" />
-          <span>From ₹80</span>
-        </a>
+    <nav 
+      aria-label="Mobile Bottom Navigation"
+      className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#070a14]/95 border-t border-amber-500/30 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.8)] pb-[max(0.25rem,env(safe-area-inset-bottom))]"
+    >
+      <div className="max-w-md mx-auto flex items-center justify-around px-2 py-1 gap-1">
+        
+        {/* 1. Home */}
+        <NavLink to="/" className={navLinkClass}>
+          <Home className="w-4 h-4 mb-0.5" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Home</span>
+        </NavLink>
 
-        <button
-          type="button"
-          onClick={() => openInstagram(settings.instagramUrl)}
-          className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 active:scale-95 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(245,158,11,0.4)] transition-all cursor-pointer"
-        >
-          <Instagram className="w-3.5 h-3.5 text-black" />
-          <span className="truncate">Order on Instagram</span>
-        </button>
+        {/* 2. Bundles */}
+        <NavLink to="/bundles" className={navLinkClass}>
+          <Zap className="w-4 h-4 mb-0.5 text-amber-400" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Bundles</span>
+        </NavLink>
 
-        <button
-          type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white active:scale-95 transition-colors shrink-0"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="w-3.5 h-3.5" />
-        </button>
+        {/* 3. Singles ₹80 */}
+        <NavLink to="/single-games" className={navLinkClass}>
+          <KeyRound className="w-4 h-4 mb-0.5 text-emerald-400" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Singles</span>
+        </NavLink>
+
+        {/* 4. Search 60K+ */}
+        <NavLink to="/catalog" className={navLinkClass}>
+          <Search className="w-4 h-4 mb-0.5 text-sky-400" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Search</span>
+        </NavLink>
+
+        {/* 5. Reviews */}
+        <NavLink to="/reviews" className={navLinkClass}>
+          <Star className="w-4 h-4 mb-0.5 text-amber-400" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Reviews</span>
+        </NavLink>
+
       </div>
-    </div>
+    </nav>
   );
 };

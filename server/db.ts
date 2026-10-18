@@ -111,6 +111,8 @@ export interface Channel {
   updatedAt: string;
 }
 
+export type PrimaryChannelType = 'instagram' | 'telegram' | 'whatsapp' | 'custom';
+
 export interface SiteSettings {
   siteTitle: string;
   logoText: string;
@@ -123,6 +125,19 @@ export interface SiteSettings {
   footerText: string;
   supportNote: string;
   announcementText?: string;
+
+  // Smart Multi-Channel Switcher Settings
+  primaryChannelType?: PrimaryChannelType;
+  channelHandle?: string;
+  channelUrl?: string;
+  channelCustomLabel?: string;
+
+  // Dynamic In-Place Page Texts
+  customTexts?: Record<string, string>;
+
+  // Real-time synchronization
+  version?: number;
+  lastUpdated?: string;
 }
 
 export interface AppDatabase {
@@ -146,7 +161,13 @@ const DEFAULT_SETTINGS: SiteSettings = {
   accentColor: "#f59e0b", // Gold / Amber gaming accent
   footerText: "© 2026 Gamers Planet. Premium Gaming • Lifetime Access • Personal Support. All game titles, logos, and trademarks belong to their respective owners.",
   supportNote: "DM us on Instagram @gamersplanet20.26 for instant setup support and custom game requests.",
-  announcementText: "🔥 FLASH SALE: Extra ₹150 OFF any Mega or Ultimate Bundle this weekend! Message on Instagram to claim."
+  announcementText: "🔥 FLASH SALE: Extra ₹150 OFF any Mega or Ultimate Bundle this weekend! Message on Instagram to claim.",
+  primaryChannelType: 'instagram',
+  channelHandle: '@gamersplanet20.26',
+  channelUrl: 'https://instagram.com/gamersplanet20.26',
+  customTexts: {},
+  version: 1,
+  lastUpdated: new Date().toISOString()
 };
 
 const DEFAULT_BUNDLES: Bundle[] = [
@@ -645,17 +666,81 @@ class DatabaseService {
   }
 
   // -------------------------------------------------------------
-  // SETTINGS
+  // SETTINGS & REAL-TIME SYNC
   // -------------------------------------------------------------
+  public getDataVersion(): { version: number; lastUpdated: string } {
+    const version = this.db.settings.version || 1;
+    const lastUpdated = this.db.settings.lastUpdated || new Date().toISOString();
+    return { version, lastUpdated };
+  }
+
   public getSettings(): SiteSettings {
     return { ...this.db.settings };
   }
 
   public updateSettings(updates: Partial<SiteSettings>): SiteSettings {
-    this.db.settings = { ...this.db.settings, ...updates };
+    const currentVersion = this.db.settings.version || 1;
+    const newVersion = currentVersion + 1;
+    const lastUpdated = new Date().toISOString();
+
+    this.db.settings = {
+      ...this.db.settings,
+      ...updates,
+      version: newVersion,
+      lastUpdated
+    };
     this.saveLocalDatabase();
     this.persistToFirestore('settings', 'site_settings', this.db.settings);
     return this.getSettings();
+  }
+
+  // Atomic batch save for live in-place edits (settings + bundles together)
+  public batchLiveSave(payload: {
+    settingsUpdates?: Partial<SiteSettings>;
+    bundleUpdates?: Array<{ id: string; updates: Partial<Bundle> }>;
+  }): { settings: SiteSettings; bundles: Bundle[]; version: number; lastUpdated: string } {
+    const currentVersion = (this.db.settings.version || 1) + 1;
+    const lastUpdated = new Date().toISOString();
+
+    // 1. Update settings if provided
+    if (payload.settingsUpdates && Object.keys(payload.settingsUpdates).length > 0) {
+      this.db.settings = {
+        ...this.db.settings,
+        ...payload.settingsUpdates,
+        version: currentVersion,
+        lastUpdated
+      };
+      this.persistToFirestore('settings', 'site_settings', this.db.settings);
+    } else {
+      this.db.settings.version = currentVersion;
+      this.db.settings.lastUpdated = lastUpdated;
+    }
+
+    // 2. Update bundles if provided
+    if (Array.isArray(payload.bundleUpdates)) {
+      for (const item of payload.bundleUpdates) {
+        if (!item.id || !item.updates) continue;
+        const idx = this.db.bundles.findIndex(b => b.id === item.id);
+        if (idx !== -1) {
+          this.db.bundles[idx] = {
+            ...this.db.bundles[idx],
+            ...item.updates,
+            id: item.id,
+            updatedAt: lastUpdated
+          };
+          this.persistToFirestore('bundles', item.id, this.db.bundles[idx]);
+        }
+      }
+    }
+
+    this.saveLocalDatabase();
+
+    return {
+      settings: this.getSettings(),
+      bundles: this.getBundles(true),
+      version: currentVersion,
+      lastUpdated
+    };
   }
 
   // -------------------------------------------------------------

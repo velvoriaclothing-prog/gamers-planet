@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Save, Instagram, Palette, CheckCircle2, Loader2, ExternalLink } from 'lucide-react';
-import { SiteSettings } from '../../types/index.js';
-import { api, openInstagram } from '../../utils/api.js';
+import { Save, Instagram, Send, PhoneCall, Globe, Palette, CheckCircle2, Loader2, ExternalLink } from 'lucide-react';
+import { SiteSettings, PrimaryChannelType } from '../../types/index.js';
+import { api } from '../../utils/api.js';
+import { getChannelRedirectInfo, navigateToChannel } from '../../utils/channelRedirect.js';
 
 interface AdminSettingsProps {
   settings: SiteSettings;
@@ -9,7 +10,12 @@ interface AdminSettingsProps {
 }
 
 export const AdminSettings: React.FC<AdminSettingsProps> = ({ settings, onRefresh }) => {
-  const [form, setForm] = useState<SiteSettings>({ ...settings });
+  const [form, setForm] = useState<SiteSettings>({
+    ...settings,
+    primaryChannelType: settings.primaryChannelType || 'instagram',
+    channelHandle: settings.channelHandle || '@gamersplanet20.26',
+    channelUrl: settings.channelUrl || settings.instagramUrl || 'https://instagram.com/gamersplanet20.26'
+  });
   const [saving, setSaving] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -30,7 +36,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({ settings, onRefres
       await api.updateSettings(form);
       setStatusMessage({
         type: 'success',
-        text: 'Website settings saved! Public store updated immediately.'
+        text: 'Website settings saved! All purchase buttons, DM redirects, and copy updated immediately.'
       });
       onRefresh();
     } catch (err: any) {
@@ -51,7 +57,7 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({ settings, onRefres
           WEBSITE CUSTOMIZATION & CONFIGURATION
         </h3>
         <p className="text-xs text-slate-400">
-          Control website branding, typography, Instagram contact destination, and hero copy without touching code.
+          Control store branding, primary contact channel (Instagram / WhatsApp / Telegram), typography, and copy across the entire site.
         </p>
       </div>
 
@@ -59,8 +65,8 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({ settings, onRefres
         <div
           className={`p-4 rounded-xl text-xs sm:text-sm flex items-center justify-between ${
             statusMessage.type === 'success'
-              ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300'
-              : 'bg-red-500/10 border border-red-500/30 text-red-300'
+              ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
+              : 'bg-red-500/10 border border-red-500/30 text-red-400'
           }`}
         >
           <span>{statusMessage.text}</span>
@@ -70,33 +76,100 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({ settings, onRefres
 
       <form onSubmit={handleSubmit} className="space-y-6">
         
-        {/* Instagram destination */}
-        <div className="glass-card p-6 rounded-2xl border border-amber-500/20 bg-amber-500/[0.02]">
-          <div className="flex items-center gap-2 mb-2 text-amber-400 font-bold font-gaming text-sm uppercase">
-            <Instagram className="w-4 h-4" />
-            <span>Instagram Buy Now Destination *</span>
+        {/* Universal Primary Channel Switcher */}
+        <div className="glass-card p-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.03]">
+          <div className="flex items-center gap-2 mb-2 text-emerald-400 font-bold font-gaming text-sm uppercase">
+            <Globe className="w-4 h-4" />
+            <span>Universal Primary Contact & Purchase Channel</span>
           </div>
           <p className="text-xs text-slate-400 mb-4">
-            Every "Buy Now" button across the website opens this Instagram URL. Make sure it points to your active profile or DM link.
+            Select where all customer "Buy Now", "Get ID & Pass", and "DM for Inquiries" buttons redirect across the entire store.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <input
-              type="text"
-              required
-              value={form.instagramUrl}
-              onChange={(e) => setForm({ ...form, instagramUrl: e.target.value })}
-              className="w-full px-4 py-2.5 rounded-xl glass-input text-xs sm:text-sm text-white"
-              placeholder="https://instagram.com/your_profile"
-            />
-            <button
-              type="button"
-              onClick={() => openInstagram(form.instagramUrl)}
-              className="shrink-0 px-4 py-2.5 rounded-xl glass-panel text-xs text-amber-400 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
-            >
-              <span>Test Link</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </button>
+          {/* Channel selector options */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+            {[
+              { type: 'instagram' as PrimaryChannelType, label: 'Instagram', icon: Instagram, color: 'text-amber-400' },
+              { type: 'whatsapp' as PrimaryChannelType, label: 'WhatsApp', icon: PhoneCall, color: 'text-emerald-400' },
+              { type: 'telegram' as PrimaryChannelType, label: 'Telegram', icon: Send, color: 'text-sky-400' },
+              { type: 'custom' as PrimaryChannelType, label: 'Custom Link', icon: Globe, color: 'text-purple-400' }
+            ].map(({ type, label, icon: Icon, color }) => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => setForm({ ...form, primaryChannelType: type })}
+                className={`p-3 rounded-xl border flex flex-col items-center gap-1.5 transition-all cursor-pointer ${
+                  form.primaryChannelType === type
+                    ? 'border-emerald-500 bg-emerald-500/15 text-white font-bold shadow-md shadow-emerald-500/10'
+                    : 'border-white/10 bg-[#070b14] text-slate-400 hover:border-white/20'
+                }`}
+              >
+                <Icon className={`w-5 h-5 ${color}`} />
+                <span className="text-xs font-gaming">{label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Channel details input */}
+          <div className="space-y-3">
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                {form.primaryChannelType === 'whatsapp'
+                  ? 'WhatsApp Phone Number (with Country Code)'
+                  : 'Channel Handle / Username / Profile ID'}
+              </label>
+              <input
+                type="text"
+                required
+                value={form.channelHandle || ''}
+                onChange={(e) => setForm({ ...form, channelHandle: e.target.value })}
+                className="w-full px-4 py-2.5 rounded-xl glass-input text-xs sm:text-sm text-white font-mono"
+                placeholder={form.primaryChannelType === 'whatsapp' ? '+919876543210' : '@gamersplanet20.26'}
+              />
+            </div>
+
+            {form.primaryChannelType === 'custom' && (
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  Custom Destination URL
+                </label>
+                <input
+                  type="url"
+                  required
+                  value={form.channelUrl || ''}
+                  onChange={(e) => setForm({ ...form, channelUrl: e.target.value })}
+                  className="w-full px-4 py-2.5 rounded-xl glass-input text-xs sm:text-sm text-white"
+                  placeholder="https://discord.gg/yourserver or custom link"
+                />
+              </div>
+            )}
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">
+                Fallback Instagram URL (optional)
+              </label>
+              <input
+                type="text"
+                value={form.instagramUrl || ''}
+                onChange={(e) => setForm({ ...form, instagramUrl: e.target.value })}
+                className="w-full px-4 py-2.5 rounded-xl glass-input text-xs sm:text-sm text-white"
+                placeholder="https://instagram.com/gamersplanet20.26"
+              />
+            </div>
+
+            <div className="flex items-center justify-between pt-2">
+              <span className="text-[11px] text-emerald-400 font-semibold">
+                Active destination: {getChannelRedirectInfo(form).actionLabel} ({getChannelRedirectInfo(form).handleOrLabel})
+              </span>
+              <button
+                type="button"
+                onClick={() => navigateToChannel(form, { bundleTitle: 'Sample Bundle', price: 399 })}
+                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-xs text-emerald-300 flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <span>Test Live Link</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
 

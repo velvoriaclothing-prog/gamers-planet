@@ -125,7 +125,7 @@ export const RecentOrdersTicker: React.FC = () => {
       aria-label="Recent customer orders"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className={`fixed bottom-20 md:bottom-6 left-3 sm:left-6 z-25 max-w-[340px] sm:max-w-[360px] w-full transition-all duration-300 pointer-events-auto ${
+      className={`hidden md:block fixed bottom-6 left-6 z-25 max-w-[360px] w-full transition-all duration-300 pointer-events-auto ${
         visible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-95'
       }`}
     >

@@ -110,6 +110,16 @@ router.get('/health', (_req: Request, res: Response) => {
   });
 });
 
+// Real-time synchronization version check (public, ultra-lightweight)
+router.get('/sync/version', (_req: Request, res: Response) => {
+  try {
+    const versionInfo = dbService.getDataVersion();
+    res.json(versionInfo);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve sync version' });
+  }
+});
+
 // Get Site Settings
 router.get('/settings', (_req: Request, res: Response) => {
   try {
@@ -496,6 +506,17 @@ router.put('/admin/settings', requireAdminAuth, (req: Request, res: Response) =>
     res.json(updated);
   } catch (err) {
     res.status(500).json({ error: 'Failed to update settings' });
+  }
+});
+
+// Admin Live Save (atomic update for in-place text & bundle changes)
+router.put('/admin/live-save', requireAdminAuth, (req: Request, res: Response) => {
+  try {
+    const { settingsUpdates, bundleUpdates } = req.body;
+    const result = dbService.batchLiveSave({ settingsUpdates, bundleUpdates });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to save live edits' });
   }
 });
 

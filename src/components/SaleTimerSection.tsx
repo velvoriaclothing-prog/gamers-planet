@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Flame, Zap, Sparkles, Gamepad2, ArrowRight, Eye, CheckCircle2, ShieldCheck, Tag } from 'lucide-react';
+import { Clock, Flame, Zap, Sparkles, Gamepad2, ArrowRight, Eye, CheckCircle2, ShieldCheck, Tag, Edit3 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
-import { openInstagram } from '../utils/api.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLiveEdit } from './live-edit/LiveEditContext.js';
 
 interface SaleTimerSectionProps {
   bundles: Bundle[];
   settings: SiteSettings;
   onSelectBundle: (bundle: Bundle) => void;
+  showBundlesList?: boolean;
 }
 
 // 10 Hours in milliseconds for countdown timer
@@ -16,6 +18,7 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
   bundles,
   settings,
   onSelectBundle,
+  showBundlesList = true,
 }) => {
   const [timeLeft, setTimeLeft] = useState(() => {
     const now = Date.now();
@@ -44,6 +47,9 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
   }, []);
 
   const formatDigit = (num: number) => num.toString().padStart(2, '0');
+
+  // Live Edit hooks
+  const { isLiveEditMode, openBundleQuickEdit, getEffectiveBundle } = useLiveEdit();
 
   // Filter active bundles
   const activeBundles = bundles.filter(b => b.active);
@@ -129,181 +135,208 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
           </div>
         </div>
 
-        {/* ALL BUNDLES WITH LIVE PRICES SECTION */}
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/10 gap-3">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 font-gaming">
-                <Tag className="w-4 h-4" />
-                <span>ALL VAULT BUNDLES & FLASH SALE PRICES</span>
+        {/* ALL BUNDLES WITH LIVE PRICES SECTION (CONDITIONAL) */}
+        {showBundlesList && (
+          <div>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 pb-3 border-b border-white/10 gap-2">
+              <div>
+                <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-400 font-gaming">
+                  <Tag className="w-3.5 h-3.5" />
+                  <span>VAULT BUNDLES & FLASH SALE PRICES</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-black text-white font-gaming mt-0.5">
+                  AVAILABLE VAULTS & DISCOUNTED PRICES
+                </h3>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-gaming mt-1">
-                AVAILABLE BUNDLES & INSTANT PRICES
-              </h3>
+              <div className="text-xs text-slate-400 font-medium">
+                Showing all {activeBundles.length} vaults with instant activation
+              </div>
             </div>
-            <div className="text-xs text-slate-400 font-medium">
-              Showing all {activeBundles.length} bundles with current discounted prices
-            </div>
-          </div>
 
-          {/* Bundles Grid with Prominent Prices */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activeBundles.map((bundle) => {
-              const savingsPercent =
-                bundle.originalPrice && bundle.originalPrice > bundle.price
-                  ? Math.round(((bundle.originalPrice - bundle.price) / bundle.originalPrice) * 100)
-                  : null;
+            {/* Bundles Grid with Compact Smaller Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {activeBundles.map((rawBundle) => {
+                const bundle = getEffectiveBundle(rawBundle);
+                const savingsPercent =
+                  bundle.originalPrice && bundle.originalPrice > bundle.price
+                    ? Math.round(((bundle.originalPrice - bundle.price) / bundle.originalPrice) * 100)
+                    : null;
 
-              return (
-                <div
-                  key={bundle.id}
-                  className={`glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl group bg-[#090c16]/90 ${
-                    bundle.featured
-                      ? 'border-2 border-amber-500/70 shadow-[0_0_35px_rgba(245,158,11,0.25)] ring-1 ring-amber-400/40'
-                      : 'border border-white/10 hover:border-amber-500/40'
-                  }`}
-                >
-                  {/* Image Header with Price Tag Overlay */}
+                return (
                   <div
-                    onClick={() => onSelectBundle(bundle)}
-                    className="relative aspect-[16/9] overflow-hidden bg-slate-950 cursor-pointer block"
-                    title={`Click to view ${bundle.title}`}
+                    key={bundle.id}
+                    className={`bg-[#090d18]/95 rounded-xl sm:rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-lg group relative ${
+                      bundle.featured
+                        ? 'border-2 border-amber-500/80 shadow-[0_0_30px_rgba(245,158,11,0.2)] ring-1 ring-amber-400/30'
+                        : 'border border-white/10 hover:border-amber-500/40'
+                    }`}
                   >
-                    <img
-                      src={bundle.coverImage}
-                      alt={bundle.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src =
-                          'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#090c16] via-transparent to-black/40" />
-
-                    {/* Price Pill top-right */}
-                    <div className="absolute top-3 right-3 px-3 py-1 rounded-xl bg-black/85 backdrop-blur-md border border-amber-500/50 shadow-lg text-right">
-                      <div className="text-[10px] text-slate-400 uppercase font-gaming">Flash Price</div>
-                      <div className="text-lg sm:text-xl font-black text-amber-400 font-gaming leading-tight">
-                        ₹{bundle.price.toLocaleString('en-IN')}
-                      </div>
-                    </div>
-
-                    {/* Badge top-left */}
-                    {bundle.badge && (
-                      <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-amber-500 text-black text-[11px] font-extrabold uppercase font-gaming shadow-md">
-                        {bundle.badge}
-                      </div>
+                    {/* Live Edit Mode Trigger Button */}
+                    {isLiveEditMode && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openBundleQuickEdit(bundle);
+                        }}
+                        className="absolute top-2 right-2 z-30 px-2 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-[10px] font-black flex items-center gap-1 shadow-xl cursor-pointer animate-pulse"
+                        title="Click to edit bundle title, prices, or badge"
+                      >
+                        <Edit3 className="w-3 h-3" />
+                        <span>Edit Live</span>
+                      </button>
                     )}
+                    {/* Image Header with Price Tag Overlay */}
+                    <div
+                      onClick={() => onSelectBundle(bundle)}
+                      className="relative aspect-[16/10] max-h-34 sm:max-h-38 overflow-hidden bg-slate-950 cursor-pointer block"
+                      title={`Click to view ${bundle.title}`}
+                    >
+                      <img
+                        src={bundle.coverImage}
+                        alt={bundle.title}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src =
+                            'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#090d18] via-transparent to-black/35" />
 
-                    {/* Game count tag */}
-                    <div className="absolute bottom-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 text-xs text-slate-200">
-                      <Gamepad2 className="w-3.5 h-3.5 text-amber-400" />
-                      <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
-                    </div>
-                  </div>
+                      {/* Price Tag top-right */}
+                      <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-black/85 backdrop-blur-md border border-amber-500/40 shadow-sm text-right">
+                        <div className="text-[8px] text-slate-400 uppercase font-gaming">Flash Price</div>
+                        <div className="text-sm sm:text-base font-black text-amber-400 font-gaming leading-tight">
+                          ₹{bundle.price.toLocaleString('en-IN')}
+                        </div>
+                      </div>
 
-                  {/* Body Details */}
-                  <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      {bundle.category && (
-                        <div className="text-[10px] uppercase font-bold text-amber-400/80 mb-1 tracking-wider">
-                          {bundle.category}
+                      {/* Badge top-left */}
+                      {bundle.badge && (
+                        <div className="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-amber-500 text-black text-[9px] font-black uppercase font-gaming shadow-sm">
+                          {bundle.badge}
                         </div>
                       )}
-                      <h4 className="text-lg font-bold text-white font-gaming mb-2 group-hover:text-amber-300 transition-colors line-clamp-1">
-                        {bundle.title}
-                      </h4>
-                      <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mb-3">
-                        {bundle.shortDescription}
-                      </p>
 
-                      {/* Popular Titles Mini Strip */}
-                      {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
-                        <div className="mb-3 p-2 rounded-xl bg-black/50 border border-amber-500/20">
-                          <div className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center justify-between">
-                            <span>Top Titles Preview</span>
-                            <span className="text-slate-400 font-normal">Included in Vault</span>
+                      {/* Game count tag */}
+                      <div className="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/10 text-[10px] text-slate-200">
+                        <Gamepad2 className="w-3 h-3 text-amber-400" />
+                        <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
+                      </div>
+                    </div>
+
+                    {/* Body Details (Compact) */}
+                    <div className="p-3 sm:p-3.5 flex-1 flex flex-col justify-between">
+                      <div>
+                        {bundle.category && (
+                          <div className="text-[9px] uppercase font-bold text-amber-400/90 mb-0.5 tracking-wider">
+                            {bundle.category}
                           </div>
-                          <div className="grid grid-cols-3 gap-1.5">
-                            {bundle.popularTitlesPreview.slice(0, 3).map((g, gIdx) => (
-                              <div key={gIdx} className="rounded-md overflow-hidden aspect-[16/10] bg-black border border-white/10">
-                                <img
-                                  src={g.coverImage}
-                                  alt={g.title}
-                                  referrerPolicy="no-referrer"
-                                  className="w-full h-full object-cover"
-                                  loading="lazy"
-                                />
+                        )}
+                        <h4 className="text-sm font-bold text-white font-gaming mb-1 group-hover:text-amber-300 transition-colors line-clamp-1">
+                          {bundle.title}
+                        </h4>
+                        <p className="text-[11px] text-slate-300 line-clamp-2 leading-relaxed mb-2">
+                          {bundle.shortDescription}
+                        </p>
+
+                        {/* Popular Titles Mini Strip */}
+                        {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
+                          <div className="mb-2 p-1.5 rounded-lg bg-black/40 border border-white/[0.07]">
+                            <div className="text-[8px] font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center justify-between">
+                              <span>Top Titles Preview</span>
+                              <span className="text-slate-400 font-normal">In Vault</span>
+                            </div>
+                            <div className="grid grid-cols-3 gap-1">
+                              {bundle.popularTitlesPreview.slice(0, 3).map((g, gIdx) => (
+                                <div key={gIdx} className="rounded overflow-hidden aspect-[16/10] bg-black border border-white/10">
+                                  <img
+                                    src={g.coverImage}
+                                    alt={g.title}
+                                    referrerPolicy="no-referrer"
+                                    className="w-full h-full object-cover"
+                                    loading="lazy"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Included Items preview (max 2 items for compactness) */}
+                        {bundle.includedItems && bundle.includedItems.length > 0 && (
+                          <div className="space-y-0.5 mb-2.5 p-1.5 rounded-lg bg-black/30 border border-white/5">
+                            {bundle.includedItems.slice(0, 2).map((item, i) => (
+                              <div key={i} className="flex items-center gap-1 text-[10px] text-slate-300 truncate">
+                                <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
+                                <span className="truncate">{item}</span>
                               </div>
                             ))}
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
-                      {/* Included Items preview */}
-                      {bundle.includedItems && bundle.includedItems.length > 0 && (
-                        <div className="space-y-1 mb-4 p-2.5 rounded-xl bg-black/40 border border-white/5">
-                          {bundle.includedItems.slice(0, 3).map((item, i) => (
-                            <div key={i} className="flex items-center gap-1.5 text-xs text-slate-300 truncate">
-                              <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
-                              <span className="truncate">{item}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                      {/* Price Showcase Bar & Buy Actions */}
+                      <div className="pt-2 border-t border-white/[0.08]">
+                        <div className="flex items-baseline justify-between mb-2">
+                          <div>
+                            <span className="text-lg sm:text-xl font-black text-white font-gaming">
+                              ₹{bundle.price.toLocaleString('en-IN')}
+                            </span>
+                            {bundle.originalPrice && (
+                              <span className="text-[11px] text-slate-500 line-through ml-1.5 font-mono">
+                                ₹{bundle.originalPrice.toLocaleString('en-IN')}
+                              </span>
+                            )}
+                          </div>
 
-                    {/* Price Showcase Bar & Buy Actions */}
-                    <div className="pt-3 border-t border-white/10">
-                      <div className="flex items-baseline justify-between mb-3">
-                        <div>
-                          <span className="text-2xl sm:text-3xl font-black text-white font-gaming">
-                            ₹{bundle.price.toLocaleString('en-IN')}
-                          </span>
-                          {bundle.originalPrice && (
-                            <span className="text-xs sm:text-sm text-slate-500 line-through ml-2 font-mono">
-                              ₹{bundle.originalPrice.toLocaleString('en-IN')}
+                          {savingsPercent && (
+                            <span className="px-1.5 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[9px] font-bold">
+                              Save {savingsPercent}%
                             </span>
                           )}
                         </div>
 
-                        {savingsPercent && (
-                          <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
-                            Save {savingsPercent}%
-                          </span>
-                        )}
-                      </div>
+                        {/* Action Buttons */}
+                        <div className="grid grid-cols-2 gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => onSelectBundle(bundle)}
+                            className="py-1.5 px-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition-colors cursor-pointer"
+                          >
+                            <Eye className="w-3 h-3 text-slate-400" />
+                            <span>Details</span>
+                          </button>
 
-                      {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-2">
-                        <button
-                          type="button"
-                          onClick={() => onSelectBundle(bundle)}
-                          className="py-2.5 px-3 rounded-xl glass-panel text-slate-200 hover:text-white font-medium text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                        >
-                          <Eye className="w-3.5 h-3.5 text-slate-400" />
-                          <span>View Details</span>
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() =>
-                            openInstagram(settings.instagramUrl, bundle.title, bundle.price)
-                          }
-                          className="py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold text-xs flex items-center justify-center gap-1.5 shadow-md transition-all cursor-pointer"
-                        >
-                          <span>Buy @ ₹{bundle.price}</span>
-                          <ArrowRight className="w-3.5 h-3.5 text-black" />
-                        </button>
+                          {(() => {
+                            const redirectInfo = getChannelRedirectInfo(settings, {
+                              bundleTitle: bundle.title,
+                              price: bundle.price,
+                              actionType: 'purchase'
+                            });
+                            return (
+                              <a
+                                href={redirectInfo.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="py-1.5 px-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-[11px] flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer active:scale-95 text-center"
+                                title={`Buy via ${redirectInfo.platformName}`}
+                              >
+                                <span>Buy ₹{bundle.price}</span>
+                                <ArrowRight className="w-3 h-3 text-black shrink-0" />
+                              </a>
+                            );
+                          })()}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>
