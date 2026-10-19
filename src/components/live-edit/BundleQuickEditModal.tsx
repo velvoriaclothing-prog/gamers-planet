@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLiveEdit } from './LiveEditContext.js';
 import { X, Check, Gamepad2, Sparkles, Tag, DollarSign, Layers } from 'lucide-react';
 import { Bundle } from '../../types/index.js';
+import { MediaUploadInput } from '../admin/MediaUploadInput.js';
 
 export const BundleQuickEditModal: React.FC = () => {
   const { activeEditBundle, closeBundleQuickEdit, stageBundleChange, getEffectiveBundle } = useLiveEdit();
@@ -12,6 +13,8 @@ export const BundleQuickEditModal: React.FC = () => {
   const [badge, setBadge] = useState<string>('');
   const [gameCount, setGameCount] = useState<number>(1);
   const [shortDescription, setShortDescription] = useState<string>('');
+  const [coverImage, setCoverImage] = useState<string>('');
+  const [videoPreview, setVideoPreview] = useState<string>('');
 
   useEffect(() => {
     if (activeEditBundle) {
@@ -22,6 +25,8 @@ export const BundleQuickEditModal: React.FC = () => {
       setBadge(effective.badge || '');
       setGameCount(effective.gameCount || 1);
       setShortDescription(effective.shortDescription || '');
+      setCoverImage(effective.coverImage || '');
+      setVideoPreview(effective.videoPreview || '');
     }
   }, [activeEditBundle, getEffectiveBundle]);
 
@@ -37,7 +42,9 @@ export const BundleQuickEditModal: React.FC = () => {
       originalPrice: originalPrice ? Number(originalPrice) : undefined,
       badge: badge.trim() || undefined,
       gameCount: Number(gameCount) || 1,
-      shortDescription: shortDescription.trim()
+      shortDescription: shortDescription.trim(),
+      coverImage: coverImage.trim() || activeEditBundle.coverImage,
+      videoPreview: videoPreview.trim() || undefined
     });
 
     closeBundleQuickEdit();
@@ -46,7 +53,7 @@ export const BundleQuickEditModal: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
       <div 
-        className="relative w-full max-w-lg bg-[#0a0f1d] border-2 border-amber-500/70 rounded-3xl p-6 shadow-2xl shadow-amber-500/10 text-white"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-[#0a0f1d] border-2 border-amber-500/70 rounded-3xl p-6 shadow-2xl shadow-amber-500/10 text-white"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -167,6 +174,29 @@ export const BundleQuickEditModal: React.FC = () => {
               rows={2}
               className="w-full bg-[#050811] border border-white/20 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-amber-400 text-xs"
               placeholder="Quick one-line summary displayed on the card..."
+            />
+          </div>
+
+          {/* Media Direct Uploads */}
+          <div className="space-y-3 pt-2 border-t border-white/10">
+            <MediaUploadInput
+              label="Cover Image"
+              accept="image/*"
+              value={coverImage}
+              onChange={(url) => setCoverImage(url)}
+              category="bundles"
+              placeholder="Upload cover image..."
+              helpText="Auto-commits permanently to GitHub."
+            />
+
+            <MediaUploadInput
+              label="Gameplay Video Preview / Trailer"
+              accept="video/*"
+              value={videoPreview}
+              onChange={(url) => setVideoPreview(url)}
+              category="bundles"
+              placeholder="Upload gameplay video (MP4/WebM)..."
+              helpText="Auto-commits permanently to GitHub."
             />
           </div>
 

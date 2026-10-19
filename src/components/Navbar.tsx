@@ -99,10 +99,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Gamers Planet (Click 5 times for Admin)"
             className="group flex items-center gap-2.5 sm:gap-3 text-left focus:outline-none select-none transition-transform active:scale-95 cursor-pointer"
           >
-            <div className={`relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-700/10 border border-amber-500/40 flex items-center justify-center transition-all duration-300 group-hover:border-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] ${
+            <div className={`relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-700/10 border border-amber-500/40 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] ${
               showClickPulse ? 'scale-110 border-amber-300 shadow-[0_0_25px_rgba(245,158,11,0.6)]' : ''
             }`}>
-              <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 transition-transform duration-300 group-hover:rotate-12" />
+              {settings.logoImageUrl ? (
+                <img
+                  src={settings.logoImageUrl}
+                  alt={settings.logoText || 'Logo'}
+                  className="w-full h-full object-contain p-1"
+                />
+              ) : (
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 transition-transform duration-300 group-hover:rotate-12" />
+              )}
             </div>
 
             <div>

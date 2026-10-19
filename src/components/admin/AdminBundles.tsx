@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Edit2, Trash2, Upload, Video, Image as ImageIcon, Eye, Check, X, AlertTriangle, Loader2 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../../types/index.js';
 import { api } from '../../utils/api.js';
+import { MediaUploadInput } from './MediaUploadInput.js';
 
 interface AdminBundlesProps {
   bundles: Bundle[];
@@ -367,56 +368,28 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
                 </span>
               </div>
 
-              {/* Cover Image URL & File Upload */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1 flex items-center justify-between">
-                    <span>Cover Image URL / Upload</span>
-                    {uploadingMedia === 'cover' && <span className="text-amber-400">Uploading...</span>}
-                  </label>
-                  <input
-                    type="text"
-                    value={editingBundle.coverImage || ''}
-                    onChange={(e) => setEditingBundle({ ...editingBundle, coverImage: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl glass-input text-xs text-white mb-2"
-                    placeholder="https://... or /uploads/bundles/..."
-                  />
-                  <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-xs text-slate-200 cursor-pointer transition-colors">
-                    <Upload className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Upload Cover Image (JPG/PNG/WebP)</span>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={(e) => handleFileUpload(e, 'cover')}
-                    />
-                  </label>
-                </div>
+              {/* Media Uploads: Cover Image & Video Preview */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                <MediaUploadInput
+                  label="Bundle Cover Image"
+                  accept="image/*"
+                  value={editingBundle.coverImage || ''}
+                  onChange={(url) => setEditingBundle({ ...editingBundle, coverImage: url })}
+                  category="bundles"
+                  placeholder="Upload cover image or enter URL..."
+                  helpText="Image automatically saves to vault storage & commits to GitHub permanently."
+                  required
+                />
 
-                {/* Video Preview URL & File Upload */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1 flex items-center justify-between">
-                    <span>Video Preview URL / Upload (Optional)</span>
-                    {uploadingMedia === 'video' && <span className="text-amber-400">Uploading...</span>}
-                  </label>
-                  <input
-                    type="text"
-                    value={editingBundle.videoPreview || ''}
-                    onChange={(e) => setEditingBundle({ ...editingBundle, videoPreview: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl glass-input text-xs text-white mb-2"
-                    placeholder="https://... (.mp4/.webm) or /uploads/..."
-                  />
-                  <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-xs text-slate-200 cursor-pointer transition-colors">
-                    <Video className="w-3.5 h-3.5 text-amber-400" />
-                    <span>Upload Video Preview (MP4/WebM)</span>
-                    <input
-                      type="file"
-                      accept="video/*"
-                      className="hidden"
-                      onChange={(e) => handleFileUpload(e, 'video')}
-                    />
-                  </label>
-                </div>
+                <MediaUploadInput
+                  label="Gameplay Video Preview / Trailer"
+                  accept="video/*"
+                  value={editingBundle.videoPreview || ''}
+                  onChange={(url) => setEditingBundle({ ...editingBundle, videoPreview: url })}
+                  category="bundles"
+                  placeholder="Upload MP4/WebM video or enter URL..."
+                  helpText="Video previews loop in bundle modals and card hover previews. Stored permanently in GitHub."
+                />
               </div>
 
               {/* Status Toggle */}

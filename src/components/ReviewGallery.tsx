@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Star, ShieldCheck, MessageSquare, Instagram, Send, PhoneCall, Globe, Sparkles, Search, CheckCircle2, ThumbsUp, MapPin, Gamepad2, ChevronDown } from 'lucide-react';
+import { Star, ShieldCheck, MessageSquare, Instagram, Send, PhoneCall, Globe, Sparkles, Search, CheckCircle2, ThumbsUp, MapPin, Gamepad2, ChevronDown, X, Eye, Video as VideoIcon, ExternalLink } from 'lucide-react';
 import { ReviewScreenshot, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
@@ -46,6 +46,7 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [starFilter, setStarFilter] = useState<'all' | '5' | '4'>('all');
   const [visibleCount, setVisibleCount] = useState(12);
+  const [activeProofMedia, setActiveProofMedia] = useState<{ url: string; title: string; isVideo: boolean } | null>(null);
 
   // Filtered reviews
   const filteredReviews = useMemo(() => {
@@ -284,9 +285,57 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
 
                     {/* Review Body */}
                     {review.note && (
-                      <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed">
+                      <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed mb-3">
                         {review.note}
                       </p>
+                    )}
+
+                    {/* Proof Media (Screenshot / Video) */}
+                    {review.imageUrl && (
+                      <div className="mt-2 mb-1">
+                        {(() => {
+                          const isVid = /\.(mp4|webm|mov|mkv|avi)(\?.*)?$/i.test(review.imageUrl) || review.imageUrl.includes('/video');
+                          return (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setActiveProofMedia({
+                                  url: review.imageUrl!,
+                                  title: review.title || review.reviewerName || 'Order Proof',
+                                  isVideo: isVid
+                                })
+                              }
+                              className="group/proof relative w-full h-32 rounded-xl overflow-hidden bg-black/60 border border-white/10 hover:border-amber-400/60 transition-all flex items-center justify-center cursor-pointer shadow-inner"
+                            >
+                              {isVid ? (
+                                <video
+                                  src={review.imageUrl}
+                                  className="w-full h-full object-cover opacity-80 group-hover/proof:opacity-100 transition-opacity"
+                                  preload="metadata"
+                                />
+                              ) : (
+                                <img
+                                  src={review.imageUrl}
+                                  alt="Order Proof"
+                                  className="w-full h-full object-cover opacity-85 group-hover/proof:opacity-100 group-hover/proof:scale-105 transition-all duration-300"
+                                  onError={(e) => {
+                                    (e.currentTarget as HTMLImageElement).style.display = 'none';
+                                  }}
+                                />
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2 justify-between">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[10px] text-amber-300 font-semibold border border-white/10">
+                                  {isVid ? <VideoIcon className="w-2.5 h-2.5" /> : <Eye className="w-2.5 h-2.5" />}
+                                  <span>{isVid ? 'Watch Video Proof' : 'View Screenshot'}</span>
+                                </span>
+                                <span className="text-[10px] text-slate-400 group-hover/proof:text-white">
+                                  Click to enlarge
+                                </span>
+                              </div>
+                            </button>
+                          );
+                        })()}
+                      </div>
                     )}
                   </div>
 
@@ -357,6 +406,71 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
         </div>
 
       </div>
+
+      {/* Proof Media Lightbox Modal */}
+      {activeProofMedia && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 animate-in fade-in"
+          onClick={() => setActiveProofMedia(null)}
+        >
+          <div 
+            className="relative max-w-4xl w-full max-h-[90vh] bg-[#0b0e18] rounded-3xl border border-white/20 p-4 sm:p-6 flex flex-col shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                  {activeProofMedia.isVideo ? <VideoIcon className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white font-gaming">
+                    {activeProofMedia.title}
+                  </h4>
+                  <span className="text-[10px] text-emerald-400 font-semibold">
+                    Verified Customer Proof • Permanent Vault Media
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href={activeProofMedia.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                  title="Open original file"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <button
+                  onClick={() => setActiveProofMedia(null)}
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 min-h-0 flex items-center justify-center overflow-hidden rounded-2xl bg-black border border-white/10">
+              {activeProofMedia.isVideo ? (
+                <video
+                  src={activeProofMedia.url}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="max-h-[70vh] w-auto max-w-full rounded-xl"
+                />
+              ) : (
+                <img
+                  src={activeProofMedia.url}
+                  alt={activeProofMedia.title}
+                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-xl"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

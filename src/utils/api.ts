@@ -261,6 +261,56 @@ export const api = {
       body: formData,
     });
   },
+
+  // Universal media upload (images, videos, banners) with GitHub permanent commit
+  uploadMedia: async (file: File, category: string = 'media') => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return apiFetch<import('../types/index.js').UploadMediaResult>(
+      `/api/admin/upload/media?category=${encodeURIComponent(category)}`,
+      {
+        method: 'POST',
+        body: formData,
+      }
+    );
+  },
+
+  // GitHub Permanent Cloud Storage
+  testGitHubConnection: (params: { token?: string; repo?: string; branch?: string }) =>
+    apiFetch<import('../types/index.js').GitHubSyncStatus>('/api/admin/github/test-connection', {
+      method: 'POST',
+      body: JSON.stringify(params),
+    }),
+  syncAllToGitHub: () =>
+    apiFetch<{
+      success: boolean;
+      totalFound: number;
+      syncedCount: number;
+      skippedCount: number;
+      errors: string[];
+      files: Array<{ filename: string; url: string; size: number }>;
+    }>('/api/admin/github/sync-all', {
+      method: 'POST',
+    }),
+  getGitHubStatus: () =>
+    apiFetch<import('../types/index.js').GitHubSyncStatus>('/api/admin/github/status'),
+  listMedia: () =>
+    apiFetch<{
+      success: boolean;
+      totalCount: number;
+      hasGitHub: boolean;
+      githubRepo?: string;
+      files: Array<{
+        filename: string;
+        category: string;
+        relativePath: string;
+        localUrl: string;
+        permanentUrl: string;
+        size: number;
+        mtime: string;
+        isVideo: boolean;
+      }>;
+    }>('/api/admin/media/list'),
 };
 
 // Helper to open Instagram profile or direct message with customized intent

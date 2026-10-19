@@ -135,6 +135,13 @@ export interface SiteSettings {
   // Dynamic In-Place Page Texts
   customTexts?: Record<string, string>;
 
+  // GitHub Permanent Cloud Storage
+  githubToken?: string;
+  githubRepo?: string; // "owner/repo"
+  githubBranch?: string; // "main"
+  githubFolder?: string; // "uploads"
+  githubAutoSync?: boolean;
+
   // Real-time synchronization
   version?: number;
   lastUpdated?: string;

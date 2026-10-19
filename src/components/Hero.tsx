@@ -11,9 +11,32 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ settings }) => {
   return (
     <section className="relative pt-10 pb-16 md:pt-16 md:pb-24 overflow-hidden border-b border-white/[0.06] bg-[#05070c]">
+      {/* Dynamic Background Media (Image or Video) */}
+      {settings.heroBackgroundMedia && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          {/\.(mp4|webm|mov|mkv|avi)(\?.*)?$/i.test(settings.heroBackgroundMedia) || settings.heroBackgroundMedia.includes('/video') ? (
+            <video
+              src={settings.heroBackgroundMedia}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover opacity-25"
+            />
+          ) : (
+            <img
+              src={settings.heroBackgroundMedia}
+              alt="Hero Backdrop"
+              className="w-full h-full object-cover opacity-20"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#05070c]/80 via-[#05070c]/60 to-[#05070c]" />
+        </div>
+      )}
+
       {/* Subtle architectural ambient glows - restrained and deep */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-amber-500/[0.07] blur-[150px] pointer-events-none rounded-full" />
-      <div className="absolute -bottom-10 right-10 w-[300px] h-[250px] bg-amber-600/[0.04] blur-[120px] pointer-events-none rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-amber-500/[0.07] blur-[150px] pointer-events-none rounded-full z-0" />
+      <div className="absolute -bottom-10 right-10 w-[300px] h-[250px] bg-amber-600/[0.04] blur-[120px] pointer-events-none rounded-full z-0" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         

@@ -44,6 +44,8 @@ export type PrimaryChannelType = 'instagram' | 'telegram' | 'whatsapp' | 'custom
 export interface SiteSettings {
   siteTitle: string;
   logoText: string;
+  logoImageUrl?: string;
+  heroBackgroundMedia?: string;
   heroHeading: string;
   heroSubtitle: string;
   heroCtaText: string;
@@ -63,9 +65,35 @@ export interface SiteSettings {
   // Dynamic In-Place Page Texts
   customTexts?: Record<string, string>;
 
+  // GitHub Permanent Cloud Storage
+  githubToken?: string;
+  githubRepo?: string; // "owner/repo"
+  githubBranch?: string; // "main"
+  githubFolder?: string; // "uploads"
+  githubAutoSync?: boolean;
+
   // Real-time synchronization
   version?: number;
   lastUpdated?: string;
+}
+
+export interface UploadMediaResult {
+  success: boolean;
+  fileUrl: string;
+  filename: string;
+  size: number;
+  mimetype: string;
+  githubSaved?: boolean;
+  githubUrl?: string;
+  message?: string;
+}
+
+export interface GitHubSyncStatus {
+  configured: boolean;
+  repo?: string;
+  branch?: string;
+  connected?: boolean;
+  message?: string;
 }
 
 export interface LiveBatchSavePayload {

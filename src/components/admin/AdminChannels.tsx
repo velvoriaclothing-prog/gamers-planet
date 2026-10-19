@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Edit2, Trash2, Send, MessageSquare, Globe, ExternalLink, Eye, EyeOff, Check, X, AlertTriangle, Loader2, ArrowUp, ArrowDown, KeyRound, ShieldCheck } from 'lucide-react';
 import { Channel, ChannelPlatform } from '../../types/index.js';
 import { api } from '../../utils/api.js';
+import { MediaUploadInput } from './MediaUploadInput.js';
 
 interface AdminChannelsProps {
   channels: Channel[];
@@ -428,18 +429,15 @@ export const AdminChannels: React.FC<AdminChannelsProps> = ({ channels, onRefres
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
-                  Optional Thumbnail Image URL
-                </label>
-                <input
-                  type="text"
-                  value={editingChannel.thumbnailUrl || ''}
-                  onChange={(e) => setEditingChannel({ ...editingChannel, thumbnailUrl: e.target.value })}
-                  placeholder="https://images.unsplash.com/... or leave blank"
-                  className="w-full px-3.5 py-2.5 rounded-xl glass-input text-xs sm:text-sm text-white"
-                />
-              </div>
+              <MediaUploadInput
+                label="Channel / Website Thumbnail or Banner"
+                accept="image/*,video/*"
+                value={editingChannel.thumbnailUrl || ''}
+                onChange={(url) => setEditingChannel({ ...editingChannel, thumbnailUrl: url })}
+                category="channels"
+                placeholder="Upload channel banner/logo or enter URL..."
+                helpText="Optional media displayed on the VIP Channels showcase. Auto-commits to GitHub permanently."
+              />
 
               <div>
                 <label className="block text-xs font-semibold text-slate-300 mb-1">

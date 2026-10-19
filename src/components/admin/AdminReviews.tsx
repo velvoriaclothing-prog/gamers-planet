@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Trash2, Eye, EyeOff, ArrowUp, ArrowDown, Star, AlertTriangle, CheckCircle2, Loader2, X, Plus, Edit3, Search, MapPin, Gamepad2, ShieldCheck } from 'lucide-react';
 import { ReviewScreenshot } from '../../types/index.js';
 import { api } from '../../utils/api.js';
+import { MediaUploadInput } from './MediaUploadInput.js';
 
 interface AdminReviewsProps {
   reviews: ReviewScreenshot[];
@@ -454,6 +455,17 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({ reviews, onRefresh }
                 />
               </div>
 
+              {/* Optional Screenshot or Video Proof */}
+              <MediaUploadInput
+                label="Order Proof / Chat Screenshot / Video (Optional)"
+                accept="image/*,video/*"
+                value={newReview.imageUrl || ''}
+                onChange={(url) => setNewReview({ ...newReview, imageUrl: url })}
+                category="reviews"
+                placeholder="Upload customer screenshot, payment proof, or video..."
+                helpText="Optional media displayed alongside verified review. Uploaded files save permanently to GitHub."
+              />
+
               <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
                 <button
                   type="button"
@@ -581,6 +593,17 @@ export const AdminReviews: React.FC<AdminReviewsProps> = ({ reviews, onRefresh }
                   className="w-full px-3 py-2 rounded-xl glass-input text-xs sm:text-sm text-white"
                 />
               </div>
+
+              {/* Optional Screenshot or Video Proof */}
+              <MediaUploadInput
+                label="Order Proof / Chat Screenshot / Video (Optional)"
+                accept="image/*,video/*"
+                value={editingReview.imageUrl || ''}
+                onChange={(url) => setEditingReview({ ...editingReview, imageUrl: url })}
+                category="reviews"
+                placeholder="Upload customer screenshot, payment proof, or video..."
+                helpText="Optional media displayed alongside verified review. Uploaded files save permanently to GitHub."
+              />
 
               <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/10">
                 <button

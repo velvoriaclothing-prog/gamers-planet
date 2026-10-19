@@ -23,6 +23,11 @@ import {
   invalidateChannelsSessionToken,
   requireChannelsOrAdminAuth
 } from './auth.js';
+import {
+  testGitHubConnection,
+  uploadFileToGitHub,
+  syncAllUploadsToGitHub
+} from './githubSync.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,6 +37,14 @@ const router = Router();
 const UPLOADS_DIR = path.resolve(__dirname, '../uploads');
 const BUNDLE_UPLOADS = path.resolve(UPLOADS_DIR, 'bundles');
 const REVIEW_UPLOADS = path.resolve(UPLOADS_DIR, 'reviews');
+const CHANNELS_UPLOADS = path.resolve(UPLOADS_DIR, 'channels');
+const GENERAL_UPLOADS = path.resolve(UPLOADS_DIR, 'media');
+
+for (const dir of [UPLOADS_DIR, BUNDLE_UPLOADS, REVIEW_UPLOADS, CHANNELS_UPLOADS, GENERAL_UPLOADS]) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
 
 // Multer storage for bundle assets (cover image or video)
 const bundleStorage = multer.diskStorage({
@@ -92,6 +105,39 @@ const reviewUpload = multer({
       cb(null, true);
     } else {
       cb(new Error(`Invalid review image format: ${ext}. Only JPG, JPEG, PNG, and WebP are supported.`));
+    }
+  }
+});
+
+// General Multer storage for media (covers, trailers, thumbnails, screenshots)
+const mediaStorage = multer.diskStorage({
+  destination: (req, _file, cb) => {
+    const rawCategory = (req.query.category as string) || (req.body?.category as string) || 'media';
+    const cleanCategory = rawCategory.replace(/[^a-zA-Z0-9_-]/g, '');
+    const targetDir = path.resolve(UPLOADS_DIR, cleanCategory);
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+    cb(null, targetDir);
+  },
+  filename: (_req, file, cb) => {
+    const ext = path.extname(file.originalname).toLowerCase();
+    const cleanBase = path.basename(file.originalname, ext).replace(/[^a-zA-Z0-9_-]/g, '_');
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e6)}`;
+    cb(null, `${cleanBase}-${uniqueSuffix}${ext}`);
+  }
+});
+
+const mediaUpload = multer({
+  storage: mediaStorage,
+  limits: { fileSize: 100 * 1024 * 1024 }, // 100MB for video/image
+  fileFilter: (_req, file, cb) => {
+    const allowedExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.mp4', '.webm', '.mov', '.mkv', '.avi'];
+    const ext = path.extname(file.originalname).toLowerCase();
+    if (allowedExts.includes(ext)) {
+      cb(null, true);
+    } else {
+      cb(new Error(`Invalid file format: ${ext}. Allowed formats: JPG, PNG, WebP, GIF, SVG, MP4, WebM, MOV.`));
     }
   }
 });
@@ -651,12 +697,104 @@ router.post('/admin/change-channels-password', requireAdminAuth, (req: Request, 
 });
 
 // -------------------------------------------------------------
-// FILE UPLOAD ROUTES
 // -------------------------------------------------------------
+// FILE UPLOAD & GITHUB PERMANENT STORAGE ROUTES
+// -------------------------------------------------------------
+
+// Helper to commit an uploaded file to GitHub if configured in settings
+async function tryGitHubSync(localFilePath: string, relativePath: string): Promise<{
+  githubSaved: boolean;
+  githubUrl?: string;
+  cdnUrl?: string;
+  message?: string;
+}> {
+  try {
+    const settings = dbService.getSettings();
+    const token = settings.githubToken || process.env.GITHUB_TOKEN;
+    const repo = settings.githubRepo || process.env.GITHUB_REPO;
+    const branch = settings.githubBranch || process.env.GITHUB_BRANCH || 'main';
+    const folder = settings.githubFolder || 'uploads';
+
+    if (!token || !repo) {
+      return {
+        githubSaved: false,
+        message: 'GitHub storage not configured yet in Settings.'
+      };
+    }
+
+    const res = await uploadFileToGitHub(localFilePath, relativePath, { token, repo, branch, folder });
+    if (res.success) {
+      return {
+        githubSaved: true,
+        githubUrl: res.rawUrl,
+        cdnUrl: res.cdnUrl,
+        message: res.message
+      };
+    } else {
+      return {
+        githubSaved: false,
+        message: res.message
+      };
+    }
+  } catch (err: any) {
+    return {
+      githubSaved: false,
+      message: err.message || 'GitHub commit failed'
+    };
+  }
+}
+
+// Universal media upload for images (JPG, PNG, WebP, GIF, SVG) and videos (MP4, WebM, MOV)
+router.post('/admin/upload/media', requireAdminAuth, (req: Request, res: Response) => {
+  mediaUpload.single('file')(req, res, async (err) => {
+    if (err) {
+      res.status(400).json({ error: err.message || 'Media upload failed' });
+      return;
+    }
+
+    if (!req.file) {
+      res.status(400).json({ error: 'No media file provided' });
+      return;
+    }
+
+    const rawCategory = (req.query.category as string) || (req.body?.category as string) || 'media';
+    const cleanCategory = rawCategory.replace(/[^a-zA-Z0-9_-]/g, '') || 'media';
+    const relativePath = `${cleanCategory}/${req.file.filename}`;
+    const localUrl = `/uploads/${relativePath}`;
+
+    const isVideo = /\.(mp4|webm|mov|mkv|avi)(\?.*)?$/i.test(req.file.filename) || req.file.mimetype.startsWith('video/');
+
+    // Auto-commit to GitHub if configured
+    const gh = await tryGitHubSync(req.file.path, relativePath);
+    
+    // Choose optimal delivery URL: jsDelivr CDN for images (fast caching), raw URL or local for video
+    let finalUrl = localUrl;
+    if (gh.githubSaved) {
+      if (isVideo) {
+        finalUrl = gh.githubUrl || localUrl;
+      } else {
+        finalUrl = gh.cdnUrl || gh.githubUrl || localUrl;
+      }
+    }
+
+    res.json({
+      success: true,
+      fileUrl: finalUrl,
+      localUrl,
+      filename: req.file.filename,
+      size: req.file.size,
+      mimetype: req.file.mimetype,
+      githubSaved: gh.githubSaved,
+      githubUrl: gh.githubUrl,
+      cdnUrl: gh.cdnUrl,
+      message: gh.message || (gh.githubSaved ? 'File saved locally & permanently committed to GitHub!' : 'File saved locally to server.')
+    });
+  });
+});
 
 // Single bundle cover or video upload
 router.post('/admin/upload/bundle-file', requireAdminAuth, (req: Request, res: Response) => {
-  bundleUpload.single('file')(req, res, (err) => {
+  bundleUpload.single('file')(req, res, async (err) => {
     if (err) {
       res.status(400).json({ error: err.message || 'File upload error' });
       return;
@@ -667,15 +805,202 @@ router.post('/admin/upload/bundle-file', requireAdminAuth, (req: Request, res: R
       return;
     }
 
-    const fileUrl = `/uploads/bundles/${req.file.filename}`;
+    const relativePath = `bundles/${req.file.filename}`;
+    const localUrl = `/uploads/${relativePath}`;
+    const isVideo = /\.(mp4|webm|mov|mkv|avi)(\?.*)?$/i.test(req.file.filename) || req.file.mimetype.startsWith('video/');
+
+    const gh = await tryGitHubSync(req.file.path, relativePath);
+    let finalUrl = localUrl;
+    if (gh.githubSaved) {
+      if (isVideo) {
+        finalUrl = gh.githubUrl || localUrl;
+      } else {
+        finalUrl = gh.cdnUrl || gh.githubUrl || localUrl;
+      }
+    }
+
     res.json({
       success: true,
-      fileUrl,
+      fileUrl: finalUrl,
+      localUrl,
       filename: req.file.filename,
       size: req.file.size,
-      mimetype: req.file.mimetype
+      mimetype: req.file.mimetype,
+      githubSaved: gh.githubSaved,
+      githubUrl: gh.githubUrl,
+      cdnUrl: gh.cdnUrl,
+      message: gh.message
     });
   });
+});
+
+// -------------------------------------------------------------
+// GITHUB STORAGE MANAGEMENT ROUTES
+// -------------------------------------------------------------
+
+// Test GitHub connectivity with token and repository
+router.post('/admin/github/test-connection', requireAdminAuth, async (req: Request, res: Response) => {
+  try {
+    const { token, repo, branch } = req.body;
+    const settings = dbService.getSettings();
+    const effectiveToken = (token || settings.githubToken || process.env.GITHUB_TOKEN || '').trim();
+    const effectiveRepo = (repo || settings.githubRepo || process.env.GITHUB_REPO || '').trim();
+    const effectiveBranch = (branch || settings.githubBranch || process.env.GITHUB_BRANCH || 'main').trim();
+
+    if (!effectiveToken || !effectiveRepo) {
+      res.status(400).json({
+        success: false,
+        message: 'Both GitHub Token and Repository (owner/repo) are required to test connection.'
+      });
+      return;
+    }
+
+    const result = await testGitHubConnection({
+      token: effectiveToken,
+      repo: effectiveRepo,
+      branch: effectiveBranch
+    });
+
+    res.json(result);
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: 'Test connection failed: ' + err.message });
+  }
+});
+
+// Batch sync all local uploads to GitHub repository
+router.post('/admin/github/sync-all', requireAdminAuth, async (_req: Request, res: Response) => {
+  try {
+    const settings = dbService.getSettings();
+    const token = settings.githubToken || process.env.GITHUB_TOKEN;
+    const repo = settings.githubRepo || process.env.GITHUB_REPO;
+    const branch = settings.githubBranch || process.env.GITHUB_BRANCH || 'main';
+    const folder = settings.githubFolder || 'uploads';
+
+    if (!token || !repo) {
+      res.status(400).json({
+        success: false,
+        message: 'GitHub storage not configured. Please enter your GitHub Token and Repository first in Settings.'
+      });
+      return;
+    }
+
+    const result = await syncAllUploadsToGitHub(UPLOADS_DIR, {
+      token,
+      repo,
+      branch,
+      folder
+    });
+
+    res.json(result);
+  } catch (err: any) {
+    res.status(500).json({ success: false, message: 'Batch sync failed: ' + err.message });
+  }
+});
+
+// Check current GitHub storage status
+router.get('/admin/github/status', requireAdminAuth, async (_req: Request, res: Response) => {
+  try {
+    const settings = dbService.getSettings();
+    const token = settings.githubToken || process.env.GITHUB_TOKEN;
+    const repo = settings.githubRepo || process.env.GITHUB_REPO;
+    const branch = settings.githubBranch || process.env.GITHUB_BRANCH || 'main';
+
+    if (!token || !repo) {
+      res.json({
+        configured: false,
+        message: 'GitHub storage is not configured yet. Add your repository in Settings to back up all media permanently.'
+      });
+      return;
+    }
+
+    const test = await testGitHubConnection({ token, repo, branch });
+    res.json({
+      configured: true,
+      repo,
+      branch,
+      connected: test.success,
+      message: test.message,
+      isPrivate: test.isPrivate
+    });
+  } catch (err: any) {
+    res.status(500).json({ configured: false, error: err.message });
+  }
+});
+
+// List all uploaded media files with metadata and GitHub sync status
+router.get('/admin/media/list', requireAdminAuth, (_req: Request, res: Response) => {
+  try {
+    const settings = dbService.getSettings();
+    const token = settings.githubToken || process.env.GITHUB_TOKEN;
+    const repo = settings.githubRepo || process.env.GITHUB_REPO;
+    const branch = settings.githubBranch || process.env.GITHUB_BRANCH || 'main';
+    const folder = (settings.githubFolder || 'uploads').replace(/^\/+|\/+$/g, '');
+    const hasGitHub = Boolean(token && repo);
+
+    function scanFiles(dir: string, category: string = ''): Array<{
+      filename: string;
+      category: string;
+      relativePath: string;
+      localUrl: string;
+      permanentUrl: string;
+      size: number;
+      mtime: string;
+      isVideo: boolean;
+    }> {
+      if (!fs.existsSync(dir)) return [];
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      let files: any[] = [];
+
+      for (const entry of entries) {
+        if (entry.name.startsWith('.')) continue;
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          files = files.concat(scanFiles(fullPath, entry.name));
+        } else if (entry.isFile()) {
+          const ext = path.extname(entry.name).toLowerCase();
+          const isVideo = ['.mp4', '.webm', '.mov', '.mkv', '.avi'].includes(ext);
+          const stat = fs.statSync(fullPath);
+          const rel = category ? `${category}/${entry.name}` : entry.name;
+          const localUrl = `/uploads/${rel}`;
+          
+          let permanentUrl = localUrl;
+          if (hasGitHub && repo) {
+            const cleanRepo = repo.replace(/^https?:\/\/github\.com\//i, '').replace(/\.git$/i, '');
+            if (isVideo) {
+              permanentUrl = `https://raw.githubusercontent.com/${cleanRepo}/${branch}/${folder}/${rel}`;
+            } else {
+              permanentUrl = `https://cdn.jsdelivr.net/gh/${cleanRepo}@${branch}/${folder}/${rel}`;
+            }
+          }
+
+          files.push({
+            filename: entry.name,
+            category: category || 'general',
+            relativePath: rel,
+            localUrl,
+            permanentUrl,
+            size: stat.size,
+            mtime: stat.mtime.toISOString(),
+            isVideo
+          });
+        }
+      }
+      return files;
+    }
+
+    const allFiles = scanFiles(UPLOADS_DIR);
+    allFiles.sort((a, b) => new Date(b.mtime).getTime() - new Date(a.mtime).getTime());
+
+    res.json({
+      success: true,
+      totalCount: allFiles.length,
+      hasGitHub,
+      githubRepo: repo,
+      files: allFiles
+    });
+  } catch (err: any) {
+    res.status(500).json({ success: false, error: err.message || 'Failed to list media' });
+  }
 });
 
 // Batch upload up to 100 review screenshots
