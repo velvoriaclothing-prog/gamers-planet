@@ -352,7 +352,9 @@ export const SingleGamesSection: React.FC<SingleGamesSectionProps> = ({
             <div className="flex flex-row items-center justify-between sm:justify-end gap-3 shrink-0 w-full lg:w-auto pt-2 sm:pt-0 border-t border-white/10 sm:border-0">
               <div className="text-left sm:text-right">
                 <div className="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-widest font-gaming">Offer Price</div>
-                <div className="text-2xl sm:text-3xl font-black text-amber-400 font-gaming">₹449</div>
+                <div className="text-2xl sm:text-3xl font-black text-amber-400 font-gaming">
+                  ₹{featuredBundle?.price || 449}
+                </div>
               </div>
 
               {featuredBundle && onSelectBundle ? (
@@ -365,15 +367,28 @@ export const SingleGamesSection: React.FC<SingleGamesSectionProps> = ({
                   <ArrowRight className="w-3.5 h-3.5 text-black" />
                 </button>
               ) : (
-                <button
-                  type="button"
-                  onClick={() => openInstagram(settings.instagramUrl, '₹449 Steam Unlock Bundle (Featured Offer)', 449)}
-                  className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all cursor-pointer active:scale-95"
-                >
-                  <Instagram className="w-3.5 h-3.5 text-black" />
-                  <span>Order ₹449</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-black" />
-                </button>
+                (() => {
+                  const redirectInfo = getChannelRedirectInfo(settings, {
+                    bundleTitle: featuredBundle?.title || 'Steam Unlock Bundle',
+                    price: featuredBundle?.price || 449,
+                    actionType: 'purchase'
+                  });
+                  return (
+                    <a
+                      href={redirectInfo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all cursor-pointer active:scale-95 text-center"
+                    >
+                      {redirectInfo.isWhatsApp && <PhoneCall className="w-3.5 h-3.5 text-black shrink-0" />}
+                      {redirectInfo.isTelegram && <Send className="w-3.5 h-3.5 text-black shrink-0" />}
+                      {redirectInfo.isInstagram && <Instagram className="w-3.5 h-3.5 text-black shrink-0" />}
+                      {redirectInfo.isCustom && <Globe className="w-3.5 h-3.5 text-black shrink-0" />}
+                      <span>Order ₹{featuredBundle?.price || 449}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-black" />
+                    </a>
+                  );
+                })()
               )}
             </div>
           </div>

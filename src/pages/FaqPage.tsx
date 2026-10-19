@@ -1,15 +1,17 @@
 import React from 'react';
-import { HelpCircle, ShieldCheck, Zap, Instagram, ArrowRight, Clock, CheckCircle2 } from 'lucide-react';
+import { HelpCircle, ShieldCheck, Zap, Instagram, Send, PhoneCall, Globe, ArrowRight, Clock, CheckCircle2 } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
 import { FaqSection } from '../components/FaqSection.js';
 import { FeaturesSection } from '../components/FeaturesSection.js';
-import { openInstagram } from '../utils/api.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
 interface FaqPageProps {
   settings: SiteSettings;
 }
 
 export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
+  const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'support' });
+
   return (
     <div className="space-y-12 pb-16">
       {/* 1. Header */}
@@ -32,7 +34,7 @@ export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
               1
             </div>
             <h4 className="text-xs font-bold text-white font-gaming mb-1">Pick Game or Bundle</h4>
-            <p className="text-[11px] text-slate-400">Choose ₹80 Single Game, ₹449 Steam Unlock, or ₹399 1k Bundle.</p>
+            <p className="text-[11px] text-slate-400">Choose ₹80 Single Game, Steam Unlock, or Mega Bundles.</p>
           </div>
 
           <div className="glass-panel p-4 rounded-2xl border border-amber-500/30 bg-[#090d18]/90">
@@ -54,10 +56,10 @@ export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
       </section>
 
       {/* 2. FAQ Accordion Section */}
-      <FaqSection />
+      <FaqSection settings={settings} />
 
       {/* 3. Features & Guarantees */}
-      <FeaturesSection />
+      <FeaturesSection settings={settings} />
 
       {/* 4. Need more help? Direct Chat */}
       <section className="max-w-4xl mx-auto px-4">
@@ -66,17 +68,22 @@ export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
             Still Have Questions?
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mb-5">
-            Our team is active 7 days a week on Instagram DM to help you choose the right bundle or answer any technical question.
+            Our team is active 7 days a week on {redirectInfo.platformName} to help you choose the right bundle or answer any technical question.
           </p>
-          <button
-            type="button"
-            onClick={() => openInstagram(settings.instagramUrl)}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs sm:text-sm uppercase font-gaming inline-flex items-center gap-2 shadow-lg cursor-pointer active:scale-95 transition-all"
+          <a
+            href={redirectInfo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs sm:text-sm uppercase font-gaming inline-flex items-center gap-2 shadow-lg cursor-pointer active:scale-95 transition-all text-center"
+            title={redirectInfo.actionLabel}
           >
-            <Instagram className="w-4 h-4 text-black" />
-            <span>Chat With Us on Instagram</span>
-            <ArrowRight className="w-4 h-4 text-black" />
-          </button>
+            {redirectInfo.isWhatsApp && <PhoneCall className="w-4 h-4 text-black shrink-0" />}
+            {redirectInfo.isTelegram && <Send className="w-4 h-4 text-black shrink-0" />}
+            {redirectInfo.isInstagram && <Instagram className="w-4 h-4 text-black shrink-0" />}
+            {redirectInfo.isCustom && <Globe className="w-4 h-4 text-black shrink-0" />}
+            <span>Chat With Us on {redirectInfo.platformName}</span>
+            <ArrowRight className="w-4 h-4 text-black shrink-0" />
+          </a>
         </div>
       </section>
     </div>

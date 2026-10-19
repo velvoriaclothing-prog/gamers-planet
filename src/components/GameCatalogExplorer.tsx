@@ -190,12 +190,17 @@ export const GameCatalogExplorer: React.FC<GameCatalogExplorerProps> = ({
                 className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-black font-black text-sm tracking-wide uppercase font-gaming flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.5)] transition-all cursor-pointer active:scale-95"
               >
                 <Zap className="w-4 h-4 fill-black" />
-                <span>Get Steam Unlock Bundle • ₹449</span>
+                <span>Get {unlockTitle} • ₹{unlockPrice}</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => openInstagram(settings.instagramUrl, 'Hi! I want to request a single game Steam Account ID & Password for ₹80 or add to my personal Steam account.', 80)}
+                onClick={() => navigateToChannel(settings, {
+                  bundleTitle: 'Single Game Request',
+                  price: 80,
+                  message: 'Hi! I want to request a single game Steam Account ID & Password for ₹80 or add to my personal Steam account.',
+                  actionType: 'single'
+                })}
                 className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
               >
                 <KeyRound className="w-4 h-4 text-amber-400" />

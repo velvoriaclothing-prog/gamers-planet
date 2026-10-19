@@ -330,7 +330,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 5. Why Choose Us / Trust Badges */}
-      <FeaturesSection />
+      <FeaturesSection settings={settings} />
     </div>
   );
 };

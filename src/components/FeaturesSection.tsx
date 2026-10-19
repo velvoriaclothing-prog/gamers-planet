@@ -1,12 +1,20 @@
 import React from 'react';
 import { Zap, ShieldCheck, Download, Headphones, CheckCircle, RefreshCw } from 'lucide-react';
+import { SiteSettings } from '../types/index.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
-export const FeaturesSection: React.FC = () => {
+interface FeaturesSectionProps {
+  settings?: SiteSettings;
+}
+
+export const FeaturesSection: React.FC<FeaturesSectionProps> = ({ settings }) => {
+  const platform = settings ? getChannelRedirectInfo(settings).platformName : 'Customer Chat';
+
   const features = [
     {
       icon: Zap,
       title: '5-Minute Instant Delivery',
-      description: 'Zero waiting queues. Once payment screenshot is verified on Instagram DM, login credentials and direct setup guides arrive in minutes.'
+      description: `Zero waiting queues. Once payment screenshot is verified on ${platform}, login credentials and direct setup guides arrive in minutes.`
     },
     {
       icon: ShieldCheck,
@@ -20,8 +28,8 @@ export const FeaturesSection: React.FC = () => {
     },
     {
       icon: Headphones,
-      title: '1-on-1 Instagram Support',
-      description: 'Facing driver conflicts or setup confusion? Our technical team assists you directly on Instagram chat with personalized walkthroughs.'
+      title: `1-on-1 ${platform} Support`,
+      description: `Facing driver conflicts or setup confusion? Our technical team assists you directly on ${platform} with personalized walkthroughs.`
     }
   ];
 

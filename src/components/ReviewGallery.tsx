@@ -330,19 +330,30 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
 
         {/* Customer Proof CTA */}
         <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-5 rounded-2xl glass-panel max-w-xl mx-auto border border-white/10">
-            <div className="text-left text-xs sm:text-sm text-slate-300">
-              <span className="font-bold text-white block text-sm">Need help ordering or want custom bundle recommendations?</span>
-              Send us a direct message on Instagram — instant reply in 3-5 minutes!
-            </div>
-            <button
-              onClick={() => openInstagram(settings.instagramUrl)}
-              className="shrink-0 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-md"
-            >
-              <Instagram className="w-4 h-4 text-black" />
-              <span>DM on Instagram</span>
-            </button>
-          </div>
+          {(() => {
+            const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'dm' });
+            return (
+              <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-5 rounded-2xl glass-panel max-w-xl mx-auto border border-white/10">
+                <div className="text-left text-xs sm:text-sm text-slate-300">
+                  <span className="font-bold text-white block text-sm">Need help ordering or want custom bundle recommendations?</span>
+                  Send us a direct message on {redirectInfo.platformName} — instant reply in 3-5 minutes!
+                </div>
+                <a
+                  href={redirectInfo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-md text-center"
+                  title={redirectInfo.actionLabel}
+                >
+                  {redirectInfo.isWhatsApp && <PhoneCall className="w-4 h-4 text-black shrink-0" />}
+                  {redirectInfo.isTelegram && <Send className="w-4 h-4 text-black shrink-0" />}
+                  {redirectInfo.isInstagram && <Instagram className="w-4 h-4 text-black shrink-0" />}
+                  {redirectInfo.isCustom && <Globe className="w-4 h-4 text-black shrink-0" />}
+                  <span>{redirectInfo.actionLabel}</span>
+                </a>
+              </div>
+            );
+          })()}
         </div>
 
       </div>

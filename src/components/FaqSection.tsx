@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { SiteSettings } from '../types/index.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
-export const FaqSection: React.FC = () => {
+interface FaqSectionProps {
+  settings?: SiteSettings;
+}
+
+export const FaqSection: React.FC<FaqSectionProps> = ({ settings }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const platform = settings ? getChannelRedirectInfo(settings).platformName : 'Instagram';
 
   const faqs = [
     {
-      q: 'How does ordering via Instagram work?',
-      a: 'Simply choose any bundle and click "Buy Now" to message us on Instagram. Tell us the bundle you want, complete the payment via UPI, Google Pay, PhonePe, or Paytm, and send the payment screenshot. Within 3-5 minutes, our team will deliver the bundle credentials and full setup instructions directly in your chat.'
+      q: `How does ordering via ${platform} work?`,
+      a: `Simply choose any bundle and click "Buy Now" to message us on ${platform}. Tell us the bundle you want, complete the payment via UPI, Google Pay, PhonePe, or Paytm, and send the payment screenshot. Within 3-5 minutes, our team will deliver the bundle credentials and full setup instructions directly in your chat.`
     },
     {
       q: 'Are these games permanently added to my PC?',
@@ -19,7 +26,7 @@ export const FaqSection: React.FC = () => {
     },
     {
       q: 'What if a game doesn’t launch on my PC?',
-      a: 'We provide active 1-on-1 Instagram technical support. If your hardware meets the game’s minimum specifications and you encounter any launch or DirectX error, we guide you through fixing dependencies or offer an alternative title guarantee.'
+      a: `We provide active 1-on-1 ${platform} technical support. If your hardware meets the game’s minimum specifications and you encounter any launch or DirectX error, we guide you through fixing dependencies or offer an alternative title guarantee.`
     },
     {
       q: 'How do the Single Games options (₹80 - ₹349) work?',
@@ -31,7 +38,7 @@ export const FaqSection: React.FC = () => {
     },
     {
       q: 'Can I request specific games that are not in the existing bundles?',
-      a: 'Yes! Send us a DM on Instagram with your desired wishlist of games. We can create custom tailored bundle packages for you at discounted bundle rates.'
+      a: `Yes! Send us a message on ${platform} with your desired wishlist of games. We can create custom tailored bundle packages for you at discounted bundle rates.`
     }
   ];
 

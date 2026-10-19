@@ -248,24 +248,33 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             </div>
 
             {/* How to Order Box */}
-            <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="space-y-1 text-left">
-                <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 uppercase font-gaming">
-                  <Zap className="w-4 h-4 text-amber-400" />
-                  <span>How Instant Purchase Works:</span>
+            {(() => {
+              const info = getChannelRedirectInfo(settings, {
+                bundleTitle: bundle.title,
+                price: bundle.price,
+                actionType: 'purchase'
+              });
+              return (
+                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="space-y-1 text-left">
+                    <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 uppercase font-gaming">
+                      <Zap className="w-4 h-4 text-amber-400" />
+                      <span>How Instant Purchase Works:</span>
+                    </div>
+                    <p className="text-xs text-slate-300">
+                      1. Click "Claim on {info.platformName}" to message us directly on {info.platformName}.<br />
+                      2. Pay via UPI, Google Pay, PhonePe, or Paytm.<br />
+                      3. Receive full credentials and lifetime installation guide in 3-5 minutes!
+                    </p>
+                  </div>
+                  
+                  <div className="shrink-0 flex items-center gap-2 text-xs text-slate-400">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                    <span>100% Refund & Setup Guarantee</span>
+                  </div>
                 </div>
-                <p className="text-xs text-slate-300">
-                  1. Click "Claim on Instagram" to message us directly on Instagram.<br />
-                  2. Pay via UPI, Google Pay, PhonePe, or Paytm.<br />
-                  3. Receive full credentials and lifetime installation guide in 3-5 minutes!
-                </p>
-              </div>
-              
-              <div className="shrink-0 flex items-center gap-2 text-xs text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>100% Refund & Setup Guarantee</span>
-              </div>
-            </div>
+              );
+            })()}
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row items-center justify-end gap-4">

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Lock, KeyRound, Unlock, Send, MessageSquare, Globe, ExternalLink, ShieldCheck, AlertTriangle, Loader2, Sparkles, LogOut, CheckCircle2, Copy, Check, Link2, ArrowUpRight } from 'lucide-react';
 import { Channel, ChannelPlatform, SiteSettings } from '../types/index.js';
 import { api, getChannelsToken, setChannelsToken, clearChannelsToken } from '../utils/api.js';
+import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
 interface ChannelsSectionProps {
   settings: SiteSettings;
@@ -224,6 +225,28 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                 <span>Encrypted Community Access</span>
               </div>
             </form>
+
+            {/* Direct Channel Redirect to request VIP password */}
+            {(() => {
+              const redirectInfo = getChannelRedirectInfo(settings, {
+                actionType: 'dm',
+                message: 'Hi GAMERS PLANET! I would like to get access credentials for the VIP Channels & Websites vault.'
+              });
+              return (
+                <div className="mt-4 text-center">
+                  <p className="text-xs text-slate-400 mb-2">Don't have the VIP access password?</p>
+                  <a
+                    href={redirectInfo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer"
+                  >
+                    <span>Request VIP Key on {redirectInfo.platformName}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              );
+            })()}
 
           </div>
         ) : (
