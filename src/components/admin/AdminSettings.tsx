@@ -80,11 +80,12 @@ export const AdminSettings: React.FC<AdminSettingsProps> = ({ settings, onRefres
         repo: form.githubRepo.trim(),
         branch: form.githubBranch?.trim() || 'main'
       });
+      const isSuccess = res.success !== undefined ? Boolean(res.success) : Boolean(res.connected);
       setGithubTestResult({
-        success: Boolean(res.connected),
-        message: res.message || (res.connected ? 'Connected to GitHub successfully!' : 'Connection failed'),
+        success: isSuccess,
+        message: res.message || (isSuccess ? 'Connected to GitHub successfully!' : 'Connection failed'),
         repoName: res.repo,
-        isPrivate: (res as any).isPrivate,
+        isPrivate: res.isPrivate,
         defaultBranch: res.branch
       });
     } catch (err: any) {

@@ -138,11 +138,12 @@ export const AdminMediaStorage: React.FC<AdminMediaStorageProps> = ({ settings, 
         branch: form.githubBranch?.trim() || 'main'
       });
 
+      const isSuccess = res.success !== undefined ? Boolean(res.success) : Boolean(res.connected);
       setTestResult({
-        success: Boolean(res.connected),
-        message: res.message || (res.connected ? 'Connected to GitHub successfully!' : 'Connection test failed'),
+        success: isSuccess,
+        message: res.message || (isSuccess ? 'Connected to GitHub successfully!' : 'Connection test failed'),
         repoName: res.repo,
-        isPrivate: (res as any).isPrivate,
+        isPrivate: res.isPrivate,
         defaultBranch: res.branch
       });
     } catch (err: any) {

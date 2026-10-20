@@ -215,11 +215,19 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             />
           )}
 
+          {activeTab === 'keys' && (
+            <AdminKeys bundles={bundles} />
+          )}
+
           {activeTab === 'media' && (
             <AdminMediaStorage
               settings={settings}
               onRefresh={onRefreshAll}
             />
+          )}
+
+          {activeTab === 'database' && (
+            <AdminDatabase />
           )}
 
           {activeTab === 'settings' && (

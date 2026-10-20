@@ -861,9 +861,14 @@ router.post('/admin/github/test-connection', requireAdminAuth, async (req: Reque
       branch: effectiveBranch
     });
 
-    res.json(result);
+    res.json({
+      ...result,
+      connected: result.success,
+      repo: effectiveRepo,
+      branch: effectiveBranch
+    });
   } catch (err: any) {
-    res.status(500).json({ success: false, message: 'Test connection failed: ' + err.message });
+    res.status(500).json({ success: false, connected: false, message: 'Test connection failed: ' + err.message });
   }
 });
 

@@ -44,7 +44,7 @@ export function checkAdminCredential(inputCode: string): boolean {
     return verifyPassword(inputCode, customHash);
   }
   // Check against env or default 1710
-  const expected = process.env.ADMIN_ACCESS_CODE || '1710';
+  const expected = process.env.ADMIN_PASSWORD || process.env.ADMIN_ACCESS_CODE || '1710';
   return inputCode.trim() === expected.trim();
 }
 

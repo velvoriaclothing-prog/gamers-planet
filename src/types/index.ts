@@ -93,6 +93,8 @@ export interface GitHubSyncStatus {
   repo?: string;
   branch?: string;
   connected?: boolean;
+  success?: boolean;
+  isPrivate?: boolean;
   message?: string;
 }
 
