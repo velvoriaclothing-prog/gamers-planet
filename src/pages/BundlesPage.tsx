@@ -17,6 +17,8 @@ import { BundleGrid } from '../components/BundleGrid.js';
 import { SaleTimerSection } from '../components/SaleTimerSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
+import { VideoShowcaseSection } from '../components/VideoShowcaseSection.js';
+
 interface BundlesPageProps {
   bundles: Bundle[];
   settings: SiteSettings;
@@ -50,7 +52,14 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         </p>
       </section>
 
-      {/* 2. Live Sale Timer Urgency Banner (No Duplicate Cards) */}
+      {/* 2. Official Gameplay Video Trailers & Vault Proof */}
+      <VideoShowcaseSection
+        bundles={bundles}
+        settings={settings}
+        onSelectBundle={onSelectBundle}
+      />
+
+      {/* 3. Live Sale Timer Urgency Banner (No Duplicate Cards) */}
       <SaleTimerSection
         bundles={bundles}
         settings={settings}
@@ -58,7 +67,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         showBundlesList={false}
       />
 
-      {/* 3. All Bundles Grid */}
+      {/* 4. All Bundles Grid */}
       <BundleGrid
         bundles={bundles}
         settings={settings}
@@ -67,7 +76,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         onOpenAdmin={onOpenAdmin}
       />
 
-      {/* 4. Comparison Table Matrix */}
+      {/* 5. Comparison Table Matrix (4 Official Vaults) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 bg-[#080c16]/95">
           <div className="text-center max-w-2xl mx-auto mb-8">
@@ -84,7 +93,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
               <thead>
                 <tr className="border-b border-white/10 text-slate-400">
                   <th className="py-3 px-4 font-bold uppercase tracking-wider font-gaming">Feature / Perk</th>
-                  <th className="py-3 px-3 text-center font-bold text-amber-300 font-gaming">Basic (₹399)</th>
                   <th className="py-3 px-3 text-center font-bold text-amber-400 font-gaming bg-amber-500/10 rounded-t-xl border-x border-t border-amber-500/30">Steam Unlock (₹449)</th>
                   <th className="py-3 px-3 text-center font-bold text-amber-300 font-gaming">Full Unlock (₹699)</th>
                   <th className="py-3 px-3 text-center font-bold text-amber-300 font-gaming">Mega (₹799)</th>
@@ -97,7 +105,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     <Layers className="w-4 h-4 text-amber-400 shrink-0" />
                     <span>Included Games Count</span>
                   </td>
-                  <td className="py-3.5 px-3 text-center font-bold">1,000 Games</td>
                   <td className="py-3.5 px-3 text-center font-bold text-amber-400 bg-amber-500/5 border-x border-amber-500/30">All 60,000+ Games</td>
                   <td className="py-3.5 px-3 text-center font-bold">1,000 Games</td>
                   <td className="py-3.5 px-3 text-center font-bold">27,000 Games</td>
@@ -108,7 +115,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     <Unlock className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span>Steam Unlock Feature</span>
                   </td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold bg-amber-500/5 border-x border-amber-500/30">✓ Full Unlock</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
@@ -119,7 +125,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
                     <span>Add to Personal Steam</span>
                   </td>
-                  <td className="py-3.5 px-3 text-center text-slate-500">-</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold bg-amber-500/5 border-x border-amber-500/30">✓ ANY Game</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
@@ -130,7 +135,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     <KeyRound className="w-4 h-4 text-purple-400 shrink-0" />
                     <span>ID & Password Vault Listings</span>
                   </td>
-                  <td className="py-3.5 px-3 text-center text-slate-500">-</td>
                   <td className="py-3.5 px-3 text-center text-slate-500 bg-amber-500/5 border-x border-amber-500/30">-</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Lifetime Access</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Lifetime Access</td>
@@ -141,7 +145,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
                     <span>VIP Channels & Sites Section</span>
                   </td>
-                  <td className="py-3.5 px-3 text-center text-slate-500">-</td>
                   <td className="py-3.5 px-3 text-center text-slate-500 bg-amber-500/5 border-x border-amber-500/30">-</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Full Channels</td>
                   <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Full Channels</td>
@@ -152,7 +155,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span>Support & Setup</span>
                   </td>
-                  <td className="py-3.5 px-3 text-center">Standard Support</td>
                   <td className="py-3.5 px-3 text-center text-amber-300 font-bold bg-amber-500/5 border-x border-b border-amber-500/30">1-on-1 Personal</td>
                   <td className="py-3.5 px-3 text-center">1-on-1 Personal</td>
                   <td className="py-3.5 px-3 text-center">Priority VIP</td>

@@ -23,8 +23,8 @@ const RECENT_ORDERS: RecentOrder[] = [
     id: 'ord-1b',
     customerName: 'Kunal D.',
     city: 'Bangalore',
-    item: 'Basic Gaming Bundle (1,000 Games)',
-    price: 399,
+    item: 'Full Unlock Bundle (1,000 Games)',
+    price: 699,
     timeAgo: '4m ago'
   },
   {
@@ -63,8 +63,8 @@ const RECENT_ORDERS: RecentOrder[] = [
     id: 'ord-5',
     customerName: 'Sneha K.',
     city: 'Kolkata',
-    item: 'Basic Gaming Bundle (Steam Unlock)',
-    price: 399,
+    item: 'Steam Unlock Bundle',
+    price: 449,
     timeAgo: '18m ago'
   },
   {

@@ -44,7 +44,10 @@ export const BundleQuickEditModal: React.FC = () => {
       gameCount: Number(gameCount) || 1,
       shortDescription: shortDescription.trim(),
       coverImage: coverImage.trim() || activeEditBundle.coverImage,
-      videoPreview: videoPreview.trim() || undefined
+      videoPreview: videoPreview.trim() || undefined,
+      videoPlaylist: videoPreview.includes('\n') || videoPreview.includes(',')
+        ? videoPreview.split(/[\n,;]+/).map((s) => s.trim()).filter(Boolean)
+        : activeEditBundle.videoPlaylist
     });
 
     closeBundleQuickEdit();

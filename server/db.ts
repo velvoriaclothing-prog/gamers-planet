@@ -57,6 +57,7 @@ export interface Bundle {
   fullDescription: string;
   coverImage: string;
   videoPreview?: string;
+  videoPlaylist?: string[]; // Sequential video URLs played one after another
   includedItems: string[];
   category?: string;
   badge?: string; // e.g., "BEST VALUE", "POPULAR", "ULTIMATE"
@@ -179,30 +180,6 @@ const DEFAULT_SETTINGS: SiteSettings = {
 
 const DEFAULT_BUNDLES: Bundle[] = [
   {
-    id: "bundle-basic-gaming",
-    title: "BASIC GAMING BUNDLE",
-    price: 399,
-    originalPrice: 1499,
-    gameCount: 1000,
-    shortDescription: "1,000 games with Steam Unlock feature, lifetime access, and complete personal support.",
-    fullDescription: "GAMERS PLANET BASIC GAMING BUNDLE\n• 1,000 games\n• Lifetime access\n• Steam Unlock Feature\n• Complete setup assistance\n• Personal customer support\n\nInstant digital access to 1,000 top PC games with lifetime validity. Includes Steam Unlock feature, complete step-by-step setup assistance, and personal customer support.",
-    coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
-    videoPreview: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    includedItems: [
-      "1,000 games",
-      "Lifetime access",
-      "Steam Unlock Feature",
-      "Complete setup assistance",
-      "Personal customer support"
-    ],
-    category: "Starter Vault",
-    badge: "FEATURED OFFER",
-    featured: true,
-    active: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  },
-  {
     id: "bundle-steam-unlock",
     title: "STEAM UNLOCK BUNDLE",
     price: 449,
@@ -211,7 +188,12 @@ const DEFAULT_BUNDLES: Bundle[] = [
     shortDescription: "Steam Unlock Feature with lifetime access, setup assistance, and personal customer support.",
     fullDescription: "GAMERS PLANET STEAM UNLOCK BUNDLE\n• Steam Unlock Feature\n• Lifetime access\n• Setup assistance\n• Personal customer support\n\nDedicated Steam Unlock package from GAMERS PLANET. Unlock premium Steam features and game libraries with lifetime validity, guided step-by-step setup assistance, and personal customer support.",
     coverImage: "https://images.unsplash.com/photo-1612287271452-f67f67be8eb0?q=80&w=1200&auto=format&fit=crop",
-    videoPreview: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    videoPreview: "/assets/aistudio/steam_unlock_part1.mp4",
+    videoPlaylist: [
+      "/assets/aistudio/steam_unlock_part1.mp4",
+      "/assets/aistudio/steam_unlock_part2.mp4",
+      "/assets/aistudio/steam_unlock_part3.mp4"
+    ],
     includedItems: [
       "Steam Unlock Feature",
       "Lifetime access",
@@ -234,7 +216,7 @@ const DEFAULT_BUNDLES: Bundle[] = [
     shortDescription: "1,000 games + Steam Unlock + VIP channels, Sites section & Game ID/Password listings access.",
     fullDescription: "GAMERS PLANET FULL UNLOCK BUNDLE\n• 1,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe comprehensive full unlock suite from GAMERS PLANET. Includes 1,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, website game ID and password listings, complete setup assistance, and personal customer support.",
     coverImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
-    videoPreview: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    videoPreview: "/assets/aistudio/1k_games_video_preview_43053013.mp4",
     includedItems: [
       "1,000 games",
       "Steam Unlock Feature",
@@ -261,7 +243,7 @@ const DEFAULT_BUNDLES: Bundle[] = [
     shortDescription: "27,000 games + Steam Unlock + VIP website channels & Game ID/Password section access.",
     fullDescription: "GAMERS PLANET MEGA GAMING BUNDLE\n• 27,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Setup assistance\n• Personal customer support\n\nMassive gaming vault featuring 27,000 games. Full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password listings access, setup assistance, and personal customer support.",
     coverImage: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop",
-    videoPreview: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    videoPreview: "/assets/aistudio/27000_GAMES_BUNDLE_VIDEO__26956cb5.mp4",
     includedItems: [
       "27,000 games",
       "Steam Unlock Feature",
@@ -288,7 +270,7 @@ const DEFAULT_BUNDLES: Bundle[] = [
     shortDescription: "Apex 60,000 games vault + Steam Unlock + VIP Channels + Game ID/Password Listings & White-Glove Support.",
     fullDescription: "GAMERS PLANET ULTIMATE GAMING BUNDLE\n• 60,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe apex collection from GAMERS PLANET. An immense library of 60,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password section with lifetime listing access, complete setup assistance, and dedicated personal customer support.",
     coverImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop",
-    videoPreview: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    videoPreview: "/assets/aistudio/60000_games_vip_bundle_01c8da79.mp4",
     includedItems: [
       "60,000 games",
       "Steam Unlock Feature",

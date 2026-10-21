@@ -19,6 +19,7 @@ import {
 import { Bundle, Review, SiteSettings } from '../types/index.js';
 import { Hero } from '../components/Hero.js';
 import { SaleTimerSection } from '../components/SaleTimerSection.js';
+import { VideoShowcaseSection } from '../components/VideoShowcaseSection.js';
 import { FeaturesSection } from '../components/FeaturesSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
@@ -200,7 +201,14 @@ export const HomePage: React.FC<HomePageProps> = ({
         showBundlesList={true}
       />
 
-      {/* 4. Trending Single Games Spotlight (GTA 5, Wukong, Cyberpunk, God of War) */}
+      {/* 4. Official Gameplay Video Trailers & Vault Proof */}
+      <VideoShowcaseSection
+        bundles={bundles}
+        settings={settings}
+        onSelectBundle={onSelectBundle}
+      />
+
+      {/* 5. Trending Single Games Spotlight (GTA 5, Wukong, Cyberpunk, God of War) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 pb-3 border-b border-white/10 gap-2">
           <div>

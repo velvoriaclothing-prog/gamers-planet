@@ -1,76 +1,20 @@
 {
   "settings": {
-    "siteTitle": "Gamers Planet - Premium Gaming • Lifetime Access • Personal Support",
+    "siteTitle": "Gamers Planet - Premium Gaming \u2022 Lifetime Access \u2022 Personal Support",
     "logoText": "GAMERS PLANET",
     "heroHeading": "LEGENDARY PC GAMING BUNDLES",
-    "heroSubtitle": "Premium Gaming • Lifetime Access • Personal Support. Instant access to massive game vaults, Steam Unlock features, and verified credentials.",
+    "heroSubtitle": "Premium Gaming \u2022 Lifetime Access \u2022 Personal Support. Instant access to massive game vaults, Steam Unlock features, and verified credentials.",
     "heroCtaText": "Browse Vault Bundles",
     "heroSecondaryText": "View Customer Proof",
     "instagramUrl": "https://instagram.com/gamersplanet20.26",
     "accentColor": "#f59e0b",
-    "footerText": "© 2026 Gamers Planet. Premium Gaming • Lifetime Access • Personal Support. All game titles, logos, and trademarks belong to their respective owners.",
+    "footerText": "\u00a9 2026 Gamers Planet. Premium Gaming \u2022 Lifetime Access \u2022 Personal Support. All game titles, logos, and trademarks belong to their respective owners.",
     "supportNote": "DM us on Instagram @gamersplanet20.26 for instant setup support and custom game requests.",
-    "announcementText": "🔥 FLASH SALE: Extra ₹150 OFF any Mega Bundle this weekend! Message on Instagram @gamersplanet20.26 to claim."
+    "announcementText": "\ud83d\udd25 FLASH SALE: Extra \u20b9150 OFF any Mega Bundle this weekend! Message on Instagram @gamersplanet20.26 to claim."
   },
   "bundles": [
     {
-      "badge": "FEATURED OFFER",
-      "createdAt": "2026-10-12T13:47:14.610Z",
-      "shortDescription": "1,000 games with Steam Unlock feature, lifetime access, and complete personal support.",
-      "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-      "updatedAt": "2026-10-12T13:47:14.611Z",
-      "gameCount": 1000,
-      "category": "Starter Vault",
-      "includedItems": [
-        "1,000 games",
-        "Lifetime access",
-        "Steam Unlock Feature",
-        "Complete setup assistance",
-        "Personal customer support"
-      ],
-      "active": true,
-      "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      "title": "BASIC GAMING BUNDLE",
-      "id": "bundle-basic-gaming",
-      "originalPrice": 1499,
-      "price": 399,
-      "featured": true,
-      "fullDescription": "GAMERS PLANET BASIC GAMING BUNDLE\n• 1,000 games\n• Lifetime access\n• Steam Unlock Feature\n• Complete setup assistance\n• Personal customer support\n\nInstant digital access to 1,000 top PC games with lifetime validity. Includes Steam Unlock feature, complete step-by-step setup assistance, and personal customer support.",
-      "popularTitlesPreview": [
-        {
-          "title": "Grand Theft Auto V",
-          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
-          "genre": "Open World Crime"
-        },
-        {
-          "title": "Cyberpunk 2077",
-          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
-          "genre": "Sci-Fi RPG"
-        },
-        {
-          "title": "Red Dead Redemption 2",
-          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
-          "genre": "Open World Western"
-        },
-        {
-          "title": "God of War",
-          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg",
-          "genre": "Action Adventure"
-        },
-        {
-          "title": "Forza Horizon 5",
-          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
-          "genre": "Racing"
-        },
-        {
-          "title": "The Witcher 3: Wild Hunt",
-          "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg",
-          "genre": "RPG"
-        }
-      ]
-    },
-    {
-      "fullDescription": "GAMERS PLANET STEAM UNLOCK BUNDLE\n• Steam Unlock Feature\n• Lifetime access\n• Setup assistance\n• Personal customer support\n\nDedicated Steam Unlock package from GAMERS PLANET. Unlock premium Steam features and game libraries with lifetime validity, guided step-by-step setup assistance, and personal customer support.",
+      "fullDescription": "GAMERS PLANET STEAM UNLOCK BUNDLE\n\u2022 Steam Unlock Feature\n\u2022 Lifetime access\n\u2022 Setup assistance\n\u2022 Personal customer support\n\nDedicated Steam Unlock package from GAMERS PLANET. Unlock premium Steam features and game libraries with lifetime validity, guided step-by-step setup assistance, and personal customer support.",
       "shortDescription": "Steam Unlock Feature with lifetime access, setup assistance, and personal customer support.",
       "originalPrice": 1999,
       "category": "Steam Unlock",
@@ -78,7 +22,7 @@
       "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
       "badge": "STEAM UNLOCK",
       "featured": false,
-      "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "videoPreview": "/assets/aistudio/steam_unlock_part1.mp4",
       "includedItems": [
         "Steam Unlock Feature",
         "Lifetime access",
@@ -132,6 +76,11 @@
           "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg",
           "genre": "Stealth Action"
         }
+      ],
+      "videoPlaylist": [
+        "/assets/aistudio/steam_unlock_part1.mp4",
+        "/assets/aistudio/steam_unlock_part2.mp4",
+        "/assets/aistudio/steam_unlock_part3.mp4"
       ]
     },
     {
@@ -140,7 +89,7 @@
       "gameCount": 1000,
       "badge": "MOST POPULAR",
       "createdAt": "2026-10-12T13:47:14.611Z",
-      "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "videoPreview": "/assets/aistudio/1k_games_video_preview_43053013.mp4",
       "id": "bundle-full-unlock",
       "shortDescription": "1,000 games + Steam Unlock + VIP channels, Sites section & Game ID/Password listings access.",
       "includedItems": [
@@ -148,7 +97,7 @@
         "Steam Unlock Feature",
         "Lifetime access",
         "Access to website channels and the Sites section",
-        "Access to the website’s game ID and password section",
+        "Access to the website\u2019s game ID and password section",
         "Lifetime access to the available ID and password listings",
         "Complete setup assistance",
         "Personal customer support"
@@ -156,7 +105,7 @@
       "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
       "category": "Full Unlock",
       "title": "FULL UNLOCK BUNDLE",
-      "fullDescription": "GAMERS PLANET FULL UNLOCK BUNDLE\n• 1,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe comprehensive full unlock suite from GAMERS PLANET. Includes 1,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, website game ID and password listings, complete setup assistance, and personal customer support.",
+      "fullDescription": "GAMERS PLANET FULL UNLOCK BUNDLE\n\u2022 1,000 games\n\u2022 Steam Unlock Feature\n\u2022 Lifetime access\n\u2022 Access to website channels and the Sites section\n\u2022 Access to the website\u2019s game ID and password section\n\u2022 Lifetime access to the available ID and password listings\n\u2022 Complete setup assistance\n\u2022 Personal customer support\n\nThe comprehensive full unlock suite from GAMERS PLANET. Includes 1,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, website game ID and password listings, complete setup assistance, and personal customer support.",
       "originalPrice": 2999,
       "price": 699,
       "active": true,
@@ -167,7 +116,7 @@
           "genre": "Action RPG"
         },
         {
-          "title": "God of War Ragnarök",
+          "title": "God of War Ragnar\u00f6k",
           "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
           "genre": "Action Myth"
         },
@@ -191,12 +140,15 @@
           "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg",
           "genre": "Fighting"
         }
+      ],
+      "videoPlaylist": [
+        "/assets/aistudio/1k_games_video_preview_43053013.mp4"
       ]
     },
     {
       "active": true,
       "featured": true,
-      "fullDescription": "GAMERS PLANET MEGA GAMING BUNDLE\n• 27,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Setup assistance\n• Personal customer support\n\nMassive gaming vault featuring 27,000 games. Full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password listings access, setup assistance, and personal customer support.",
+      "fullDescription": "GAMERS PLANET MEGA GAMING BUNDLE\n\u2022 27,000 games\n\u2022 Steam Unlock Feature\n\u2022 Lifetime access\n\u2022 Access to website channels and the Sites section\n\u2022 Access to the website\u2019s game ID and password section\n\u2022 Lifetime access to the available ID and password listings\n\u2022 Setup assistance\n\u2022 Personal customer support\n\nMassive gaming vault featuring 27,000 games. Full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password listings access, setup assistance, and personal customer support.",
       "createdAt": "2026-10-12T13:47:14.611Z",
       "id": "bundle-mega-gaming",
       "gameCount": 27000,
@@ -207,7 +159,7 @@
         "Steam Unlock Feature",
         "Lifetime access",
         "Access to website channels and the Sites section",
-        "Access to the website’s game ID and password section",
+        "Access to the website\u2019s game ID and password section",
         "Lifetime access to the available ID and password listings",
         "Setup assistance",
         "Personal customer support"
@@ -215,7 +167,7 @@
       "category": "Mega Vault",
       "price": 799,
       "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
-      "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "videoPreview": "/assets/aistudio/27000_GAMES_BUNDLE_VIDEO__26956cb5.mp4",
       "shortDescription": "27,000 games + Steam Unlock + VIP website channels & Game ID/Password section access.",
       "originalPrice": 3999,
       "title": "MEGA GAMING BUNDLE",
@@ -250,6 +202,9 @@
           "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1259420/header.jpg",
           "genre": "Open World Action"
         }
+      ],
+      "videoPlaylist": [
+        "/assets/aistudio/27000_GAMES_BUNDLE_VIDEO__26956cb5.mp4"
       ]
     },
     {
@@ -257,15 +212,15 @@
       "title": "ULTIMATE GAMING BUNDLE",
       "active": true,
       "shortDescription": "Apex 60,000 games vault + Steam Unlock + VIP Channels + Game ID/Password Listings & White-Glove Support.",
-      "videoPreview": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-      "fullDescription": "GAMERS PLANET ULTIMATE GAMING BUNDLE\n• 60,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe apex collection from GAMERS PLANET. An immense library of 60,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password section with lifetime listing access, complete setup assistance, and dedicated personal customer support.",
+      "videoPreview": "/assets/aistudio/60k_vip_part1.mp4",
+      "fullDescription": "GAMERS PLANET ULTIMATE GAMING BUNDLE\n\u2022 60,000 games\n\u2022 Steam Unlock Feature\n\u2022 Lifetime access\n\u2022 Access to website channels and the Sites section\n\u2022 Access to the website\u2019s game ID and password section\n\u2022 Lifetime access to the available ID and password listings\n\u2022 Complete setup assistance\n\u2022 Personal customer support\n\nThe apex collection from GAMERS PLANET. An immense library of 60,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password section with lifetime listing access, complete setup assistance, and dedicated personal customer support.",
       "price": 999,
       "includedItems": [
         "60,000 games",
         "Steam Unlock Feature",
         "Lifetime access",
         "Access to website channels and the Sites section",
-        "Access to the website’s game ID and password section",
+        "Access to the website\u2019s game ID and password section",
         "Lifetime access to the available ID and password listings",
         "Complete setup assistance",
         "Personal customer support"
@@ -300,7 +255,7 @@
           "genre": "Action RPG"
         },
         {
-          "title": "God of War Ragnarök",
+          "title": "God of War Ragnar\u00f6k",
           "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
           "genre": "Myth Action"
         },
@@ -309,6 +264,10 @@
           "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
           "genre": "Open World Western"
         }
+      ],
+      "videoPlaylist": [
+        "/assets/aistudio/60k_vip_part1.mp4",
+        "/assets/aistudio/60k_vip_part2.mp4"
       ]
     }
   ],
@@ -320,7 +279,7 @@
       "reviewerName": "Rohan Sharma",
       "order": 1,
       "createdAt": "2026-10-10T14:20:00.000Z",
-      "note": "Paid ₹499 via GPay, shared the screenshot on Instagram DM, and received full vault access in just 3 minutes. Downloaded Cyberpunk 2077 and Horizon Forbidden West on my RTX 3060 PC at 150 Mbps on JioFiber. 100% genuine seller in India!",
+      "note": "Paid \u20b9499 via GPay, shared the screenshot on Instagram DM, and received full vault access in just 3 minutes. Downloaded Cyberpunk 2077 and Horizon Forbidden West on my RTX 3060 PC at 150 Mbps on JioFiber. 100% genuine seller in India!",
       "location": "New Delhi",
       "id": "rev-in-1",
       "customerHandle": "@rohan_delhi_fps",
@@ -349,13 +308,13 @@
       "id": "rev-in-11",
       "customerHandle": "@harsh_patna_gamer",
       "hidden": false,
-      "note": "Paid ₹499 during flash sale. Setup guide in simple Hindi and English. Even my younger brother was able to set up Cyberpunk easily.",
+      "note": "Paid \u20b9499 during flash sale. Setup guide in simple Hindi and English. Even my younger brother was able to set up Cyberpunk easily.",
       "location": "Patna, Bihar"
     },
     {
       "customerHandle": "@ritik_indore_pc",
       "createdAt": "2026-10-06T19:25:00.000Z",
-      "note": "Got the 10-hour flash sale price of ₹499. Instant delivery on Instagram DM. Already shared the store link in our college WhatsApp group.",
+      "note": "Got the 10-hour flash sale price of \u20b9499. Instant delivery on Instagram DM. Already shared the store link in our college WhatsApp group.",
       "hidden": false,
       "order": 12,
       "reviewerName": "Ritik Chawla",
@@ -380,7 +339,7 @@
     },
     {
       "gameTitle": "Open World Legends & Story Pack",
-      "title": "15 story games for ₹399 is unbeatable",
+      "title": "15 story games for \u20b9399 is unbeatable",
       "location": "Bhopal, Madhya Pradesh",
       "hidden": false,
       "reviewerName": "Ankit Mishra",
@@ -447,7 +406,7 @@
       "reviewerName": "Tanmay Sen",
       "hidden": false,
       "createdAt": "2026-10-04T14:30:00.000Z",
-      "note": "As a college student, spending ₹3,000 for each game is impossible. Gamers Planet gave me 15 premium titles for ₹399. Respect to the team!",
+      "note": "As a college student, spending \u20b93,000 for each game is impossible. Gamers Planet gave me 15 premium titles for \u20b9399. Respect to the team!",
       "order": 19,
       "rating": 5,
       "title": "Unmatched library for gamers on a budget",
@@ -459,7 +418,7 @@
     {
       "reviewerName": "Aarav Patel",
       "gameTitle": "Elden Mythic & Soulslike Masterpack",
-      "note": "Was skeptical initially because Steam charges ₹3,000+ per title. Decided to test with ₹699 UPI. Best decision ever! Shadow of the Erdtree and Black Myth: Wukong both installed cleanly with offline saves enabled.",
+      "note": "Was skeptical initially because Steam charges \u20b93,000+ per title. Decided to test with \u20b9699 UPI. Best decision ever! Shadow of the Erdtree and Black Myth: Wukong both installed cleanly with offline saves enabled.",
       "title": "Elden Ring + Shadow of Erdtree running flawlessly",
       "customerHandle": "@aarav_amd_rig",
       "rating": 5,
@@ -531,7 +490,7 @@
       "reviewerName": "Pranav Kulkarni",
       "id": "rev-in-24",
       "customerHandle": "@pranav_nashik_pc",
-      "note": "Ray tracing and photo mode working without any crashes. Best ₹399 I have ever spent on PC gaming.",
+      "note": "Ray tracing and photo mode working without any crashes. Best \u20b9399 I have ever spent on PC gaming.",
       "hidden": false
     },
     {
@@ -544,7 +503,7 @@
       "reviewerName": "Ritu Agarwal",
       "id": "rev-in-25",
       "customerHandle": "@ritu_kanpur_gamer",
-      "note": "Super simple process. Message them on Instagram, choose bundle, pay through UPI, and boom — link arrives instantly.",
+      "note": "Super simple process. Message them on Instagram, choose bundle, pay through UPI, and boom \u2014 link arrives instantly.",
       "hidden": false
     },
     {
@@ -749,8 +708,8 @@
       "id": "rev-in-4",
       "hidden": false,
       "customerHandle": "@aditya_kochi_gamer",
-      "title": "12 AAA games for ₹499 is unreal value",
-      "note": "Checked all hash files and ran Windows Defender scan — zero trojans, completely clean release. Starfield and Dead Space Remake run at solid 60+ FPS without stuttering.",
+      "title": "12 AAA games for \u20b9499 is unreal value",
+      "note": "Checked all hash files and ran Windows Defender scan \u2014 zero trojans, completely clean release. Starfield and Dead Space Remake run at solid 60+ FPS without stuttering.",
       "reviewerName": "Aditya Nair",
       "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
       "location": "Kochi, Kerala"
@@ -765,7 +724,7 @@
       "title": "System Shock Remake + Dead Space Remake",
       "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
       "customerHandle": "@arvind_tvm_pc",
-      "note": "Sci-Fi fans don't look anywhere else. This vault is pure gold for ₹499.",
+      "note": "Sci-Fi fans don't look anywhere else. This vault is pure gold for \u20b9499.",
       "id": "rev-in-40"
     },
     {
@@ -818,7 +777,7 @@
       "createdAt": "2026-09-26T09:50:00.000Z",
       "customerHandle": "@shubham_kolhapur",
       "reviewerName": "Shubham Patil",
-      "note": "Nemesis system works properly with all expansions. Paid ₹399 via PhonePe UPI seamlessly."
+      "note": "Nemesis system works properly with all expansions. Paid \u20b9399 via PhonePe UPI seamlessly."
     },
     {
       "rating": 5,
@@ -852,7 +811,7 @@
       "gameTitle": "Open World Legends & Story Pack",
       "location": "Jammu, J&K",
       "hidden": false,
-      "title": "Assassin's Creed Valhalla Ragnarök Pack",
+      "title": "Assassin's Creed Valhalla Ragnar\u00f6k Pack",
       "id": "rev-in-47",
       "customerHandle": "@vivek_jammu_pc",
       "note": "Huge 100GB game downloaded with zero corrupt parts. Very thankful to Gamers Planet.",
@@ -887,7 +846,7 @@
     },
     {
       "hidden": false,
-      "note": "Paid ₹699 via PhonePe. Admin sent verified credentials and video guide immediately. All DLC bonus armors and soundtracks unlocked. Truly the most reliable gaming shop in India.",
+      "note": "Paid \u20b9699 via PhonePe. Admin sent verified credentials and video guide immediately. All DLC bonus armors and soundtracks unlocked. Truly the most reliable gaming shop in India.",
       "order": 5,
       "createdAt": "2026-10-09T09:12:00.000Z",
       "location": "Jaipur, Rajasthan",
@@ -1033,7 +992,7 @@
       "order": 6,
       "gameTitle": "Open World Legends & Story Pack",
       "id": "rev-in-6",
-      "title": "Saved over ₹10,000 compared to individual Steam purchases",
+      "title": "Saved over \u20b910,000 compared to individual Steam purchases",
       "note": "Red Dead Redemption 2 and GTA V downloaded at full 200 Mbps speed on Airtel Xstream. Verified UPI transaction, instant reply on Instagram. Recommended to my entire college squad.",
       "rating": 5,
       "customerHandle": "@aman_lucknow_pc",

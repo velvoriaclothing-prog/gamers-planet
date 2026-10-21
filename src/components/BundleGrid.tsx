@@ -180,17 +180,31 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                   )}
 
                   {/* Video preview indicator */}
-                  {bundle.videoPreview && (
+                  {(bundle.videoPreview || (bundle.videoPlaylist && bundle.videoPlaylist.length > 0)) && (
                     <div
-                      className="absolute top-2 right-2 p-1 rounded-md bg-black/80 hover:bg-black/95 backdrop-blur-md text-amber-400 border border-white/20 transition-transform group-hover:scale-105 flex items-center gap-1 text-[9px] font-bold px-2 shadow-sm z-10"
+                      className="absolute top-2 right-2 p-1 rounded-md bg-black/80 hover:bg-black/95 backdrop-blur-md text-amber-400 border border-amber-500/30 transition-transform group-hover:scale-105 flex items-center gap-1 text-[9px] font-bold px-2 shadow-sm z-10"
                     >
                       <Play className="w-2.5 h-2.5 fill-amber-400" />
-                      <span>Trailer</span>
+                      <span>
+                        {bundle.videoPlaylist && bundle.videoPlaylist.length > 1
+                          ? `${bundle.videoPlaylist.length}-Part Trailer`
+                          : 'Gameplay Video'}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Watch Video Hover Play Overlay */}
+                  {(bundle.videoPreview || (bundle.videoPlaylist && bundle.videoPlaylist.length > 0)) && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[1px] z-10">
+                      <div className="px-3 py-1.5 rounded-full bg-amber-500 text-black text-xs font-black font-gaming flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.6)] transform scale-90 group-hover:scale-100 transition-transform">
+                        <Play className="w-3.5 h-3.5 fill-black" />
+                        <span>WATCH TRAILER</span>
+                      </div>
                     </div>
                   )}
 
                   {/* Game Count overlay */}
-                  <div className="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/10 text-[10px] text-slate-200">
+                  <div className="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/10 text-[10px] text-slate-200 z-10">
                     <Gamepad2 className="w-3 h-3 text-amber-400" />
                     <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
                   </div>
@@ -297,8 +311,17 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                         onClick={() => onSelectBundle(bundle)}
                         className="w-full py-1.5 px-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition-all cursor-pointer"
                       >
-                        <Eye className="w-3 h-3 text-slate-300" />
-                        <span>Details</span>
+                        {bundle.videoPreview ? (
+                          <>
+                            <Play className="w-3 h-3 text-amber-400 fill-amber-400" />
+                            <span>Watch Video</span>
+                          </>
+                        ) : (
+                          <>
+                            <Eye className="w-3 h-3 text-slate-300" />
+                            <span>Details</span>
+                          </>
+                        )}
                       </button>
 
                       {(() => {

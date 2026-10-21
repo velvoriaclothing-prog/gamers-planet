@@ -33,8 +33,8 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ settings }) => {
       a: 'If you only want specific titles instead of a full vault, you can add 1 game (₹120), 2 games (₹199), 3 games (₹249), or 5 games (₹349) directly to your personal Steam account, keeping your personal username, trophies, and profile. Or get ready-to-play pre-activated Steam credentials for just ₹80.'
     },
     {
-      q: 'What is included in the ₹399 Basic Gaming Bundle featured offer?',
-      a: 'The ₹399 Basic Gaming Bundle gives you instant digital access to 1,000 games, the Steam Unlock Feature, lifetime validity, complete step-by-step setup assistance, and personal 1-on-1 customer support.'
+      q: 'What is included in the Steam Unlock and Full Unlock Bundles?',
+      a: 'The Steam Unlock Bundle gives you full Steam Unlock features with lifetime validity and personal support. The Full Unlock Bundle includes 1,000 games, Steam Unlock, website VIP channels and Sites section access, plus lifetime game ID and password listings.'
     },
     {
       q: 'Can I request specific games that are not in the existing bundles?',

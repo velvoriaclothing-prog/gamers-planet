@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 
@@ -33,11 +33,56 @@ export const BundleModal: React.FC<BundleModalProps> = ({
     }
   }, [bundle?.id]);
 
-  // Video source: ALWAYS show video, never cover art
-  const videoUrl = bundle?.videoPreview?.trim() || DEFAULT_PREVIEW_VIDEO;
-  const ytEmbed = getYouTubeEmbed(videoUrl);
+  // Sequential Video Playlist extraction
+  const getPlaylist = (): string[] => {
+    if (Array.isArray(bundle?.videoPlaylist) && bundle.videoPlaylist.length > 0) {
+      const list = bundle.videoPlaylist
+        .map((u) => (typeof u === 'string' ? u.trim() : ''))
+        .filter(Boolean);
+      if (list.length > 0) return list;
+    }
+    if (bundle?.videoPreview && bundle.videoPreview.trim().length > 0) {
+      const parts = bundle.videoPreview
+        .split(/[\n,;]+/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+      if (parts.length > 0) return parts;
+    }
+    return [DEFAULT_PREVIEW_VIDEO];
+  };
 
-  // Auto-play video whenever bundle opens or changes
+  const playlist = getPlaylist();
+  const [currentPartIndex, setCurrentPartIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentPartIndex(0);
+  }, [bundle?.id]);
+
+  const currentVideoUrl = playlist[currentPartIndex] || playlist[0];
+  const ytEmbed = getYouTubeEmbed(currentVideoUrl);
+
+  const handleVideoEnded = () => {
+    if (playlist.length > 1) {
+      setCurrentPartIndex((prev) => (prev + 1) % playlist.length);
+    } else if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleNextPart = () => {
+    if (playlist.length > 1) {
+      setCurrentPartIndex((prev) => (prev + 1) % playlist.length);
+    }
+  };
+
+  const handlePrevPart = () => {
+    if (playlist.length > 1) {
+      setCurrentPartIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
+    }
+  };
+
+  // Auto-play video whenever bundle opens or part changes
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
@@ -49,7 +94,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
         }
       });
     }
-  }, [bundle?.id, videoUrl]);
+  }, [bundle?.id, currentVideoUrl, currentPartIndex]);
 
   // Handle Escape key to close modal
   useEffect(() => {
@@ -105,11 +150,14 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             ) : (
               <video
                 ref={videoRef}
-                key={videoUrl}
-                src={videoUrl}
+                key={`${bundle.id}-${currentPartIndex}-${currentVideoUrl}`}
+                src={currentVideoUrl}
+                poster={bundle.coverImage}
                 controls
                 autoPlay
                 playsInline
+                preload="auto"
+                onEnded={handleVideoEnded}
                 className="w-full h-full max-h-[55vh] object-contain bg-black"
               >
                 Your browser does not support the video tag.
@@ -117,10 +165,63 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             )}
 
             {/* Video Indicator Pill */}
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold font-gaming shadow-lg">
-              <Video className="w-3.5 h-3.5 text-amber-400" />
-              <span>GAMEPLAY TRAILER</span>
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold font-gaming shadow-lg">
+                <Video className="w-3.5 h-3.5 text-amber-400" />
+                <span>GAMEPLAY TRAILER</span>
+              </div>
+              {playlist.length > 1 && (
+                <div className="px-2.5 py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[11px] font-bold font-gaming flex items-center gap-1 shadow-lg">
+                  <Zap className="w-3 h-3 fill-amber-400" />
+                  <span>PART {currentPartIndex + 1}/{playlist.length}</span>
+                </div>
+              )}
             </div>
+
+            {/* Sequential Part Tabs Bar (if multiple parts) */}
+            {playlist.length > 1 && (
+              <div className="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between p-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/15">
+                <div className="flex items-center gap-1.5 text-[11px] text-amber-300 font-bold font-gaming hidden sm:flex">
+                  <Zap className="w-3.5 h-3.5 fill-amber-400" />
+                  <span>Sequential Sequence Active:</span>
+                </div>
+
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={handlePrevPart}
+                    className="p-1 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                    title="Previous Part"
+                  >
+                    <SkipBack className="w-3.5 h-3.5" />
+                  </button>
+
+                  {playlist.map((_, pIdx) => (
+                    <button
+                      key={pIdx}
+                      type="button"
+                      onClick={() => setCurrentPartIndex(pIdx)}
+                      className={`px-2.5 py-0.5 rounded-lg text-[11px] font-bold font-gaming transition-all cursor-pointer ${
+                        currentPartIndex === pIdx
+                          ? 'bg-amber-500 text-black shadow-[0_0_10px_rgba(245,158,11,0.5)] font-black'
+                          : 'bg-white/10 text-slate-300 hover:text-white'
+                      }`}
+                    >
+                      Part {pIdx + 1}
+                    </button>
+                  ))}
+
+                  <button
+                    type="button"
+                    onClick={handleNextPart}
+                    className="p-1 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                    title="Next Part"
+                  >
+                    <SkipForward className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Modal Details Body */}

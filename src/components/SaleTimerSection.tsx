@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Flame, Zap, Sparkles, Gamepad2, ArrowRight, Eye, CheckCircle2, ShieldCheck, Tag, Edit3 } from 'lucide-react';
+import { Clock, Flame, Zap, Sparkles, Gamepad2, ArrowRight, Eye, CheckCircle2, ShieldCheck, Tag, Edit3, Play } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLiveEdit } from './live-edit/LiveEditContext.js';
@@ -219,8 +219,26 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                         </div>
                       )}
 
+                      {/* Video indicator */}
+                      {bundle.videoPreview && (
+                        <div className="absolute top-2 left-20 p-1 rounded-md bg-black/80 text-amber-400 border border-amber-500/30 flex items-center gap-1 text-[8.5px] font-bold px-1.5 shadow-sm z-10">
+                          <Play className="w-2.5 h-2.5 fill-amber-400" />
+                          <span>Video</span>
+                        </div>
+                      )}
+
+                      {/* Watch Video Hover Play Overlay */}
+                      {bundle.videoPreview && (
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[1px] z-10">
+                          <div className="px-2.5 py-1 rounded-full bg-amber-500 text-black text-[11px] font-black font-gaming flex items-center gap-1 shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+                            <Play className="w-3 h-3 fill-black" />
+                            <span>WATCH VIDEO</span>
+                          </div>
+                        </div>
+                      )}
+
                       {/* Game count tag */}
-                      <div className="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/10 text-[10px] text-slate-200">
+                      <div className="absolute bottom-1.5 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/10 text-[10px] text-slate-200 z-10">
                         <Gamepad2 className="w-3 h-3 text-amber-400" />
                         <span>{bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
                       </div>
@@ -305,8 +323,17 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                             onClick={() => onSelectBundle(bundle)}
                             className="py-1.5 px-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-semibold text-[11px] flex items-center justify-center gap-1 transition-colors cursor-pointer"
                           >
-                            <Eye className="w-3 h-3 text-slate-400" />
-                            <span>Details</span>
+                            {bundle.videoPreview || (bundle.videoPlaylist && bundle.videoPlaylist.length > 0) ? (
+                              <>
+                                <Play className="w-3 h-3 text-amber-400 fill-amber-400" />
+                                <span>Watch Video</span>
+                              </>
+                            ) : (
+                              <>
+                                <Eye className="w-3 h-3 text-slate-400" />
+                                <span>Details</span>
+                              </>
+                            )}
                           </button>
 
                           {(() => {

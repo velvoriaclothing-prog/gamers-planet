@@ -8,6 +8,7 @@ export interface Bundle {
   fullDescription: string;
   coverImage: string;
   videoPreview?: string;
+  videoPlaylist?: string[]; // Multiple video parts played in sequence (Part 1 -> Part 2 -> Part 3...)
   includedItems: string[];
   category?: string;
   badge?: string;

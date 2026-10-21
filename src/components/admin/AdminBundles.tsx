@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Edit2, Trash2, Upload, Video, Image as ImageIcon, Eye, Check, X, AlertTriangle, Loader2 } from 'lucide-react';
+import { Plus, Edit2, Trash2, Upload, Video, Image as ImageIcon, Eye, Check, X, AlertTriangle, Loader2, Layers, Film, Play, Sparkles } from 'lucide-react';
 import { Bundle, SiteSettings } from '../../types/index.js';
 import { api } from '../../utils/api.js';
 import { MediaUploadInput } from './MediaUploadInput.js';
@@ -66,6 +66,53 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
     }
   };
 
+  const getPlaylistParts = (): string[] => {
+    if (Array.isArray(editingBundle?.videoPlaylist) && editingBundle.videoPlaylist.length > 0) {
+      return editingBundle.videoPlaylist;
+    }
+    if (editingBundle?.videoPreview) {
+      const parts = editingBundle.videoPreview.split(/[\n,;]+/).map((s) => s.trim()).filter(Boolean);
+      return parts.length > 0 ? parts : [editingBundle.videoPreview];
+    }
+    return [''];
+  };
+
+  const handleUpdatePartUrl = (index: number, url: string) => {
+    const parts = [...getPlaylistParts()];
+    parts[index] = url;
+    setEditingBundle((prev) =>
+      prev
+        ? {
+            ...prev,
+            videoPlaylist: parts,
+            videoPreview: parts[0] || '',
+          }
+        : null
+    );
+  };
+
+  const handleAddPart = () => {
+    const parts = [...getPlaylistParts()];
+    if (parts.length < 4) {
+      parts.push('');
+      setEditingBundle((prev) => (prev ? { ...prev, videoPlaylist: parts } : null));
+    }
+  };
+
+  const handleRemovePart = (index: number) => {
+    const parts = getPlaylistParts().filter((_, i) => i !== index);
+    const newParts = parts.length > 0 ? parts : [''];
+    setEditingBundle((prev) =>
+      prev
+        ? {
+            ...prev,
+            videoPlaylist: newParts,
+            videoPreview: newParts[0] || '',
+          }
+        : null
+    );
+  };
+
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingBundle || !editingBundle.title || editingBundle.price === undefined) {
@@ -73,15 +120,22 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
       return;
     }
 
+    const playlistParts = getPlaylistParts().map((u) => u.trim()).filter(Boolean);
+    const bundleToSave = {
+      ...editingBundle,
+      videoPlaylist: playlistParts.length > 0 ? playlistParts : undefined,
+      videoPreview: playlistParts[0] || editingBundle.videoPreview || '',
+    };
+
     setSaving(true);
     setStatusMessage(null);
 
     try {
       if (isNew) {
-        await api.createBundle(editingBundle);
+        await api.createBundle(bundleToSave);
         setStatusMessage({ type: 'success', text: 'New bundle created and published to vault!' });
       } else if (editingBundle.id) {
-        await api.updateBundle(editingBundle.id, editingBundle);
+        await api.updateBundle(editingBundle.id, bundleToSave);
         setStatusMessage({ type: 'success', text: 'Bundle updated successfully!' });
       }
       setEditingBundle(null);
@@ -368,8 +422,8 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
                 </span>
               </div>
 
-              {/* Media Uploads: Cover Image & Video Preview */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+              {/* Cover Image Upload */}
+              <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
                 <MediaUploadInput
                   label="Bundle Cover Image"
                   accept="image/*"
@@ -380,16 +434,79 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
                   helpText="Image automatically saves to vault storage & commits to GitHub permanently."
                   required
                 />
+              </div>
 
-                <MediaUploadInput
-                  label="Gameplay Video Preview / Trailer"
-                  accept="video/*"
-                  value={editingBundle.videoPreview || ''}
-                  onChange={(url) => setEditingBundle({ ...editingBundle, videoPreview: url })}
-                  category="bundles"
-                  placeholder="Upload MP4/WebM video or enter URL..."
-                  helpText="Video previews loop in bundle modals and card hover previews. Stored permanently in GitHub."
-                />
+              {/* Sequential Multi-Part Video Playlist (2 to 4 parts) */}
+              <div className="p-4 rounded-2xl bg-white/[0.03] border border-amber-500/20 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Film className="w-4 h-4 text-amber-400" />
+                      <h5 className="text-sm font-bold text-white font-gaming">
+                        Sequential Video Playlist (1 to 4 Parts)
+                      </h5>
+                      <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">
+                        Continuous Auto-Play ⚡
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-1">
+                      Videos play seamlessly one after another. When Part 1 finishes, Part 2 starts automatically! Splitting long videos into 2–3 parts keeps file sizes small (&lt;100MB) for instant buffering and safe GitHub commits.
+                    </p>
+                  </div>
+
+                  {getPlaylistParts().length < 4 && (
+                    <button
+                      type="button"
+                      onClick={handleAddPart}
+                      className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-400 text-xs font-bold flex items-center gap-1.5 cursor-pointer shrink-0 transition-colors"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>Add Part {getPlaylistParts().length + 1}</span>
+                    </button>
+                  )}
+                </div>
+
+                {/* List of Video Part Inputs */}
+                <div className="space-y-3">
+                  {getPlaylistParts().map((partUrl, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-xl bg-black/40 border border-white/10 relative flex flex-col gap-2"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="w-5 h-5 rounded-full bg-amber-500 text-black text-[11px] font-black flex items-center justify-center font-gaming">
+                            {idx + 1}
+                          </span>
+                          <span className="text-xs font-bold text-white">
+                            {idx === 0 ? 'Part 1 (Primary Trailer / Auto-Starts)' : `Part ${idx + 1} (Plays after Part ${idx})`}
+                          </span>
+                        </div>
+
+                        {getPlaylistParts().length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => handleRemovePart(idx)}
+                            className="p-1 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 cursor-pointer transition-colors"
+                            title="Remove this video part"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
+
+                      <MediaUploadInput
+                        label=""
+                        accept="video/*"
+                        value={partUrl}
+                        onChange={(url) => handleUpdatePartUrl(idx, url)}
+                        category="bundles"
+                        placeholder={`Upload or enter URL for Video Part ${idx + 1}...`}
+                        helpText={idx === 0 ? "First part starts immediately when selected." : `Automatically plays continuously after Part ${idx} completes.`}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Status Toggle */}
