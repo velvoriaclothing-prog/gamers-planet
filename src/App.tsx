@@ -27,8 +27,6 @@ import { useRealtimeSync } from './hooks/useRealtimeSync.js';
 
 import { HomePage } from './pages/HomePage.js';
 import { BundlesPage } from './pages/BundlesPage.js';
-import { SingleGamesPage } from './pages/SingleGamesPage.js';
-import { CatalogPage } from './pages/CatalogPage.js';
 import { ChannelsPage } from './pages/ChannelsPage.js';
 import { ReviewsPage } from './pages/ReviewsPage.js';
 import { FaqPage } from './pages/FaqPage.js';
@@ -123,30 +121,9 @@ const Storefront: React.FC<StorefrontProps> = ({
             }
           />
 
-          {/* 3. Single Games Page */}
-          <Route
-            path="/single-games"
-            element={
-              <SingleGamesPage
-                settings={effectiveSettings}
-                featuredBundle={featuredBundle}
-                onSelectBundle={onSelectBundle}
-              />
-            }
-          />
-
-          {/* 4. Search 60K+ Catalog Page */}
-          <Route
-            path="/catalog"
-            element={
-              <CatalogPage
-                settings={effectiveSettings}
-                featuredBundle={featuredBundle}
-                steamUnlockBundle={steamUnlockBundle}
-                onSelectBundle={onSelectBundle}
-              />
-            }
-          />
+          {/* 3. Redirects for Single Games & Search Catalog to Bundles Vault */}
+          <Route path="/single-games" element={<Navigate to="/bundles" replace />} />
+          <Route path="/catalog" element={<Navigate to="/bundles" replace />} />
 
           {/* 5. VIP Channels & Sites Page */}
           <Route

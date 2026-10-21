@@ -74,31 +74,30 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
           />
         </div>
 
-        {/* Call to Actions (Direct Multi-Page Routing) */}
+        {/* Call to Actions (Direct Focused Routing) */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
           <Link
             to="/bundles"
-            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-black font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-black font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide"
           >
             <Zap className="w-4 h-4 fill-black text-black" />
             <span>Browse Vault Bundles</span>
             <ArrowRight className="w-4 h-4 text-black" />
           </Link>
 
-          <Link
-            to="/single-games"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0d1220]/90 border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+          <a
+            href="/bundles#gameplay-videos"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Gamepad2 className="w-4 h-4 text-emerald-400" />
-            <span>Single Games (From ₹80)</span>
-          </Link>
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span>Watch Live Trailers</span>
+          </a>
 
           <Link
-            to="/catalog"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0d1220]/90 border border-white/10 hover:border-sky-500/40 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+            to="/channels"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-sky-400" />
-            <span>Search 60,000+ Games</span>
+            <span>VIP Channels & Sites</span>
           </Link>
         </div>
 

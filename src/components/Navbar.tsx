@@ -141,15 +141,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Bundles Vault</span>
           </NavLink>
 
-          <NavLink to="/single-games" className={navItemClass}>
-            <Gamepad2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Single Games (₹80)</span>
-          </NavLink>
-
-          <NavLink to="/catalog" className={navItemClass}>
-            <Search className="w-3.5 h-3.5 text-sky-400" />
-            <span>Search 60K+</span>
-          </NavLink>
+          <a href="/bundles#gameplay-videos" className="py-1.5 px-2.5 rounded-lg text-xs font-gaming uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white hover:bg-white/5 border border-transparent font-bold">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>Live Trailers</span>
+          </a>
 
           <NavLink to="/channels" className={navItemClass}>
             <Lock className="w-3.5 h-3.5 text-amber-400" />
@@ -271,37 +266,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </NavLink>
 
-            <NavLink
-              to="/single-games"
+            <a
+              href="/bundles#gameplay-videos"
               onClick={() => setMobileMenuOpen(false)}
-              className={({ isActive }) => `flex items-center justify-between p-3 rounded-xl border text-xs font-bold font-gaming uppercase tracking-wider transition-all ${
-                isActive ? 'bg-amber-500 text-black border-amber-400' : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
-              }`}
+              className="flex items-center justify-between p-3 rounded-xl border border-white/10 text-xs font-bold font-gaming uppercase tracking-wider transition-all bg-white/5 text-white hover:bg-white/10"
             >
               <div className="flex items-center gap-2.5">
-                <Gamepad2 className="w-4 h-4 text-emerald-400" />
-                <span>Single Games</span>
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>Live Trailers</span>
               </div>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-emerald-300">
-                ₹80
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-amber-300">
+                60 FPS
               </span>
-            </NavLink>
-
-            <NavLink
-              to="/catalog"
-              onClick={() => setMobileMenuOpen(false)}
-              className={({ isActive }) => `flex items-center justify-between p-3 rounded-xl border text-xs font-bold font-gaming uppercase tracking-wider transition-all ${
-                isActive ? 'bg-amber-500 text-black border-amber-400' : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <Search className="w-4 h-4 text-sky-400" />
-                <span>Search 60,000+</span>
-              </div>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-sky-300">
-                Search
-              </span>
-            </NavLink>
+            </a>
 
             <NavLink
               to="/channels"

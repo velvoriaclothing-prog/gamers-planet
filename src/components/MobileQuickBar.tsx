@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Zap, KeyRound, Search, Star, Instagram } from 'lucide-react';
+import { Home, Zap, Film, Lock, Star } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
 
 interface MobileQuickBarProps {
   settings: SiteSettings;
 }
 
-export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ settings }) => {
+export const MobileQuickBar: React.FC<MobileQuickBarProps> = () => {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex flex-col items-center justify-center flex-1 py-1.5 px-1 rounded-xl transition-all duration-200 select-none ${
       isActive
@@ -18,7 +18,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ settings }) => {
   return (
     <nav 
       aria-label="Mobile Bottom Navigation"
-      className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#070a14]/95 border-t border-amber-500/30 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.8)] pb-[max(0.25rem,env(safe-area-inset-bottom))]"
+      className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-[#060a16]/95 border-t border-white/10 backdrop-blur-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.85)] pb-[max(0.25rem,env(safe-area-inset-bottom))]"
     >
       <div className="max-w-md mx-auto flex items-center justify-around px-2 py-1 gap-1">
         
@@ -34,16 +34,19 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ settings }) => {
           <span className="text-[10px] font-gaming uppercase tracking-wider">Bundles</span>
         </NavLink>
 
-        {/* 3. Singles ₹80 */}
-        <NavLink to="/single-games" className={navLinkClass}>
-          <KeyRound className="w-4 h-4 mb-0.5 text-emerald-400" />
-          <span className="text-[10px] font-gaming uppercase tracking-wider">Singles</span>
-        </NavLink>
+        {/* 3. Live Trailers */}
+        <a 
+          href="/bundles#gameplay-videos" 
+          className="flex flex-col items-center justify-center flex-1 py-1.5 px-1 rounded-xl transition-all duration-200 select-none text-slate-400 hover:text-white font-medium hover:bg-white/5"
+        >
+          <Film className="w-4 h-4 mb-0.5 text-amber-400" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Trailers</span>
+        </a>
 
-        {/* 4. Search 60K+ */}
-        <NavLink to="/catalog" className={navLinkClass}>
-          <Search className="w-4 h-4 mb-0.5 text-sky-400" />
-          <span className="text-[10px] font-gaming uppercase tracking-wider">Search</span>
+        {/* 4. VIP Channels */}
+        <NavLink to="/channels" className={navLinkClass}>
+          <Lock className="w-4 h-4 mb-0.5 text-amber-400" />
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Channels</span>
         </NavLink>
 
         {/* 5. Reviews */}

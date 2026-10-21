@@ -63,20 +63,12 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/single-games" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <span>Single Games Store</span>
-                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                    ₹80
+                <a href="/bundles#gameplay-videos" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                  <span>Live Gameplay Trailers</span>
+                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                    60 FPS
                   </span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/catalog" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <span>Search 60,000+ PC Games</span>
-                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">
-                    Search
-                  </span>
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/channels" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
