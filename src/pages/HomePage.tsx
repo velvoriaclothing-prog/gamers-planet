@@ -19,6 +19,7 @@ import { VideoShowcaseSection } from '../components/VideoShowcaseSection.js';
 import { ChannelsSection } from '../components/ChannelsSection.js';
 import { FeaturesSection } from '../components/FeaturesSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface HomePageProps {
   bundles: Bundle[];
@@ -33,6 +34,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   settings,
   onSelectBundle
 }) => {
+  const { t } = useLanguage();
   const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'dm' });
 
   return (
@@ -54,14 +56,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <Flame className="w-6 h-6 fill-amber-400 text-amber-400" />
               </div>
               <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors">
-                PC Gaming Bundles
+                {t('nav.bundles', 'PC Gaming Bundles')}
               </h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-                Curated game vaults with Steam Unlock, full DLC expansions, and personal 1-on-1 customer setup support.
+                {t('bundles.subtitle', 'Curated game vaults with Steam Unlock, full DLC expansions, and personal 1-on-1 customer setup support.')}
               </p>
             </div>
             <div className="mt-5 pt-3 border-t border-white/5 text-xs font-bold text-amber-400 flex items-center justify-between">
-              <span>Explore Vault Bundles</span>
+              <span>{t('hero.btn_browse', 'Explore Vault Bundles')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -76,14 +78,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <Film className="w-6 h-6 text-amber-400" />
               </div>
               <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors">
-                What's Included in Bundle
+                {t('video.eyebrow', "What's Included in Bundle")}
               </h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-                Watch full video walkthroughs demonstrating every game, Steam Unlock feature, and setup perk included in each vault.
+                {t('video.subtitle', 'Watch full video walkthroughs demonstrating every game, Steam Unlock feature, and setup perk included in each vault.')}
               </p>
             </div>
             <div className="mt-5 pt-3 border-t border-white/5 text-xs font-bold text-amber-400 flex items-center justify-between">
-              <span>See in Video</span>
+              <span>{t('hero.btn_videos', 'See in Video')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </a>
@@ -98,14 +100,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <Lock className="w-6 h-6 text-amber-400" />
               </div>
               <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors">
-                VIP Channels & Sites
+                {t('channels.title', 'VIP Channels & Sites')}
               </h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-                Direct access to private Telegram channels, password listings, and verified cloud library sites.
+                {t('channels.subtitle', 'Direct access to private Telegram channels, password listings, and verified cloud library sites.')}
               </p>
             </div>
             <div className="mt-5 pt-3 border-t border-white/5 text-xs font-bold text-amber-400 flex items-center justify-between">
-              <span>Access Channels</span>
+              <span>{t('channels.title', 'Access Channels')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -127,13 +129,13 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div>
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 font-gaming mb-1.5">
               <Sparkles className="w-4 h-4" />
-              <span>OFFICIAL PC GAME PACKAGES</span>
+              <span>{t('bundles.badge', 'OFFICIAL PC GAME PACKAGES')}</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-white font-gaming tracking-tight">
-              CURATED BUNDLE VAULTS
+              {t('bundles.heading', 'CURATED BUNDLE VAULTS')}
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Select any package below to inspect full titles, watch trailers, or order directly via {redirectInfo.platformName}.
+              {t('bundles.subtitle', 'Select any package below to inspect full titles, watch trailers, or order directly.')}
             </p>
           </div>
 
@@ -141,7 +143,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             to="/bundles"
             className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1 group shrink-0"
           >
-            <span>View Full Vault Catalog</span>
+            <span>{t('hero.btn_browse', 'View Full Vault Catalog')}</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>

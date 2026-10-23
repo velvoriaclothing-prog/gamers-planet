@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface BundleModalProps {
   bundle: Bundle | null;
@@ -23,6 +24,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
   settings,
   onClose,
 }) => {
+  const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -168,7 +170,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             <div className="absolute top-4 left-4 z-20 flex items-center gap-2 pointer-events-none">
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold font-gaming shadow-lg">
                 <Video className="w-3.5 h-3.5 text-amber-400" />
-                <span>WHAT'S INCLUDED IN BUNDLE (VIDEO)</span>
+                <span>{t('modal.included_heading', "WHAT'S INCLUDED IN BUNDLE (VIDEO)")}</span>
               </div>
               {playlist.length > 1 && (
                 <div className="px-2.5 py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[11px] font-bold font-gaming flex items-center gap-1 shadow-lg">
@@ -185,10 +187,10 @@ export const BundleModal: React.FC<BundleModalProps> = ({
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold font-gaming tracking-wide">
                   <Zap className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  <span>Sequential Sequence Active:</span>
+                  <span>{t('video.sequence_active', 'Sequential Sequence Active:')}</span>
                 </div>
                 <span className="text-[11px] text-slate-400 hidden sm:inline">
-                  Part {currentPartIndex + 1} of {playlist.length} • Auto-advances to next part
+                  Part {currentPartIndex + 1} {t('video.of', 'of')} {playlist.length} • {t('video.auto_advances', 'Auto-advances to next part')}
                 </span>
               </div>
 
@@ -254,15 +256,15 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                     {bundle.gameCount > 1 ? 'Total Games' : 'Feature'}
                   </span>
                   <span>•</span>
-                  <span className="text-emerald-400 font-medium">Instant Digital Delivery</span>
+                  <span className="text-emerald-400 font-medium">{t('modal.instant_delivery', 'Instant Digital Delivery')}</span>
                   <span>•</span>
-                  <span>Lifetime Vault Access</span>
+                  <span>{t('modal.lifetime_access', 'Lifetime Vault Access')}</span>
                 </div>
               </div>
 
               {/* Price Box */}
               <div className="shrink-0 glass-card p-4 rounded-2xl border border-amber-500/30 text-left md:text-right">
-                <div className="text-[11px] text-slate-400 uppercase font-semibold">Special Vault Price</div>
+                <div className="text-[11px] text-slate-400 uppercase font-semibold">{t('modal.special_price', 'Special Vault Price')}</div>
                 <div className="flex items-baseline md:justify-end gap-2.5">
                   <span className="text-3xl sm:text-4xl font-black text-white font-gaming">
                     ₹{bundle.price.toLocaleString('en-IN')}

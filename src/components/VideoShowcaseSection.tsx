@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface VideoShowcaseSectionProps {
   bundles: Bundle[];
@@ -48,6 +49,8 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
     }
     return [];
   };
+
+  const { t } = useLanguage();
 
   // Filter bundles that have at least one video preview
   const videoBundles = bundles.filter(b => getPlaylist(b).length > 0);
@@ -165,19 +168,19 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 font-gaming mb-2">
             <Film className="w-4 h-4 text-amber-400" />
-            <span>WHAT'S INCLUDED IN BUNDLE — SEE IN VIDEO</span>
+            <span>{t('video.eyebrow', "WHAT'S INCLUDED IN BUNDLE — SEE IN VIDEO")}</span>
           </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white font-gaming tracking-tight">
-            SEE WHAT'S INCLUDED (VIDEO PROOF)
+            {t('video.heading', "SEE WHAT'S INCLUDED (VIDEO PROOF)")}
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm mt-1.5 max-w-2xl leading-relaxed">
-            Watch real recorded video demonstrations showing the exact games, Steam Unlock tools, and account features included with each package. Multi-part videos play continuously in sequence.
+            {t('video.subtitle', "Watch real recorded video demonstrations showing the exact games, Steam Unlock tools, and account features included with each package. Multi-part videos play continuously in sequence.")}
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-xs text-slate-300 bg-white/5 border border-white/10 rounded-xl px-3 py-2 w-fit">
           <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-          <span>100% Real Video Proof • Full Walkthrough</span>
+          <span>{t('video.proof_badge', "100% Real Video Proof • Full Walkthrough")}</span>
         </div>
       </div>
 
@@ -336,7 +339,7 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
                     rel="noopener noreferrer"
                     className="py-1.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-black text-xs font-gaming flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all cursor-pointer"
                   >
-                    <span>Claim Now</span>
+                    <span>{t('nav.claim_now', 'Claim Now')}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 );
@@ -351,10 +354,10 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
             <div className="flex items-center gap-2">
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-bold font-gaming tracking-wider">
                 <Zap className="w-3.5 h-3.5 fill-amber-400" />
-                <span>Sequential Sequence Active: Part {currentPartIndex + 1} of {currentPlaylist.length}</span>
+                <span>{t('video.sequence_active', 'Sequential Sequence Active: Part')} {currentPartIndex + 1} {t('video.of', 'of')} {currentPlaylist.length}</span>
               </span>
               <span className="text-[11px] text-slate-400 hidden sm:inline">
-                Auto-plays next part continuously
+                {t('video.auto_advances', 'Auto-plays next part continuously')}
               </span>
             </div>
 
@@ -401,7 +404,7 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
         <div className="p-4 sm:p-6 bg-[#090d19] border-t border-white/10">
           <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 font-gaming flex items-center gap-2">
             <Film className="w-3.5 h-3.5 text-amber-400" />
-            <span>Select Bundle to See What's Included in Video:</span>
+            <span>{t('video.select_bundle', "Select Bundle to See What's Included in Video:")}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">

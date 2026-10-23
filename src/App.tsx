@@ -22,6 +22,8 @@ import { LiveEditProvider, useLiveEdit } from './components/live-edit/LiveEditCo
 import { LiveEditToolbar } from './components/live-edit/LiveEditToolbar.js';
 import { BundleQuickEditModal } from './components/live-edit/BundleQuickEditModal.js';
 import { useRealtimeSync } from './hooks/useRealtimeSync.js';
+import { LanguageProvider } from './context/LanguageContext.js';
+import { LanguageSelectionModal } from './components/LanguageSelectionModal.js';
 
 import { HomePage } from './pages/HomePage.js';
 import { BundlesPage } from './pages/BundlesPage.js';
@@ -75,6 +77,9 @@ const Storefront: React.FC<StorefrontProps> = ({
 
       {/* Quick modal for editing bundle prices & names live on page */}
       <BundleQuickEditModal />
+
+      {/* Language Selection Modal at Start of Website / on Request */}
+      <LanguageSelectionModal />
 
       {/* Global Navbar with 5-click easter egg on logo */}
       <Navbar
@@ -356,29 +361,31 @@ export default function App() {
     );
   }
 
-  // Multi-Page Public Storefront with Live In-Place Edit Provider
+  // Multi-Page Public Storefront with Live In-Place Edit Provider and Language Provider
   return (
-    <LiveEditProvider
-      settings={settings}
-      bundles={bundles}
-      isAdmin={isAdmin}
-      onRefreshAll={handleRefreshAll}
-      onSettingsUpdate={(newSettings) => setSettings(newSettings)}
-      onBundlesUpdate={(newBundles) => setBundles(newBundles)}
-    >
-      <Storefront
+    <LanguageProvider>
+      <LiveEditProvider
+        settings={settings}
         bundles={bundles}
-        reviews={reviews}
         isAdmin={isAdmin}
-        onOpenAdminLogin={() => setShowAdminLogin(true)}
-        onOpenAdminDashboard={() => setShowAdminDashboard(true)}
-        onLogout={handleLogout}
-        selectedBundle={selectedBundle}
-        onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-        showAdminLogin={showAdminLogin}
-        onCloseAdminLogin={() => setShowAdminLogin(false)}
-        onLoginSuccess={handleLoginSuccess}
-      />
-    </LiveEditProvider>
+        onRefreshAll={handleRefreshAll}
+        onSettingsUpdate={(newSettings) => setSettings(newSettings)}
+        onBundlesUpdate={(newBundles) => setBundles(newBundles)}
+      >
+        <Storefront
+          bundles={bundles}
+          reviews={reviews}
+          isAdmin={isAdmin}
+          onOpenAdminLogin={() => setShowAdminLogin(true)}
+          onOpenAdminDashboard={() => setShowAdminDashboard(true)}
+          onLogout={handleLogout}
+          selectedBundle={selectedBundle}
+          onSelectBundle={(bundle) => setSelectedBundle(bundle)}
+          showAdminLogin={showAdminLogin}
+          onCloseAdminLogin={() => setShowAdminLogin(false)}
+          onLoginSuccess={handleLoginSuccess}
+        />
+      </LiveEditProvider>
+    </LanguageProvider>
   );
 }

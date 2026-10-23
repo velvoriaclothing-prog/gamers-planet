@@ -3,6 +3,7 @@ import { Gamepad2, Play, ExternalLink, Sparkles, Eye, CheckCircle2, Search, Arro
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLiveEdit } from './live-edit/LiveEditContext.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface BundleGridProps {
   bundles: Bundle[];
@@ -49,6 +50,7 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
   }, [bundles, selectedCategory, searchQuery]);
 
   const { isLiveEditMode, openBundleQuickEdit, getEffectiveBundle } = useLiveEdit();
+  const { t } = useLanguage();
 
   return (
     <section id="bundles" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,13 +59,13 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-400 mb-2">
             <Sparkles className="w-4 h-4" />
-            <span>Curated Game Collections</span>
+            <span>{t('bundles.badge', 'Curated Game Collections')}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-gaming tracking-tight">
-            EXCLUSIVE GAMING VAULTS
+            {t('bundles.heading', 'EXCLUSIVE GAMING VAULTS')}
           </h2>
           <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
-            Pre-configured, high-speed verified game collections. Click "View More" for complete game lists and previews, or "Buy Now" to claim via Instagram DM.
+            {t('bundles.subtitle', 'Pre-configured, high-speed verified game collections with video proof and direct verified activation.')}
           </p>
         </div>
 
@@ -187,8 +189,8 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                       <Play className="w-2.5 h-2.5 fill-amber-400" />
                       <span>
                         {bundle.videoPlaylist && bundle.videoPlaylist.length > 1
-                          ? `${bundle.videoPlaylist.length}-Part Video Proof`
-                          : "What's Included in Video"}
+                          ? `${bundle.videoPlaylist.length}-Part Video`
+                          : t('bundles.see_video', "What's Included in Video")}
                       </span>
                     </div>
                   )}
@@ -198,7 +200,7 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[1px] z-10">
                       <div className="px-3.5 py-1.5 rounded-full bg-amber-500 text-black text-xs font-black font-gaming flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.6)] transform scale-90 group-hover:scale-100 transition-transform">
                         <Play className="w-3.5 h-3.5 fill-black" />
-                        <span>SEE WHAT'S INCLUDED (VIDEO)</span>
+                        <span>{t('video.heading', "SEE WHAT'S INCLUDED (VIDEO)")}</span>
                       </div>
                     </div>
                   )}
@@ -314,12 +316,12 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                         {bundle.videoPreview ? (
                           <>
                             <Play className="w-3 h-3 text-amber-400 fill-amber-400" />
-                            <span>Watch Video</span>
+                            <span>{t('bundles.see_video', 'Watch Video')}</span>
                           </>
                         ) : (
                           <>
                             <Eye className="w-3 h-3 text-slate-300" />
-                            <span>Details</span>
+                            <span>{t('bundles.view_details', 'Details')}</span>
                           </>
                         )}
                       </button>
@@ -338,7 +340,7 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                             className="w-full py-1.5 px-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-black text-[11px] flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer active:scale-95 text-center"
                             title={`Buy via ${redirectInfo.platformName}`}
                           >
-                            <span>Buy Now</span>
+                            <span>{t('bundles.claim_now', 'Buy Now')}</span>
                             <ArrowRight className="w-3 h-3 text-black shrink-0" />
                           </a>
                         );

@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface FaqSectionProps {
   settings?: SiteSettings;
 }
 
 export const FaqSection: React.FC<FaqSectionProps> = ({ settings }) => {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const platform = settings ? getChannelRedirectInfo(settings).platformName : 'Instagram';
 
@@ -47,10 +49,10 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ settings }) => {
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-400 mb-2">
           <HelpCircle className="w-4 h-4" />
-          <span>Got Questions?</span>
+          <span>{t('nav.faq', 'Got Questions?')}</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-gaming tracking-tight">
-          FREQUENTLY ASKED QUESTIONS
+          {t('faq.title', 'FREQUENTLY ASKED QUESTIONS')}
         </h2>
       </div>
 

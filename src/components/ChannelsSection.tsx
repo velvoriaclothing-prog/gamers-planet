@@ -3,6 +3,7 @@ import { Lock, KeyRound, Unlock, Send, MessageSquare, Globe, ExternalLink, Shiel
 import { Channel, ChannelPlatform, SiteSettings } from '../types/index.js';
 import { api, getChannelsToken, setChannelsToken, clearChannelsToken } from '../utils/api.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface ChannelsSectionProps {
   settings: SiteSettings;
@@ -31,6 +32,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
   isAdmin,
   onOpenAdmin,
 }) => {
+  const { t } = useLanguage();
   const [password, setPassword] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [channels, setChannels] = useState<Channel[]>([]);
@@ -154,10 +156,10 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
 
             {/* Heading & Instructions */}
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-gaming tracking-wide mb-3">
-              Exclusive Channels & Websites
+              {t('channels.title', 'Exclusive Channels & Websites')}
             </h2>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8">
-              Enter your password to access our exclusive Telegram channels, Discord servers, and official resource websites.
+              {t('channels.subtitle', 'Enter your password to access our exclusive Telegram channels, Discord servers, and official resource websites.')}
             </p>
 
             {/* Error & Lockout Alert */}
@@ -184,7 +186,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             <form onSubmit={handleUnlock} className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl">
               <div className="mb-5 text-left">
                 <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2 font-gaming">
-                  Access Password
+                  {t('channels.enter_code', 'Access Password')}
                 </label>
                 <div className="relative">
                   <input
@@ -215,7 +217,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                 ) : (
                   <>
                     <Unlock className="w-4 h-4 text-black" />
-                    <span>Unlock Access</span>
+                    <span>{t('channels.unlock_btn', 'Unlock Access')}</span>
                   </>
                 )}
               </button>

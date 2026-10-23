@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
+import { LanguageToggle } from './LanguageToggle.js';
 
 interface NavbarProps {
   settings: SiteSettings;
@@ -40,6 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenDashboard,
   onLogout
 }) => {
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [showClickPulse, setShowClickPulse] = useState(false);
@@ -129,41 +132,44 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
         </div>
 
-        {/* Desktop Navigation items (Multi-Page Router) */}
+        {/* Desktop Navigation items (Multi-Page Router with Translations) */}
         <nav className="hidden lg:flex items-center gap-1.5 text-xs font-medium text-slate-300">
           <NavLink to="/" className={navItemClass}>
             <Home className="w-3.5 h-3.5" />
-            <span>Home</span>
+            <span>{t('nav.home', 'Home')}</span>
           </NavLink>
 
           <NavLink to="/bundles" className={navItemClass}>
             <Flame className="w-3.5 h-3.5 text-amber-400" />
-            <span>Bundles Vault</span>
+            <span>{t('nav.bundles', 'Bundles Vault')}</span>
           </NavLink>
 
           <a href="/bundles#gameplay-videos" className="py-1.5 px-2.5 rounded-lg text-xs font-gaming uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white hover:bg-white/5 border border-transparent font-bold">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>What's Included (Video)</span>
+            <span>{t('nav.videos', "What's Included (Video)")}</span>
           </a>
 
           <NavLink to="/channels" className={navItemClass}>
             <Lock className="w-3.5 h-3.5 text-amber-400" />
-            <span>VIP Channels</span>
+            <span>{t('nav.channels', 'VIP Channels')}</span>
           </NavLink>
 
           <NavLink to="/reviews" className={navItemClass}>
             <Star className="w-3.5 h-3.5 text-amber-400" />
-            <span>Reviews</span>
+            <span>{t('nav.reviews', 'Reviews')}</span>
           </NavLink>
 
           <NavLink to="/faq" className={navItemClass}>
             <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
-            <span>FAQ</span>
+            <span>{t('nav.faq', 'FAQ')}</span>
           </NavLink>
         </nav>
 
-        {/* Actions / Admin & Instagram buttons */}
+        {/* Actions / Language Switcher & Admin / Contact buttons */}
         <div className="flex items-center gap-2">
+          {/* Language Switcher Dropdown */}
+          <LanguageToggle variant="navbar" />
+
           {isAdmin ? (
             <div className="flex items-center gap-2">
               <button
@@ -236,6 +242,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Menu Dropdown Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-white/10 bg-[#090d18]/98 backdrop-blur-2xl px-4 py-4 shadow-2xl transition-all">
+          
+          {/* Mobile Language Selector */}
+          <div className="mb-4">
+            <LanguageToggle variant="drawer" />
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
             <NavLink
               to="/"
@@ -246,7 +258,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <Home className="w-4 h-4" />
-                <span>Home Storefront</span>
+                <span>{t('nav.home', 'Home Storefront')}</span>
               </div>
             </NavLink>
 
@@ -259,7 +271,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <Flame className="w-4 h-4 text-amber-400" />
-                <span>Bundles Vault</span>
+                <span>{t('nav.bundles', 'Bundles Vault')}</span>
               </div>
               <span className="text-[10px] uppercase font-black px-1.5 py-0.5 rounded bg-black/40 text-amber-300">
                 ₹399+
@@ -273,7 +285,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>What's Included (Video)</span>
+                <span>{t('nav.videos', "What's Included (Video)")}</span>
               </div>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-amber-300">
                 Video
@@ -289,7 +301,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <Lock className="w-4 h-4 text-amber-400" />
-                <span>VIP Channels & Sites</span>
+                <span>{t('nav.channels', 'VIP Channels & Sites')}</span>
               </div>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-amber-400">
                 VIP
@@ -305,10 +317,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <Star className="w-4 h-4 text-amber-400" />
-                <span>Reviews & Proof</span>
+                <span>{t('nav.reviews', 'Reviews & Proof')}</span>
               </div>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-emerald-400">
-                65+ Indian
+                Verified
               </span>
             </NavLink>
 
@@ -321,13 +333,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <HelpCircle className="w-4 h-4 text-slate-400" />
-                <span>Frequently Asked Questions & Setup Guide</span>
+                <span>{t('nav.faq', 'Frequently Asked Questions & Setup Guide')}</span>
               </div>
             </NavLink>
           </div>
 
           <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 px-1">
-            <span>Instant delivery in 3-5 mins</span>
+            <span>{t('common.instant_delivery', 'Instant delivery in 3-5 mins')}</span>
             <span className="text-amber-400 font-bold">{settings.channelHandle || '@gamersplanet20.26'}</span>
           </div>
         </div>

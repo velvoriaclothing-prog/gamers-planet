@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Star, ShieldCheck, MessageSquare, Instagram, Send, PhoneCall, Globe, Sparkles, Search, CheckCircle2, ThumbsUp, MapPin, Gamepad2, ChevronDown, X, Eye, Video as VideoIcon, ExternalLink } from 'lucide-react';
 import { ReviewScreenshot, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface ReviewGalleryProps {
   reviews: ReviewScreenshot[];
@@ -43,6 +44,7 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
   isAdmin,
   onOpenAdmin,
 }) => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [starFilter, setStarFilter] = useState<'all' | '5' | '4'>('all');
   const [visibleCount, setVisibleCount] = useState(12);
@@ -89,13 +91,13 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
             <ShieldCheck className="w-4 h-4" />
-            <span>100% Genuine Text Reviews from Indian Gamers</span>
+            <span>{t('reviews.rating_summary', '100% Genuine Reviews from Indian Gamers')}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-gaming tracking-tight mb-4">
-            VERIFIED INDIAN CUSTOMER REVIEWS
+            {t('reviews.title', 'VERIFIED INDIAN CUSTOMER REVIEWS')}
           </h2>
           <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Real feedback from PC gamers across New Delhi, Mumbai, Bengaluru, Kolkata, Pune, and all states in India. Direct UPI orders delivered within minutes via Instagram DM.
+            {t('reviews.subtitle', 'Real feedback from PC gamers across India. Direct orders delivered within minutes via direct DM.')}
           </p>
         </div>
 

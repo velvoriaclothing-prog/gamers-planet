@@ -4,12 +4,14 @@ import { Shield, Instagram, PhoneCall, Send, Globe, ArrowUp } from 'lucide-react
 import { SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { EditableText } from './live-edit/EditableText.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface FooterProps {
   settings: SiteSettings;
 }
 
 export const Footer: React.FC<FooterProps> = ({ settings }) => {
+  const { openLanguageModal, language, t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -127,6 +129,15 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
           <p>© {new Date().getFullYear()} GAMERS PLANET. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <span className="text-amber-400/80">Support: 10:00 AM - 12:00 AM IST</span>
+            <button
+              onClick={() => openLanguageModal()}
+              type="button"
+              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10 flex items-center gap-1.5 text-xs font-gaming"
+              title="Change Language"
+            >
+              <span>🌐</span>
+              <span className="uppercase">{language}</span>
+            </button>
             <button
               onClick={scrollToTop}
               className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"

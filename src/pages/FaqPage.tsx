@@ -4,12 +4,14 @@ import { SiteSettings } from '../types/index.js';
 import { FaqSection } from '../components/FaqSection.js';
 import { FeaturesSection } from '../components/FeaturesSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
+import { useLanguage } from '../context/LanguageContext.js';
 
 interface FaqPageProps {
   settings: SiteSettings;
 }
 
 export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
+  const { t } = useLanguage();
   const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'support' });
 
   return (
@@ -21,10 +23,10 @@ export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
           <span>HELP CENTER & ACTIVATION GUIDE</span>
         </div>
         <h1 className="text-3xl sm:text-5xl font-black text-white font-gaming tracking-tight mb-3">
-          FREQUENTLY ASKED QUESTIONS
+          {t('faq.title', 'FREQUENTLY ASKED QUESTIONS')}
         </h1>
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-6">
-          Everything you need to know about purchasing, payment via UPI/GPay/PhonePe, 5-minute activation, and lifetime support.
+          {t('faq.subtitle', 'Everything you need to know about purchasing, payment via UPI/GPay/PhonePe, 5-minute activation, and lifetime support.')}
         </p>
 
         {/* 3 Step Quick Overview */}
@@ -33,24 +35,36 @@ export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
             <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-black font-gaming mb-2">
               1
             </div>
-            <h4 className="text-xs font-bold text-white font-gaming mb-1">Pick Game or Bundle</h4>
-            <p className="text-[11px] text-slate-400">Choose ₹80 Single Game, Steam Unlock, or Mega Bundles.</p>
+            <h4 className="text-xs font-bold text-white font-gaming mb-1">
+              {t('faq.step1_title', '1. Pick Bundle & DM Us')}
+            </h4>
+            <p className="text-[11px] text-slate-400">
+              {t('faq.step1_desc', 'Choose your desired pack and send us a direct message on Instagram or Telegram.')}
+            </p>
           </div>
 
           <div className="glass-panel p-4 rounded-2xl border border-amber-500/30 bg-[#090d18]/90">
             <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-black font-gaming mb-2">
               2
             </div>
-            <h4 className="text-xs font-bold text-white font-gaming mb-1">Pay via Any UPI App</h4>
-            <p className="text-[11px] text-slate-400">Pay securely using Google Pay, PhonePe, Paytm, or BHIM UPI.</p>
+            <h4 className="text-xs font-bold text-white font-gaming mb-1">
+              {t('faq.step2_title', '2. Instant Link Delivery')}
+            </h4>
+            <p className="text-[11px] text-slate-400">
+              {t('faq.step2_desc', 'Receive direct high-speed download links and activation tools in 2 to 5 minutes.')}
+            </p>
           </div>
 
           <div className="glass-panel p-4 rounded-2xl border border-amber-500/30 bg-[#090d18]/90">
             <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black font-gaming mb-2">
               3
             </div>
-            <h4 className="text-xs font-bold text-white font-gaming mb-1">Instant 5-Min Setup</h4>
-            <p className="text-[11px] text-slate-400">Get credentials or direct library addition with 1-on-1 support.</p>
+            <h4 className="text-xs font-bold text-white font-gaming mb-1">
+              {t('faq.step3_title', '3. Install & Play Forever')}
+            </h4>
+            <p className="text-[11px] text-slate-400">
+              {t('faq.step3_desc', 'Follow our 1-click simple setup video and enjoy lifetime offline & online gaming.')}
+            </p>
           </div>
         </div>
       </section>
