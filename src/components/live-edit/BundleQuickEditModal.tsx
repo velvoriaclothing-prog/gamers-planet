@@ -193,7 +193,7 @@ export const BundleQuickEditModal: React.FC = () => {
             />
 
             <MediaUploadInput
-              label="Gameplay Video Preview / Trailer"
+              label="What's Included in Bundle (Video)"
               accept="video/*"
               value={videoPreview}
               onChange={(url) => setVideoPreview(url)}

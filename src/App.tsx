@@ -13,10 +13,8 @@ import { ScrollToTop } from './components/ScrollToTop.js';
 import { Navbar } from './components/Navbar.js';
 import { Footer } from './components/Footer.js';
 import { MobileQuickBar } from './components/MobileQuickBar.js';
-import { RecentOrdersTicker } from './components/RecentOrdersTicker.js';
 import { AdminLoginModal } from './components/AdminLoginModal.js';
 import { AdminDashboard } from './components/admin/AdminDashboard.js';
-import { SteamUnlockScrollPopup } from './components/SteamUnlockScrollPopup.js';
 import { BundleModal } from './components/BundleModal.js';
 
 // Live Edit & Real-Time Sync
@@ -62,8 +60,7 @@ const Storefront: React.FC<StorefrontProps> = ({
   const effectiveSettings = getEffectiveSettings();
   const effectiveBundles = getEffectiveBundles(bundles);
 
-  const featuredBundle = effectiveBundles.find(b => b.price === 399) || effectiveBundles[0] || null;
-  const steamUnlockBundle = effectiveBundles.find(b => b.id === 'bundle-steam-unlock' || b.price === 449) || null;
+
 
   return (
     <div className="min-h-screen bg-[#050608] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black pb-16 lg:pb-0">
@@ -173,15 +170,7 @@ const Storefront: React.FC<StorefrontProps> = ({
       {/* Mobile Bottom Navigation Bar with Active Route Highlighting */}
       <MobileQuickBar settings={effectiveSettings} />
 
-      {/* Live Recent Orders Ticker (Social Proof - Desktop Only) */}
-      <RecentOrdersTicker />
 
-      {/* Floating Scroll Popup Offer (Desktop Only - Strictly Disabled on Mobile) */}
-      <SteamUnlockScrollPopup
-        settings={effectiveSettings}
-        steamUnlockBundle={steamUnlockBundle}
-        onSelectBundle={onSelectBundle}
-      />
 
       {/* Bundle Details & Video Preview Modal */}
       {selectedBundle && (

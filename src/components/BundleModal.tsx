@@ -165,10 +165,10 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             )}
 
             {/* Video Indicator Pill */}
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-2 pointer-events-none">
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold font-gaming shadow-lg">
                 <Video className="w-3.5 h-3.5 text-amber-400" />
-                <span>GAMEPLAY TRAILER</span>
+                <span>WHAT'S INCLUDED IN BUNDLE (VIDEO)</span>
               </div>
               {playlist.length > 1 && (
                 <div className="px-2.5 py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[11px] font-bold font-gaming flex items-center gap-1 shadow-lg">
@@ -177,52 +177,61 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 </div>
               )}
             </div>
+          </div>
 
-            {/* Sequential Part Tabs Bar (if multiple parts) */}
-            {playlist.length > 1 && (
-              <div className="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between p-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/15">
-                <div className="flex items-center gap-1.5 text-[11px] text-amber-300 font-bold font-gaming hidden sm:flex">
-                  <Zap className="w-3.5 h-3.5 fill-amber-400" />
+          {/* Sequential Playlist Controls Bar — Shifted BELOW the video */}
+          {playlist.length > 1 && (
+            <div className="bg-[#0b1020] border-b border-white/10 px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 shadow-inner">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold font-gaming tracking-wide">
+                  <Zap className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   <span>Sequential Sequence Active:</span>
                 </div>
+                <span className="text-[11px] text-slate-400 hidden sm:inline">
+                  Part {currentPartIndex + 1} of {playlist.length} • Auto-advances to next part
+                </span>
+              </div>
 
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={handlePrevPart}
-                    className="p-1 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                    title="Previous Part"
-                  >
-                    <SkipBack className="w-3.5 h-3.5" />
-                  </button>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={handlePrevPart}
+                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                  title="Previous Part"
+                >
+                  <SkipBack className="w-3.5 h-3.5" />
+                </button>
 
-                  {playlist.map((_, pIdx) => (
+                {playlist.map((_, pIdx) => {
+                  const isCurrent = currentPartIndex === pIdx;
+                  return (
                     <button
                       key={pIdx}
                       type="button"
                       onClick={() => setCurrentPartIndex(pIdx)}
-                      className={`px-2.5 py-0.5 rounded-lg text-[11px] font-bold font-gaming transition-all cursor-pointer ${
-                        currentPartIndex === pIdx
-                          ? 'bg-amber-500 text-black shadow-[0_0_10px_rgba(245,158,11,0.5)] font-black'
-                          : 'bg-white/10 text-slate-300 hover:text-white'
+                      className={`px-3 py-1 rounded-lg text-xs font-bold font-gaming transition-all cursor-pointer flex items-center gap-1.5 border ${
+                        isCurrent
+                          ? 'bg-amber-500 text-black border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] font-black scale-105'
+                          : 'bg-white/5 text-slate-300 hover:text-white border-white/10 hover:bg-white/10'
                       }`}
                     >
-                      Part {pIdx + 1}
+                      {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />}
+                      <span>Part {pIdx + 1}</span>
                     </button>
-                  ))}
+                  );
+                })}
 
-                  <button
-                    type="button"
-                    onClick={handleNextPart}
-                    className="p-1 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                    title="Next Part"
-                  >
-                    <SkipForward className="w-3.5 h-3.5" />
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={handleNextPart}
+                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                  title="Next Part"
+                >
+                  <SkipForward className="w-3.5 h-3.5" />
+                </button>
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Modal Details Body */}
           <div className="p-6 sm:p-8 bg-[#090c15]">

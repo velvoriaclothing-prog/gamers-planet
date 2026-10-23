@@ -143,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <a href="/bundles#gameplay-videos" className="py-1.5 px-2.5 rounded-lg text-xs font-gaming uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white hover:bg-white/5 border border-transparent font-bold">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Live Trailers</span>
+            <span>What's Included (Video)</span>
           </a>
 
           <NavLink to="/channels" className={navItemClass}>
@@ -273,10 +273,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="flex items-center gap-2.5">
                 <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>Live Trailers</span>
+                <span>What's Included (Video)</span>
               </div>
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-amber-300">
-                60 FPS
+                Video
               </span>
             </a>
 

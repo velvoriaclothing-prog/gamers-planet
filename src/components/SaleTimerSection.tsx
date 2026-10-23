@@ -326,7 +326,7 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
                             {bundle.videoPreview || (bundle.videoPlaylist && bundle.videoPlaylist.length > 0) ? (
                               <>
                                 <Play className="w-3 h-3 text-amber-400 fill-amber-400" />
-                                <span>Watch Video</span>
+                                <span>See in Video</span>
                               </>
                             ) : (
                               <>

@@ -64,9 +64,9 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
               </li>
               <li>
                 <a href="/bundles#gameplay-videos" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <span>Live Gameplay Trailers</span>
+                  <span>What's Included in Bundle (Video)</span>
                   <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                    60 FPS
+                    Video Proof
                   </span>
                 </a>
               </li>

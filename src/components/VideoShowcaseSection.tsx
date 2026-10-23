@@ -165,77 +165,25 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 font-gaming mb-2">
             <Film className="w-4 h-4 text-amber-400" />
-            <span>LIVE GAMEPLAY PROOF & PREVIEWS</span>
+            <span>WHAT'S INCLUDED IN BUNDLE — SEE IN VIDEO</span>
           </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white font-gaming tracking-tight">
-            VAULT GAMEPLAY TRAILERS
+            SEE WHAT'S INCLUDED (VIDEO PROOF)
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm mt-1.5 max-w-2xl leading-relaxed">
-            Watch real live recorded footage of our gaming libraries, Steam Unlock tools, and customer accounts in action. Multi-part videos play continuously in sequence automatically.
+            Watch real recorded video demonstrations showing the exact games, Steam Unlock tools, and account features included with each package. Multi-part videos play continuously in sequence.
           </p>
         </div>
 
         <div className="flex items-center gap-2 text-xs text-slate-300 bg-white/5 border border-white/10 rounded-xl px-3 py-2 w-fit">
           <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-          <span>100% Genuine Recorded Gameplay • 60 FPS</span>
+          <span>100% Real Video Proof • Full Walkthrough</span>
         </div>
       </div>
 
       {/* Main Cinema Theater Player */}
       <div className="glass-panel rounded-3xl overflow-hidden border border-white/15 bg-[#070a13] shadow-[0_20px_60px_rgba(0,0,0,0.85)] mb-8">
         
-        {/* Multi-Part Playlist Header Bar (if more than 1 part) */}
-        {currentPlaylist.length > 1 && (
-          <div className="bg-[#0b1021] border-b border-white/10 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 text-[11px] font-bold font-gaming tracking-wider">
-                <Zap className="w-3.5 h-3.5 fill-amber-400" />
-                <span>CONTINUOUS SEQUENCE: PART {currentPartIndex + 1} OF {currentPlaylist.length}</span>
-              </span>
-              <span className="text-[11px] text-slate-400 hidden sm:inline">
-                Auto-plays next part continuously
-              </span>
-            </div>
-
-            {/* Quick Part Switcher Tabs */}
-            <div className="flex items-center gap-1.5 overflow-x-auto">
-              <button
-                onClick={handlePrevPart}
-                className="p-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
-                title="Previous Part"
-              >
-                <SkipBack className="w-3.5 h-3.5" />
-              </button>
-
-              {currentPlaylist.map((_, pIdx) => {
-                const isPartActive = currentPartIndex === pIdx;
-                return (
-                  <button
-                    key={pIdx}
-                    onClick={() => setCurrentPartIndex(pIdx)}
-                    className={`px-3 py-1 rounded-lg text-xs font-gaming font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                      isPartActive
-                        ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.5)] scale-105'
-                        : 'bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    {isPartActive && <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />}
-                    <span>Part {pIdx + 1}</span>
-                  </button>
-                );
-              })}
-
-              <button
-                onClick={handleNextPart}
-                className="p-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
-                title="Next Part"
-              >
-                <SkipForward className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* Video Screen Container */}
         <div className="relative aspect-[16/9] max-h-[65vh] w-full bg-black overflow-hidden group">
           <video
@@ -397,11 +345,63 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
           </div>
         </div>
 
+        {/* Sequential Sequence Active Bar — Positioned BELOW the video */}
+        {currentPlaylist.length > 1 && (
+          <div className="bg-[#0b1021] border-t border-b border-white/10 px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 shadow-inner">
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-bold font-gaming tracking-wider">
+                <Zap className="w-3.5 h-3.5 fill-amber-400" />
+                <span>Sequential Sequence Active: Part {currentPartIndex + 1} of {currentPlaylist.length}</span>
+              </span>
+              <span className="text-[11px] text-slate-400 hidden sm:inline">
+                Auto-plays next part continuously
+              </span>
+            </div>
+
+            {/* Quick Part Switcher Tabs */}
+            <div className="flex items-center gap-1.5 overflow-x-auto">
+              <button
+                onClick={handlePrevPart}
+                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                title="Previous Part"
+              >
+                <SkipBack className="w-3.5 h-3.5" />
+              </button>
+
+              {currentPlaylist.map((_, pIdx) => {
+                const isPartActive = currentPartIndex === pIdx;
+                return (
+                  <button
+                    key={pIdx}
+                    onClick={() => setCurrentPartIndex(pIdx)}
+                    className={`px-3 py-1 rounded-lg text-xs font-gaming font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
+                      isPartActive
+                        ? 'bg-amber-500 text-black border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] scale-105 font-black'
+                        : 'bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10'
+                    }`}
+                  >
+                    {isPartActive && <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />}
+                    <span>Part {pIdx + 1}</span>
+                  </button>
+                );
+              })}
+
+              <button
+                onClick={handleNextPart}
+                className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                title="Next Part"
+              >
+                <SkipForward className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Video Selector Tabs Below Main Player */}
         <div className="p-4 sm:p-6 bg-[#090d19] border-t border-white/10">
           <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 font-gaming flex items-center gap-2">
             <Film className="w-3.5 h-3.5 text-amber-400" />
-            <span>Select Bundle Gameplay Video to Watch:</span>
+            <span>Select Bundle to See What's Included in Video:</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">

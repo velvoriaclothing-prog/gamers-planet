@@ -187,8 +187,8 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                       <Play className="w-2.5 h-2.5 fill-amber-400" />
                       <span>
                         {bundle.videoPlaylist && bundle.videoPlaylist.length > 1
-                          ? `${bundle.videoPlaylist.length}-Part Trailer`
-                          : 'Gameplay Video'}
+                          ? `${bundle.videoPlaylist.length}-Part Video Proof`
+                          : "What's Included in Video"}
                       </span>
                     </div>
                   )}
@@ -196,9 +196,9 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                   {/* Watch Video Hover Play Overlay */}
                   {(bundle.videoPreview || (bundle.videoPlaylist && bundle.videoPlaylist.length > 0)) && (
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[1px] z-10">
-                      <div className="px-3 py-1.5 rounded-full bg-amber-500 text-black text-xs font-black font-gaming flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.6)] transform scale-90 group-hover:scale-100 transition-transform">
+                      <div className="px-3.5 py-1.5 rounded-full bg-amber-500 text-black text-xs font-black font-gaming flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.6)] transform scale-90 group-hover:scale-100 transition-transform">
                         <Play className="w-3.5 h-3.5 fill-black" />
-                        <span>WATCH TRAILER</span>
+                        <span>SEE WHAT'S INCLUDED (VIDEO)</span>
                       </div>
                     </div>
                   )}

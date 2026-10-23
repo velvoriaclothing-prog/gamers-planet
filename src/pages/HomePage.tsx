@@ -66,7 +66,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           </Link>
 
-          {/* Pillar 2: Live Video Trailers */}
+          {/* Pillar 2: What's Included in Bundle (See in Video) */}
           <a
             href="/bundles#gameplay-videos"
             className="group glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between border border-white/[0.08] hover:border-amber-500/50 transition-all duration-300"
@@ -76,14 +76,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <Film className="w-6 h-6 text-amber-400" />
               </div>
               <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors">
-                Gameplay Trailers
+                What's Included in Bundle
               </h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-                Watch 100% real recorded 60 FPS gameplay proof and sequential walkthrough videos of our active vaults.
+                Watch full video walkthroughs demonstrating every game, Steam Unlock feature, and setup perk included in each vault.
               </p>
             </div>
             <div className="mt-5 pt-3 border-t border-white/5 text-xs font-bold text-amber-400 flex items-center justify-between">
-              <span>Watch Trailers</span>
+              <span>See in Video</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </a>

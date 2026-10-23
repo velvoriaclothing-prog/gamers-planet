@@ -90,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
             className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>Watch Live Trailers</span>
+            <span>See What's Included (Video)</span>
           </a>
 
           <Link

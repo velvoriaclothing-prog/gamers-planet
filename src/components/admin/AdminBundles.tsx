@@ -443,14 +443,14 @@ export const AdminBundles: React.FC<AdminBundlesProps> = ({
                     <div className="flex items-center gap-2">
                       <Film className="w-4 h-4 text-amber-400" />
                       <h5 className="text-sm font-bold text-white font-gaming">
-                        Sequential Video Playlist (1 to 4 Parts)
+                        What's Included in Bundle — Video Playlist (1 to 4 Parts)
                       </h5>
                       <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">
                         Continuous Auto-Play ⚡
                       </span>
                     </div>
                     <p className="text-[11px] text-slate-400 mt-1">
-                      Videos play seamlessly one after another. When Part 1 finishes, Part 2 starts automatically! Splitting long videos into 2–3 parts keeps file sizes small (&lt;100MB) for instant buffering and safe GitHub commits.
+                      Videos demonstrate what is included in this bundle. When Part 1 finishes, Part 2 starts automatically! Splitting long videos into 2–3 parts keeps file sizes small (&lt;100MB) for instant buffering and safe GitHub commits.
                     </p>
                   </div>
 

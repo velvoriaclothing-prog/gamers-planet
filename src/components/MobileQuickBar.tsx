@@ -40,7 +40,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = () => {
           className="flex flex-col items-center justify-center flex-1 py-1.5 px-1 rounded-xl transition-all duration-200 select-none text-slate-400 hover:text-white font-medium hover:bg-white/5"
         >
           <Film className="w-4 h-4 mb-0.5 text-amber-400" />
-          <span className="text-[10px] font-gaming uppercase tracking-wider">Trailers</span>
+          <span className="text-[10px] font-gaming uppercase tracking-wider">Videos</span>
         </a>
 
         {/* 4. VIP Channels */}
