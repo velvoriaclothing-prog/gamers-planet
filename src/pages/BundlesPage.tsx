@@ -16,8 +16,6 @@ import { Bundle, SiteSettings } from '../types/index.js';
 import { BundleGrid } from '../components/BundleGrid.js';
 import { SaleTimerSection } from '../components/SaleTimerSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
-
-import { VideoShowcaseSection } from '../components/VideoShowcaseSection.js';
 import { useLanguage } from '../context/LanguageContext.js';
 
 interface BundlesPageProps {
@@ -39,43 +37,22 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
   const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'dm' });
 
   return (
-    <div className="space-y-12 pb-16">
-      {/* 1. Page Header */}
-      <section className="relative pt-8 pb-6 text-center max-w-4xl mx-auto px-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
-          <Flame className="w-3.5 h-3.5 fill-amber-400" />
-          <span>{t('bundles.badge', 'OFFICIAL GAMING VAULTS • LIFETIME VALIDITY')}</span>
-        </div>
-        <h1 className="text-3xl sm:text-5xl font-black text-white font-gaming tracking-tight mb-3">
-          {t('bundles.heading', 'PC GAMING BUNDLES VAULT')}
-        </h1>
-        <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-          {t('bundles.subtitle', 'Explore our complete collection of curated PC gaming vaults. Every bundle comes with lifetime validity, guided 1-on-1 setup support, and instant verified delivery within 3-5 minutes!')}
-        </p>
-      </section>
-
-      {/* 2. Official Gameplay Video Trailers & Vault Proof */}
-      <VideoShowcaseSection
-        bundles={bundles}
-        settings={settings}
-        onSelectBundle={onSelectBundle}
-      />
-
-      {/* 3. Live Sale Timer Urgency Banner (No Duplicate Cards) */}
-      <SaleTimerSection
-        bundles={bundles}
-        settings={settings}
-        onSelectBundle={onSelectBundle}
-        showBundlesList={false}
-      />
-
-      {/* 4. All Bundles Grid */}
+    <div className="space-y-10 pb-16">
+      {/* 1. All Bundles Grid (Primary Hero Focus of Storefront) */}
       <BundleGrid
         bundles={bundles}
         settings={settings}
         isAdmin={isAdmin}
         onSelectBundle={onSelectBundle}
         onOpenAdmin={onOpenAdmin}
+      />
+
+      {/* 3. Live Sale Timer Urgency Banner */}
+      <SaleTimerSection
+        bundles={bundles}
+        settings={settings}
+        onSelectBundle={onSelectBundle}
+        showBundlesList={false}
       />
 
       {/* 5. Comparison Table Matrix (4 Official Vaults) */}

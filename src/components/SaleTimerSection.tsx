@@ -64,28 +64,28 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
         
         {/* Top Banner Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 via-orange-500/20 to-amber-500/20 border border-amber-500/40 text-amber-400 text-xs sm:text-sm font-bold uppercase tracking-wider mb-4 shadow-[0_0_20px_rgba(245,158,11,0.2)]">
-            <Flame className="w-4 h-4 text-amber-400 fill-amber-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-4 shadow-sm backdrop-blur-md">
+            <Flame className="w-4 h-4 text-amber-400 fill-amber-400 shrink-0" />
             <span>LIMITED TIME SALE • SPECIAL VAULT PRICING</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white font-gaming tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white font-gaming tracking-tight mb-3 [text-wrap:balance]">
             LIMITED TIME SALE ENDS IN
           </h2>
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto [text-wrap:balance]">
             Special reduced pricing on all premium gaming vaults. Direct verified delivery guaranteed to your account in minutes. Lock in your bundle price below!
           </p>
         </div>
 
         {/* Live Digital Timer */}
         <div className="max-w-2xl mx-auto mb-14">
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/30 shadow-[0_0_50px_rgba(245,158,11,0.15)] bg-gradient-to-b from-amber-500/[0.07] to-black/80">
+          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/25 shadow-2xl bg-[#080d1a]/90 backdrop-blur-2xl">
             <div className="flex items-center justify-center gap-3 sm:gap-6 text-center">
               
               {/* Hours Box */}
               <div className="flex-1 max-w-[140px]">
-                <div className="bg-[#0b0e1b] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
-                  <div className="text-3xl sm:text-6xl font-black font-gaming tracking-wider text-amber-400 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+                <div className="bg-[#050812] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
+                  <div className="text-3xl sm:text-6xl font-black font-mono tabular-nums text-amber-400">
                     {formatDigit(timeLeft.hours)}
                   </div>
                   <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/40 pointer-events-none" />
@@ -96,14 +96,14 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
               </div>
 
               {/* Colon separator */}
-              <div className="text-2xl sm:text-5xl font-black text-amber-500/70 -mt-6 animate-pulse">
+              <div className="text-2xl sm:text-5xl font-black text-amber-500/60 -mt-6 select-none font-mono">
                 :
               </div>
 
               {/* Minutes Box */}
               <div className="flex-1 max-w-[140px]">
-                <div className="bg-[#0b0e1b] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
-                  <div className="text-3xl sm:text-6xl font-black font-gaming tracking-wider text-amber-400 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+                <div className="bg-[#050812] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
+                  <div className="text-3xl sm:text-6xl font-black font-mono tabular-nums text-amber-400">
                     {formatDigit(timeLeft.minutes)}
                   </div>
                   <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/40 pointer-events-none" />
@@ -114,14 +114,14 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
               </div>
 
               {/* Colon separator */}
-              <div className="text-2xl sm:text-5xl font-black text-amber-500/70 -mt-6 animate-pulse">
+              <div className="text-2xl sm:text-5xl font-black text-amber-500/60 -mt-6 select-none font-mono">
                 :
               </div>
 
               {/* Seconds Box */}
               <div className="flex-1 max-w-[140px]">
-                <div className="bg-[#0b0e1b] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
-                  <div className="text-3xl sm:text-6xl font-black font-gaming tracking-wider text-amber-300 drop-shadow-[0_0_15px_rgba(245,158,11,0.6)]">
+                <div className="bg-[#050812] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
+                  <div className="text-3xl sm:text-6xl font-black font-mono tabular-nums text-amber-300">
                     {formatDigit(timeLeft.seconds)}
                   </div>
                   <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/40 pointer-events-none" />

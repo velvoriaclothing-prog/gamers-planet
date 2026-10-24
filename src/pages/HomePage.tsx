@@ -15,7 +15,6 @@ import { Bundle, Review, SiteSettings } from '../types/index.js';
 import { Hero } from '../components/Hero.js';
 import { SaleTimerSection } from '../components/SaleTimerSection.js';
 import { BundleGrid } from '../components/BundleGrid.js';
-import { VideoShowcaseSection } from '../components/VideoShowcaseSection.js';
 import { ChannelsSection } from '../components/ChannelsSection.js';
 import { FeaturesSection } from '../components/FeaturesSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
@@ -124,45 +123,13 @@ export const HomePage: React.FC<HomePageProps> = ({
       />
 
       {/* 4. Official Gaming Bundles Vault Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/10 gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 font-gaming mb-1.5">
-              <Sparkles className="w-4 h-4" />
-              <span>{t('bundles.badge', 'OFFICIAL PC GAME PACKAGES')}</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black text-white font-gaming tracking-tight">
-              {t('bundles.heading', 'CURATED BUNDLE VAULTS')}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              {t('bundles.subtitle', 'Select any package below to inspect full titles, watch trailers, or order directly.')}
-            </p>
-          </div>
-
-          <Link
-            to="/bundles"
-            className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1 group shrink-0"
-          >
-            <span>{t('hero.btn_browse', 'View Full Vault Catalog')}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
-
-        <BundleGrid
-          bundles={bundles}
-          settings={settings}
-          onSelectBundle={onSelectBundle}
-        />
-      </section>
-
-      {/* 5. Cinema Gameplay Video Trailers (Sequential Player) */}
-      <VideoShowcaseSection
+      <BundleGrid
         bundles={bundles}
         settings={settings}
         onSelectBundle={onSelectBundle}
       />
 
-      {/* 6. VIP Channels Section Preview */}
+      {/* 5. VIP Channels Section Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ChannelsSection settings={settings} />
       </section>

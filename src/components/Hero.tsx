@@ -44,11 +44,11 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
         {/* Editorial Announcement Bar */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-medium backdrop-blur-md">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-medium backdrop-blur-md">
+          <Flame className="w-3.5 h-3.5 text-amber-400 shrink-0" />
           <EditableText
             textKey="announcementText"
-            defaultText={settings.announcementText || t('hero.announcement', '🔥 FLASH SALE: Extra ₹150 OFF any Mega Bundle this weekend!')}
+            defaultText={settings.announcementText || t('hero.announcement', 'FLASH SALE: Extra ₹150 OFF any Mega Bundle this weekend!')}
             className="truncate max-w-xs sm:max-w-xl font-medium"
             label="Store Announcement Bar"
           />
@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
             as="h1"
             textKey="heroHeading"
             defaultText={settings.heroHeading || t('hero.heading', 'LEGENDARY PC GAMING BUNDLES')}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight font-gaming uppercase text-white max-w-4xl mx-auto leading-[1.12]"
+            className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight font-gaming uppercase text-white max-w-4xl mx-auto leading-[1.12] [text-wrap:balance]"
             label="Hero Main Headline"
           />
         </div>
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
             multiline
             textKey="heroSubtitle"
             defaultText={settings.heroSubtitle || t('hero.subtitle', 'Direct verified digital delivery for top-tier AAA game vaults and curated PC collections. Activated to your account in minutes with lifetime access.')}
-            className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal"
+            className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal [text-wrap:balance]"
             label="Hero Subtitle"
           />
         </div>
@@ -81,24 +81,24 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
           <Link
             to="/bundles"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-black font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-black font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide whitespace-nowrap shrink-0"
           >
             <Zap className="w-4 h-4 fill-black text-black" />
             <span>{t('hero.btn_browse', 'Browse Vault Bundles')}</span>
             <ArrowRight className="w-4 h-4 text-black" />
           </Link>
 
-          <a
-            href="/bundles#gameplay-videos"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+          <Link
+            to="/bundles"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
             <span>{t('hero.btn_videos', "See What's Included (Video)")}</span>
-          </a>
+          </Link>
 
           <Link
             to="/channels"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0d1326]/80 border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.08] text-slate-200 hover:text-white font-bold text-xs sm:text-sm backdrop-blur-xl transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap shrink-0"
           >
             <span>{t('hero.btn_channels', 'VIP Channels & Sites')}</span>
           </Link>
@@ -120,26 +120,26 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
           </Link>
         </div>
 
-        {/* Trust Badges / Quick Metrics Strip (Refined & Compact) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3.5 max-w-3xl mx-auto pt-6 border-t border-white/[0.08]">
-          <div className="bg-[#090d18]/80 border border-white/[0.07] p-3 rounded-xl text-center">
-            <div className="text-xl sm:text-2xl font-black font-gaming text-amber-400 mb-0.5">60,000+</div>
-            <div className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_games', 'PC Games & Vaults')}</div>
+        {/* Quantitative Proof Strip (Unified, Hairline Dividers & Tabular Numerals) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.08] bg-[#080d1a]/85 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-4 sm:p-5 max-w-4xl mx-auto shadow-2xl">
+          <div className="p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black font-mono tabular-nums text-amber-400 mb-0.5">60,000+</div>
+            <div className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_games', 'PC Games & Vaults')}</div>
           </div>
-          <div className="bg-[#090d18]/80 border border-white/[0.07] p-3 rounded-xl text-center">
-            <div className="text-xl sm:text-2xl font-black font-gaming text-emerald-400 mb-0.5">&lt; 5 Mins</div>
-            <div className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_delivery', 'Direct DM Delivery')}</div>
+          <div className="p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black font-mono tabular-nums text-emerald-400 mb-0.5">&lt; 5 Mins</div>
+            <div className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_delivery', 'Direct DM Delivery')}</div>
           </div>
-          <div className="bg-[#090d18]/80 border border-white/[0.07] p-3 rounded-xl text-center">
-            <div className="text-xl sm:text-2xl font-black font-gaming text-sky-400 mb-0.5">₹0 Fee</div>
-            <div className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_fee', 'Setup Fees & Hidden Costs')}</div>
+          <div className="p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black font-mono tabular-nums text-sky-400 mb-0.5">₹0 Fee</div>
+            <div className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_fee', 'Setup Fees & Hidden Costs')}</div>
           </div>
-          <div className="bg-[#090d18]/80 border border-white/[0.07] p-3 rounded-xl text-center">
-            <div className="text-xl sm:text-2xl font-black font-gaming text-amber-400 mb-0.5 flex items-center justify-center gap-1">
+          <div className="p-3 text-center">
+            <div className="text-xl sm:text-2xl font-black font-mono tabular-nums text-amber-400 mb-0.5 flex items-center justify-center gap-1">
               <span>4.9</span>
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
             </div>
-            <div className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_rating', 'Verified Gamer Rating')}</div>
+            <div className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">{t('hero.stat_rating', 'Verified Gamer Rating')}</div>
           </div>
         </div>
 

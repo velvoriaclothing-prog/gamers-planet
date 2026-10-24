@@ -24,6 +24,9 @@ import { BundleQuickEditModal } from './components/live-edit/BundleQuickEditModa
 import { useRealtimeSync } from './hooks/useRealtimeSync.js';
 import { LanguageProvider } from './context/LanguageContext.js';
 import { LanguageSelectionModal } from './components/LanguageSelectionModal.js';
+import { ThemeProvider } from './context/ThemeContext.js';
+import { LiveWallpaper } from './components/LiveWallpaper.js';
+import { ThemeSelectorModal } from './components/ThemeSelectorModal.js';
 
 import { HomePage } from './pages/HomePage.js';
 import { BundlesPage } from './pages/BundlesPage.js';
@@ -65,7 +68,10 @@ const Storefront: React.FC<StorefrontProps> = ({
 
 
   return (
-    <div className="min-h-screen bg-[#050608] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black pb-16 lg:pb-0">
+    <div className="min-h-screen bg-[#04060e] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black pb-16 lg:pb-0 relative">
+      {/* Dynamic Themed Live Wallpaper with Contrast Scrim (100% text & bundle visibility) */}
+      <LiveWallpaper />
+
       {/* Auto scroll to top on page navigation */}
       <ScrollToTop />
 
@@ -77,6 +83,9 @@ const Storefront: React.FC<StorefrontProps> = ({
 
       {/* Quick modal for editing bundle prices & names live on page */}
       <BundleQuickEditModal />
+
+      {/* Store Theme & Live Wallpaper Customization Modal */}
+      <ThemeSelectorModal />
 
       {/* Language Selection Modal at Start of Website / on Request */}
       <LanguageSelectionModal />
@@ -93,9 +102,13 @@ const Storefront: React.FC<StorefrontProps> = ({
       {/* Multi-Page Routes */}
       <main className="flex-1">
         <Routes>
-          {/* 1. Home Page */}
+          {/* 1. Website opens directly in Bundles section and shows bundles */}
           <Route
             path="/"
+            element={<Navigate to="/bundles" replace />}
+          />
+          <Route
+            path="/home"
             element={
               <HomePage
                 bundles={effectiveBundles}
@@ -361,31 +374,33 @@ export default function App() {
     );
   }
 
-  // Multi-Page Public Storefront with Live In-Place Edit Provider and Language Provider
+  // Multi-Page Public Storefront with Theme, Language, and Live In-Place Edit Providers
   return (
-    <LanguageProvider>
-      <LiveEditProvider
-        settings={settings}
-        bundles={bundles}
-        isAdmin={isAdmin}
-        onRefreshAll={handleRefreshAll}
-        onSettingsUpdate={(newSettings) => setSettings(newSettings)}
-        onBundlesUpdate={(newBundles) => setBundles(newBundles)}
-      >
-        <Storefront
+    <ThemeProvider>
+      <LanguageProvider>
+        <LiveEditProvider
+          settings={settings}
           bundles={bundles}
-          reviews={reviews}
           isAdmin={isAdmin}
-          onOpenAdminLogin={() => setShowAdminLogin(true)}
-          onOpenAdminDashboard={() => setShowAdminDashboard(true)}
-          onLogout={handleLogout}
-          selectedBundle={selectedBundle}
-          onSelectBundle={(bundle) => setSelectedBundle(bundle)}
-          showAdminLogin={showAdminLogin}
-          onCloseAdminLogin={() => setShowAdminLogin(false)}
-          onLoginSuccess={handleLoginSuccess}
-        />
-      </LiveEditProvider>
-    </LanguageProvider>
+          onRefreshAll={handleRefreshAll}
+          onSettingsUpdate={(newSettings) => setSettings(newSettings)}
+          onBundlesUpdate={(newBundles) => setBundles(newBundles)}
+        >
+          <Storefront
+            bundles={bundles}
+            reviews={reviews}
+            isAdmin={isAdmin}
+            onOpenAdminLogin={() => setShowAdminLogin(true)}
+            onOpenAdminDashboard={() => setShowAdminDashboard(true)}
+            onLogout={handleLogout}
+            selectedBundle={selectedBundle}
+            onSelectBundle={(bundle) => setSelectedBundle(bundle)}
+            showAdminLogin={showAdminLogin}
+            onCloseAdminLogin={() => setShowAdminLogin(false)}
+            onLoginSuccess={handleLoginSuccess}
+          />
+        </LiveEditProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

@@ -27,37 +27,28 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = () => {
     >
       <div className="max-w-md mx-auto flex items-center justify-around px-1.5 py-1 gap-0.5">
         
-        {/* 1. Home */}
-        <NavLink to="/" className={navLinkClass}>
-          <Home className="w-4 h-4 mb-0.5" />
-          <span className="text-[9px] font-gaming uppercase tracking-wider truncate max-w-[50px]">{t('nav.home', 'Home')}</span>
-        </NavLink>
-
-        {/* 2. Bundles */}
+        {/* 1. Bundles Vault */}
         <NavLink to="/bundles" className={navLinkClass}>
           <Zap className="w-4 h-4 mb-0.5 text-amber-400" />
           <span className="text-[9px] font-gaming uppercase tracking-wider truncate max-w-[54px]">{t('nav.bundles', 'Bundles')}</span>
         </NavLink>
 
-        {/* 3. Live Trailers */}
-        <a 
-          href="/bundles#gameplay-videos" 
-          className="flex flex-col items-center justify-center flex-1 py-1 px-0.5 rounded-xl transition-all duration-200 select-none text-slate-400 hover:text-white font-medium hover:bg-white/5"
-        >
-          <Film className="w-4 h-4 mb-0.5 text-amber-400" />
-          <span className="text-[9px] font-gaming uppercase tracking-wider truncate max-w-[50px]">Video</span>
-        </a>
-
-        {/* 4. VIP Channels */}
+        {/* 2. VIP Channels */}
         <NavLink to="/channels" className={navLinkClass}>
           <Lock className="w-4 h-4 mb-0.5 text-amber-400" />
           <span className="text-[9px] font-gaming uppercase tracking-wider truncate max-w-[52px]">VIP</span>
         </NavLink>
 
-        {/* 5. Reviews */}
+        {/* 3. Reviews */}
         <NavLink to="/reviews" className={navLinkClass}>
           <Star className="w-4 h-4 mb-0.5 text-amber-400" />
           <span className="text-[9px] font-gaming uppercase tracking-wider truncate max-w-[50px]">{t('nav.reviews', 'Reviews')}</span>
+        </NavLink>
+
+        {/* 4. FAQ & Setup */}
+        <NavLink to="/faq" className={navLinkClass}>
+          <Home className="w-4 h-4 mb-0.5 text-amber-400" />
+          <span className="text-[9px] font-gaming uppercase tracking-wider truncate max-w-[50px]">{t('nav.faq', 'FAQ')}</span>
         </NavLink>
 
         {/* 6. Language Switch Button */}

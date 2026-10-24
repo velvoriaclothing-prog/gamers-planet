@@ -383,7 +383,7 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
                         : 'bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border-white/10'
                     }`}
                   >
-                    {isPartActive && <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />}
+                    {isPartActive && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
                     <span>Part {pIdx + 1}</span>
                   </button>
                 );

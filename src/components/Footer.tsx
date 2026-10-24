@@ -5,6 +5,7 @@ import { SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { EditableText } from './live-edit/EditableText.js';
 import { useLanguage } from '../context/LanguageContext.js';
+import { ThemeToggle } from './ThemeToggle.js';
 
 interface FooterProps {
   settings: SiteSettings;
@@ -57,35 +58,27 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/bundles" className="hover:text-amber-400 transition-colors text-amber-300 font-semibold flex items-center gap-1.5">
-                  <span>⚡ Bundles Vault</span>
-                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                    ₹399+
-                  </span>
+                <Link to="/bundles" className="hover:text-amber-400 transition-colors text-amber-300 font-semibold flex items-center justify-between">
+                  <span>Bundles Vault</span>
+                  <span className="text-[11px] text-slate-400 font-mono tabular-nums">from ₹399</span>
                 </Link>
               </li>
               <li>
-                <a href="/bundles#gameplay-videos" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-                  <span>What's Included in Bundle (Video)</span>
-                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                    Video Proof
-                  </span>
-                </a>
+                <Link to="/bundles" className="hover:text-amber-400 transition-colors flex items-center justify-between">
+                  <span>What's Included (Video Proof)</span>
+                  <span className="text-[11px] text-amber-400/90 font-medium">Inside Vault</span>
+                </Link>
               </li>
               <li>
-                <Link to="/channels" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <Link to="/channels" className="hover:text-amber-400 transition-colors flex items-center justify-between">
                   <span>VIP Channels & Sites</span>
-                  <span className="text-[9px] uppercase font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                    VIP
-                  </span>
+                  <span className="text-[11px] text-slate-400">Protected</span>
                 </Link>
               </li>
               <li>
-                <Link to="/reviews" className="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+                <Link to="/reviews" className="hover:text-amber-400 transition-colors flex items-center justify-between">
                   <span>Customer Proof & Reviews</span>
-                  <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                    65+ Verified
-                  </span>
+                  <span className="text-[11px] text-emerald-400 font-mono tabular-nums">150+ Verified</span>
                 </Link>
               </li>
               <li>
@@ -138,6 +131,7 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
               <span>🌐</span>
               <span className="uppercase">{language}</span>
             </button>
+            <ThemeToggle variant="footer" />
             <button
               onClick={scrollToTop}
               className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"

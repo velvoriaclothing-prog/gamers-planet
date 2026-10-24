@@ -26,6 +26,7 @@ import { SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLanguage } from '../context/LanguageContext.js';
 import { LanguageToggle } from './LanguageToggle.js';
+import { ThemeToggle } from './ThemeToggle.js';
 
 interface NavbarProps {
   settings: SiteSettings;
@@ -69,10 +70,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         onOpenAdminModal();
       }
     } else {
-      // Normal click: navigate home if single click after timeout
+      // Normal click: navigate to bundles if single click after timeout
       clickTimerRef.current = setTimeout(() => {
         setClickCount(0);
-        navigate('/');
+        navigate('/bundles');
       }, 400);
     }
   };
@@ -84,26 +85,26 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navItemClass = ({ isActive }: { isActive: boolean }) =>
-    `py-1.5 px-2.5 rounded-lg text-xs font-gaming uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+    `py-2 px-3 text-xs font-gaming uppercase tracking-wider transition-all duration-200 whitespace-nowrap shrink-0 flex items-center gap-1.5 cursor-pointer ${
       isActive
-        ? 'text-amber-400 bg-amber-500/15 border border-amber-500/40 font-black shadow-[0_0_15px_rgba(245,158,11,0.25)]'
-        : 'text-slate-300 hover:text-white hover:bg-white/5 border border-transparent font-bold'
+        ? 'text-amber-400 font-black border-b-2 border-amber-400'
+        : 'text-slate-300 hover:text-white border-b-2 border-transparent font-semibold'
     }`;
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-[#06080e]/90 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#050711]/92 backdrop-blur-2xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-8">
         
-        {/* Brand Logo with 5-click easter egg */}
-        <div className="flex items-center gap-4">
+        {/* Zone 1: Clean Brand Wordmark (Single Text Element) */}
+        <div className="flex items-center shrink-0">
           <button
             onClick={handleLogoClick}
             type="button"
-            title="Gamers Planet (Click 5 times for Admin)"
-            className="group flex items-center gap-2.5 sm:gap-3 text-left focus:outline-none select-none transition-transform active:scale-95 cursor-pointer"
+            title="Gamers Planet"
+            className="group flex items-center gap-2.5 text-left focus:outline-none select-none transition-transform active:scale-95 cursor-pointer"
           >
-            <div className={`relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-700/10 border border-amber-500/40 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-amber-400 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] ${
-              showClickPulse ? 'scale-110 border-amber-300 shadow-[0_0_25px_rgba(245,158,11,0.6)]' : ''
+            <div className={`w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden transition-all duration-200 group-hover:border-amber-400 group-hover:bg-amber-500/20 ${
+              showClickPulse ? 'scale-110 border-amber-300' : ''
             }`}>
               {settings.logoImageUrl ? (
                 <img
@@ -112,61 +113,40 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="w-full h-full object-contain p-1"
                 />
               ) : (
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 transition-transform duration-300 group-hover:rotate-12" />
+                <Shield className="w-5 h-5 text-amber-400 transition-transform duration-200 group-hover:scale-110" />
               )}
             </div>
 
-            <div>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="text-lg sm:text-2xl font-bold tracking-wider font-gaming bg-gradient-to-r from-white via-slate-200 to-amber-300 bg-clip-text text-transparent">
-                  {settings.logoText || 'GAMERS PLANET'}
-                </span>
-                <span className="text-[9px] sm:text-[10px] tracking-widest text-amber-400 font-semibold px-1.5 py-0.5 rounded border border-amber-500/30 bg-amber-500/10 uppercase">
-                  VAULT
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block">
-                Premium Curated PC Game Bundles
-              </p>
-            </div>
+            <span className="text-xl sm:text-2xl font-black tracking-wider font-gaming text-white group-hover:text-amber-300 transition-colors whitespace-nowrap">
+              {settings.logoText || 'GAMERS PLANET'}
+            </span>
           </button>
         </div>
 
-        {/* Desktop Navigation items (Multi-Page Router with Translations) */}
-        <nav className="hidden lg:flex items-center gap-1.5 text-xs font-medium text-slate-300">
-          <NavLink to="/" className={navItemClass}>
-            <Home className="w-3.5 h-3.5" />
-            <span>{t('nav.home', 'Home')}</span>
-          </NavLink>
-
+        {/* Zone 2: Clean 4 Single-Line Nav Links */}
+        <nav className="hidden lg:flex items-center gap-2 text-xs text-slate-300">
           <NavLink to="/bundles" className={navItemClass}>
-            <Flame className="w-3.5 h-3.5 text-amber-400" />
             <span>{t('nav.bundles', 'Bundles Vault')}</span>
           </NavLink>
 
-          <a href="/bundles#gameplay-videos" className="py-1.5 px-2.5 rounded-lg text-xs font-gaming uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white hover:bg-white/5 border border-transparent font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>{t('nav.videos', "What's Included (Video)")}</span>
-          </a>
-
           <NavLink to="/channels" className={navItemClass}>
-            <Lock className="w-3.5 h-3.5 text-amber-400" />
             <span>{t('nav.channels', 'VIP Channels')}</span>
           </NavLink>
 
           <NavLink to="/reviews" className={navItemClass}>
-            <Star className="w-3.5 h-3.5 text-amber-400" />
             <span>{t('nav.reviews', 'Reviews')}</span>
           </NavLink>
 
           <NavLink to="/faq" className={navItemClass}>
-            <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
             <span>{t('nav.faq', 'FAQ')}</span>
           </NavLink>
         </nav>
 
-        {/* Actions / Language Switcher & Admin / Contact buttons */}
+        {/* Zone 3: Actions — Theme & Language Switchers & Primary Action */}
         <div className="flex items-center gap-2">
+          {/* Theme & Live Wallpaper Selector */}
+          <ThemeToggle variant="navbar" />
+
           {/* Language Switcher Dropdown */}
           <LanguageToggle variant="navbar" />
 
@@ -277,20 +257,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 ₹399+
               </span>
             </NavLink>
-
-            <a
-              href="/bundles#gameplay-videos"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between p-3 rounded-xl border border-white/10 text-xs font-bold font-gaming uppercase tracking-wider transition-all bg-white/5 text-white hover:bg-white/10"
-            >
-              <div className="flex items-center gap-2.5">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>{t('nav.videos', "What's Included (Video)")}</span>
-              </div>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-amber-300">
-                Video
-              </span>
-            </a>
 
             <NavLink
               to="/channels"

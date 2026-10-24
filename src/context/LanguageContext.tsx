@@ -100,6 +100,18 @@ const translations: Record<Language, Record<string, string>> = {
     'faq.step3_title': "3. Install & Play Forever",
     'faq.step3_desc': "Follow our 1-click simple setup video and enjoy lifetime offline & online gaming.",
 
+    // Features & Advantage
+    'features.eyebrow': "Why Thousands of Gamers Choose Us",
+    'features.title': "THE ULTIMATE GAMER ADVANTAGE",
+    'features.f1_title': "5-Minute Instant Delivery",
+    'features.f1_desc': "Zero waiting queues. Once payment is verified, login credentials and direct setup guides arrive in minutes.",
+    'features.f2_title': "100% Verified & Safe",
+    'features.f2_desc': "Every vault bundle is thoroughly pre-tested for malware, clean cloud syncing, and high performance before listing.",
+    'features.f3_title': "Lifetime Reinstallation",
+    'features.f3_desc': "Switching to a new gaming rig or reinstalling Windows? Your vault access remains yours forever with no additional fees.",
+    'features.f4_title': "1-on-1 Direct Technical Support",
+    'features.f4_desc': "Facing driver conflicts or setup confusion? Our technical team assists you directly with personalized walkthroughs.",
+
     // Language Dialog
     'lang.welcome': "Welcome to Gamers Planet",
     'lang.tagline': "India's #1 Curated PC Game Vault & Steam Unlock Store",
@@ -199,6 +211,18 @@ const translations: Record<Language, Record<string, string>> = {
     'faq.step3_title': '3. इंस्टॉल करें और हमेशा खेलें',
     'faq.step3_desc': 'हमारे सरल 1-क्लिक वीडियो गाइड को देखकर बिना किसी झंझट के गेमिंग शुरू करें।',
 
+    // Features & Advantage
+    'features.eyebrow': 'हजारों गेमर्स हमें क्यों चुनते हैं',
+    'features.title': 'गेमर्स के लिए विशेष सुविधाएं',
+    'features.f1_title': '5 मिनट में तुरंत डिलीवरी',
+    'features.f1_desc': 'बिना किसी इंतज़ार के। पेमेंट वेरिफाई होते ही लॉगिन क्रेडेंशियल्स और सेटअप गाइड मिनटों में मिल जाते हैं।',
+    'features.f2_title': '100% सुरक्षित और टेस्टेड',
+    'features.f2_desc': 'हर गेम वॉल्ट को मैलवेयर-मुक्त, सुरक्षित क्लाउड सिंकिंग और उच्च प्रदर्शन के लिए पहले ही टेस्ट किया जाता है।',
+    'features.f3_title': 'लाइफटाइम री-इंस्टॉलेशन',
+    'features.f3_desc': 'नया पीसी लेने या विंडोज री-इंस्टॉल करने पर भी आपका गेम ऐक्सेस बिना किसी अतिरिक्त शुल्क के हमेशा सुरक्षित रहता है।',
+    'features.f4_title': '1-on-1 व्यक्तिगत तकनीकी सहायता',
+    'features.f4_desc': 'किसी भी तकनीकी समस्या या ड्राइवर सेटअप में हमारी टीम सीधे चैट पर आपकी पूरी मदद करती है।',
+
     // Language Dialog
     'lang.welcome': 'गेमर्स प्लैनेट में आपका स्वागत है',
     'lang.tagline': 'भारत का #1 क्युरेटेड पीसी गेम वॉल्ट और स्टीम अनलॉक स्टोर',
@@ -297,6 +321,18 @@ const translations: Record<Language, Record<string, string>> = {
     'faq.step2_desc': '2 se 5 minutes mein high-speed direct download link aur activation tools mil jayenge.',
     'faq.step3_title': '3. Install Karo & Bindass Khelo',
     'faq.step3_desc': 'Hamare 1-click video guide ke saath easily install karo aur lifetime gaming enjoy karo.',
+
+    // Features & Advantage
+    'features.eyebrow': 'Hazaron Gamers Humein Kyu Chunte Hain',
+    'features.title': 'GAMERS KE LIYE SPECIAL ADVANTAGES',
+    'features.f1_title': '5 Mins Mein Instant Delivery',
+    'features.f1_desc': 'Koi waiting line nahi. Payment verify hote hi direct login credentials aur setup guide minutes mein mil jate hain.',
+    'features.f2_title': '100% Tested & Virus Free',
+    'features.f2_desc': 'Har ek bundle ko malware check aur smooth performance ke liye pehle hi thoroughly test kiya jata hai.',
+    'features.f3_title': 'Lifetime Re-installation Free',
+    'features.f3_desc': 'Naya PC liya ya Windows reinstall kiya? Aapka game vault access hamesha active rahega bina kisi extra fee ke.',
+    'features.f4_title': '1-on-1 Direct Support',
+    'features.f4_desc': 'Setup karne mein koi bhi dikkat aaye toh hamari technical team DM mein direct call/chat support deti hai.',
 
     // Language Dialog
     'lang.welcome': 'Welcome to Gamers Planet',

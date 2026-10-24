@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2 } from 'lucide-react';
+import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2, Sparkles } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLanguage } from '../context/LanguageContext.js';
@@ -217,7 +217,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                           : 'bg-white/5 text-slate-300 hover:text-white border-white/10 hover:bg-white/10'
                       }`}
                     >
-                      {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />}
+                      {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
                       <span>Part {pIdx + 1}</span>
                     </button>
                   );
@@ -298,7 +298,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
               <div className="mb-8 p-4 rounded-2xl bg-[#090d19]/90 border border-amber-500/30 shadow-lg">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                    <Sparkles className="w-4 h-4 text-amber-400" />
                     <h3 className="text-sm font-black uppercase tracking-wider text-white font-gaming">
                       TOP POPULAR BLOCKBUSTERS INCLUDED
                     </h3>

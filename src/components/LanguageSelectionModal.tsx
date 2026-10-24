@@ -109,15 +109,10 @@ export const LanguageSelectionModal: React.FC = () => {
                     : 'bg-white/[0.03] border-white/10 hover:border-white/20 hover:bg-white/[0.06]'
                 }`}
               >
-                {/* Active Indicator Bar on Left */}
-                {isSelected && (
-                  <div className="absolute left-0 inset-y-0 w-1.5 bg-amber-400" />
-                )}
-
                 <div className="flex items-center gap-3.5 min-w-0">
                   <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0 border ${
                     isSelected 
-                      ? 'bg-amber-500/20 border-amber-400/50' 
+                      ? 'bg-amber-500/20 border-amber-400/50 text-amber-300' 
                       : 'bg-white/5 border-white/10'
                   }`}>
                     <span>{opt.flag}</span>
