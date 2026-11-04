@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useSearchParams } from 'react-router-dom';
 import { Loader2, AlertTriangle, RefreshCw } from 'lucide-react';
 import { Bundle, ReviewScreenshot, SiteSettings, Channel } from './types/index.js';
 import { api, getAuthToken, clearAuthToken } from './utils/api.js';
@@ -30,6 +30,7 @@ import { ThemeSelectorModal } from './components/ThemeSelectorModal.js';
 
 import { HomePage } from './pages/HomePage.js';
 import { BundlesPage } from './pages/BundlesPage.js';
+import { SingleBundlePage } from './pages/SingleBundlePage.js';
 import { ChannelsPage } from './pages/ChannelsPage.js';
 import { ReviewsPage } from './pages/ReviewsPage.js';
 import { FaqPage } from './pages/FaqPage.js';
@@ -64,8 +65,23 @@ const Storefront: React.FC<StorefrontProps> = ({
   const { getEffectiveSettings, getEffectiveBundles } = useLiveEdit();
   const effectiveSettings = getEffectiveSettings();
   const effectiveBundles = getEffectiveBundles(bundles);
+  const [searchParams] = useSearchParams();
 
-
+  // Support ?bundle=<id> or ?b=<id> deep linking with modal auto-open
+  useEffect(() => {
+    const bundleQuery = searchParams.get('bundle') || searchParams.get('b');
+    if (bundleQuery && effectiveBundles.length > 0) {
+      const cleanParam = bundleQuery.toLowerCase().trim();
+      const match = effectiveBundles.find(
+        (b) =>
+          b.id.toLowerCase() === cleanParam ||
+          b.id.toLowerCase().replace(/^bundle-/, '') === cleanParam.replace(/^bundle-/, '')
+      );
+      if (match) {
+        onSelectBundle(match);
+      }
+    }
+  }, [searchParams, effectiveBundles, onSelectBundle]);
 
   return (
     <div className="min-h-screen bg-[#04060e] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black pb-16 lg:pb-0 relative">
@@ -136,7 +152,23 @@ const Storefront: React.FC<StorefrontProps> = ({
             }
           />
 
-          {/* 3. Redirects for Single Games & Search Catalog to Bundles Vault */}
+          {/* 3. Dedicated Shareable Single Bundle Page with Video Walkthrough */}
+          <Route
+            path="/bundle/:bundleId"
+            element={
+              <SingleBundlePage
+                bundles={effectiveBundles}
+                settings={effectiveSettings}
+                isAdmin={isAdmin}
+                onOpenAdmin={() => {
+                  if (isAdmin) onOpenAdminDashboard();
+                  else onOpenAdminLogin();
+                }}
+              />
+            }
+          />
+
+          {/* 4. Redirects for Single Games & Search Catalog to Bundles Vault */}
           <Route path="/single-games" element={<Navigate to="/bundles" replace />} />
           <Route path="/catalog" element={<Navigate to="/bundles" replace />} />
 

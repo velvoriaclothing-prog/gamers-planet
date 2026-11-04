@@ -458,9 +458,15 @@ export const ReviewGallery: React.FC<ReviewGalleryProps> = ({
                 <video
                   src={activeProofMedia.url}
                   controls
+                  controlsList="nodownload noremoteplayback noplaybackrate"
+                  disablePictureInPicture
+                  disableRemotePlayback
                   autoPlay
                   playsInline
-                  className="max-h-[70vh] w-auto max-w-full rounded-xl"
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="max-h-[70vh] w-auto max-w-full rounded-xl select-none"
                 />
               ) : (
                 <img

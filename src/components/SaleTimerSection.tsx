@@ -78,55 +78,55 @@ export const SaleTimerSection: React.FC<SaleTimerSectionProps> = ({
         </div>
 
         {/* Live Digital Timer */}
-        <div className="max-w-2xl mx-auto mb-14">
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-amber-500/25 shadow-2xl bg-[#080d1a]/90 backdrop-blur-2xl">
-            <div className="flex items-center justify-center gap-3 sm:gap-6 text-center">
+        <div className="max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div className="glass-panel p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl border border-amber-500/25 shadow-2xl bg-[#080d1a]/90 backdrop-blur-2xl">
+            <div className="flex items-center justify-center gap-1.5 xs:gap-3 sm:gap-6 text-center">
               
               {/* Hours Box */}
               <div className="flex-1 max-w-[140px]">
-                <div className="bg-[#050812] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
-                  <div className="text-3xl sm:text-6xl font-black font-mono tabular-nums text-amber-400">
+                <div className="bg-[#050812] rounded-xl sm:rounded-2xl p-2 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
+                  <div className="text-2xl xs:text-4xl sm:text-6xl font-black font-mono tabular-nums text-amber-400">
                     {formatDigit(timeLeft.hours)}
                   </div>
                   <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/40 pointer-events-none" />
                 </div>
-                <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400 mt-2 font-gaming">
+                <div className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-slate-400 mt-1.5 font-gaming">
                   Hours
                 </div>
               </div>
 
               {/* Colon separator */}
-              <div className="text-2xl sm:text-5xl font-black text-amber-500/60 -mt-6 select-none font-mono">
+              <div className="text-xl xs:text-3xl sm:text-5xl font-black text-amber-500/60 -mt-5 select-none font-mono">
                 :
               </div>
 
               {/* Minutes Box */}
               <div className="flex-1 max-w-[140px]">
-                <div className="bg-[#050812] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
-                  <div className="text-3xl sm:text-6xl font-black font-mono tabular-nums text-amber-400">
+                <div className="bg-[#050812] rounded-xl sm:rounded-2xl p-2 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
+                  <div className="text-2xl xs:text-4xl sm:text-6xl font-black font-mono tabular-nums text-amber-400">
                     {formatDigit(timeLeft.minutes)}
                   </div>
                   <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/40 pointer-events-none" />
                 </div>
-                <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400 mt-2 font-gaming">
+                <div className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-slate-400 mt-1.5 font-gaming">
                   Minutes
                 </div>
               </div>
 
               {/* Colon separator */}
-              <div className="text-2xl sm:text-5xl font-black text-amber-500/60 -mt-6 select-none font-mono">
+              <div className="text-xl xs:text-3xl sm:text-5xl font-black text-amber-500/60 -mt-5 select-none font-mono">
                 :
               </div>
 
               {/* Seconds Box */}
               <div className="flex-1 max-w-[140px]">
-                <div className="bg-[#050812] rounded-2xl p-3 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
-                  <div className="text-3xl sm:text-6xl font-black font-mono tabular-nums text-amber-300">
+                <div className="bg-[#050812] rounded-xl sm:rounded-2xl p-2 sm:p-5 border border-white/10 shadow-inner relative overflow-hidden group">
+                  <div className="text-2xl xs:text-4xl sm:text-6xl font-black font-mono tabular-nums text-amber-300">
                     {formatDigit(timeLeft.seconds)}
                   </div>
                   <div className="absolute inset-x-0 top-1/2 h-[1px] bg-black/40 pointer-events-none" />
                 </div>
-                <div className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400 mt-2 font-gaming">
+                <div className="text-[9px] sm:text-xs font-bold uppercase tracking-widest text-slate-400 mt-1.5 font-gaming">
                   Seconds
                 </div>
               </div>

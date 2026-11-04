@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { Gamepad2, Play, ExternalLink, Sparkles, Eye, CheckCircle2, Search, ArrowRight, Edit3, Flame } from 'lucide-react';
+import { Gamepad2, Play, ExternalLink, Sparkles, Eye, CheckCircle2, Search, ArrowRight, Edit3, Flame, Share2, Check } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLiveEdit } from './live-edit/LiveEditContext.js';
 import { useLanguage } from '../context/LanguageContext.js';
+import { shareBundleLink } from '../utils/shareBundle.js';
 
 interface BundleGridProps {
   bundles: Bundle[];
@@ -22,6 +23,28 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [shareToast, setShareToast] = useState<{ show: boolean; message: string }>({
+    show: false,
+    message: ''
+  });
+
+  const handleShareBundle = async (e: React.MouseEvent, bundle: Bundle) => {
+    e.stopPropagation();
+    const res = await shareBundleLink(bundle);
+    if (res.copied) {
+      setShareToast({
+        show: true,
+        message: 'Direct link copied! Ready to share.'
+      });
+      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
+    } else if (res.shared) {
+      setShareToast({
+        show: true,
+        message: 'Link shared successfully!'
+      });
+      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
+    }
+  };
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -54,6 +77,14 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
 
   return (
     <section id="bundles" className="relative py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Share Toast Notification */}
+      {shareToast.show && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-200">
+          <Check className="w-4 h-4 text-black stroke-[3]" />
+          <span>{shareToast.message}</span>
+        </div>
+      )}
+
       {/* Subtle ambient lighting halo */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[300px] bg-amber-500/[0.07] blur-[150px] pointer-events-none rounded-full z-0" />
 
@@ -317,22 +348,31 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                       )}
                     </div>
 
-                    {/* Dual Action Buttons */}
-                    <div className="grid grid-cols-2 gap-2">
+                    {/* Action Buttons: Share + Watch Video / Details + Buy Now */}
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={(e) => handleShareBundle(e, bundle)}
+                        title="Share bundle link"
+                        className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-amber-400 hover:text-white transition-all cursor-pointer shrink-0 active:scale-90"
+                      >
+                        <Share2 className="w-3.5 h-3.5" />
+                      </button>
+
                       <button
                         type="button"
                         onClick={() => onSelectBundle(bundle)}
-                        className="w-full py-2 px-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer whitespace-nowrap"
+                        className="flex-1 py-2 px-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-semibold text-xs flex items-center justify-center gap-1 transition-all cursor-pointer whitespace-nowrap min-h-[36px]"
                       >
                         {bundle.videoPreview ? (
                           <>
-                            <Play className="w-3 h-3 text-amber-400 fill-amber-400" />
-                            <span>{t('bundles.see_video', 'Watch Video')}</span>
+                            <Play className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />
+                            <span className="truncate">{t('bundles.see_video', 'Watch Video')}</span>
                           </>
                         ) : (
                           <>
-                            <Eye className="w-3 h-3 text-slate-300" />
-                            <span>{t('bundles.view_details', 'Details')}</span>
+                            <Eye className="w-3 h-3 text-slate-300 shrink-0" />
+                            <span className="truncate">{t('bundles.view_details', 'Details')}</span>
                           </>
                         )}
                       </button>
@@ -348,7 +388,7 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                             href={redirectInfo.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-2 px-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer active:scale-95 text-center whitespace-nowrap"
+                            className="flex-1 py-2 px-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer active:scale-95 text-center whitespace-nowrap min-h-[36px]"
                             title={`Buy via ${redirectInfo.platformName}`}
                           >
                             <span>{t('bundles.claim_now', 'Buy Now')}</span>

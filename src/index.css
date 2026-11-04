@@ -88,3 +88,27 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #f59e0b;
 }
+
+/* Universal Anti-Download Protection for Videos */
+video {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+video::-internal-media-controls-download-button,
+video::-webkit-media-controls-download-button {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}
+
+.protected-video-shield {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

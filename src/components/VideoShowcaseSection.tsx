@@ -197,6 +197,12 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
             playsInline
             muted={isMuted}
             preload="auto"
+            controlsList="nodownload noremoteplayback noplaybackrate"
+            disablePictureInPicture
+            disableRemotePlayback
+            draggable={false}
+            onDragStart={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
             onPlay={() => {
               setIsPlaying(true);
               setIsLoadingVideo(false);
@@ -210,7 +216,7 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
               setIsLoadingVideo(false);
               setHasPlaybackError(true);
             }}
-            className="w-full h-full object-contain bg-black cursor-pointer"
+            className="w-full h-full object-contain bg-black cursor-pointer select-none"
             onClick={togglePlay}
           />
 

@@ -56,10 +56,10 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
       />
 
       {/* 5. Comparison Table Matrix (4 Official Vaults) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 bg-[#080c16]/95">
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <h3 className="text-xl sm:text-3xl font-black text-white font-gaming mb-2">
+      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+        <div className="glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-8 border border-white/10 bg-[#080c16]/95">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
+            <h3 className="text-lg sm:text-3xl font-black text-white font-gaming mb-1 sm:mb-2">
               VAULT BUNDLE COMPARISON
             </h3>
             <p className="text-xs sm:text-sm text-slate-400">
@@ -67,8 +67,13 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
             </p>
           </div>
 
+          {/* Mobile Swipe Hint */}
+          <div className="sm:hidden flex items-center justify-center gap-1.5 text-[10px] text-amber-400 font-semibold mb-3 px-2 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20">
+            <span>⇄ Swipe horizontally to compare all 4 vaults</span>
+          </div>
+
           <div className="overflow-x-auto pb-2 scrollbar-none">
-            <table className="w-full text-left text-xs sm:text-sm min-w-[640px]">
+            <table className="w-full text-left text-xs sm:text-sm min-w-[620px]">
               <thead>
                 <tr className="border-b border-white/10 text-slate-400">
                   <th className="py-3 px-4 font-bold uppercase tracking-wider font-gaming">Feature / Perk</th>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2, Sparkles } from 'lucide-react';
+import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2, Sparkles, Share2, Check, Lock } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLanguage } from '../context/LanguageContext.js';
+import { shareBundleLink } from '../utils/shareBundle.js';
 
 interface BundleModalProps {
   bundle: Bundle | null;
@@ -55,6 +56,40 @@ export const BundleModal: React.FC<BundleModalProps> = ({
 
   const playlist = getPlaylist();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
+  const [shareToast, setShareToast] = useState<{ show: boolean; message: string }>({
+    show: false,
+    message: ''
+  });
+  const [securityNotice, setSecurityNotice] = useState<{ show: boolean; message: string }>({
+    show: false,
+    message: ''
+  });
+
+  const showProtectedNotice = () => {
+    setSecurityNotice({
+      show: true,
+      message: '🔒 Vault Protection: Video downloading is restricted.'
+    });
+    setTimeout(() => setSecurityNotice({ show: false, message: '' }), 3000);
+  };
+
+  const handleShare = async () => {
+    if (!bundle) return;
+    const res = await shareBundleLink(bundle);
+    if (res.copied) {
+      setShareToast({
+        show: true,
+        message: 'Direct link copied! Ready to share.'
+      });
+      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
+    } else if (res.shared) {
+      setShareToast({
+        show: true,
+        message: 'Link shared successfully!'
+      });
+      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
+    }
+  };
 
   useEffect(() => {
     setCurrentPartIndex(0);
@@ -98,11 +133,14 @@ export const BundleModal: React.FC<BundleModalProps> = ({
     }
   }, [bundle?.id, currentVideoUrl, currentPartIndex]);
 
-  // Handle Escape key to close modal
+  // Handle Escape key to close modal & block Ctrl+S / Cmd+S video downloading
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+      } else if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        showProtectedNotice();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -121,26 +159,64 @@ export const BundleModal: React.FC<BundleModalProps> = ({
       ref={containerRef}
       className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-2xl p-2 sm:p-4 md:p-6 animate-in fade-in duration-200"
     >
+      {/* Toast Notification for Link Sharing */}
+      {shareToast.show && (
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-in fade-in duration-200">
+          <Check className="w-4 h-4 text-black stroke-[3]" />
+          <span>{shareToast.message}</span>
+        </div>
+      )}
+
+      {/* Security Toast Notification for Anti-Download Protection */}
+      {securityNotice.show && (
+        <div className="fixed top-18 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-red-950/95 border border-red-500/50 text-red-200 font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-xl">
+          <Lock className="w-4 h-4 text-amber-400 stroke-[2.5]" />
+          <span>{securityNotice.message}</span>
+        </div>
+      )}
+
       {/* Background click dismiss */}
       <div className="fixed inset-0" onClick={onClose} />
 
       {/* Centering wrapper: items-start with comfortable top padding prevents clipping */}
-      <div className="min-h-full flex items-start justify-center pt-4 sm:pt-8 pb-12 relative pointer-events-none">
+      <div className="min-h-full flex items-start justify-center pt-2 sm:pt-8 pb-12 relative pointer-events-none">
         
-        <div className="pointer-events-auto relative w-full max-w-4xl glass-panel rounded-3xl overflow-hidden border border-white/15 z-10 shadow-[0_25px_80px_rgba(0,0,0,0.95)]">
+        <div className="pointer-events-auto relative w-full max-w-4xl glass-panel rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 z-10 shadow-[0_25px_80px_rgba(0,0,0,0.95)]">
           
-          {/* Close Button with high z-index */}
-          <button
-            onClick={onClose}
-            type="button"
-            title="Close (Esc)"
-            className="absolute top-4 right-4 z-30 p-2.5 rounded-full bg-black/80 hover:bg-black text-slate-200 hover:text-white border border-white/20 transition-all hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          {/* Top Actions: Share & Close Buttons */}
+          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 flex items-center gap-1.5 sm:gap-2">
+            <button
+              onClick={handleShare}
+              type="button"
+              title="Share bundle link"
+              className="p-2 sm:p-2.5 rounded-full bg-black/80 hover:bg-black text-amber-400 hover:text-white border border-amber-500/40 hover:border-amber-400 transition-all hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+            <button
+              onClick={onClose}
+              type="button"
+              title="Close (Esc)"
+              className="p-2 sm:p-2.5 rounded-full bg-black/80 hover:bg-black text-slate-200 hover:text-white border border-white/20 transition-all hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
+            >
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
+            </button>
+          </div>
 
-          {/* Media Header: ALWAYS DISPLAY VIDEO (NEVER COVER ART) */}
-          <div className="relative w-full aspect-video max-h-[55vh] bg-black overflow-hidden flex items-center justify-center">
+          {/* Media Header: ALWAYS DISPLAY PROTECTED VIDEO (ANTI-DOWNLOAD ENFORCED) */}
+          <div 
+            onContextMenu={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              showProtectedNotice();
+              return false;
+            }}
+            onDragStart={(e) => {
+              e.preventDefault();
+              return false;
+            }}
+            className="relative w-full aspect-video max-h-[55vh] bg-black overflow-hidden flex items-center justify-center select-none protected-video-shield"
+          >
             {ytEmbed ? (
               <iframe
                 src={ytEmbed}
@@ -156,37 +232,57 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 src={currentVideoUrl}
                 poster={bundle.coverImage}
                 controls
+                controlsList="nodownload noremoteplayback noplaybackrate"
+                disablePictureInPicture
+                disableRemotePlayback
                 autoPlay
                 playsInline
                 preload="auto"
+                draggable={false}
+                onDragStart={(e) => {
+                  e.preventDefault();
+                  return false;
+                }}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  showProtectedNotice();
+                  return false;
+                }}
                 onEnded={handleVideoEnded}
-                className="w-full h-full max-h-[55vh] object-contain bg-black"
+                className="w-full h-full max-h-[55vh] object-contain bg-black select-none pointer-events-auto"
               >
                 Your browser does not support the video tag.
               </video>
             )}
 
-            {/* Video Indicator Pill */}
-            <div className="absolute top-4 left-4 z-20 flex items-center gap-2 pointer-events-none">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold font-gaming shadow-lg">
-                <Video className="w-3.5 h-3.5 text-amber-400" />
-                <span>{t('modal.included_heading', "WHAT'S INCLUDED IN BUNDLE (VIDEO)")}</span>
+            {/* Video Indicator Pill — Max width protected against top right buttons */}
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 flex items-center gap-2 pointer-events-none max-w-[calc(100%-110px)]">
+              <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-400 text-[10px] sm:text-xs font-bold font-gaming shadow-lg truncate">
+                <Video className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-amber-400 shrink-0" />
+                <span className="truncate">{t('modal.included_heading', "WHAT'S INCLUDED IN BUNDLE (VIDEO)")}</span>
               </div>
               {playlist.length > 1 && (
-                <div className="px-2.5 py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[11px] font-bold font-gaming flex items-center gap-1 shadow-lg">
-                  <Zap className="w-3 h-3 fill-amber-400" />
+                <div className="px-2 py-0.5 sm:py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] sm:text-[11px] font-bold font-gaming flex items-center gap-1 shadow-lg shrink-0">
+                  <Zap className="w-2.5 sm:w-3 h-2.5 sm:h-3 fill-amber-400 shrink-0" />
                   <span>PART {currentPartIndex + 1}/{playlist.length}</span>
                 </div>
               )}
+            </div>
+
+            {/* Subtle Anti-Download Protection Watermark */}
+            <div className="absolute bottom-3 right-3 sm:bottom-3.5 sm:right-4 z-20 pointer-events-none flex items-center gap-1.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 text-[9px] sm:text-[10px] text-slate-300 font-gaming uppercase tracking-wider select-none opacity-60">
+              <Lock className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-amber-400 shrink-0" />
+              <span>Vault Protected</span>
             </div>
           </div>
 
           {/* Sequential Playlist Controls Bar — Shifted BELOW the video */}
           {playlist.length > 1 && (
-            <div className="bg-[#0b1020] border-b border-white/10 px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 shadow-inner">
+            <div className="bg-[#0b1020] border-b border-white/10 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2.5 shadow-inner">
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold font-gaming tracking-wide">
-                  <Zap className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-[11px] sm:text-xs font-bold font-gaming tracking-wide">
+                  <Zap className="w-3 h-3 fill-amber-400 text-amber-400 shrink-0" />
                   <span>{t('video.sequence_active', 'Sequential Sequence Active:')}</span>
                 </div>
                 <span className="text-[11px] text-slate-400 hidden sm:inline">
@@ -194,14 +290,14 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 </span>
               </div>
 
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-0.5 scrollbar-none">
                 <button
                   type="button"
                   onClick={handlePrevPart}
-                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                  className="p-1 sm:p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
                   title="Previous Part"
                 >
-                  <SkipBack className="w-3.5 h-3.5" />
+                  <SkipBack className="w-3 h-3" />
                 </button>
 
                 {playlist.map((_, pIdx) => {
@@ -211,13 +307,13 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                       key={pIdx}
                       type="button"
                       onClick={() => setCurrentPartIndex(pIdx)}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold font-gaming transition-all cursor-pointer flex items-center gap-1.5 border ${
+                      className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold font-gaming transition-all cursor-pointer flex items-center gap-1 border shrink-0 ${
                         isCurrent
-                          ? 'bg-amber-500 text-black border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] font-black scale-105'
+                          ? 'bg-amber-500 text-black border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] font-black'
                           : 'bg-white/5 text-slate-300 hover:text-white border-white/10 hover:bg-white/10'
                       }`}
                     >
-                      {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
+                      {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />}
                       <span>Part {pIdx + 1}</span>
                     </button>
                   );
@@ -226,17 +322,17 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 <button
                   type="button"
                   onClick={handleNextPart}
-                  className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                  className="p-1 sm:p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
                   title="Next Part"
                 >
-                  <SkipForward className="w-3.5 h-3.5" />
+                  <SkipForward className="w-3 h-3" />
                 </button>
               </div>
             </div>
           )}
 
           {/* Modal Details Body */}
-          <div className="p-6 sm:p-8 bg-[#090c15]">
+          <div className="p-4 sm:p-8 bg-[#090c15]">
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 border-b border-white/10 pb-6">
               <div>
                 {bundle.category && (
@@ -389,14 +485,24 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             })()}
 
             {/* Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-end gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/10">
               <button
-                onClick={onClose}
+                onClick={handleShare}
                 type="button"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl glass-card text-slate-300 hover:text-white text-sm font-medium transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-bold font-gaming uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
               >
-                Back to Bundles
+                <Share2 className="w-4 h-4 text-amber-400" />
+                <span>Share Bundle Link</span>
               </button>
+
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <button
+                  onClick={onClose}
+                  type="button"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl glass-card text-slate-300 hover:text-white text-sm font-medium transition-colors cursor-pointer text-center"
+                >
+                  Back to Bundles
+                </button>
 
               {(() => {
                 const redirectInfo = getChannelRedirectInfo(settings, {
@@ -421,6 +527,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                   </a>
                 );
               })()}
+              </div>
             </div>
 
           </div>

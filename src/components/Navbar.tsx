@@ -93,17 +93,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#050711]/92 backdrop-blur-2xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-15 sm:h-18 flex items-center justify-between gap-2 sm:gap-6">
         
         {/* Zone 1: Clean Brand Wordmark (Single Text Element) */}
-        <div className="flex items-center shrink-0">
+        <div className="flex items-center shrink min-w-0">
           <button
             onClick={handleLogoClick}
             type="button"
             title="Gamers Planet"
-            className="group flex items-center gap-2.5 text-left focus:outline-none select-none transition-transform active:scale-95 cursor-pointer"
+            className="group flex items-center gap-2 text-left focus:outline-none select-none transition-transform active:scale-95 cursor-pointer min-w-0"
           >
-            <div className={`w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden transition-all duration-200 group-hover:border-amber-400 group-hover:bg-amber-500/20 ${
+            <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center overflow-hidden transition-all duration-200 group-hover:border-amber-400 group-hover:bg-amber-500/20 shrink-0 ${
               showClickPulse ? 'scale-110 border-amber-300' : ''
             }`}>
               {settings.logoImageUrl ? (
@@ -113,11 +113,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="w-full h-full object-contain p-1"
                 />
               ) : (
-                <Shield className="w-5 h-5 text-amber-400 transition-transform duration-200 group-hover:scale-110" />
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 transition-transform duration-200 group-hover:scale-110 shrink-0" />
               )}
             </div>
 
-            <span className="text-xl sm:text-2xl font-black tracking-wider font-gaming text-white group-hover:text-amber-300 transition-colors whitespace-nowrap">
+            <span className="text-base sm:text-xl lg:text-2xl font-black tracking-wider font-gaming text-white group-hover:text-amber-300 transition-colors truncate max-w-[125px] xs:max-w-[180px] sm:max-w-none">
               {settings.logoText || 'GAMERS PLANET'}
             </span>
           </button>
@@ -143,18 +143,22 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Zone 3: Actions — Theme & Language Switchers & Primary Action */}
-        <div className="flex items-center gap-2">
-          {/* Theme & Live Wallpaper Selector */}
-          <ThemeToggle variant="navbar" />
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {/* Theme & Live Wallpaper Selector (Hidden on small mobile to prevent header blowout) */}
+          <div className="hidden sm:block">
+            <ThemeToggle variant="navbar" />
+          </div>
 
-          {/* Language Switcher Dropdown */}
-          <LanguageToggle variant="navbar" />
+          {/* Language Switcher Dropdown (Hidden on small mobile, accessible in drawer and quickbar) */}
+          <div className="hidden sm:block">
+            <LanguageToggle variant="navbar" />
+          </div>
 
           {isAdmin ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 onClick={onOpenDashboard}
-                className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs font-semibold rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition-all cursor-pointer"
               >
                 <LayoutDashboard className="w-4 h-4" />
                 <span className="hidden sm:inline">Admin Panel</span>
@@ -162,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={onLogout}
                 title="Log out of admin"
-                className="p-2 text-xs font-medium rounded-xl text-slate-400 hover:text-red-400 hover:bg-red-500/10 border border-white/5 transition-colors cursor-pointer"
+                className="p-1.5 sm:p-2 text-xs font-medium rounded-xl text-slate-400 hover:text-red-400 hover:bg-red-500/10 border border-white/5 transition-colors cursor-pointer"
               >
                 <LogOut className="w-4 h-4" />
               </button>
@@ -175,13 +179,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={redirectInfo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-extrabold text-xs sm:text-sm shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] active:scale-95 transition-all cursor-pointer shrink-0"
+                  className="group flex items-center gap-1 sm:gap-2 px-2.5 sm:px-4 py-1.5 sm:py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-extrabold text-[11px] sm:text-sm shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_25px_rgba(245,158,11,0.5)] active:scale-95 transition-all cursor-pointer shrink-0"
                   title={`Chat with us on ${redirectInfo.platformName}`}
                 >
-                  {redirectInfo.isWhatsApp && <PhoneCall className="w-4 h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
-                  {redirectInfo.isTelegram && <Send className="w-4 h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
-                  {redirectInfo.isInstagram && <Instagram className="w-4 h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
-                  {redirectInfo.isCustom && <Globe className="w-4 h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
+                  {redirectInfo.isWhatsApp && <PhoneCall className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
+                  {redirectInfo.isTelegram && <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
+                  {redirectInfo.isInstagram && <Instagram className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
+                  {redirectInfo.isCustom && <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black group-hover:rotate-12 transition-transform shrink-0" />}
                   <span className="font-gaming uppercase tracking-wide">{redirectInfo.actionLabel}</span>
                   <ChevronRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 transition-transform hidden sm:inline shrink-0" />
                 </a>
@@ -195,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            className={`lg:hidden flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer select-none active:scale-95 ${
+            className={`lg:hidden flex items-center gap-1 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer select-none active:scale-95 shrink-0 ${
               mobileMenuOpen
                 ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.5)] border border-amber-400'
                 : 'bg-[#0e1322]/90 border border-amber-500/35 text-amber-300 hover:text-white hover:border-amber-400/60 shadow-[0_0_10px_rgba(0,0,0,0.5)]'
@@ -206,11 +210,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             ) : (
               <Menu className="w-4 h-4 text-amber-400" />
             )}
-            <span className="font-gaming uppercase tracking-wider text-[11px] sm:text-xs">
+            <span className="font-gaming uppercase tracking-wider text-[11px] sm:text-xs hidden xs:inline">
               Menu
             </span>
             <ChevronDown
-              className={`w-3.5 h-3.5 transition-transform duration-300 ${
+              className={`w-3.5 h-3.5 transition-transform duration-300 hidden xs:inline ${
                 mobileMenuOpen ? 'rotate-180 text-black' : 'text-amber-400/90'
               }`}
             />
@@ -223,9 +227,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-white/10 bg-[#090d18]/98 backdrop-blur-2xl px-4 py-4 shadow-2xl transition-all">
           
-          {/* Mobile Language Selector */}
-          <div className="mb-4">
+          {/* Mobile Language and Theme Selectors */}
+          <div className="grid grid-cols-2 gap-2 mb-4">
             <LanguageToggle variant="drawer" />
+            <ThemeToggle variant="navbar" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
