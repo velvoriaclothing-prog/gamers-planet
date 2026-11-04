@@ -1,20 +1,18 @@
 import React from 'react';
 import { 
-  Zap, 
-  Flame, 
-  CheckCircle2, 
+  KeyRound, 
   Sparkles, 
-  ShieldCheck, 
+  CheckCircle2, 
   Instagram, 
   ArrowRight,
-  Unlock,
-  KeyRound,
-  Layers,
-  HelpCircle
+  Gamepad2,
+  UserCheck,
+  ShieldCheck,
+  Zap,
+  Flame
 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { BundleGrid } from '../components/BundleGrid.js';
-import { SaleTimerSection } from '../components/SaleTimerSection.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLanguage } from '../context/LanguageContext.js';
 
@@ -34,11 +32,131 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
   onOpenAdmin
 }) => {
   const { t } = useLanguage();
-  const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'dm' });
+  const vipChannelRedirect = getChannelRedirectInfo(settings, { actionType: 'vip_channel' });
+  const singleGameRedirect = getChannelRedirectInfo(settings, { actionType: 'single' });
 
   return (
-    <div className="space-y-10 pb-16">
-      {/* 1. All Bundles Grid (Primary Hero Focus of Storefront) */}
+    <div className="space-y-8 sm:space-y-12 pb-16">
+      
+      {/* Top Value Spotlight Section (VIP Channel + Single Games On Demand) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          
+          {/* Card 1: Unlimited ID & Pass VIP Channel (Only ₹199) */}
+          <div className="relative group overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-amber-500/40 bg-gradient-to-br from-[#120f07] via-[#0d111d] to-[#070b16] shadow-[0_0_35px_rgba(245,158,11,0.15)] hover:border-amber-400 transition-all">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30 font-gaming">
+                    <Flame className="w-3.5 h-3.5 text-amber-400" />
+                    VIP Channel Access
+                  </span>
+                  <div className="text-right">
+                    <span className="text-[10px] text-slate-400 uppercase font-mono block">Just</span>
+                    <span className="text-2xl sm:text-3xl font-black font-mono text-emerald-400">₹199</span>
+                  </div>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-black text-white font-gaming leading-tight">
+                  UNLIMITED STEAM ID & PASS CHANNEL
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                  Get daily fresh Steam accounts with full offline & online game libraries dropped directly inside our VIP channel.
+                </p>
+
+                <ul className="mt-4 space-y-2 text-xs sm:text-sm text-slate-200">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                    <span><strong>Daily Account Drops:</strong> Fresh Steam ID & Password daily</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span><strong>Unlimited Access:</strong> Play hundreds of top PC games</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                    <span><strong>Lifetime VIP:</strong> One-time fee of only ₹199</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href={vipChannelRedirect.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm font-gaming uppercase tracking-wider shadow-[0_0_20px_rgba(245,158,11,0.35)] active:scale-95 transition-all text-center"
+                >
+                  <Instagram className="w-4 h-4 text-black shrink-0" />
+                  <span>DM to Join Channel (₹199)</span>
+                  <ArrowRight className="w-4 h-4 text-black shrink-0" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Single Games on Demand (DM on Instagram) */}
+          <div className="relative group overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-pink-500/35 bg-gradient-to-br from-[#180918] via-[#0f0e1d] to-[#070b16] shadow-[0_0_35px_rgba(236,72,153,0.12)] hover:border-pink-400 transition-all">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-pink-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-pink-500/20 text-pink-400 border border-pink-500/30 font-gaming">
+                    <Gamepad2 className="w-3.5 h-3.5 text-pink-400" />
+                    Single Games on Demand
+                  </span>
+                  <span className="text-xs font-mono font-bold text-pink-400">@gamerspoint2026</span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-black text-white font-gaming leading-tight">
+                  BUY ANY SINGLE PC GAME
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                  Looking for a specific game? DM us on Instagram with any game name and get it instantly delivered.
+                </p>
+
+                {/* The 2 Available Delivery Modes */}
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 flex items-start gap-2.5">
+                    <KeyRound className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                    <div>
+                      <div className="text-xs font-bold text-white font-gaming">Steam ID & Pass</div>
+                      <div className="text-[11px] text-slate-300">Dedicated Steam login with the game</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 flex items-start gap-2.5">
+                    <UserCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <div className="text-xs font-bold text-white font-gaming">Personal Steam</div>
+                      <div className="text-[11px] text-slate-300">Game added directly to your own Steam</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href={singleGameRedirect.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-extrabold text-sm font-gaming uppercase tracking-wider shadow-[0_0_20px_rgba(244,63,94,0.35)] active:scale-95 transition-all text-center"
+                >
+                  <Instagram className="w-4 h-4 text-white shrink-0" />
+                  <span>DM for Single Games</span>
+                  <ArrowRight className="w-4 h-4 text-white shrink-0" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Main Showcase: Clean All Bundles Grid (Watch Video & DM to Buy) */}
       <BundleGrid
         bundles={bundles}
         settings={settings}
@@ -47,108 +165,6 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         onOpenAdmin={onOpenAdmin}
       />
 
-      {/* 3. Live Sale Timer Urgency Banner */}
-      <SaleTimerSection
-        bundles={bundles}
-        settings={settings}
-        onSelectBundle={onSelectBundle}
-        showBundlesList={false}
-      />
-
-      {/* 5. Comparison Table Matrix (4 Official Vaults) */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 sm:pt-8">
-        <div className="glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-8 border border-white/10 bg-[#080c16]/95">
-          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
-            <h3 className="text-lg sm:text-3xl font-black text-white font-gaming mb-1 sm:mb-2">
-              VAULT BUNDLE COMPARISON
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-400">
-              Quickly compare features, game count, and exclusive perks across each vault tier.
-            </p>
-          </div>
-
-          {/* Mobile Swipe Hint */}
-          <div className="sm:hidden flex items-center justify-center gap-1.5 text-[10px] text-amber-400 font-semibold mb-3 px-2 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20">
-            <span>⇄ Swipe horizontally to compare all 4 vaults</span>
-          </div>
-
-          <div className="overflow-x-auto pb-2 scrollbar-none">
-            <table className="w-full text-left text-xs sm:text-sm min-w-[620px]">
-              <thead>
-                <tr className="border-b border-white/10 text-slate-400">
-                  <th className="py-3 px-4 font-bold uppercase tracking-wider font-gaming">Feature / Perk</th>
-                  <th className="py-3 px-3 text-center font-bold text-amber-400 font-gaming bg-amber-500/10 rounded-t-xl border-x border-t border-amber-500/30">Steam Unlock (₹449)</th>
-                  <th className="py-3 px-3 text-center font-bold text-amber-300 font-gaming">Full Unlock (₹699)</th>
-                  <th className="py-3 px-3 text-center font-bold text-amber-300 font-gaming">Mega (₹799)</th>
-                  <th className="py-3 px-3 text-center font-bold text-amber-300 font-gaming">Ultimate (₹999)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5 text-slate-300">
-                <tr>
-                  <td className="py-3.5 px-4 font-medium flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span>Included Games Count</span>
-                  </td>
-                  <td className="py-3.5 px-3 text-center font-bold text-amber-400 bg-amber-500/5 border-x border-amber-500/30">All 60,000+ Games</td>
-                  <td className="py-3.5 px-3 text-center font-bold">1,000 Games</td>
-                  <td className="py-3.5 px-3 text-center font-bold">27,000 Games</td>
-                  <td className="py-3.5 px-3 text-center font-bold">Complete Library</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 px-4 font-medium flex items-center gap-2">
-                    <Unlock className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Steam Unlock Feature</span>
-                  </td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold bg-amber-500/5 border-x border-amber-500/30">✓ Full Unlock</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 px-4 font-medium flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0" />
-                    <span>Add to Personal Steam</span>
-                  </td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold bg-amber-500/5 border-x border-amber-500/30">✓ ANY Game</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Included</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Unlimited</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 px-4 font-medium flex items-center gap-2">
-                    <KeyRound className="w-4 h-4 text-purple-400 shrink-0" />
-                    <span>ID & Password Vault Listings</span>
-                  </td>
-                  <td className="py-3.5 px-3 text-center text-slate-500 bg-amber-500/5 border-x border-amber-500/30">-</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Lifetime Access</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Lifetime Access</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ VIP Lifetime</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 px-4 font-medium flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span>VIP Channels & Sites Section</span>
-                  </td>
-                  <td className="py-3.5 px-3 text-center text-slate-500 bg-amber-500/5 border-x border-amber-500/30">-</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Full Channels</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ Full Channels</td>
-                  <td className="py-3.5 px-3 text-center text-emerald-400 font-bold">✓ All VIP Sites</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 px-4 font-medium flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span>Support & Setup</span>
-                  </td>
-                  <td className="py-3.5 px-3 text-center text-amber-300 font-bold bg-amber-500/5 border-x border-b border-amber-500/30">1-on-1 Personal</td>
-                  <td className="py-3.5 px-3 text-center">1-on-1 Personal</td>
-                  <td className="py-3.5 px-3 text-center">Priority VIP</td>
-                  <td className="py-3.5 px-3 text-center text-amber-400 font-bold">VIP Concierge</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

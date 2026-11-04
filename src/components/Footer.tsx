@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
               <li>
                 <Link to="/bundles" className="hover:text-amber-400 transition-colors text-amber-300 font-semibold flex items-center justify-between">
                   <span>Bundles Vault</span>
-                  <span className="text-[11px] text-slate-400 font-mono tabular-nums">from ₹399</span>
+                  <span className="text-[11px] text-amber-400 font-mono">Featured</span>
                 </Link>
               </li>
               <li>

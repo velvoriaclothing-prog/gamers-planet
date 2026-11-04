@@ -149,11 +149,6 @@ export const BundleModal: React.FC<BundleModalProps> = ({
 
   if (!bundle) return null;
 
-  const savingsPercent =
-    bundle.originalPrice && bundle.originalPrice > bundle.price
-      ? Math.round(((bundle.originalPrice - bundle.price) / bundle.originalPrice) * 100)
-      : null;
-
   return (
     <div
       ref={containerRef}
@@ -358,24 +353,18 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                 </div>
               </div>
 
-              {/* Price Box */}
-              <div className="shrink-0 glass-card p-4 rounded-2xl border border-amber-500/30 text-left md:text-right">
-                <div className="text-[11px] text-slate-400 uppercase font-semibold">{t('modal.special_price', 'Special Vault Price')}</div>
-                <div className="flex items-baseline md:justify-end gap-2.5">
-                  <span className="text-3xl sm:text-4xl font-black text-white font-gaming">
-                    ₹{bundle.price.toLocaleString('en-IN')}
-                  </span>
-                  {bundle.originalPrice && (
-                    <span className="text-base text-slate-500 line-through">
-                      ₹{bundle.originalPrice.toLocaleString('en-IN')}
-                    </span>
-                  )}
+              {/* Instagram Direct Purchase Badge (No Price) */}
+              <div className="shrink-0 glass-card p-3.5 sm:p-4 rounded-2xl border border-amber-500/35 bg-[#0a0f1e] text-left md:text-right shadow-xl">
+                <div className="text-[11px] text-amber-400 uppercase font-semibold font-gaming flex items-center md:justify-end gap-1.5">
+                  <Instagram className="w-3.5 h-3.5" />
+                  <span>Instagram Direct</span>
                 </div>
-                {savingsPercent && (
-                  <div className="text-xs text-emerald-400 font-semibold mt-1">
-                    Instant savings of {savingsPercent}% off retail
-                  </div>
-                )}
+                <div className="text-base sm:text-lg font-black text-white font-gaming mt-0.5">
+                  DM on Instagram
+                </div>
+                <div className="text-xs text-amber-300 font-mono mt-0.5">
+                  @gamerspoint2026
+                </div>
               </div>
             </div>
 
@@ -470,8 +459,8 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                       <span>How Instant Purchase Works:</span>
                     </div>
                     <p className="text-xs text-slate-300">
-                      1. Click "Claim on {info.platformName}" to message us directly on {info.platformName}.<br />
-                      2. Pay via UPI, Google Pay, PhonePe, or Paytm.<br />
+                      1. Click "DM to Buy on Instagram" to message us directly on @gamerspoint2026.<br />
+                      2. Pay easily via UPI, Google Pay, PhonePe, or Paytm.<br />
                       3. Receive full credentials and lifetime installation guide in 3-5 minutes!
                     </p>
                   </div>
@@ -507,7 +496,6 @@ export const BundleModal: React.FC<BundleModalProps> = ({
               {(() => {
                 const redirectInfo = getChannelRedirectInfo(settings, {
                   bundleTitle: bundle.title,
-                  price: bundle.price,
                   actionType: 'purchase'
                 });
                 return (
@@ -516,13 +504,10 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer font-gaming text-center"
-                    title={`Claim on ${redirectInfo.platformName}`}
+                    title="DM on Instagram @gamerspoint2026 to buy this bundle"
                   >
-                    {redirectInfo.isWhatsApp && <PhoneCall className="w-5 h-5 text-black shrink-0" />}
-                    {redirectInfo.isTelegram && <Send className="w-5 h-5 text-black shrink-0" />}
-                    {redirectInfo.isInstagram && <Instagram className="w-5 h-5 text-black shrink-0" />}
-                    {redirectInfo.isCustom && <Globe className="w-5 h-5 text-black shrink-0" />}
-                    <span>Claim on {redirectInfo.platformName} (₹{bundle.price})</span>
+                    <Instagram className="w-5 h-5 text-black shrink-0" />
+                    <span>DM to Buy on Instagram</span>
                     <ArrowRight className="w-4 h-4 text-black shrink-0" />
                   </a>
                 );

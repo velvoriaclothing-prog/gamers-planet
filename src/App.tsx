@@ -248,14 +248,14 @@ export default function App() {
     heroHeading: 'LEGENDARY PC GAMING BUNDLES',
     heroSubtitle: 'Get instant digital access to top-tier AAA game vaults and curated indie collections. Verified delivery directly to your account in minutes.',
     heroCtaText: 'Browse Vault Bundles',
-    heroSecondaryText: 'View Customer Proof',
-    instagramUrl: 'https://instagram.com/gamersplanet20.26',
+    heroSecondaryText: 'Instant digital delivery • 100% verified setup',
+    instagramUrl: 'https://instagram.com/gamerspoint2026',
     primaryChannelType: 'instagram',
-    channelHandle: '@gamersplanet20.26',
+    channelHandle: '@gamerspoint2026',
     accentColor: '#f59e0b',
     footerText: '© 2026 Gamers Planet. Direct verified delivery guaranteed.',
-    supportNote: 'DM us on Instagram @gamersplanet20.26 for instant setup support.',
-    announcementText: '🔥 FLASH SALE: Extra ₹150 OFF any Mega Bundle this weekend! Message on Instagram @gamersplanet20.26 to claim.'
+    supportNote: 'DM us on Instagram @gamerspoint2026 to buy bundles or single games.',
+    announcementText: '🔥 VIP Channel Live: Unlimited Steam ID & Pass accounts at just ₹199! DM on Instagram @gamerspoint2026.'
   });
 
   const [bundles, setBundles] = useState<Bundle[]>([]);

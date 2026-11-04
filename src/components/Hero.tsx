@@ -48,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
           <Flame className="w-3.5 h-3.5 text-amber-400 shrink-0" />
           <EditableText
             textKey="announcementText"
-            defaultText={settings.announcementText || t('hero.announcement', 'FLASH SALE: Extra ₹150 OFF any Mega Bundle this weekend!')}
+            defaultText={settings.announcementText || '🔥 VIP Channel Live: Unlimited Steam ID & Pass accounts at just ₹199! DM on Instagram @gamerspoint2026.'}
             className="truncate max-w-xs sm:max-w-xl font-medium"
             label="Store Announcement Bar"
           />

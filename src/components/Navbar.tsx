@@ -259,7 +259,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>{t('nav.bundles', 'Bundles Vault')}</span>
               </div>
               <span className="text-[10px] uppercase font-black px-1.5 py-0.5 rounded bg-black/40 text-amber-300">
-                ₹399+
+                GAMES
               </span>
             </NavLink>
 
@@ -274,8 +274,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Lock className="w-4 h-4 text-amber-400" />
                 <span>{t('nav.channels', 'VIP Channels & Sites')}</span>
               </div>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-black/40 text-amber-400">
-                VIP
+              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                ₹199
               </span>
             </NavLink>
 

@@ -194,10 +194,7 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
     );
   }
 
-  const savingsPercent =
-    bundle.originalPrice && bundle.originalPrice > bundle.price
-      ? Math.round(((bundle.originalPrice - bundle.price) / bundle.originalPrice) * 100)
-      : null;
+
 
   const redirectInfo = getChannelRedirectInfo(settings, {
     bundleTitle: bundle.title,
@@ -418,26 +415,21 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
                 </div>
               </div>
 
-              {/* Price Box */}
-              <div className="shrink-0 glass-card p-4 sm:p-5 rounded-2xl border border-amber-500/35 bg-[#0a0f1e] text-left md:text-right shadow-xl">
-                <div className="text-[11px] text-slate-400 uppercase font-semibold font-gaming">
-                  {t('modal.special_price', 'Special Vault Price')}
+              {/* Direct Instagram DM Badge */}
+              <div className="shrink-0 p-3.5 sm:p-4 rounded-2xl border border-pink-500/35 bg-gradient-to-br from-pink-950/40 via-purple-950/30 to-amber-950/20 text-left md:text-right shadow-xl">
+                <div className="flex items-center md:justify-end gap-1.5 text-[11px] text-pink-400 font-extrabold uppercase font-gaming">
+                  <Instagram className="w-4 h-4 text-pink-400" />
+                  <span>Direct Purchase</span>
                 </div>
-                <div className="flex items-baseline md:justify-end gap-2.5 mt-0.5">
-                  <span className="text-3xl sm:text-4xl font-black font-mono tabular-nums text-white font-gaming">
-                    ₹{bundle.price.toLocaleString('en-IN')}
-                  </span>
-                  {bundle.originalPrice && (
-                    <span className="text-base text-slate-500 line-through font-mono tabular-nums">
-                      ₹{bundle.originalPrice.toLocaleString('en-IN')}
-                    </span>
-                  )}
+                <div className="text-base sm:text-lg font-black font-gaming text-white mt-1">
+                  DM on Instagram
                 </div>
-                {savingsPercent && (
-                  <div className="text-xs text-emerald-400 font-bold font-mono mt-1">
-                    Instant savings of {savingsPercent}% off retail
-                  </div>
-                )}
+                <div className="text-xs font-mono text-amber-400 font-bold mt-0.5">
+                  @gamerspoint2026
+                </div>
+                <div className="text-[10px] text-slate-400 font-mono mt-1">
+                  Instant Response & Setup Guide
+                </div>
               </div>
             </div>
 
@@ -521,8 +513,8 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
                   <span>How Instant Purchase Works:</span>
                 </div>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  1. Click "Claim on {redirectInfo.platformName}" below to message us directly.<br />
-                  2. Pay easily via UPI, Google Pay, PhonePe, or Paytm.<br />
+                  1. Click "DM to Buy on Instagram" below to message us directly at <span className="text-amber-400 font-semibold font-mono">@gamerspoint2026</span>.<br />
+                  2. We provide instant payment details (UPI, Google Pay, PhonePe, Paytm).<br />
                   3. Receive full credentials and lifetime installation instructions within minutes!
                 </p>
               </div>
@@ -556,14 +548,11 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
                   href={redirectInfo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] active:scale-95 transition-all cursor-pointer font-gaming text-center shrink-0"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(244,63,94,0.4)] hover:shadow-[0_0_35px_rgba(244,63,94,0.6)] active:scale-95 transition-all cursor-pointer font-gaming text-center shrink-0"
                 >
-                  {redirectInfo.isWhatsApp && <PhoneCall className="w-4 h-4 text-black shrink-0" />}
-                  {redirectInfo.isTelegram && <Send className="w-4 h-4 text-black shrink-0" />}
-                  {redirectInfo.isInstagram && <Instagram className="w-4 h-4 text-black shrink-0" />}
-                  {redirectInfo.isCustom && <Globe className="w-4 h-4 text-black shrink-0" />}
-                  <span>Claim on {redirectInfo.platformName} (₹{bundle.price})</span>
-                  <ArrowRight className="w-4 h-4 text-black shrink-0" />
+                  <Instagram className="w-5 h-5 text-white shrink-0" />
+                  <span>DM to Buy on Instagram</span>
+                  <ArrowRight className="w-4 h-4 text-white shrink-0" />
                 </a>
               </div>
             </div>
@@ -575,20 +564,16 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
       </div>
 
       {/* Mobile Sticky Bottom Bar (Fixed <= 15% viewport, touch target >= 48px) */}
-      <div className="md:hidden fixed bottom-14 left-0 right-0 z-40 bg-[#070b16]/95 backdrop-blur-2xl border-t border-amber-500/30 p-2.5 px-4 shadow-[0_-10px_30px_rgba(0,0,0,0.85)]">
+      <div className="md:hidden fixed bottom-14 left-0 right-0 z-40 bg-[#070b16]/95 backdrop-blur-2xl border-t border-pink-500/30 p-2.5 px-4 shadow-[0_-10px_30px_rgba(0,0,0,0.85)]">
         <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
           <div className="flex flex-col">
-            <span className="text-[10px] text-slate-400 uppercase font-gaming">Special Price</span>
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-xl font-black font-mono tabular-nums text-white font-gaming">
-                ₹{bundle.price.toLocaleString('en-IN')}
-              </span>
-              {bundle.originalPrice && (
-                <span className="text-[11px] text-slate-500 line-through font-mono">
-                  ₹{bundle.originalPrice.toLocaleString('en-IN')}
-                </span>
-              )}
-            </div>
+            <span className="text-[10px] text-pink-400 uppercase font-gaming flex items-center gap-1">
+              <Instagram className="w-3 h-3 text-pink-400" />
+              <span>DM on Instagram</span>
+            </span>
+            <span className="text-sm font-black font-gaming text-amber-400">
+              @gamerspoint2026
+            </span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -605,10 +590,11 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
               href={redirectInfo.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-extrabold text-xs font-gaming uppercase tracking-wider flex items-center gap-1.5 shadow-lg active:scale-95 transition-transform"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-amber-500 text-white font-extrabold text-xs font-gaming uppercase tracking-wider flex items-center gap-1.5 shadow-lg active:scale-95 transition-transform"
             >
-              <span>Instant Buy</span>
-              <ArrowRight className="w-3.5 h-3.5 text-black" />
+              <Instagram className="w-3.5 h-3.5 text-white" />
+              <span>DM to Buy</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </a>
           </div>
         </div>

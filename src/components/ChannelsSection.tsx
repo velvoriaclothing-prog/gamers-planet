@@ -231,19 +231,18 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             {/* Direct Channel Redirect to request VIP password */}
             {(() => {
               const redirectInfo = getChannelRedirectInfo(settings, {
-                actionType: 'dm',
-                message: 'Hi GAMERS PLANET! I would like to get access credentials for the VIP Channels & Websites vault.'
+                actionType: 'vip_channel'
               });
               return (
                 <div className="mt-4 text-center">
-                  <p className="text-xs text-slate-400 mb-2">Don't have the VIP access password?</p>
+                  <p className="text-xs text-slate-300 mb-2">Want VIP Channel access at just <strong className="text-emerald-400 font-bold">₹199</strong> with daily Steam drops?</p>
                   <a
                     href={redirectInfo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 text-white text-xs font-bold font-gaming uppercase tracking-wider shadow-[0_0_20px_rgba(244,63,94,0.35)] hover:brightness-110 active:scale-95 transition-all cursor-pointer"
                   >
-                    <span>Request VIP Key on {redirectInfo.platformName}</span>
+                    <span>DM @gamerspoint2026 to Join (₹199)</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
