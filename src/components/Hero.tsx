@@ -43,15 +43,16 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* Editorial Announcement Bar */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-medium backdrop-blur-md">
-          <Flame className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+        {/* Festive Diwali Announcement Bar */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-red-600/25 via-amber-500/25 to-yellow-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.25)]">
+          <span className="text-sm">🪔</span>
           <EditableText
             textKey="announcementText"
-            defaultText={settings.announcementText || '🔥 VIP Channel Live: Unlimited Steam ID & Pass accounts at just ₹199! DM on Instagram @gamerspoint2026.'}
-            className="truncate max-w-xs sm:max-w-xl font-medium"
+            defaultText="🪔 SHUBH DIWALI SALE: FLAT 50% OFF ON ALL BUNDLES! MESSAGE ON WHATSAPP BUSINESS 🪔"
+            className="truncate max-w-xs sm:max-w-xl font-bold tracking-wide"
             label="Store Announcement Bar"
           />
+          <span className="text-sm">🪔</span>
         </div>
 
         {/* Hero Title */}
@@ -59,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
           <EditableText
             as="h1"
             textKey="heroHeading"
-            defaultText={settings.heroHeading || t('hero.heading', 'LEGENDARY PC GAMING BUNDLES')}
+            defaultText={settings.heroHeading || '🪔 DIWALI MEGA SALE — FLAT 50% OFF'}
             className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight font-gaming uppercase text-white max-w-4xl mx-auto leading-[1.12] [text-wrap:balance]"
             label="Hero Main Headline"
           />
@@ -71,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
             as="p"
             multiline
             textKey="heroSubtitle"
-            defaultText={settings.heroSubtitle || t('hero.subtitle', 'Direct verified digital delivery for top-tier AAA game vaults and curated PC collections. Activated to your account in minutes with lifetime access.')}
+            defaultText="Celebrate the Festival of Lights with India’s top PC gaming vaults at Flat 50% OFF! Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim."
             className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal [text-wrap:balance]"
             label="Hero Subtitle"
           />
@@ -81,11 +82,11 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
           <Link
             to="/bundles"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-black font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:shadow-[0_0_35px_rgba(245,158,11,0.5)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide whitespace-nowrap shrink-0"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(239,68,68,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide whitespace-nowrap shrink-0"
           >
-            <Zap className="w-4 h-4 fill-black text-black" />
-            <span>{t('hero.btn_browse', 'Browse Vault Bundles')}</span>
-            <ArrowRight className="w-4 h-4 text-black" />
+            <span className="text-base">🪔</span>
+            <span>Browse Bundles (50% OFF)</span>
+            <ArrowRight className="w-4 h-4 text-white" />
           </Link>
 
           <Link

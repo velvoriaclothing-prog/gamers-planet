@@ -159,17 +159,17 @@ export interface AppDatabase {
 }
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  siteTitle: "Gamers Planet - Premium Gaming • Lifetime Access • Personal Support",
+  siteTitle: "Gamers Planet - Shubh Diwali Mega Sale • Flat 50% OFF",
   logoText: "GAMERS PLANET",
-  heroHeading: "LEGENDARY PC GAMING BUNDLES",
-  heroSubtitle: "Premium Gaming • Lifetime Access • Personal Support. Instant access to massive game vaults, Steam Unlock features, and verified credentials.",
-  heroCtaText: "Browse Vault Bundles",
-  heroSecondaryText: "View Customer Proof",
+  heroHeading: "🪔 DIWALI MEGA SALE — FLAT 50% OFF",
+  heroSubtitle: "Celebrate the Festival of Lights with India’s top PC gaming vaults at Flat 50% OFF! Verified instant digital delivery with lifetime access. DM @gamerspoint2026 to claim.",
+  heroCtaText: "Browse Bundles (50% OFF)",
+  heroSecondaryText: "Instant digital delivery • 100% verified setup",
   instagramUrl: "https://instagram.com/gamerspoint2026",
   accentColor: "#f59e0b", // Gold / Amber gaming accent
-  footerText: "© 2026 Gamers Planet. Premium Gaming • Lifetime Access • Personal Support. All game titles, logos, and trademarks belong to their respective owners.",
-  supportNote: "DM us on Instagram @gamerspoint2026 to buy bundles or single games.",
-  announcementText: "🔥 VIP Channel: Unlimited Steam ID & Pass accounts at just ₹199! DM on Instagram @gamerspoint2026.",
+  footerText: "© 2026 Gamers Planet. Shubh Deepavali • Direct verified delivery guaranteed.",
+  supportNote: "DM us on Instagram @gamerspoint2026 to claim your 50% Diwali discount.",
+  announcementText: "🪔 SHUBH DIWALI SALE: FLAT 50% OFF ON ALL PC GAME BUNDLES! DM @gamerspoint2026 ON INSTAGRAM 🪔",
   primaryChannelType: 'instagram',
   channelHandle: '@gamerspoint2026',
   channelUrl: 'https://instagram.com/gamerspoint2026',

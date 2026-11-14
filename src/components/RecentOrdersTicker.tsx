@@ -152,8 +152,8 @@ export const RecentOrdersTicker: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 text-[10px]">
-            <span className="font-extrabold text-white font-gaming">
-              ₹{currentOrder.price}
+            <span className="font-extrabold text-amber-400 font-gaming">
+              🪔 50% OFF Claimed
             </span>
             <span className="text-slate-500">•</span>
             <span className="text-emerald-400 font-semibold flex items-center gap-1">

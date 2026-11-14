@@ -18,14 +18,14 @@ export interface ThemeConfig {
 export const THEMES: Record<ThemeId, ThemeConfig> = {
   'obsidian-gold': {
     id: 'obsidian-gold',
-    name: 'Obsidian Gold',
-    tagline: 'Signature Luxury PC Vault & Amber Accents',
+    name: 'Diwali Dhamaka',
+    tagline: '🪔 Shubh Deepavali • Flat 50% Off Festive Gold',
     primaryColor: '#f59e0b',
-    secondaryColor: '#d97706',
+    secondaryColor: '#ea580c',
     accentClass: 'amber',
-    glowColor: 'rgba(245, 158, 11, 0.35)',
-    bgBase: '#04060e',
-    cardBase: 'rgba(9, 13, 25, 0.92)',
+    glowColor: 'rgba(245, 158, 11, 0.45)',
+    bgBase: '#040714',
+    cardBase: 'rgba(9, 13, 28, 0.94)',
   },
   'cyber-emerald': {
     id: 'cyber-emerald',

@@ -240,9 +240,9 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
                     href={redirectInfo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 text-white text-xs font-bold font-gaming uppercase tracking-wider shadow-[0_0_20px_rgba(244,63,94,0.35)] hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg active:scale-95 transition-all cursor-pointer"
                   >
-                    <span>DM @gamerspoint2026 to Join (₹199)</span>
+                    <span>Message on WhatsApp to Join (₹199)</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>

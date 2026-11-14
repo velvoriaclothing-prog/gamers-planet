@@ -39,7 +39,7 @@ export const FaqPage: React.FC<FaqPageProps> = ({ settings }) => {
               {t('faq.step1_title', '1. Pick Bundle & DM Us')}
             </h4>
             <p className="text-[11px] text-slate-400">
-              {t('faq.step1_desc', 'Choose your desired pack and send us a direct message on Instagram or Telegram.')}
+              {t('faq.step1_desc', 'Choose your desired pack and send us a direct message on WhatsApp Business.')}
             </p>
           </div>
 

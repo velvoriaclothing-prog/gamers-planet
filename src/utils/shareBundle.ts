@@ -23,9 +23,9 @@ export function getBundleShareUrl(bundle: Bundle): string {
 export async function shareBundleLink(bundle: Bundle): Promise<ShareResult> {
   const url = getBundleShareUrl(bundle);
   const title = `${bundle.title} — Gamers Planet`;
-  const text = `Check out the ${bundle.title} for PC on Gamers Planet! Includes ${
+  const text = `🪔 Diwali Dhamaka: FLAT 50% OFF on ${bundle.title}! Includes ${
     bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'
-  } at ₹${bundle.price}. Watch the full video walkthrough and grab lifetime access:`;
+  } with instant access. Watch the full preview video and claim 50% OFF:`;
 
   // 1. Try Web Share API (native on mobile Safari, Chrome Android)
   if (typeof navigator !== 'undefined' && navigator.share) {

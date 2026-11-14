@@ -1,9 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { Gamepad2, Play, Search, ArrowRight, Edit3, Flame, Share2, Check, Instagram, Video, ShieldCheck } from 'lucide-react';
+import { Gamepad2, Play, Search, Edit3, Share2, Check } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
-import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { useLiveEdit } from './live-edit/LiveEditContext.js';
-import { useLanguage } from '../context/LanguageContext.js';
 import { shareBundleLink } from '../utils/shareBundle.js';
 
 interface BundleGridProps {
@@ -14,9 +12,21 @@ interface BundleGridProps {
   onOpenAdmin?: () => void;
 }
 
+function toCleanTitle(raw: string): string {
+  // Format loud uppercase titles into clean editorial title case while keeping brand acronyms intact
+  if (raw !== raw.toUpperCase()) return raw;
+  return raw
+    .toLowerCase()
+    .split(' ')
+    .map((word) => {
+      if (['vip', 'pc', 'id', 'gta', 'dlc'].includes(word)) return word.toUpperCase();
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+}
+
 export const BundleGrid: React.FC<BundleGridProps> = ({
   bundles,
-  settings,
   isAdmin,
   onSelectBundle,
   onOpenAdmin,
@@ -31,18 +41,12 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
   const handleShareBundle = async (e: React.MouseEvent, bundle: Bundle) => {
     e.stopPropagation();
     const res = await shareBundleLink(bundle);
-    if (res.copied) {
+    if (res.copied || res.shared) {
       setShareToast({
         show: true,
-        message: 'Direct link copied! Ready to share.'
+        message: res.copied ? 'Bundle link copied!' : 'Bundle link shared!'
       });
-      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
-    } else if (res.shared) {
-      setShareToast({
-        show: true,
-        message: 'Link shared successfully!'
-      });
-      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
+      setTimeout(() => setShareToast({ show: false, message: '' }), 2600);
     }
   };
 
@@ -73,111 +77,113 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
   }, [bundles, selectedCategory, searchQuery]);
 
   const { isLiveEditMode, openBundleQuickEdit, getEffectiveBundle } = useLiveEdit();
-  const { t } = useLanguage();
 
   return (
-    <section id="bundles" className="relative py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <section id="bundles" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-6">
       {/* Share Toast Notification */}
       {shareToast.show && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-200">
-          <Check className="w-4 h-4 text-black stroke-[3]" />
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-[#18181c] border border-white/15 text-white font-medium text-xs sm:text-sm shadow-2xl flex items-center gap-2">
+          <Check className="w-4 h-4 text-emerald-400" />
           <span>{shareToast.message}</span>
         </div>
       )}
 
-      {/* Subtle ambient lighting halo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[300px] bg-amber-500/[0.07] blur-[150px] pointer-events-none rounded-full z-0" />
-
-      {/* Section Header */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-bold uppercase tracking-wider mb-2 backdrop-blur-md">
-            <Flame className="w-3.5 h-3.5 text-amber-400 fill-amber-400 shrink-0" />
-            <span>OFFICIAL VAULTS • CLICK TO WATCH VIDEO</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-white font-gaming tracking-tight">
-            PC GAMING VAULT BUNDLES
-          </h2>
-          <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl leading-relaxed">
-            Click any bundle box below to watch its full video walkthrough & gameplay proof.
-          </p>
+      {/* Editorial Header — Clean left-aligned hierarchy matching reference */}
+      <div className="mb-6 sm:mb-7 max-w-2xl">
+        <div className="flex items-center gap-2.5 flex-wrap mb-1.5">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Game Bundles
+          </h1>
+          <span className="text-xs font-semibold text-amber-400 tracking-wide">
+            🪔 Diwali Sale · Flat 50% OFF
+          </span>
         </div>
-
-        {/* Compact Search Bar */}
-        <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search bundles..."
-            className="w-full pl-9 pr-8 py-2 rounded-xl glass-input text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400/60 shadow-lg"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
-            >
-              ✕
-            </button>
-          )}
-        </div>
+        <p className="text-sm text-zinc-400 leading-relaxed">
+          Browse all curated PC game vaults. Click any bundle to watch the preview video and message us on <span className="text-zinc-200 font-medium">WhatsApp Business</span> to claim 50% OFF.
+        </p>
       </div>
 
-      {/* Category Filter Tabs (if multiple categories) */}
-      {categories.length > 2 && (
-        <div className="relative z-10 flex items-center gap-1.5 overflow-x-auto pb-3 mb-6 scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-gaming font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer border ${
-                selectedCategory === cat
-                  ? 'bg-amber-500 text-black border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.35)] scale-[1.02]'
-                  : 'bg-white/5 border-white/10 text-slate-300 hover:text-white hover:border-white/20 hover:bg-white/10'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+      {/* Search Input */}
+      <div className="relative w-full max-w-sm mb-4">
+        <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search bundles or games..."
+          className="w-full pl-10 pr-8 py-2.5 rounded-lg bg-[#141418]/90 backdrop-blur-md border border-white/[0.1] text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-red-500/60 transition-colors"
+        />
+        {searchQuery && (
+          <button
+            type="button"
+            onClick={() => setSearchQuery('')}
+            aria-label="Clear search"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-400 hover:text-white cursor-pointer"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {/* Category Filter Pills */}
+      {categories.length > 1 && (
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-7 scrollbar-none">
+          {categories.map((cat) => {
+            const active = selectedCategory === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer border ${
+                  active
+                    ? 'bg-red-600 border-red-500 text-white shadow-sm'
+                    : 'bg-[#16161a]/90 border-white/[0.08] text-zinc-300 hover:text-white hover:bg-white/[0.08]'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
       )}
 
-      {/* Bundles Grid: 2 boxes per row on mobile, 4 on desktop (Small Compact Boxes) */}
+      {/* Bundles Grid: Clean 2-col on mobile, 4-col on desktop matching reference */}
       {filteredBundles.length === 0 ? (
-        <div className="relative z-10 bg-[#090d18] rounded-2xl p-8 text-center max-w-md mx-auto my-8 border border-white/10 shadow-2xl">
-          <Gamepad2 className="w-10 h-10 text-slate-500 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-white mb-1.5 font-gaming">No Bundles Found</h3>
-          <p className="text-xs text-slate-400 mb-4">
+        <div className="bg-[#121215] rounded-xl p-10 text-center max-w-md mx-auto my-8 border border-white/[0.07]">
+          <Gamepad2 className="w-9 h-9 text-zinc-500 mx-auto mb-3" />
+          <h3 className="text-base font-semibold text-white mb-1">No Bundles Found</h3>
+          <p className="text-xs text-zinc-400 mb-4">
             {searchQuery
-              ? `No bundles matching "${searchQuery}". Try a different keyword.`
-              : 'No gaming bundles are currently active in the vault.'}
+              ? `No bundles matching "${searchQuery}". Try another keyword.`
+              : 'No gaming bundles are currently active.'}
           </p>
           {isAdmin && onOpenAdmin && (
             <button
               onClick={onOpenAdmin}
-              className="px-4 py-2 text-xs font-semibold rounded-lg bg-amber-500 text-black hover:bg-amber-400 transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs font-medium rounded-lg bg-red-600 text-white hover:bg-red-500 transition-colors cursor-pointer"
             >
-              Create First Bundle in Admin
+              Add Bundle in Admin
             </button>
           )}
         </div>
       ) : (
-        <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {filteredBundles.map((rawBundle) => {
             const bundle = getEffectiveBundle(rawBundle);
+            const displayTitle = toCleanTitle(bundle.title);
+            const gamesLabel =
+              bundle.gameCount > 1
+                ? `${bundle.gameCount.toLocaleString('en-IN')} Games`
+                : bundle.category || 'Steam Unlock';
 
             return (
               <div
                 key={bundle.id}
                 onClick={() => onSelectBundle(bundle)}
-                className={`group bg-gradient-to-b from-[#0c1224]/95 via-[#080c18]/95 to-[#040711] rounded-xl sm:rounded-2xl overflow-hidden flex flex-col relative transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 cursor-pointer ${
-                  bundle.featured
-                    ? 'border border-amber-500/70 shadow-[0_8px_25px_rgba(0,0,0,0.8),0_0_20px_rgba(245,158,11,0.2)]'
-                    : 'border border-white/10 hover:border-amber-500/50 shadow-[0_8px_25px_rgba(0,0,0,0.7)]'
-                }`}
+                className="group bg-[#121215] hover:bg-[#17171b] border border-white/[0.07] hover:border-white/[0.18] rounded-xl overflow-hidden flex flex-col relative transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
               >
-                {/* Live Edit Mode Trigger Button */}
+                {/* Live Edit Trigger */}
                 {isLiveEditMode && (
                   <button
                     type="button"
@@ -185,116 +191,59 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
                       e.stopPropagation();
                       openBundleQuickEdit(bundle);
                     }}
-                    className="absolute top-2 right-2 z-30 px-2 py-0.5 rounded bg-amber-500 hover:bg-amber-400 text-black text-[9px] font-black flex items-center gap-1 shadow-xl cursor-pointer"
-                    title="Click to edit bundle title or badge"
+                    className="absolute top-2 right-2 z-30 px-2 py-1 rounded-md bg-amber-500 hover:bg-amber-400 text-black text-[10px] font-bold flex items-center gap-1 shadow cursor-pointer"
+                    title="Edit bundle"
                   >
                     <Edit3 className="w-2.5 h-2.5" />
                     <span>Edit</span>
                   </button>
                 )}
 
-                {/* Cover Image & Media Preview container (Cinematic 16/9) */}
-                <div
-                  className="relative aspect-[16/9] overflow-hidden bg-slate-950"
-                  title="Click to watch video walkthrough"
-                >
+                {/* Clean 16:9 Artwork Header (zero sticker clutter) */}
+                <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900">
                   <img
                     src={bundle.coverImage}
-                    alt={bundle.title}
+                    alt={displayTitle}
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src =
                         'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg';
                     }}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-300 ease-out"
                     loading="lazy"
                   />
 
-                  {/* Gradient overlay for text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090d18] via-transparent to-black/30" />
-
-                  {/* Top Badge: Game count / Feature */}
-                  <div className="absolute top-2 left-2 px-1.5 sm:px-2 py-0.5 rounded bg-amber-500 text-black text-[8px] sm:text-[9px] font-black tracking-wider font-gaming shadow-sm z-10 uppercase">
-                    {bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}
-                  </div>
-
-                  {/* Video preview indicator */}
-                  <div className="absolute top-2 right-2 p-0.5 sm:p-1 rounded bg-black/85 backdrop-blur-md text-amber-400 border border-amber-500/30 flex items-center gap-1 text-[8px] sm:text-[9px] font-bold px-1.5 sm:px-2 shadow-sm z-10">
-                    <Play className="w-2 h-2 fill-amber-400 shrink-0" />
-                    <span className="hidden xs:inline">Video Proof</span>
-                    <span className="xs:hidden">Video</span>
-                  </div>
-
-                  {/* Watch Video Hover Play Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/55 backdrop-blur-[1px] z-10">
-                    <div className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-amber-500 text-black text-[10px] sm:text-xs font-black font-gaming flex items-center gap-1.5 shadow-[0_0_20px_rgba(245,158,11,0.6)] transform scale-95 group-hover:scale-100 transition-transform">
-                      <Play className="w-3 h-3 fill-black shrink-0" />
-                      <span>WATCH VIDEO</span>
+                  {/* Subtle hover play affordance */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="w-10 h-10 rounded-full bg-white/95 text-black flex items-center justify-center shadow-lg">
+                      <Play className="w-4 h-4 fill-black ml-0.5" />
                     </div>
                   </div>
                 </div>
 
-                {/* Card Content (Compact Box Discipline) */}
-                <div className="p-2.5 sm:p-3 flex-1 flex flex-col justify-between">
-                  <div>
-                    {/* Bundle Title */}
-                    <h3 className="text-xs sm:text-sm font-black text-white font-gaming group-hover:text-amber-300 transition-colors truncate mb-1">
-                      {bundle.title}
-                    </h3>
+                {/* Clean Two-Line Card Footer */}
+                <div className="p-3 sm:p-4 flex flex-col justify-between flex-1">
+                  <h2 className="text-xs sm:text-[15px] font-semibold text-white group-hover:text-zinc-100 truncate leading-snug">
+                    {displayTitle}
+                  </h2>
 
-                    {/* Metadata & Validity */}
-                    <div className="flex items-center justify-between text-[10px] text-slate-400 mb-2 font-mono">
-                      <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                        <ShieldCheck className="w-3 h-3 text-emerald-400 shrink-0" />
-                        <span>Lifetime Access</span>
-                      </span>
-                      <span className="text-slate-500 hidden sm:inline">Instant DM</span>
+                  <div className="mt-1.5 flex items-center justify-between gap-1.5">
+                    <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-400 truncate min-w-0">
+                      <Play className="w-3 h-3 text-red-500 fill-red-500 shrink-0" />
+                      <span className="text-amber-400 font-medium shrink-0">50% OFF</span>
+                      <span aria-hidden="true" className="text-zinc-600">·</span>
+                      <span className="truncate">{gamesLabel}</span>
                     </div>
-                  </div>
 
-                  {/* Simple Clean Action Buttons (Compact & Touch-Friendly) */}
-                  <div className="pt-2 border-t border-white/[0.08] flex items-center gap-1.5">
                     <button
                       type="button"
                       onClick={(e) => handleShareBundle(e, bundle)}
                       title="Share bundle link"
-                      className="p-1.5 sm:p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-amber-400 hover:text-white transition-all cursor-pointer shrink-0 active:scale-90"
+                      aria-label={`Share ${displayTitle}`}
+                      className="p-1.5 -mr-1 rounded-md text-zinc-500 hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer shrink-0"
                     >
-                      <Share2 className="w-3 h-3" />
+                      <Share2 className="w-3.5 h-3.5" />
                     </button>
-
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSelectBundle(bundle);
-                      }}
-                      className="flex-1 py-1.5 sm:py-2 px-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 hover:text-white font-bold text-[10px] sm:text-xs flex items-center justify-center gap-1 transition-all cursor-pointer whitespace-nowrap font-gaming uppercase tracking-wider"
-                    >
-                      <Play className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />
-                      <span>Video</span>
-                    </button>
-
-                    {(() => {
-                      const redirectInfo = getChannelRedirectInfo(settings, {
-                        bundleTitle: bundle.title,
-                        actionType: 'purchase'
-                      });
-                      return (
-                        <a
-                          href={redirectInfo.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex-1 py-1.5 sm:py-2 px-1.5 rounded-lg bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-black text-[10px] sm:text-xs flex items-center justify-center gap-1 shadow-sm transition-all cursor-pointer active:scale-95 text-center whitespace-nowrap font-gaming uppercase tracking-wider"
-                          title="DM on Instagram @gamerspoint2026 to buy this bundle"
-                        >
-                          <Instagram className="w-3 h-3 text-white shrink-0" />
-                          <span>DM</span>
-                          <ArrowRight className="w-2.5 h-2.5 text-white shrink-0" />
-                        </a>
-                      );
-                    })()}
                   </div>
                 </div>
               </div>

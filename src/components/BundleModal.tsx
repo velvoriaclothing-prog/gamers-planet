@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Play, Gamepad2, CheckCircle2, ShieldCheck, Zap, Instagram, PhoneCall, Send, Globe, ArrowRight, Video, SkipForward, SkipBack, Layers, Loader2, Sparkles, Share2, Check, Lock } from 'lucide-react';
+import { X, Gamepad2, CheckCircle2, ShieldCheck, Zap, PhoneCall, ArrowRight, Video, SkipForward, SkipBack, Share2, Check, Lock } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
-import { useLanguage } from '../context/LanguageContext.js';
 import { shareBundleLink } from '../utils/shareBundle.js';
 
 interface BundleModalProps {
@@ -11,7 +10,6 @@ interface BundleModalProps {
   onClose: () => void;
 }
 
-// Helper to check for YouTube embeddable URL
 function getYouTubeEmbed(url?: string): string | null {
   if (!url) return null;
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
@@ -20,23 +18,32 @@ function getYouTubeEmbed(url?: string): string | null {
 
 const DEFAULT_PREVIEW_VIDEO = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
 
+function toCleanTitle(raw: string): string {
+  if (raw !== raw.toUpperCase()) return raw;
+  return raw
+    .toLowerCase()
+    .split(' ')
+    .map((word) => {
+      if (['vip', 'pc', 'id', 'gta', 'dlc'].includes(word)) return word.toUpperCase();
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+}
+
 export const BundleModal: React.FC<BundleModalProps> = ({
   bundle,
   settings,
   onClose,
 }) => {
-  const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll to top of modal container whenever bundle opens
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = 0;
     }
   }, [bundle?.id]);
 
-  // Sequential Video Playlist extraction
   const getPlaylist = (): string[] => {
     if (Array.isArray(bundle?.videoPlaylist) && bundle.videoPlaylist.length > 0) {
       const list = bundle.videoPlaylist
@@ -68,26 +75,20 @@ export const BundleModal: React.FC<BundleModalProps> = ({
   const showProtectedNotice = () => {
     setSecurityNotice({
       show: true,
-      message: '🔒 Vault Protection: Video downloading is restricted.'
+      message: 'Vault Protection: Video downloading is disabled.'
     });
-    setTimeout(() => setSecurityNotice({ show: false, message: '' }), 3000);
+    setTimeout(() => setSecurityNotice({ show: false, message: '' }), 2800);
   };
 
   const handleShare = async () => {
     if (!bundle) return;
     const res = await shareBundleLink(bundle);
-    if (res.copied) {
+    if (res.copied || res.shared) {
       setShareToast({
         show: true,
-        message: 'Direct link copied! Ready to share.'
+        message: res.copied ? 'Direct bundle link copied!' : 'Bundle link shared!'
       });
-      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
-    } else if (res.shared) {
-      setShareToast({
-        show: true,
-        message: 'Link shared successfully!'
-      });
-      setTimeout(() => setShareToast({ show: false, message: '' }), 3000);
+      setTimeout(() => setShareToast({ show: false, message: '' }), 2800);
     }
   };
 
@@ -119,12 +120,10 @@ export const BundleModal: React.FC<BundleModalProps> = ({
     }
   };
 
-  // Auto-play video whenever bundle opens or part changes
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
       videoRef.current.play().catch(() => {
-        // If browser blocks unmuted autoplay, mute and try again
         if (videoRef.current) {
           videoRef.current.muted = true;
           videoRef.current.play().catch(() => {});
@@ -133,7 +132,6 @@ export const BundleModal: React.FC<BundleModalProps> = ({
     }
   }, [bundle?.id, currentVideoUrl, currentPartIndex]);
 
-  // Handle Escape key to close modal & block Ctrl+S / Cmd+S video downloading
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -149,42 +147,45 @@ export const BundleModal: React.FC<BundleModalProps> = ({
 
   if (!bundle) return null;
 
+  const displayTitle = toCleanTitle(bundle.title);
+  const redirectInfo = getChannelRedirectInfo(settings, {
+    bundleTitle: bundle.title,
+    actionType: 'purchase'
+  });
+
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-2xl p-2 sm:p-4 md:p-6 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md p-2 sm:p-4 md:p-6 animate-in fade-in duration-150"
     >
-      {/* Toast Notification for Link Sharing */}
+      {/* Share Toast */}
       {shareToast.show && (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-amber-500 text-black font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-in fade-in duration-200">
-          <Check className="w-4 h-4 text-black stroke-[3]" />
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-[#18181c] border border-white/15 text-white font-medium text-xs sm:text-sm shadow-2xl flex items-center gap-2">
+          <Check className="w-4 h-4 text-emerald-400" />
           <span>{shareToast.message}</span>
         </div>
       )}
 
-      {/* Security Toast Notification for Anti-Download Protection */}
+      {/* Security Toast */}
       {securityNotice.show && (
-        <div className="fixed top-18 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-red-950/95 border border-red-500/50 text-red-200 font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-xl">
-          <Lock className="w-4 h-4 text-amber-400 stroke-[2.5]" />
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-lg bg-red-950/95 border border-red-500/40 text-red-100 font-medium text-xs sm:text-sm shadow-2xl flex items-center gap-2">
+          <Lock className="w-4 h-4 text-red-400" />
           <span>{securityNotice.message}</span>
         </div>
       )}
 
-      {/* Background click dismiss */}
+      {/* Background Dismiss */}
       <div className="fixed inset-0" onClick={onClose} />
 
-      {/* Centering wrapper: items-start with comfortable top padding prevents clipping */}
       <div className="min-h-full flex items-start justify-center pt-2 sm:pt-8 pb-12 relative pointer-events-none">
-        
-        <div className="pointer-events-auto relative w-full max-w-4xl glass-panel rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 z-10 shadow-[0_25px_80px_rgba(0,0,0,0.95)]">
-          
-          {/* Top Actions: Share & Close Buttons */}
-          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 flex items-center gap-1.5 sm:gap-2">
+        <div className="pointer-events-auto relative w-full max-w-4xl rounded-2xl overflow-hidden bg-[#111114] border border-white/[0.1] z-10 shadow-2xl">
+          {/* Top Right Controls */}
+          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 flex items-center gap-2">
             <button
               onClick={handleShare}
               type="button"
               title="Share bundle link"
-              className="p-2 sm:p-2.5 rounded-full bg-black/80 hover:bg-black text-amber-400 hover:text-white border border-amber-500/40 hover:border-amber-400 transition-all hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
+              className="p-2 rounded-full bg-black/75 hover:bg-black text-zinc-200 hover:text-white border border-white/15 transition-colors cursor-pointer backdrop-blur-md"
             >
               <Share2 className="w-4 h-4" />
             </button>
@@ -192,14 +193,14 @@ export const BundleModal: React.FC<BundleModalProps> = ({
               onClick={onClose}
               type="button"
               title="Close (Esc)"
-              className="p-2 sm:p-2.5 rounded-full bg-black/80 hover:bg-black text-slate-200 hover:text-white border border-white/20 transition-all hover:scale-110 cursor-pointer shadow-xl backdrop-blur-md"
+              className="p-2 rounded-full bg-black/75 hover:bg-black text-zinc-200 hover:text-white border border-white/15 transition-colors cursor-pointer backdrop-blur-md"
             >
-              <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Media Header: ALWAYS DISPLAY PROTECTED VIDEO (ANTI-DOWNLOAD ENFORCED) */}
-          <div 
+          {/* Protected Video Player */}
+          <div
             onContextMenu={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -210,12 +211,12 @@ export const BundleModal: React.FC<BundleModalProps> = ({
               e.preventDefault();
               return false;
             }}
-            className="relative w-full aspect-video max-h-[55vh] bg-black overflow-hidden flex items-center justify-center select-none protected-video-shield"
+            className="relative w-full aspect-video max-h-[56vh] bg-black overflow-hidden flex items-center justify-center select-none protected-video-shield"
           >
             {ytEmbed ? (
               <iframe
                 src={ytEmbed}
-                title={`${bundle.title} Gameplay Video`}
+                title={`${displayTitle} Preview Video`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 className="w-full h-full border-0 aspect-video"
@@ -245,79 +246,69 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                   return false;
                 }}
                 onEnded={handleVideoEnded}
-                className="w-full h-full max-h-[55vh] object-contain bg-black select-none pointer-events-auto"
+                className="w-full h-full max-h-[56vh] object-contain bg-black select-none pointer-events-auto"
               >
                 Your browser does not support the video tag.
               </video>
             )}
 
-            {/* Video Indicator Pill — Max width protected against top right buttons */}
-            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 flex items-center gap-2 pointer-events-none max-w-[calc(100%-110px)]">
-              <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-black/85 backdrop-blur-md border border-amber-500/40 text-amber-400 text-[10px] sm:text-xs font-bold font-gaming shadow-lg truncate">
-                <Video className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-amber-400 shrink-0" />
-                <span className="truncate">{t('modal.included_heading', "WHAT'S INCLUDED IN BUNDLE (VIDEO)")}</span>
+            {/* Video Indicator */}
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 flex items-center gap-2 pointer-events-none max-w-[calc(100%-104px)]">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-zinc-200 text-[11px] font-medium truncate">
+                <Video className="w-3.5 h-3.5 text-red-400 shrink-0" />
+                <span className="truncate">Bundle Preview Video</span>
               </div>
               {playlist.length > 1 && (
-                <div className="px-2 py-0.5 sm:py-1 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-300 text-[10px] sm:text-[11px] font-bold font-gaming flex items-center gap-1 shadow-lg shrink-0">
-                  <Zap className="w-2.5 sm:w-3 h-2.5 sm:h-3 fill-amber-400 shrink-0" />
-                  <span>PART {currentPartIndex + 1}/{playlist.length}</span>
+                <div className="px-2 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-zinc-200 text-[11px] font-medium shrink-0">
+                  Part {currentPartIndex + 1}/{playlist.length}
                 </div>
               )}
             </div>
 
-            {/* Subtle Anti-Download Protection Watermark */}
-            <div className="absolute bottom-3 right-3 sm:bottom-3.5 sm:right-4 z-20 pointer-events-none flex items-center gap-1.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 text-[9px] sm:text-[10px] text-slate-300 font-gaming uppercase tracking-wider select-none opacity-60">
-              <Lock className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-amber-400 shrink-0" />
-              <span>Vault Protected</span>
+            {/* Subtle Anti-Download Notice */}
+            <div className="absolute bottom-3 right-3 z-20 pointer-events-none flex items-center gap-1 px-2 py-0.5 rounded bg-black/70 border border-white/10 text-[10px] text-zinc-400 select-none">
+              <Lock className="w-2.5 h-2.5 text-zinc-400 shrink-0" />
+              <span>Protected Stream</span>
             </div>
           </div>
 
-          {/* Sequential Playlist Controls Bar — Shifted BELOW the video */}
+          {/* Playlist Bar (if multiple video parts) */}
           {playlist.length > 1 && (
-            <div className="bg-[#0b1020] border-b border-white/10 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2.5 shadow-inner">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-[11px] sm:text-xs font-bold font-gaming tracking-wide">
-                  <Zap className="w-3 h-3 fill-amber-400 text-amber-400 shrink-0" />
-                  <span>{t('video.sequence_active', 'Sequential Sequence Active:')}</span>
-                </div>
-                <span className="text-[11px] text-slate-400 hidden sm:inline">
-                  Part {currentPartIndex + 1} {t('video.of', 'of')} {playlist.length} • {t('video.auto_advances', 'Auto-advances to next part')}
-                </span>
+            <div className="bg-[#151519] border-b border-white/[0.07] px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+              <div className="text-xs text-zinc-400 font-medium flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span>Part {currentPartIndex + 1} of {playlist.length} · Auto-advances</span>
               </div>
 
-              <div className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-0.5 scrollbar-none">
+              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
                 <button
                   type="button"
                   onClick={handlePrevPart}
-                  className="p-1 sm:p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                  className="p-1.5 rounded-md bg-white/[0.05] hover:bg-white/[0.1] text-zinc-300 border border-white/[0.08] cursor-pointer"
                   title="Previous Part"
                 >
                   <SkipBack className="w-3 h-3" />
                 </button>
 
-                {playlist.map((_, pIdx) => {
-                  const isCurrent = currentPartIndex === pIdx;
-                  return (
-                    <button
-                      key={pIdx}
-                      type="button"
-                      onClick={() => setCurrentPartIndex(pIdx)}
-                      className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-bold font-gaming transition-all cursor-pointer flex items-center gap-1 border shrink-0 ${
-                        isCurrent
-                          ? 'bg-amber-500 text-black border-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.5)] font-black'
-                          : 'bg-white/5 text-slate-300 hover:text-white border-white/10 hover:bg-white/10'
-                      }`}
-                    >
-                      {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />}
-                      <span>Part {pIdx + 1}</span>
-                    </button>
-                  );
-                })}
+                {playlist.map((_, pIdx) => (
+                  <button
+                    key={pIdx}
+                    type="button"
+                    onClick={() => setCurrentPartIndex(pIdx)}
+                    className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer shrink-0 border ${
+                      currentPartIndex === pIdx
+                        ? 'bg-red-600 text-white border-red-500'
+                        : 'bg-white/[0.04] text-zinc-300 border-white/[0.08] hover:bg-white/[0.08]'
+                    }`}
+                  >
+                    Part {pIdx + 1}
+                  </button>
+                ))}
 
                 <button
                   type="button"
                   onClick={handleNextPart}
-                  className="p-1 sm:p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10"
+                  className="p-1.5 rounded-md bg-white/[0.05] hover:bg-white/[0.1] text-zinc-300 border border-white/[0.08] cursor-pointer"
                   title="Next Part"
                 >
                   <SkipForward className="w-3 h-3" />
@@ -326,78 +317,76 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             </div>
           )}
 
-          {/* Modal Details Body */}
-          <div className="p-4 sm:p-8 bg-[#090c15]">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 border-b border-white/10 pb-6">
-              <div>
-                {bundle.category && (
-                  <span className="text-xs font-semibold tracking-wider text-amber-400 uppercase">
-                    {bundle.category}
-                  </span>
-                )}
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-gaming mt-1 mb-2">
-                  {bundle.title}
+          {/* Body Content */}
+          <div className="p-5 sm:p-8 bg-[#111114] space-y-6">
+            {/* Header Row */}
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-white/[0.07] pb-6">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-medium text-amber-400">
+                  <span>🪔 Diwali Special · Flat 50% OFF</span>
+                  {bundle.category && (
+                    <>
+                      <span className="text-zinc-600">·</span>
+                      <span className="text-zinc-400">{bundle.category}</span>
+                    </>
+                  )}
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                  {displayTitle}
                 </h2>
-                <div className="flex items-center gap-3 text-xs text-slate-400 flex-wrap">
-                  <span className="flex items-center gap-1 text-slate-300">
-                    <Gamepad2 className="w-4 h-4 text-amber-400" />
-                    <strong className="text-white">
-                      {bundle.gameCount > 1 ? bundle.gameCount.toLocaleString('en-IN') : 'Steam Unlock'}
-                    </strong>{' '}
-                    {bundle.gameCount > 1 ? 'Total Games' : 'Feature'}
+
+                <div className="flex items-center gap-2.5 text-xs text-zinc-400 flex-wrap pt-1">
+                  <span className="flex items-center gap-1.5 text-zinc-200 font-medium">
+                    <Gamepad2 className="w-4 h-4 text-red-400" />
+                    {bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock Feature'}
                   </span>
-                  <span>•</span>
-                  <span className="text-emerald-400 font-medium">{t('modal.instant_delivery', 'Instant Digital Delivery')}</span>
-                  <span>•</span>
-                  <span>{t('modal.lifetime_access', 'Lifetime Vault Access')}</span>
+                  <span className="text-zinc-600">·</span>
+                  <span className="text-emerald-400">Instant Digital Delivery</span>
+                  <span className="text-zinc-600">·</span>
+                  <span>Lifetime Access</span>
                 </div>
               </div>
 
-              {/* Instagram Direct Purchase Badge (No Price) */}
-              <div className="shrink-0 glass-card p-3.5 sm:p-4 rounded-2xl border border-amber-500/35 bg-[#0a0f1e] text-left md:text-right shadow-xl">
-                <div className="text-[11px] text-amber-400 uppercase font-semibold font-gaming flex items-center md:justify-end gap-1.5">
-                  <Instagram className="w-3.5 h-3.5" />
-                  <span>Instagram Direct</span>
+              {/* Clean WhatsApp Business Box */}
+              <div className="shrink-0 p-3.5 rounded-xl border border-white/[0.08] bg-[#16161b] text-left md:text-right">
+                <div className="text-[11px] font-semibold text-red-400 uppercase tracking-wider">
+                  Flat 50% OFF Offer
                 </div>
-                <div className="text-base sm:text-lg font-black text-white font-gaming mt-0.5">
-                  DM on Instagram
+                <div className="text-sm font-semibold text-white mt-0.5">
+                  Message on WhatsApp
                 </div>
-                <div className="text-xs text-amber-300 font-mono mt-0.5">
-                  @gamerspoint2026
+                <div className="text-xs text-emerald-400 mt-0.5">
+                  WhatsApp Business
                 </div>
               </div>
             </div>
 
             {/* Description */}
-            <div className="mb-6">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400 font-gaming mb-2">
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
                 Bundle Overview
               </h3>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">
-                {bundle.fullDescription || bundle.shortDescription || 'Exclusive premium PC gaming collection.'}
+              <p className="text-zinc-300 text-sm leading-relaxed whitespace-pre-line">
+                {bundle.fullDescription || bundle.shortDescription || 'Curated PC gaming bundle with lifetime access.'}
               </p>
             </div>
 
-            {/* Popular Titles in this Bundle Showcase */}
+            {/* Popular Titles Grid */}
             {bundle.popularTitlesPreview && bundle.popularTitlesPreview.length > 0 && (
-              <div className="mb-8 p-4 rounded-2xl bg-[#090d19]/90 border border-amber-500/30 shadow-lg">
+              <div>
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-amber-400" />
-                    <h3 className="text-sm font-black uppercase tracking-wider text-white font-gaming">
-                      TOP POPULAR BLOCKBUSTERS INCLUDED
-                    </h3>
-                  </div>
-                  <span className="text-xs text-amber-400/90 font-medium font-sans">
-                    All playable with lifetime access
-                  </span>
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                    Popular Titles Included
+                  </h3>
+                  <span className="text-xs text-zinc-500">Lifetime access</span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {bundle.popularTitlesPreview.map((game, idx) => (
                     <div
                       key={idx}
-                      className="group/pop relative rounded-xl overflow-hidden border border-white/10 bg-slate-950 aspect-[16/10] hover:border-amber-400 transition-all hover:-translate-y-0.5 shadow-md"
+                      className="group/pop relative rounded-lg overflow-hidden border border-white/[0.08] bg-zinc-900 aspect-[16/10]"
                     >
                       <img
                         src={game.coverImage}
@@ -406,15 +395,10 @@ export const BundleModal: React.FC<BundleModalProps> = ({
                         className="w-full h-full object-cover group-hover/pop:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent flex flex-col justify-end p-2">
-                        <span className="text-[11px] font-bold text-white leading-tight drop-shadow line-clamp-1">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-2">
+                        <span className="text-[11px] font-medium text-white line-clamp-1">
                           {game.title}
                         </span>
-                        {game.genre && (
-                          <span className="text-[9px] text-amber-300 font-medium">
-                            {game.genre}
-                          </span>
-                        )}
                       </div>
                     </div>
                   ))}
@@ -422,103 +406,72 @@ export const BundleModal: React.FC<BundleModalProps> = ({
               </div>
             )}
 
-            {/* Included Games / Items list */}
-            <div className="mb-8">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400 font-gaming">
-                  Included Games & Features ({bundle.includedItems?.length || 0})
-                </h3>
-                <span className="text-xs text-slate-400">Lifetime access guaranteed</span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-60 overflow-y-auto pr-1">
+            {/* Included Items Checklist */}
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-3">
+                Included In This Bundle ({bundle.includedItems?.length || 0})
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1">
                 {(bundle.includedItems || []).map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-amber-500/20 text-xs sm:text-sm text-slate-200 transition-colors"
+                    className="flex items-center gap-2.5 p-2.5 rounded-lg bg-[#16161b] border border-white/[0.05] text-xs sm:text-sm text-zinc-200"
                   >
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <span className="font-medium truncate">{item}</span>
+                    <span className="truncate">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* How to Order Box */}
-            {(() => {
-              const info = getChannelRedirectInfo(settings, {
-                bundleTitle: bundle.title,
-                price: bundle.price,
-                actionType: 'purchase'
-              });
-              return (
-                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="space-y-1 text-left">
-                    <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 uppercase font-gaming">
-                      <Zap className="w-4 h-4 text-amber-400" />
-                      <span>How Instant Purchase Works:</span>
-                    </div>
-                    <p className="text-xs text-slate-300">
-                      1. Click "DM to Buy on Instagram" to message us directly on @gamerspoint2026.<br />
-                      2. Pay easily via UPI, Google Pay, PhonePe, or Paytm.<br />
-                      3. Receive full credentials and lifetime installation guide in 3-5 minutes!
-                    </p>
-                  </div>
-                  
-                  <div className="shrink-0 flex items-center gap-2 text-xs text-slate-400">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                    <span>100% Refund & Setup Guarantee</span>
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/10">
-              <button
-                onClick={handleShare}
-                type="button"
-                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-bold font-gaming uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
-              >
-                <Share2 className="w-4 h-4 text-amber-400" />
-                <span>Share Bundle Link</span>
-              </button>
-
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                <button
-                  onClick={onClose}
-                  type="button"
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl glass-card text-slate-300 hover:text-white text-sm font-medium transition-colors cursor-pointer text-center"
-                >
-                  Back to Bundles
-                </button>
-
-              {(() => {
-                const redirectInfo = getChannelRedirectInfo(settings, {
-                  bundleTitle: bundle.title,
-                  actionType: 'purchase'
-                });
-                return (
-                  <a
-                    href={redirectInfo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer font-gaming text-center"
-                    title="DM on Instagram @gamerspoint2026 to buy this bundle"
-                  >
-                    <Instagram className="w-5 h-5 text-black shrink-0" />
-                    <span>DM to Buy on Instagram</span>
-                    <ArrowRight className="w-4 h-4 text-black shrink-0" />
-                  </a>
-                );
-              })()}
+            {/* How to Order */}
+            <div className="p-4 rounded-xl bg-[#16161b] border border-white/[0.07] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="space-y-1 text-xs text-zinc-300">
+                <div className="font-semibold text-white">How to claim your 50% Diwali discount:</div>
+                <p className="text-zinc-400">
+                  Message us on <span className="text-zinc-200 font-medium">WhatsApp Business</span>, pay easily via UPI / GPay / PhonePe, and get instant setup access in 3–5 minutes.
+                </p>
+              </div>
+              <div className="shrink-0 flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+                <ShieldCheck className="w-4 h-4 shrink-0" />
+                <span>Verified Setup</span>
               </div>
             </div>
 
+            {/* Footer Actions */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-white/[0.07]">
+              <button
+                onClick={handleShare}
+                type="button"
+                className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-[#18181d] hover:bg-[#222228] border border-white/[0.09] text-zinc-200 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              >
+                <Share2 className="w-4 h-4 text-zinc-400" />
+                <span>Share Bundle Link</span>
+              </button>
+
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                <button
+                  onClick={onClose}
+                  type="button"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-[#18181d] hover:bg-[#222228] border border-white/[0.09] text-zinc-300 text-xs sm:text-sm font-medium transition-colors cursor-pointer text-center"
+                >
+                  Close
+                </button>
+
+                <a
+                  href={redirectInfo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <PhoneCall className="w-4 h-4 text-white shrink-0" />
+                  <span>Claim 50% OFF on WhatsApp</span>
+                  <ArrowRight className="w-4 h-4 text-white shrink-0" />
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );

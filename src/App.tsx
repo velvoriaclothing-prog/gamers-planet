@@ -26,7 +26,6 @@ import { LanguageProvider } from './context/LanguageContext.js';
 import { LanguageSelectionModal } from './components/LanguageSelectionModal.js';
 import { ThemeProvider } from './context/ThemeContext.js';
 import { LiveWallpaper } from './components/LiveWallpaper.js';
-import { ThemeSelectorModal } from './components/ThemeSelectorModal.js';
 
 import { HomePage } from './pages/HomePage.js';
 import { BundlesPage } from './pages/BundlesPage.js';
@@ -34,6 +33,7 @@ import { SingleBundlePage } from './pages/SingleBundlePage.js';
 import { ChannelsPage } from './pages/ChannelsPage.js';
 import { ReviewsPage } from './pages/ReviewsPage.js';
 import { FaqPage } from './pages/FaqPage.js';
+import { GameFixesPage } from './pages/GameFixesPage.js';
 
 interface StorefrontProps {
   bundles: Bundle[];
@@ -84,7 +84,7 @@ const Storefront: React.FC<StorefrontProps> = ({
   }, [searchParams, effectiveBundles, onSelectBundle]);
 
   return (
-    <div className="min-h-screen bg-[#04060e] text-slate-100 flex flex-col selection:bg-amber-500 selection:text-black pb-16 lg:pb-0 relative">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col selection:bg-red-600 selection:text-white pb-16 lg:pb-0 relative">
       {/* Dynamic Themed Live Wallpaper with Contrast Scrim (100% text & bundle visibility) */}
       <LiveWallpaper />
 
@@ -100,8 +100,6 @@ const Storefront: React.FC<StorefrontProps> = ({
       {/* Quick modal for editing bundle prices & names live on page */}
       <BundleQuickEditModal />
 
-      {/* Store Theme & Live Wallpaper Customization Modal */}
-      <ThemeSelectorModal />
 
       {/* Language Selection Modal at Start of Website / on Request */}
       <LanguageSelectionModal />
@@ -150,6 +148,12 @@ const Storefront: React.FC<StorefrontProps> = ({
                 }}
               />
             }
+          />
+
+          {/* 2.5. Game Fixes Directory */}
+          <Route
+            path="/game-fixes"
+            element={<GameFixesPage />}
           />
 
           {/* 3. Dedicated Shareable Single Bundle Page with Video Walkthrough */}
@@ -245,17 +249,17 @@ export default function App() {
   const [settings, setSettings] = useState<SiteSettings>({
     siteTitle: 'Gamers Planet - Premium Game Vault',
     logoText: 'GAMERS PLANET',
-    heroHeading: 'LEGENDARY PC GAMING BUNDLES',
-    heroSubtitle: 'Get instant digital access to top-tier AAA game vaults and curated indie collections. Verified delivery directly to your account in minutes.',
-    heroCtaText: 'Browse Vault Bundles',
+    heroHeading: '🪔 DIWALI MEGA SALE — FLAT 50% OFF',
+    heroSubtitle: 'Celebrate the Festival of Lights with India’s top PC gaming vaults at Flat 50% OFF! Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim.',
+    heroCtaText: 'Browse Bundles (50% OFF)',
     heroSecondaryText: 'Instant digital delivery • 100% verified setup',
-    instagramUrl: 'https://instagram.com/gamerspoint2026',
-    primaryChannelType: 'instagram',
-    channelHandle: '@gamerspoint2026',
+    instagramUrl: 'https://wa.me/message/JM3YAJDN36QQC1',
+    primaryChannelType: 'whatsapp',
+    channelHandle: 'WhatsApp Business',
     accentColor: '#f59e0b',
-    footerText: '© 2026 Gamers Planet. Direct verified delivery guaranteed.',
-    supportNote: 'DM us on Instagram @gamerspoint2026 to buy bundles or single games.',
-    announcementText: '🔥 VIP Channel Live: Unlimited Steam ID & Pass accounts at just ₹199! DM on Instagram @gamerspoint2026.'
+    footerText: '© 2026 Gamers Planet. Shubh Deepavali • Direct verified delivery guaranteed.',
+    supportNote: 'Message us on WhatsApp Business to claim your 50% Diwali discount.',
+    announcementText: '🪔 SHUBH DIWALI SALE: FLAT 50% OFF ON ALL PC GAME BUNDLES! MESSAGE ON WHATSAPP BUSINESS 🪔'
   });
 
   const [bundles, setBundles] = useState<Bundle[]>([]);

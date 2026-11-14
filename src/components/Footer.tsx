@@ -1,18 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Instagram, PhoneCall, Send, Globe, ArrowUp } from 'lucide-react';
+import { Gamepad2, Instagram, PhoneCall, Send, Globe, ArrowUp } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
-import { EditableText } from './live-edit/EditableText.js';
 import { useLanguage } from '../context/LanguageContext.js';
-import { ThemeToggle } from './ThemeToggle.js';
 
 interface FooterProps {
   settings: SiteSettings;
 }
 
 export const Footer: React.FC<FooterProps> = ({ settings }) => {
-  const { openLanguageModal, language, t } = useLanguage();
+  const { openLanguageModal, language } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -20,124 +18,100 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
   const redirectInfo = getChannelRedirectInfo(settings, { actionType: 'support' });
 
   return (
-    <footer className="border-t border-white/10 bg-[#040508] pt-16 pb-24 md:pb-16 text-slate-400">
+    <footer className="relative z-10 border-t border-white/[0.06] bg-[#09090b] pt-12 pb-24 lg:pb-12 text-zinc-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-          
-          {/* Brand info */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400">
-                <Shield className="w-5 h-5" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+          {/* Brand */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-red-600/15 border border-red-500/40 flex items-center justify-center text-red-500">
+                <Gamepad2 className="w-4 h-4" />
               </div>
-              <span className="text-xl font-bold font-gaming text-white tracking-wider">
-                {settings.logoText || 'GAMERS PLANET'}
+              <span className="text-base font-bold text-white tracking-tight">
+                Gamers Planet
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
-              India's premier digital gaming destination for curated PC vaults, DLC expansions, and verified customer support.
+            <p className="text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
+              Curated PC game bundles, instant digital access, and verified support. Diwali Sale: Flat 50% OFF on all bundles.
             </p>
-            <div className="text-xs text-amber-400/90 font-medium">
-              <EditableText
-                textKey="supportNote"
-                defaultText={settings.supportNote || 'Direct support available for all gamers.'}
-                label="Footer Support Note"
-              />
-            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-gaming">
-              Pages & Storefront
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-200 mb-3">
+              Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <Link to="/" className="hover:text-amber-400 transition-colors">
-                  Home Storefront
+                <Link to="/bundles" className="hover:text-white transition-colors">
+                  Game Bundles
                 </Link>
               </li>
               <li>
-                <Link to="/bundles" className="hover:text-amber-400 transition-colors text-amber-300 font-semibold flex items-center justify-between">
-                  <span>Bundles Vault</span>
-                  <span className="text-[11px] text-amber-400 font-mono">Featured</span>
+                <Link to="/game-fixes" className="hover:text-white transition-colors">
+                  Game Fixes
                 </Link>
               </li>
               <li>
-                <Link to="/bundles" className="hover:text-amber-400 transition-colors flex items-center justify-between">
-                  <span>What's Included (Video Proof)</span>
-                  <span className="text-[11px] text-amber-400/90 font-medium">Inside Vault</span>
+                <Link to="/channels" className="hover:text-white transition-colors">
+                  VIP Channels &amp; Sites
                 </Link>
               </li>
               <li>
-                <Link to="/channels" className="hover:text-amber-400 transition-colors flex items-center justify-between">
-                  <span>VIP Channels & Sites</span>
-                  <span className="text-[11px] text-slate-400">Protected</span>
+                <Link to="/reviews" className="hover:text-white transition-colors">
+                  Customer Reviews
                 </Link>
               </li>
               <li>
-                <Link to="/reviews" className="hover:text-amber-400 transition-colors flex items-center justify-between">
-                  <span>Customer Proof & Reviews</span>
-                  <span className="text-[11px] text-emerald-400 font-mono tabular-nums">150+ Verified</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="hover:text-amber-400 transition-colors">
-                  FAQ & 5-Min Setup Guide
+                <Link to="/faq" className="hover:text-white transition-colors">
+                  FAQ &amp; Setup Guide
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Connect */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-gaming">
-              Connect With Us
+          {/* Support */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-200">
+              Direct Support
             </h4>
-            <div className="space-y-4">
-              <a
-                href={redirectInfo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-amber-500/40 text-slate-200 hover:text-white transition-all text-xs font-semibold cursor-pointer"
-                title={`Connect via ${redirectInfo.platformName}`}
-              >
-                {redirectInfo.isWhatsApp && <PhoneCall className="w-4 h-4 text-emerald-400 shrink-0" />}
-                {redirectInfo.isTelegram && <Send className="w-4 h-4 text-sky-400 shrink-0" />}
-                {redirectInfo.isInstagram && <Instagram className="w-4 h-4 text-amber-400 shrink-0" />}
-                {redirectInfo.isCustom && <Globe className="w-4 h-4 text-purple-400 shrink-0" />}
-                <span>{redirectInfo.actionLabel}</span>
-              </a>
-
-              <div className="text-[11px] text-slate-500 leading-relaxed">
-                Orders delivered within 3-5 minutes. Payment accepted via UPI, Google Pay, PhonePe, and Paytm.
-              </div>
-            </div>
+            <a
+              href={redirectInfo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#141418] hover:bg-[#1c1c22] border border-white/[0.1] text-zinc-100 text-xs font-medium transition-colors"
+            >
+              {redirectInfo.isWhatsApp && <PhoneCall className="w-3.5 h-3.5 text-emerald-400 shrink-0" />}
+              {redirectInfo.isTelegram && <Send className="w-3.5 h-3.5 text-sky-400 shrink-0" />}
+              {redirectInfo.isInstagram && <Instagram className="w-3.5 h-3.5 text-red-400 shrink-0" />}
+              {redirectInfo.isCustom && <Globe className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+              <span>Chat on WhatsApp Business</span>
+            </a>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              Instant delivery in 3–5 minutes via UPI, Google Pay, PhonePe, or Paytm.
+            </p>
           </div>
-
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© {new Date().getFullYear()} GAMERS PLANET. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <span className="text-amber-400/80">Support: 10:00 AM - 12:00 AM IST</span>
+        <div className="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+          <p>© {new Date().getFullYear()} Gamers Planet. All rights reserved.</p>
+          <div className="flex items-center gap-3">
             <button
               onClick={() => openLanguageModal()}
               type="button"
-              className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer border border-white/10 flex items-center gap-1.5 text-xs font-gaming"
-              title="Change Language"
+              className="px-2.5 py-1 rounded-md bg-[#141418] hover:bg-[#1c1c22] text-zinc-300 hover:text-white transition-colors cursor-pointer border border-white/[0.08] flex items-center gap-1.5 text-xs"
             >
-              <span>🌐</span>
+              <Globe className="w-3.5 h-3.5" />
               <span className="uppercase">{language}</span>
             </button>
-            <ThemeToggle variant="footer" />
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer"
+              type="button"
+              className="p-1.5 rounded-md bg-[#141418] hover:bg-[#1c1c22] border border-white/[0.08] text-zinc-400 hover:text-white transition-colors cursor-pointer"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="w-4 h-4" />
+              <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

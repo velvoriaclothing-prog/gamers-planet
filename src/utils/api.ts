@@ -313,12 +313,9 @@ export const api = {
     }>('/api/admin/media/list'),
 };
 
-// Helper to open Instagram profile or direct message with customized intent
-export function openInstagram(instagramUrl: string, bundleTitle?: string, price?: number) {
-  let targetUrl = instagramUrl.trim();
-  if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
-    targetUrl = `https://${targetUrl}`;
-  }
+// Helper to open direct support/order chat on WhatsApp Business
+export function openInstagram(_instagramUrl: string, _bundleTitle?: string, _price?: number) {
+  const targetUrl = 'https://wa.me/message/JM3YAJDN36QQC1';
 
   // Safe navigation without window.open
   const anchor = document.createElement('a');

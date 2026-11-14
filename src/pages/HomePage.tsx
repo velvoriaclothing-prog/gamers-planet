@@ -51,11 +51,16 @@ export const HomePage: React.FC<HomePageProps> = ({
             className="group glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between border border-white/[0.08] hover:border-amber-500/50 transition-all duration-300"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-105 transition-transform">
-                <Flame className="w-6 h-6 fill-amber-400 text-amber-400" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform">
+                  <Flame className="w-6 h-6 fill-amber-400 text-amber-400" />
+                </div>
+                <span className="px-2.5 py-1 rounded-md bg-gradient-to-r from-red-600 to-amber-500 text-white text-[10px] font-black font-gaming uppercase tracking-wider shadow">
+                  🪔 50% OFF
+                </span>
               </div>
               <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors">
-                {t('nav.bundles', 'PC Gaming Bundles')}
+                {t('nav.bundles', 'PC Gaming Bundles (50% OFF)')}
               </h3>
               <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
                 {t('bundles.subtitle', 'Curated game vaults with Steam Unlock, full DLC expansions, and personal 1-on-1 customer setup support.')}
@@ -113,14 +118,6 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         </div>
       </section>
-
-      {/* 3. Flash Sale Spotlight Timer */}
-      <SaleTimerSection
-        bundles={bundles}
-        settings={settings}
-        onSelectBundle={onSelectBundle}
-        showBundlesList={false}
-      />
 
       {/* 4. Official Gaming Bundles Vault Grid */}
       <BundleGrid
