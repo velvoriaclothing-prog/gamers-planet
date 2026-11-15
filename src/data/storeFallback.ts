@@ -1,0 +1,1126 @@
+import { Bundle, ReviewScreenshot, SiteSettings } from "../types/index.js";
+
+export const FALLBACK_SETTINGS: SiteSettings = {
+  "siteTitle": "Gamers Planet - Shubh Diwali Mega Sale • Flat 50% OFF",
+  "logoText": "GAMERS PLANET",
+  "heroHeading": "🪔 DIWALI MEGA SALE — FLAT 50% OFF",
+  "heroSubtitle": "Celebrate the Festival of Lights with India’s top PC gaming vaults at Flat 50% OFF! Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim.",
+  "heroCtaText": "Browse Bundles (50% OFF)",
+  "heroSecondaryText": "Instant digital delivery • 100% verified setup",
+  "instagramUrl": "https://wa.me/message/JM3YAJDN36QQC1",
+  "channelHandle": "WhatsApp Business",
+  "channelUrl": "https://wa.me/message/JM3YAJDN36QQC1",
+  "primaryChannelType": "whatsapp",
+  "accentColor": "#f59e0b",
+  "footerText": "© 2026 Gamers Planet. Shubh Deepavali • Direct verified delivery guaranteed.",
+  "supportNote": "Message us on WhatsApp Business to claim your 50% Diwali discount.",
+  "announcementText": "🪔 SHUBH DIWALI SALE: FLAT 50% OFF ON ALL PC GAME BUNDLES! MESSAGE ON WHATSAPP BUSINESS 🪔"
+};
+
+export const FALLBACK_BUNDLES: Bundle[] = [
+  {
+    "fullDescription": "GAMERS PLANET STEAM UNLOCK BUNDLE\n• Steam Unlock Feature\n• Lifetime access\n• Setup assistance\n• Personal customer support\n\nDedicated Steam Unlock package from GAMERS PLANET. Unlock premium Steam features and game libraries with lifetime validity, guided step-by-step setup assistance, and personal customer support.",
+    "shortDescription": "Steam Unlock Feature with lifetime access, setup assistance, and personal customer support.",
+    "originalPrice": 1999,
+    "category": "Steam Unlock",
+    "active": true,
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+    "badge": "STEAM UNLOCK",
+    "featured": false,
+    "videoPreview": "/assets/aistudio/steam_unlock_part1.mp4",
+    "includedItems": [
+      "Steam Unlock Feature",
+      "Lifetime access",
+      "Setup assistance",
+      "Personal customer support"
+    ],
+    "price": 449,
+    "updatedAt": "2026-10-12T13:47:14.611Z",
+    "gameCount": 1,
+    "createdAt": "2026-10-12T13:47:14.611Z",
+    "id": "bundle-steam-unlock",
+    "title": "STEAM UNLOCK BUNDLE",
+    "popularTitlesPreview": [
+      {
+        "title": "Black Myth: Wukong",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+        "genre": "Action RPG"
+      },
+      {
+        "title": "Grand Theft Auto V",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+        "genre": "Open World Action"
+      },
+      {
+        "title": "Resident Evil 4 Remake",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+        "genre": "Survival Horror"
+      },
+      {
+        "title": "Forza Horizon 5",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg",
+        "genre": "Open World Racing"
+      },
+      {
+        "title": "Space Marine 2",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2183900/header.jpg",
+        "genre": "Action Shooter"
+      },
+      {
+        "title": "Dragon Ball: Sparking! ZERO",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1790600/header.jpg",
+        "genre": "Anime Fighting"
+      },
+      {
+        "title": "Silent Hill 2 Remake",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2124490/header.jpg",
+        "genre": "Horror"
+      },
+      {
+        "title": "Hitman: World of Assassination",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1659040/header.jpg",
+        "genre": "Stealth Action"
+      }
+    ],
+    "videoPlaylist": [
+      "/assets/aistudio/steam_unlock_part1.mp4",
+      "/assets/aistudio/steam_unlock_part2.mp4",
+      "/assets/aistudio/steam_unlock_part3.mp4"
+    ]
+  },
+  {
+    "featured": true,
+    "updatedAt": "2026-10-12T13:47:14.611Z",
+    "gameCount": 1000,
+    "badge": "MOST POPULAR",
+    "createdAt": "2026-10-12T13:47:14.611Z",
+    "videoPreview": "/assets/aistudio/1k_games_video_preview_43053013.mp4",
+    "id": "bundle-full-unlock",
+    "shortDescription": "1,000 games + Steam Unlock + VIP channels, Sites section & Game ID/Password listings access.",
+    "includedItems": [
+      "1,000 games",
+      "Steam Unlock Feature",
+      "Lifetime access",
+      "Access to website channels and the Sites section",
+      "Access to the website’s game ID and password section",
+      "Lifetime access to the available ID and password listings",
+      "Complete setup assistance",
+      "Personal customer support"
+    ],
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
+    "category": "Full Unlock",
+    "title": "FULL UNLOCK BUNDLE",
+    "fullDescription": "GAMERS PLANET FULL UNLOCK BUNDLE\n• 1,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe comprehensive full unlock suite from GAMERS PLANET. Includes 1,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, website game ID and password listings, complete setup assistance, and personal customer support.",
+    "originalPrice": 2999,
+    "price": 699,
+    "active": true,
+    "popularTitlesPreview": [
+      {
+        "title": "Black Myth: Wukong",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+        "genre": "Action RPG"
+      },
+      {
+        "title": "God of War Ragnarök",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
+        "genre": "Action Myth"
+      },
+      {
+        "title": "Marvel's Spider-Man Remastered",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1817070/header.jpg",
+        "genre": "Superhero Action"
+      },
+      {
+        "title": "Ghost of Tsushima DIRECTOR'S CUT",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2215430/header.jpg",
+        "genre": "Samurai Action"
+      },
+      {
+        "title": "EA SPORTS FC 25",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2669320/header.jpg",
+        "genre": "Football / Sports"
+      },
+      {
+        "title": "Tekken 8",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1778820/header.jpg",
+        "genre": "Fighting"
+      }
+    ],
+    "videoPlaylist": [
+      "/assets/aistudio/1k_games_video_preview_43053013.mp4"
+    ]
+  },
+  {
+    "active": true,
+    "featured": true,
+    "fullDescription": "GAMERS PLANET MEGA GAMING BUNDLE\n• 27,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Setup assistance\n• Personal customer support\n\nMassive gaming vault featuring 27,000 games. Full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password listings access, setup assistance, and personal customer support.",
+    "createdAt": "2026-10-12T13:47:14.611Z",
+    "id": "bundle-mega-gaming",
+    "gameCount": 27000,
+    "updatedAt": "2026-10-12T13:47:14.611Z",
+    "badge": "MEGA VALUE",
+    "includedItems": [
+      "27,000 games",
+      "Steam Unlock Feature",
+      "Lifetime access",
+      "Access to website channels and the Sites section",
+      "Access to the website’s game ID and password section",
+      "Lifetime access to the available ID and password listings",
+      "Setup assistance",
+      "Personal customer support"
+    ],
+    "category": "Mega Vault",
+    "price": 799,
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
+    "videoPreview": "/assets/aistudio/27000_GAMES_BUNDLE_VIDEO__26956cb5.mp4",
+    "shortDescription": "27,000 games + Steam Unlock + VIP website channels & Game ID/Password section access.",
+    "originalPrice": 3999,
+    "title": "MEGA GAMING BUNDLE",
+    "popularTitlesPreview": [
+      {
+        "title": "Call of Duty: Black Ops 6",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1938090/header.jpg",
+        "genre": "Shooter"
+      },
+      {
+        "title": "Baldur's Gate 3",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg",
+        "genre": "RPG"
+      },
+      {
+        "title": "Resident Evil 4 Remake",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg",
+        "genre": "Survival Horror"
+      },
+      {
+        "title": "Hogwarts Legacy",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/990080/header.jpg",
+        "genre": "Action RPG"
+      },
+      {
+        "title": "S.T.A.L.K.E.R. 2",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1643320/header.jpg",
+        "genre": "Survival FPS"
+      },
+      {
+        "title": "Days Gone",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1259420/header.jpg",
+        "genre": "Open World Action"
+      }
+    ],
+    "videoPlaylist": [
+      "/assets/aistudio/27000_GAMES_BUNDLE_VIDEO__26956cb5.mp4"
+    ]
+  },
+  {
+    "category": "Ultimate Vault",
+    "title": "ULTIMATE GAMING BUNDLE",
+    "active": true,
+    "shortDescription": "Apex 60,000 games vault + Steam Unlock + VIP Channels + Game ID/Password Listings & White-Glove Support.",
+    "videoPreview": "/assets/aistudio/60k_vip_part1.mp4",
+    "fullDescription": "GAMERS PLANET ULTIMATE GAMING BUNDLE\n• 60,000 games\n• Steam Unlock Feature\n• Lifetime access\n• Access to website channels and the Sites section\n• Access to the website’s game ID and password section\n• Lifetime access to the available ID and password listings\n• Complete setup assistance\n• Personal customer support\n\nThe apex collection from GAMERS PLANET. An immense library of 60,000 games, full Steam Unlock feature, lifetime access, website channels and Sites section access, game ID and password section with lifetime listing access, complete setup assistance, and dedicated personal customer support.",
+    "price": 999,
+    "includedItems": [
+      "60,000 games",
+      "Steam Unlock Feature",
+      "Lifetime access",
+      "Access to website channels and the Sites section",
+      "Access to the website’s game ID and password section",
+      "Lifetime access to the available ID and password listings",
+      "Complete setup assistance",
+      "Personal customer support"
+    ],
+    "createdAt": "2026-10-12T13:47:14.611Z",
+    "featured": true,
+    "badge": "ULTIMATE BUNDLE",
+    "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+    "originalPrice": 4999,
+    "id": "bundle-ultimate-gaming",
+    "gameCount": 60000,
+    "updatedAt": "2026-10-12T13:47:14.611Z",
+    "popularTitlesPreview": [
+      {
+        "title": "Grand Theft Auto V",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg",
+        "genre": "Open World Crime"
+      },
+      {
+        "title": "Black Myth: Wukong",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2358720/header.jpg",
+        "genre": "Action RPG"
+      },
+      {
+        "title": "Cyberpunk 2077: Phantom Liberty",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg",
+        "genre": "Sci-Fi"
+      },
+      {
+        "title": "Elden Ring: Shadow of the Erdtree",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg",
+        "genre": "Action RPG"
+      },
+      {
+        "title": "God of War Ragnarök",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/2322010/header.jpg",
+        "genre": "Myth Action"
+      },
+      {
+        "title": "Red Dead Redemption 2",
+        "coverImage": "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg",
+        "genre": "Open World Western"
+      }
+    ],
+    "videoPlaylist": [
+      "/assets/aistudio/60k_vip_part1.mp4",
+      "/assets/aistudio/60k_vip_part2.mp4"
+    ]
+  }
+];
+
+export const FALLBACK_REVIEWS: ReviewScreenshot[] = [
+  {
+    "title": "Delivered in 3 mins on Instagram DM! Butter smooth gameplay",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "hidden": false,
+    "reviewerName": "Rohan Sharma",
+    "order": 1,
+    "createdAt": "2026-10-10T14:20:00.000Z",
+    "note": "Paid ₹499 via GPay, shared the screenshot on Instagram DM, and received full vault access in just 3 minutes. Downloaded Cyberpunk 2077 and Horizon Forbidden West on my RTX 3060 PC at 150 Mbps on JioFiber. 100% genuine seller in India!",
+    "location": "New Delhi",
+    "id": "rev-in-1",
+    "customerHandle": "@rohan_delhi_fps",
+    "rating": 5
+  },
+  {
+    "rating": 5,
+    "order": 10,
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "id": "rev-in-10",
+    "title": "Lies of P + Dark Souls 3 working with high FPS",
+    "hidden": false,
+    "reviewerName": "Kunal Malhotra",
+    "location": "Chandigarh",
+    "createdAt": "2026-10-07T17:35:00.000Z",
+    "note": "10/10 customer service. I messaged them with doubts regarding system requirements before buying, and they politely checked my specs and recommended the best bundle.",
+    "customerHandle": "@kunal_chd_pc"
+  },
+  {
+    "title": "Zero hassle setup, direct verified delivery",
+    "rating": 5,
+    "createdAt": "2026-10-07T14:10:00.000Z",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "order": 11,
+    "reviewerName": "Harsh Vardhan",
+    "id": "rev-in-11",
+    "customerHandle": "@harsh_patna_gamer",
+    "hidden": false,
+    "note": "Paid ₹499 during flash sale. Setup guide in simple Hindi and English. Even my younger brother was able to set up Cyberpunk easily.",
+    "location": "Patna, Bihar"
+  },
+  {
+    "customerHandle": "@ritik_indore_pc",
+    "createdAt": "2026-10-06T19:25:00.000Z",
+    "note": "Got the 10-hour flash sale price of ₹499. Instant delivery on Instagram DM. Already shared the store link in our college WhatsApp group.",
+    "hidden": false,
+    "order": 12,
+    "reviewerName": "Ritik Chawla",
+    "id": "rev-in-12",
+    "rating": 5,
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "title": "Flash sale timer deal is super legit",
+    "location": "Indore, Madhya Pradesh"
+  },
+  {
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "location": "Chennai, Tamil Nadu",
+    "customerHandle": "@karthik_chennai_rig",
+    "note": "Great communication from the Gamers Planet team. Received credentials within 3 minutes of sending the UPI transaction screenshot. Very trustworthy.",
+    "title": "Wukong runs like butter on RTX 4070",
+    "id": "rev-in-13",
+    "hidden": false,
+    "reviewerName": "Karthik Subramanian",
+    "createdAt": "2026-10-06T16:00:00.000Z",
+    "rating": 5,
+    "order": 13
+  },
+  {
+    "gameTitle": "Open World Legends & Story Pack",
+    "title": "15 story games for ₹399 is unbeatable",
+    "location": "Bhopal, Madhya Pradesh",
+    "hidden": false,
+    "reviewerName": "Ankit Mishra",
+    "order": 14,
+    "id": "rev-in-14",
+    "note": "Days Gone and Assassin's Creed Valhalla running super smooth. The step-by-step PDF guide prevents any confusion during installation.",
+    "customerHandle": "@ankit_bhopal_gamer",
+    "createdAt": "2026-10-06T11:40:00.000Z",
+    "rating": 5
+  },
+  {
+    "reviewerName": "Shreya Deshmukh",
+    "customerHandle": "@shreya_nagpur_plays",
+    "hidden": false,
+    "gameTitle": "Open World Legends & Story Pack",
+    "note": "I thought it would take hours to deliver, but within 2 mins of sharing the UPI UTR number on Instagram, link and credentials arrived. Super happy!",
+    "id": "rev-in-15",
+    "order": 15,
+    "createdAt": "2026-10-05T20:15:00.000Z",
+    "rating": 5,
+    "location": "Nagpur, Maharashtra",
+    "title": "Extremely quick delivery, super kind support team"
+  },
+  {
+    "reviewerName": "Manpreet Singh",
+    "customerHandle": "@manni_ludhiana",
+    "hidden": false,
+    "gameTitle": "Open World Legends & Story Pack",
+    "note": "Clean files with no annoying third-party adware. Tested on my gaming PC and everything works like an official Steam release.",
+    "id": "rev-in-16",
+    "order": 16,
+    "createdAt": "2026-10-05T15:20:00.000Z",
+    "rating": 5,
+    "location": "Ludhiana, Punjab",
+    "title": "GTA V Premium + RDR2 downloaded at 300 Mbps"
+  },
+  {
+    "reviewerName": "Nikhil Kulkarni",
+    "customerHandle": "@nikhil_thane_gamer",
+    "id": "rev-in-17",
+    "title": "Shadow of Erdtree expansion unlocked completely",
+    "createdAt": "2026-10-05T12:00:00.000Z",
+    "hidden": false,
+    "location": "Thane, Maharashtra",
+    "order": 17,
+    "rating": 5,
+    "note": "Been playing for 4 days non-stop without any issues. The DLC weapons and map regions work flawlessly. Worth every rupee.",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack"
+  },
+  {
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "location": "Noida, UP",
+    "rating": 5,
+    "customerHandle": "@divyansh_noida_pc",
+    "note": "When I recently upgraded my NVMe SSD, admin re-sent the setup steps instantly on Instagram without charging a single extra rupee. Genuine people.",
+    "order": 18,
+    "id": "rev-in-18",
+    "hidden": false,
+    "reviewerName": "Divyansh Saxena",
+    "createdAt": "2026-10-04T18:45:00.000Z",
+    "title": "Lifetime setup support is actually real!"
+  },
+  {
+    "reviewerName": "Tanmay Sen",
+    "hidden": false,
+    "createdAt": "2026-10-04T14:30:00.000Z",
+    "note": "As a college student, spending ₹3,000 for each game is impossible. Gamers Planet gave me 15 premium titles for ₹399. Respect to the team!",
+    "order": 19,
+    "rating": 5,
+    "title": "Unmatched library for gamers on a budget",
+    "customerHandle": "@tanmay_siliguri",
+    "gameTitle": "Open World Legends & Story Pack",
+    "id": "rev-in-19",
+    "location": "Siliguri, West Bengal"
+  },
+  {
+    "reviewerName": "Aarav Patel",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "note": "Was skeptical initially because Steam charges ₹3,000+ per title. Decided to test with ₹699 UPI. Best decision ever! Shadow of the Erdtree and Black Myth: Wukong both installed cleanly with offline saves enabled.",
+    "title": "Elden Ring + Shadow of Erdtree running flawlessly",
+    "customerHandle": "@aarav_amd_rig",
+    "rating": 5,
+    "order": 2,
+    "location": "Ahmedabad, Gujarat",
+    "hidden": false,
+    "id": "rev-in-2",
+    "createdAt": "2026-10-10T11:45:00.000Z"
+  },
+  {
+    "reviewerName": "Saurabh Tiwari",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "note": "Sent money on QR code, got confirmed in 3 minutes. The Instagram team guided me step-by-step to start downloading immediately.",
+    "title": "100% verified. Paid via Paytm UPI smoothly",
+    "customerHandle": "@saurabh_varanasi",
+    "rating": 5,
+    "order": 20,
+    "location": "Varanasi, UP",
+    "hidden": false,
+    "createdAt": "2026-10-04T10:15:00.000Z",
+    "id": "rev-in-20"
+  },
+  {
+    "hidden": false,
+    "order": 21,
+    "id": "rev-in-21",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "customerHandle": "@varun_hyd_rigs",
+    "location": "Hyderabad, Telangana",
+    "title": "High FPS, zero stutter on Ryzen 7 & RTX 4060",
+    "note": "Black Myth Wukong and Sekiro GOTY running with full controller support on my PC. The download servers are ultra fast.",
+    "rating": 5,
+    "reviewerName": "Varun Reddy",
+    "createdAt": "2026-10-03T21:10:00.000Z"
+  },
+  {
+    "gameTitle": "Open World Legends & Story Pack",
+    "title": "Ghost of Tsushima looks breathtaking",
+    "hidden": false,
+    "customerHandle": "@meera_coimbatore",
+    "order": 22,
+    "rating": 5,
+    "reviewerName": "Meera Iyer",
+    "location": "Coimbatore, Tamil Nadu",
+    "createdAt": "2026-10-03T17:05:00.000Z",
+    "id": "rev-in-22",
+    "note": "Director's Cut with Iki Island expansion unlocked. Delivery on Instagram DM took less than 4 minutes. Highly recommended for Indian gamers."
+  },
+  {
+    "location": "Amritsar, Punjab",
+    "createdAt": "2026-10-03T13:40:00.000Z",
+    "rating": 5,
+    "title": "Dead Space Remake running with 3D audio",
+    "note": "Very polite seller. They don't spam or delay. Payment was verified within seconds of sending UTR screenshot.",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "customerHandle": "@ayush_amritsar",
+    "id": "rev-in-23",
+    "order": 23,
+    "reviewerName": "Ayush Bhatia",
+    "hidden": false
+  },
+  {
+    "title": "Witcher 3 Next-Gen update works beautifully",
+    "createdAt": "2026-10-02T19:30:00.000Z",
+    "rating": 5,
+    "location": "Nashik, Maharashtra",
+    "gameTitle": "Open World Legends & Story Pack",
+    "order": 24,
+    "reviewerName": "Pranav Kulkarni",
+    "id": "rev-in-24",
+    "customerHandle": "@pranav_nashik_pc",
+    "note": "Ray tracing and photo mode working without any crashes. Best ₹399 I have ever spent on PC gaming.",
+    "hidden": false
+  },
+  {
+    "title": "Stray and Control Ultimate Edition unlocked!",
+    "createdAt": "2026-10-02T15:20:00.000Z",
+    "rating": 5,
+    "location": "Kanpur, UP",
+    "order": 25,
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "reviewerName": "Ritu Agarwal",
+    "id": "rev-in-25",
+    "customerHandle": "@ritu_kanpur_gamer",
+    "note": "Super simple process. Message them on Instagram, choose bundle, pay through UPI, and boom — link arrives instantly.",
+    "hidden": false
+  },
+  {
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "order": 26,
+    "rating": 5,
+    "customerHandle": "@yash_surat_tech",
+    "id": "rev-in-26",
+    "title": "Best place for Soulslike games in India",
+    "hidden": false,
+    "note": "Lords of the Fallen (2023) and Dark Souls Trilogy all in one bundle. You won't find this pricing anywhere on the internet.",
+    "location": "Surat, Gujarat",
+    "createdAt": "2026-10-02T11:00:00.000Z",
+    "reviewerName": "Yash Singhania"
+  },
+  {
+    "note": "Everything runs smoothly. The channel guide for modding was extremely helpful. True gaming community vibe.",
+    "createdAt": "2026-10-01T20:45:00.000Z",
+    "id": "rev-in-27",
+    "title": "Skyrim Anniversary Edition with 500+ mods ready",
+    "location": "Bhubaneswar, Odisha",
+    "hidden": false,
+    "customerHandle": "@sid_bhubaneswar",
+    "reviewerName": "Siddharth Roy",
+    "order": 27,
+    "gameTitle": "Open World Legends & Story Pack",
+    "rating": 5
+  },
+  {
+    "reviewerName": "Alok Pandey",
+    "rating": 5,
+    "location": "Prayagraj, UP",
+    "order": 28,
+    "note": "Instant verified delivery. They even sent a short video clip showing how to activate the cloud saves correctly.",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "customerHandle": "@alok_prayagraj",
+    "hidden": false,
+    "createdAt": "2026-10-01T16:15:00.000Z",
+    "id": "rev-in-28",
+    "title": "Cyberpunk 2077 runs with DLSS 3.5 flawlessly"
+  },
+  {
+    "reviewerName": "Tarun Chhabra",
+    "hidden": false,
+    "location": "Faridabad, Haryana",
+    "order": 29,
+    "createdAt": "2026-10-01T12:00:00.000Z",
+    "note": "Download speed touched 40 MB/sec. Very smooth and zero headaches. Will buy the Souls bundle next week.",
+    "gameTitle": "Open World Legends & Story Pack",
+    "customerHandle": "@tarun_fbd_gamer",
+    "rating": 5,
+    "id": "rev-in-29",
+    "title": "Far Cry 6 GOTY & Mad Max wasteland edition!"
+  },
+  {
+    "reviewerName": "Priya Verma",
+    "gameTitle": "Open World Legends & Story Pack",
+    "note": "The setup instructions provided on Instagram are crystal clear. I had a quick question regarding cloud save directory and the admin replied at 11:30 PM within 2 minutes. Outstanding support!",
+    "hidden": false,
+    "customerHandle": "@priya_v_plays",
+    "order": 3,
+    "id": "rev-in-3",
+    "location": "Bengaluru, Karnataka",
+    "rating": 5,
+    "createdAt": "2026-10-09T18:10:00.000Z",
+    "title": "RDR2 and Ghost of Tsushima on 144Hz screen!"
+  },
+  {
+    "note": "First time purchasing digital vaults online. The team was patient and guided me kindly on Instagram DM. A+ experience.",
+    "id": "rev-in-30",
+    "hidden": false,
+    "reviewerName": "Neha Bhattacharya",
+    "order": 30,
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "createdAt": "2026-09-30T19:20:00.000Z",
+    "rating": 5,
+    "customerHandle": "@neha_ranchi_pc",
+    "title": "Black Myth Wukong runs like a dream",
+    "location": "Ranchi, Jharkhand"
+  },
+  {
+    "customerHandle": "@gaurav_doon_fps",
+    "location": "Dehradun, Uttarakhand",
+    "reviewerName": "Gaurav Chauhan",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "rating": 5,
+    "note": "Smooth 60 FPS in New Atlantis. Delivered in 3 mins on Instagram. UPI payment via Google Pay was hassle-free.",
+    "title": "Starfield Shattered Space ready vault!",
+    "id": "rev-in-31",
+    "createdAt": "2026-09-30T15:10:00.000Z",
+    "order": 31,
+    "hidden": false
+  },
+  {
+    "customerHandle": "@abhi_gorakhpur",
+    "location": "Gorakhpur, UP",
+    "reviewerName": "Abhishek Yadav",
+    "gameTitle": "Open World Legends & Story Pack",
+    "rating": 5,
+    "note": "Everything worked right out of the box. No complicated cracking or weird .bat scripts. Clean native install files.",
+    "title": "Red Dead 2 story mode graphics are mindblowing",
+    "createdAt": "2026-09-30T11:00:00.000Z",
+    "id": "rev-in-32",
+    "order": 32,
+    "hidden": false
+  },
+  {
+    "customerHandle": "@pooja_mangaluru",
+    "reviewerName": "Pooja Hegde",
+    "gameTitle": "Open World Legends & Story Pack",
+    "rating": 5,
+    "note": "Saved so much pocket money. Legit digital delivery right on Instagram DM within 3 minutes.",
+    "title": "Spider-Man Remastered with full photo mode",
+    "location": "Mangaluru, Karnataka",
+    "createdAt": "2026-09-29T20:30:00.000Z",
+    "order": 33,
+    "id": "rev-in-33",
+    "hidden": false
+  },
+  {
+    "reviewerName": "Mohit Khatri",
+    "createdAt": "2026-09-29T16:45:00.000Z",
+    "note": "Uncapped framerate patch included in the setup notes. Incredible attention to detail by Gamers Planet.",
+    "title": "Sekiro shadows die twice runs at 120 FPS!",
+    "rating": 5,
+    "customerHandle": "@mohit_jodhpur_pc",
+    "order": 34,
+    "location": "Jodhpur, Rajasthan",
+    "id": "rev-in-34",
+    "hidden": false,
+    "gameTitle": "Elden Mythic & Soulslike Masterpack"
+  },
+  {
+    "reviewerName": "Akash Deep",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "hidden": false,
+    "order": 35,
+    "id": "rev-in-35",
+    "rating": 5,
+    "title": "Horizon Forbidden West complete edition unlocked",
+    "location": "Guwahati, Assam",
+    "createdAt": "2026-09-29T12:10:00.000Z",
+    "customerHandle": "@akash_guwahati",
+    "note": "DLSS Frame Generation works without any glitches. 100% genuine shop for PC gamers across Northeast India."
+  },
+  {
+    "createdAt": "2026-09-28T19:15:00.000Z",
+    "id": "rev-in-36",
+    "reviewerName": "Rajat Bansal",
+    "note": "Delivered instantly upon sending GPay screenshot. No waiting, no drama. Trustworthy service.",
+    "rating": 5,
+    "title": "GTA V Premium online and story mode working",
+    "location": "Meerut, UP",
+    "gameTitle": "Open World Legends & Story Pack",
+    "order": 36,
+    "hidden": false,
+    "customerHandle": "@rajat_meerut_tech"
+  },
+  {
+    "rating": 5,
+    "order": 37,
+    "id": "rev-in-37",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "note": "Fast download, direct verified cloud mirrors. Everything is pre-configured for instant play.",
+    "hidden": false,
+    "title": "Ghostrunner 2 Brutal edition is adrenaline rush",
+    "createdAt": "2026-09-28T14:50:00.000Z",
+    "location": "Rajkot, Gujarat",
+    "customerHandle": "@chirag_rajkot_gamer",
+    "reviewerName": "Chirag Mehta"
+  },
+  {
+    "customerHandle": "@vignesh_madurai",
+    "createdAt": "2026-09-28T10:20:00.000Z",
+    "reviewerName": "Vigneshwaran K.",
+    "note": "Playing with my college friends without any disconnects. Unbeatable value in India.",
+    "rating": 5,
+    "order": 38,
+    "location": "Madurai, Tamil Nadu",
+    "hidden": false,
+    "title": "Elden Ring runs with full seamless co-op mod",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "id": "rev-in-38"
+  },
+  {
+    "createdAt": "2026-09-27T21:00:00.000Z",
+    "location": "Gwalior, Madhya Pradesh",
+    "id": "rev-in-39",
+    "note": "Such a rare gem to find in bundles. Downloaded in under 40 minutes on fiber. 5 stars easily.",
+    "title": "Kingdom Come Deliverance Royal Edition included",
+    "hidden": false,
+    "gameTitle": "Open World Legends & Story Pack",
+    "customerHandle": "@sumit_gwalior",
+    "reviewerName": "Sumit Goswami",
+    "rating": 5,
+    "order": 39
+  },
+  {
+    "order": 4,
+    "rating": 5,
+    "createdAt": "2026-10-09T15:30:00.000Z",
+    "id": "rev-in-4",
+    "hidden": false,
+    "customerHandle": "@aditya_kochi_gamer",
+    "title": "12 AAA games for ₹499 is unreal value",
+    "note": "Checked all hash files and ran Windows Defender scan — zero trojans, completely clean release. Starfield and Dead Space Remake run at solid 60+ FPS without stuttering.",
+    "reviewerName": "Aditya Nair",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "location": "Kochi, Kerala"
+  },
+  {
+    "order": 40,
+    "location": "Thiruvananthapuram, Kerala",
+    "rating": 5,
+    "createdAt": "2026-09-27T16:30:00.000Z",
+    "reviewerName": "Arvind Pillai",
+    "hidden": false,
+    "title": "System Shock Remake + Dead Space Remake",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "customerHandle": "@arvind_tvm_pc",
+    "note": "Sci-Fi fans don't look anywhere else. This vault is pure gold for ₹499.",
+    "id": "rev-in-40"
+  },
+  {
+    "title": "Days Gone on PC is a masterpiece",
+    "location": "Agra, UP",
+    "gameTitle": "Open World Legends & Story Pack",
+    "id": "rev-in-41",
+    "rating": 5,
+    "note": "Hordes running at smooth 80 FPS on ultra. Delivered in 2 minutes on Instagram DM.",
+    "order": 41,
+    "customerHandle": "@mayank_agra_gamer",
+    "hidden": false,
+    "createdAt": "2026-09-27T11:45:00.000Z",
+    "reviewerName": "Mayank Agrawal"
+  },
+  {
+    "title": "Black Myth Wukong Chapter 4 reached with no issues",
+    "location": "Shimla, Himachal Pradesh",
+    "id": "rev-in-42",
+    "createdAt": "2026-09-26T18:40:00.000Z",
+    "rating": 5,
+    "reviewerName": "Himanshu Rawat",
+    "customerHandle": "@himanshu_shimla",
+    "note": "Super reliable seller. Download servers provided are lightning fast even on hilly connections.",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "order": 42,
+    "hidden": false
+  },
+  {
+    "createdAt": "2026-09-26T14:15:00.000Z",
+    "note": "Everything promised in the bundle was delivered accurately. 100% verified Indian seller.",
+    "reviewerName": "Rohitashwa Sen",
+    "rating": 5,
+    "id": "rev-in-43",
+    "title": "Everspace 2 Galactic Deluxe runs flawlessly",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "location": "Asansol, West Bengal",
+    "hidden": false,
+    "order": 43,
+    "customerHandle": "@rohitashwa_asansol"
+  },
+  {
+    "gameTitle": "Open World Legends & Story Pack",
+    "hidden": false,
+    "order": 44,
+    "location": "Kolhapur, Maharashtra",
+    "rating": 5,
+    "id": "rev-in-44",
+    "title": "Middle-earth Shadow of War Definitive Edition",
+    "createdAt": "2026-09-26T09:50:00.000Z",
+    "customerHandle": "@shubham_kolhapur",
+    "reviewerName": "Shubham Patil",
+    "note": "Nemesis system works properly with all expansions. Paid ₹399 via PhonePe UPI seamlessly."
+  },
+  {
+    "rating": 5,
+    "order": 45,
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "hidden": false,
+    "reviewerName": "Nitin Solanki",
+    "id": "rev-in-45",
+    "title": "Nioh 2 Complete Edition + Sekiro",
+    "location": "Udaipur, Rajasthan",
+    "customerHandle": "@nitin_udaipur_rig",
+    "note": "Combat feels responsive, low latency, no FPS drops. Verified delivery in 3 mins.",
+    "createdAt": "2026-09-25T20:10:00.000Z"
+  },
+  {
+    "location": "Panipat, Haryana",
+    "title": "Control Ultimate Edition with full Ray Tracing",
+    "createdAt": "2026-09-25T15:35:00.000Z",
+    "hidden": false,
+    "customerHandle": "@tushar_panipat",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "order": 46,
+    "rating": 5,
+    "reviewerName": "Tushar Grover",
+    "id": "rev-in-46",
+    "note": "Looks astonishing. Instagram team was online at midnight and sent the access without delay."
+  },
+  {
+    "rating": 5,
+    "order": 47,
+    "gameTitle": "Open World Legends & Story Pack",
+    "location": "Jammu, J&K",
+    "hidden": false,
+    "title": "Assassin's Creed Valhalla Ragnarök Pack",
+    "id": "rev-in-47",
+    "customerHandle": "@vivek_jammu_pc",
+    "note": "Huge 100GB game downloaded with zero corrupt parts. Very thankful to Gamers Planet.",
+    "createdAt": "2026-09-25T11:20:00.000Z",
+    "reviewerName": "Vivek Mahajan"
+  },
+  {
+    "location": "Durgapur, West Bengal",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "note": "Pinocchio soulslike gameplay at 120 FPS. Instant WhatsApp/Instagram reply.",
+    "title": "Lies of P soundtrack & Deluxe bonuses present",
+    "id": "rev-in-48",
+    "rating": 5,
+    "customerHandle": "@sourav_durgapur",
+    "createdAt": "2026-09-24T19:25:00.000Z",
+    "order": 48,
+    "hidden": false,
+    "reviewerName": "Sourav Das"
+  },
+  {
+    "customerHandle": "@sandeep_thrissur",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "note": "GPay payment went through in 5 seconds, access delivered in under 3 minutes. Flawless.",
+    "location": "Thrissur, Kerala",
+    "title": "Starfield Shattered Space ready and verified",
+    "id": "rev-in-49",
+    "hidden": false,
+    "reviewerName": "Sandeep Nambiar",
+    "createdAt": "2026-09-24T14:40:00.000Z",
+    "order": 49,
+    "rating": 5
+  },
+  {
+    "hidden": false,
+    "note": "Paid ₹699 via PhonePe. Admin sent verified credentials and video guide immediately. All DLC bonus armors and soundtracks unlocked. Truly the most reliable gaming shop in India.",
+    "order": 5,
+    "createdAt": "2026-10-09T09:12:00.000Z",
+    "location": "Jaipur, Rajasthan",
+    "customerHandle": "@rathore_gaming_rj",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "reviewerName": "Vikram Singh Rathore",
+    "rating": 5,
+    "title": "Black Myth Wukong Deluxe + Sekiro working 100%",
+    "id": "rev-in-5"
+  },
+  {
+    "order": 50,
+    "rating": 5,
+    "gameTitle": "Open World Legends & Story Pack",
+    "location": "Jabalpur, Madhya Pradesh",
+    "hidden": false,
+    "reviewerName": "Ashutosh Dubey",
+    "id": "rev-in-50",
+    "title": "Red Dead Redemption 2 Arthur Morgan story mode",
+    "note": "One of the best narrative experiences. Thanks to Gamers Planet for making it affordable.",
+    "customerHandle": "@ashu_jabalpur",
+    "createdAt": "2026-09-24T10:00:00.000Z"
+  },
+  {
+    "hidden": false,
+    "customerHandle": "@hardik_vadodara",
+    "id": "rev-in-51",
+    "order": 51,
+    "createdAt": "2026-09-23T20:50:00.000Z",
+    "location": "Vadodara, Gujarat",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "rating": 5,
+    "title": "Dark Souls 1 Remastered to Dark Souls 3 all working",
+    "note": "Full trilogy runs on my laptop with no overheating. 100% satisfied customer.",
+    "reviewerName": "Hardik Shah"
+  },
+  {
+    "hidden": false,
+    "note": "Everything is verified. Saved thousands of rupees. Best gaming deal in India.",
+    "reviewerName": "Bhavin Mistry",
+    "order": 52,
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "customerHandle": "@bhavin_navimumbai",
+    "createdAt": "2026-09-23T16:15:00.000Z",
+    "rating": 5,
+    "title": "Cyberpunk Night City looks insane on OLED screen",
+    "id": "rev-in-52",
+    "location": "Navi Mumbai, Maharashtra"
+  },
+  {
+    "createdAt": "2026-09-23T11:30:00.000Z",
+    "customerHandle": "@sunny_rohtak",
+    "location": "Rohtak, Haryana",
+    "hidden": false,
+    "note": "Quick response on Instagram. Simple download links without waiting timers or fake click ads.",
+    "order": 53,
+    "reviewerName": "Sunny Kaushal",
+    "rating": 5,
+    "gameTitle": "Open World Legends & Story Pack",
+    "id": "rev-in-53",
+    "title": "Watch Dogs Legion Ultimate + Spider-Man"
+  },
+  {
+    "note": "Performance is buttery smooth. PhonePe UPI transfer was confirmed immediately.",
+    "title": "Black Myth Wukong runs without Denuvo stutter",
+    "rating": 5,
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "createdAt": "2026-09-22T19:00:00.000Z",
+    "location": "Visakhapatnam, AP",
+    "order": 54,
+    "hidden": false,
+    "id": "rev-in-54",
+    "reviewerName": "Abhilash Rao",
+    "customerHandle": "@abhilash_vizag"
+  },
+  {
+    "note": "Artistic perfection. Got the link in 3 minutes after payment. 5 stars for reliability.",
+    "id": "rev-in-55",
+    "createdAt": "2026-09-22T14:20:00.000Z",
+    "title": "Ghost of Tsushima Kurosawa black & white mode",
+    "reviewerName": "Ananya Banerjee",
+    "location": "Howrah, West Bengal",
+    "hidden": false,
+    "customerHandle": "@ananya_howrah",
+    "order": 55,
+    "gameTitle": "Open World Legends & Story Pack",
+    "rating": 5
+  },
+  {
+    "title": "Dead Space Remake ultra settings confirmed",
+    "reviewerName": "Rakesh Sahu",
+    "hidden": false,
+    "id": "rev-in-56",
+    "customerHandle": "@rakesh_cuttack",
+    "createdAt": "2026-09-22T09:40:00.000Z",
+    "note": "No missing DLL errors. Direct launch and play. The admin is very courteous.",
+    "order": 56,
+    "location": "Cuttack, Odisha",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "rating": 5
+  },
+  {
+    "location": "Chhatrapati Sambhajinagar, MH",
+    "note": "Installed the co-op seamless mod with admin guidance. Best gaming vault in India.",
+    "title": "Elden Ring multiplayer co-op works!",
+    "hidden": false,
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "id": "rev-in-57",
+    "createdAt": "2026-09-21T21:10:00.000Z",
+    "reviewerName": "Tejas Gaikwad",
+    "customerHandle": "@tejas_aurangabad",
+    "rating": 5,
+    "order": 57
+  },
+  {
+    "note": "Kratos axe throw mechanics feel super responsive. Fast delivery via Instagram.",
+    "customerHandle": "@partha_vijayawada",
+    "createdAt": "2026-09-21T16:30:00.000Z",
+    "id": "rev-in-58",
+    "title": "God of War Ragnarok ready and tested",
+    "location": "Vijayawada, AP",
+    "hidden": false,
+    "gameTitle": "Open World Legends & Story Pack",
+    "reviewerName": "Partha Sarathi",
+    "rating": 5,
+    "order": 58
+  },
+  {
+    "hidden": false,
+    "createdAt": "2026-09-21T11:50:00.000Z",
+    "order": 59,
+    "reviewerName": "Devendra Rathod",
+    "id": "rev-in-59",
+    "rating": 5,
+    "title": "Phantom Liberty Dogtown runs without FPS dip",
+    "note": "Optimized installation. Truly grateful to Gamers Planet for offering such affordable pricing.",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "customerHandle": "@dev_bhavnagar",
+    "location": "Bhavnagar, Gujarat"
+  },
+  {
+    "hidden": false,
+    "order": 6,
+    "gameTitle": "Open World Legends & Story Pack",
+    "id": "rev-in-6",
+    "title": "Saved over ₹10,000 compared to individual Steam purchases",
+    "note": "Red Dead Redemption 2 and GTA V downloaded at full 200 Mbps speed on Airtel Xstream. Verified UPI transaction, instant reply on Instagram. Recommended to my entire college squad.",
+    "rating": 5,
+    "customerHandle": "@aman_lucknow_pc",
+    "createdAt": "2026-10-08T20:05:00.000Z",
+    "reviewerName": "Aman Gupta",
+    "location": "Lucknow, UP"
+  },
+  {
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "id": "rev-in-60",
+    "note": "Delivered within 3 minutes on Instagram DM. Payment via Paytm UPI QR was quick.",
+    "customerHandle": "@kuldeep_haridwar",
+    "rating": 5,
+    "title": "Lies of P + Dark Souls 2 Scholar of first sin",
+    "createdAt": "2026-09-20T19:45:00.000Z",
+    "hidden": false,
+    "order": 60,
+    "location": "Haridwar, Uttarakhand",
+    "reviewerName": "Kuldeep Bisht"
+  },
+  {
+    "gameTitle": "Open World Legends & Story Pack",
+    "note": "Both expansions working completely with new quest lines. Super fast Instagram support.",
+    "hidden": false,
+    "customerHandle": "@arjun_kolkata_pc",
+    "order": 61,
+    "id": "rev-in-61",
+    "rating": 5,
+    "location": "Kolkata, West Bengal",
+    "title": "Witcher 3 Blood & Wine and Hearts of Stone",
+    "createdAt": "2026-09-20T15:00:00.000Z",
+    "reviewerName": "Arjun Dasgupta"
+  },
+  {
+    "hidden": false,
+    "order": 62,
+    "id": "rev-in-62",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "note": "No scam, no fake links. 100% verified genuine Indian seller. Highly recommended.",
+    "title": "12 high octane sci-fi titles delivered immediately",
+    "rating": 5,
+    "location": "Mathura, UP",
+    "reviewerName": "Bharat Bhushan",
+    "customerHandle": "@bharat_mathura",
+    "createdAt": "2026-09-20T10:15:00.000Z"
+  },
+  {
+    "note": "Fishing, survival mode, and rare curios all working. Unbelievable price point.",
+    "reviewerName": "Chetan Soni",
+    "gameTitle": "Open World Legends & Story Pack",
+    "id": "rev-in-63",
+    "customerHandle": "@chetan_ajmer",
+    "title": "Skyrim Anniversary DLCs all verified",
+    "location": "Ajmer, Rajasthan",
+    "hidden": false,
+    "order": 63,
+    "createdAt": "2026-09-19T20:20:00.000Z",
+    "rating": 5
+  },
+  {
+    "customerHandle": "@darshan_mysuru",
+    "reviewerName": "Darshan Gowda",
+    "gameTitle": "Elden Mythic & Soulslike Masterpack",
+    "hidden": false,
+    "id": "rev-in-64",
+    "note": "Best combat system ever. Verified UPI delivery via GPay in under 4 minutes.",
+    "order": 64,
+    "location": "Mysuru, Karnataka",
+    "rating": 5,
+    "createdAt": "2026-09-19T14:50:00.000Z",
+    "title": "Sekiro GOTY reflections of strength unlocked"
+  },
+  {
+    "order": 65,
+    "id": "rev-in-65",
+    "rating": 5,
+    "createdAt": "2026-09-19T09:30:00.000Z",
+    "customerHandle": "@eshan_gandhinagar",
+    "reviewerName": "Eshan Trivedi",
+    "title": "Instant delivery, clear guides, 100% legit!",
+    "hidden": false,
+    "note": "Purchased during the 10-hour flash sale. Everything setup smoothly in 10 minutes. Will buy again!",
+    "location": "Gandhinagar, Gujarat",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault"
+  },
+  {
+    "title": "Fastest digital delivery service in India",
+    "gameTitle": "Cyberpunk & Sci-Fi AAA Titan Vault",
+    "hidden": false,
+    "reviewerName": "Deepak Joshi",
+    "location": "Pune, Maharashtra",
+    "customerHandle": "@deepak_pune_tech",
+    "order": 7,
+    "id": "rev-in-7",
+    "note": "Transfer done via Paytm UPI. Within 4 minutes got access details. Phantom Liberty DLC runs at max ray tracing on my Legion 5 Pro. No lag, no license errors.",
+    "rating": 5,
+    "createdAt": "2026-10-08T16:40:00.000Z"
+  },
+  {
+    "location": "Gurugram, Haryana",
+    "rating": 5,
+    "id": "rev-in-8",
+    "gameTitle": "Open World Legends & Story Pack",
+    "note": "Swinging through New York on ultra settings! Legit seller, no fake promises. Even provided instructions on how to use DualSense controller with full haptic feedback.",
+    "order": 8,
+    "createdAt": "2026-10-08T12:15:00.000Z",
+    "customerHandle": "@rahul_ggn_fps",
+    "hidden": false,
+    "title": "Spider-Man Remastered & Miles Morales in one pack",
+    "reviewerName": "Rahul Choudhary"
+  },
+  {
+    "rating": 5,
+    "order": 9,
+    "customerHandle": "@sneha_kolkata_plays",
+    "reviewerName": "Sneha Mukherjee",
+    "createdAt": "2026-10-07T21:50:00.000Z",
+    "hidden": false,
+    "id": "rev-in-9",
+    "title": "God of War & Witcher 3 Complete Edition!",
+    "gameTitle": "Open World Legends & Story Pack",
+    "location": "Kolkata, West Bengal",
+    "note": "Such a smooth experience. The direct link instructions were super easy. Completed God of War main story last night without a single glitch."
+  }
+];

@@ -29,21 +29,19 @@ import {
   syncAllUploadsToGitHub
 } from './githubSync.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import {
+  UPLOADS_DIR,
+  BUNDLE_UPLOADS,
+  REVIEW_UPLOADS,
+  CHANNELS_UPLOADS,
+  GENERAL_UPLOADS,
+  ensureDirSafe
+} from './paths.js';
 
 const router = Router();
 
-const UPLOADS_DIR = path.resolve(__dirname, '../uploads');
-const BUNDLE_UPLOADS = path.resolve(UPLOADS_DIR, 'bundles');
-const REVIEW_UPLOADS = path.resolve(UPLOADS_DIR, 'reviews');
-const CHANNELS_UPLOADS = path.resolve(UPLOADS_DIR, 'channels');
-const GENERAL_UPLOADS = path.resolve(UPLOADS_DIR, 'media');
-
 for (const dir of [UPLOADS_DIR, BUNDLE_UPLOADS, REVIEW_UPLOADS, CHANNELS_UPLOADS, GENERAL_UPLOADS]) {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
+  ensureDirSafe(dir);
 }
 
 // Multer storage for bundle assets (cover image or video)

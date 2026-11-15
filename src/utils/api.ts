@@ -1,4 +1,9 @@
 import { Bundle, ReviewScreenshot, SiteSettings, Channel } from '../types/index.js';
+import {
+  FALLBACK_BUNDLES,
+  FALLBACK_REVIEWS,
+  FALLBACK_SETTINGS,
+} from '../data/storeFallback.js';
 
 const AUTH_TOKEN_KEY = 'nexus_admin_token';
 const CHANNELS_TOKEN_KEY = 'gamersplanet_channels_token';
@@ -53,6 +58,13 @@ async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise
     headers,
   });
 
+  const contentType = res.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    const err = new Error(`Unexpected response from ${endpoint} (status ${res.status})`) as Error & { status?: number };
+    err.status = res.status;
+    throw err;
+  }
+
   const data = await res.json().catch(() => ({}));
 
   if (!res.ok) {
@@ -66,14 +78,38 @@ async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise
   return data as T;
 }
 
+async function publicFetchWithFallback<T>(endpoint: string, fallback: () => T): Promise<T> {
+  try {
+    return await apiFetch<T>(endpoint);
+  } catch (err: any) {
+    // Graceful fallback if deployed statically or /api serverless is cold/unavailable
+    if (!err?.status || err.status === 404 || err.status >= 500) {
+      return fallback();
+    }
+    throw err;
+  }
+}
+
 // Public API
 export const api = {
   // Public
-  getSettings: () => apiFetch<SiteSettings>('/api/settings'),
-  getBundles: () => apiFetch<Bundle[]>('/api/bundles'),
-  getBundle: (id: string) => apiFetch<Bundle>(`/api/bundles/${id}`),
-  getReviews: () => apiFetch<ReviewScreenshot[]>('/api/reviews'),
-  getSyncVersion: () => apiFetch<{ version: number; lastUpdated: string }>('/api/sync/version'),
+  getSettings: () => publicFetchWithFallback<SiteSettings>('/api/settings', () => FALLBACK_SETTINGS),
+  getBundles: () => publicFetchWithFallback<Bundle[]>('/api/bundles', () => FALLBACK_BUNDLES),
+  getBundle: async (id: string) => {
+    try {
+      return await apiFetch<Bundle>(`/api/bundles/${id}`);
+    } catch (err) {
+      const localMatch = FALLBACK_BUNDLES.find((b) => b.id === id);
+      if (localMatch) return localMatch;
+      throw err;
+    }
+  },
+  getReviews: () => publicFetchWithFallback<ReviewScreenshot[]>('/api/reviews', () => FALLBACK_REVIEWS),
+  getSyncVersion: () =>
+    publicFetchWithFallback<{ version: number; lastUpdated: string }>(
+      '/api/sync/version',
+      () => ({ version: 1, lastUpdated: '2026-11-15T00:00:00.000Z' })
+    ),
 
   // Auth
   login: (code: string) =>

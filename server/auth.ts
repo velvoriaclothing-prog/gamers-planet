@@ -17,6 +17,51 @@ const activeSessions = new Map<string, { createdAt: number; expiresAt: number }>
 const MAX_FAILED_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 5 * 60 * 1000; // 5 minutes
 const SESSION_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
+const REVOKED_TOKENS = new Set<string>();
+
+function getSigningSecret(): string {
+  return (
+    process.env.SESSION_SECRET ||
+    process.env.ADMIN_PASSWORD ||
+    process.env.ADMIN_ACCESS_CODE ||
+    'gamers-planet-vault-session-key-2026'
+  );
+}
+
+function signToken(type: 'admin' | 'channels', ttlMs: number): string {
+  const exp = Date.now() + ttlMs;
+  const nonce = crypto.randomBytes(12).toString('hex');
+  const payload = Buffer.from(JSON.stringify({ type, exp, nonce })).toString('base64url');
+  const sig = crypto
+    .createHmac('sha256', getSigningSecret())
+    .update(payload)
+    .digest('base64url');
+  return `${type === 'channels' ? 'chan_' : 'adm_'}${payload}.${sig}`;
+}
+
+function verifySignedToken(token: string, expectedType: 'admin' | 'channels'): boolean {
+  if (!token || REVOKED_TOKENS.has(token)) return false;
+  const prefix = expectedType === 'channels' ? 'chan_' : 'adm_';
+  if (!token.startsWith(prefix)) return false;
+  const raw = token.slice(prefix.length);
+  const dotIdx = raw.indexOf('.');
+  if (dotIdx <= 0) return false;
+  const payload = raw.slice(0, dotIdx);
+  const sig = raw.slice(dotIdx + 1);
+  const expectedSig = crypto
+    .createHmac('sha256', getSigningSecret())
+    .update(payload)
+    .digest('base64url');
+  try {
+    const a = Buffer.from(sig);
+    const b = Buffer.from(expectedSig);
+    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return false;
+    const decoded = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    return decoded?.type === expectedType && typeof decoded?.exp === 'number' && decoded.exp > Date.now();
+  } catch {
+    return false;
+  }
+}
 
 // Hash password with salt
 export function hashPassword(password: string): string {
@@ -117,7 +162,7 @@ export function resetFailedAttempts(req: Request): void {
 
 // Session generation & validation
 export function createSessionToken(): string {
-  const token = crypto.randomBytes(32).toString('hex');
+  const token = signToken('admin', SESSION_DURATION_MS);
   const now = Date.now();
   activeSessions.set(token, {
     createdAt: now,
@@ -127,7 +172,8 @@ export function createSessionToken(): string {
 }
 
 export function validateSessionToken(token: string): boolean {
-  if (!token) return false;
+  if (!token || REVOKED_TOKENS.has(token)) return false;
+  if (verifySignedToken(token, 'admin')) return true;
   const session = activeSessions.get(token);
   if (!session) return false;
 
@@ -141,6 +187,7 @@ export function validateSessionToken(token: string): boolean {
 
 export function invalidateSessionToken(token: string): void {
   activeSessions.delete(token);
+  REVOKED_TOKENS.add(token);
 }
 
 // ---------------------------------------------------------------------------
@@ -221,7 +268,7 @@ export function resetChannelsFailedAttempts(req: Request): void {
 }
 
 export function createChannelsSessionToken(): string {
-  const token = `chan_${crypto.randomBytes(32).toString('hex')}`;
+  const token = signToken('channels', CHANNELS_SESSION_DURATION_MS);
   const now = Date.now();
   activeChannelsSessions.set(token, {
     createdAt: now,
@@ -231,7 +278,8 @@ export function createChannelsSessionToken(): string {
 }
 
 export function validateChannelsSessionToken(token: string): boolean {
-  if (!token) return false;
+  if (!token || REVOKED_TOKENS.has(token)) return false;
+  if (verifySignedToken(token, 'channels')) return true;
   const session = activeChannelsSessions.get(token);
   if (!session) return false;
 
@@ -245,6 +293,7 @@ export function validateChannelsSessionToken(token: string): boolean {
 
 export function invalidateChannelsSessionToken(token: string): void {
   activeChannelsSessions.delete(token);
+  REVOKED_TOKENS.add(token);
 }
 
 // Express Middleware to protect admin routes

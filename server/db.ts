@@ -29,23 +29,13 @@ async function loadFirebaseModules() {
   }
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const ROOT_DIR = path.resolve(__dirname, '..');
-const DATA_DIR = path.resolve(ROOT_DIR, 'data');
-const DB_FILE = path.resolve(DATA_DIR, 'store.json');
-const CONFIG_FILE = path.resolve(ROOT_DIR, 'firebase-applet-config.json');
-const UPLOADS_DIR = path.resolve(ROOT_DIR, 'uploads');
-const BUNDLE_UPLOADS = path.resolve(UPLOADS_DIR, 'bundles');
-const REVIEW_UPLOADS = path.resolve(UPLOADS_DIR, 'reviews');
-
-// Ensure directories exist
-for (const dir of [DATA_DIR, UPLOADS_DIR, BUNDLE_UPLOADS, REVIEW_UPLOADS]) {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-}
+import {
+  CONFIG_FILE,
+  DB_SEED_FILE,
+  DB_WRITE_FILE,
+  WRITABLE_DATA_DIR,
+  ensureDirSafe
+} from './paths.js';
 
 export interface Bundle {
   id: string;
@@ -361,12 +351,21 @@ class DatabaseService {
   private projectId = '';
   private databaseId = '';
   private lastSyncTime = '';
+  private initPromise: Promise<boolean> | null = null;
 
   constructor() {
     this.db = this.loadLocalDatabase();
-    this.initFirebase().catch(err => {
+    this.initPromise = this.initFirebase().catch(err => {
       console.warn('[Firebase] Background initialization warning:', err.message);
+      return false;
     });
+  }
+
+  public async ensureInitialized(): Promise<void> {
+    if (!this.initPromise) {
+      this.initPromise = this.initFirebase().catch(() => false);
+    }
+    await this.initPromise;
   }
 
   /**
@@ -575,22 +574,25 @@ class DatabaseService {
   }
 
   private loadLocalDatabase(): AppDatabase {
-    try {
-      if (fs.existsSync(DB_FILE)) {
-        const data = fs.readFileSync(DB_FILE, 'utf-8');
-        const parsed = JSON.parse(data) as Partial<AppDatabase>;
-        return {
-          settings: { ...DEFAULT_SETTINGS, ...(parsed.settings || {}) },
-          bundles: Array.isArray(parsed.bundles) && parsed.bundles.length > 0 ? parsed.bundles : DEFAULT_BUNDLES,
-          reviews: Array.isArray(parsed.reviews) ? parsed.reviews : [],
-          channels: Array.isArray(parsed.channels) && parsed.channels.length > 0 ? parsed.channels : DEFAULT_CHANNELS,
-          keys: Array.isArray(parsed.keys) ? parsed.keys : [],
-          adminPasswordHash: parsed.adminPasswordHash,
-          channelsPasswordHash: parsed.channelsPasswordHash
-        };
+    const candidates = DB_WRITE_FILE === DB_SEED_FILE ? [DB_SEED_FILE] : [DB_WRITE_FILE, DB_SEED_FILE];
+    for (const file of candidates) {
+      try {
+        if (fs.existsSync(file)) {
+          const data = fs.readFileSync(file, 'utf-8');
+          const parsed = JSON.parse(data) as Partial<AppDatabase>;
+          return {
+            settings: { ...DEFAULT_SETTINGS, ...(parsed.settings || {}) },
+            bundles: Array.isArray(parsed.bundles) && parsed.bundles.length > 0 ? parsed.bundles : DEFAULT_BUNDLES,
+            reviews: Array.isArray(parsed.reviews) ? parsed.reviews : [],
+            channels: Array.isArray(parsed.channels) && parsed.channels.length > 0 ? parsed.channels : DEFAULT_CHANNELS,
+            keys: Array.isArray(parsed.keys) ? parsed.keys : [],
+            adminPasswordHash: parsed.adminPasswordHash,
+            channelsPasswordHash: parsed.channelsPasswordHash
+          };
+        }
+      } catch (err) {
+        console.error(`Error reading store JSON (${file}), trying next:`, err);
       }
-    } catch (err) {
-      console.error('Error reading local store.json, using defaults:', err);
     }
 
     const initial: AppDatabase = {
@@ -606,15 +608,16 @@ class DatabaseService {
 
   private saveLocalDatabase(data?: AppDatabase): void {
     const toSave = data || this.db;
-    const tempFile = `${DB_FILE}.tmp`;
+    if (!ensureDirSafe(WRITABLE_DATA_DIR)) return;
+    const tempFile = `${DB_WRITE_FILE}.tmp`;
     try {
       fs.writeFileSync(tempFile, JSON.stringify(toSave, null, 2), 'utf-8');
-      fs.renameSync(tempFile, DB_FILE);
-    } catch (err) {
+      fs.renameSync(tempFile, DB_WRITE_FILE);
+    } catch {
       try {
-        fs.writeFileSync(DB_FILE, JSON.stringify(toSave, null, 2), 'utf-8');
+        fs.writeFileSync(DB_WRITE_FILE, JSON.stringify(toSave, null, 2), 'utf-8');
       } catch (e) {
-        console.error('Fatal database write error:', e);
+        console.warn('Database local cache write skipped (read-only fs):', (e as Error).message);
       }
     }
   }
