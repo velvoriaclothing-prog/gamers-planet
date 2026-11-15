@@ -98,3 +98,34 @@ video::-webkit-media-controls-enclosure {
   -ms-user-select: none !important;
   user-select: none !important;
 }
+
+/* Subtle, GPU-composited Winter Snowfall */
+@keyframes gp-snowfall {
+  0% {
+    transform: translate3d(0, -8vh, 0);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--snow-opacity, 0.25);
+  }
+  88% {
+    opacity: var(--snow-opacity, 0.25);
+  }
+  100% {
+    transform: translate3d(var(--snow-drift, 24px), 108vh, 0);
+    opacity: 0;
+  }
+}
+
+.gp-snowflake {
+  will-change: transform, opacity;
+  animation: gp-snowfall var(--snow-duration, 16s) linear var(--snow-delay, 0s) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gp-snowflake {
+    animation: none;
+    display: none;
+  }
+}
+

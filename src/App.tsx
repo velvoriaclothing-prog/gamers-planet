@@ -247,19 +247,19 @@ const Storefront: React.FC<StorefrontProps> = ({
 
 export default function App() {
   const [settings, setSettings] = useState<SiteSettings>({
-    siteTitle: 'Gamers Planet - Premium Game Vault',
+    siteTitle: 'Gamers Planet - Christmas Mega Sale • Flat 50% OFF',
     logoText: 'GAMERS PLANET',
-    heroHeading: '🪔 DIWALI MEGA SALE — FLAT 50% OFF',
-    heroSubtitle: 'Celebrate the Festival of Lights with India’s top PC gaming vaults at Flat 50% OFF! Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim.',
+    heroHeading: 'CHRISTMAS MEGA SALE — FLAT 50% OFF',
+    heroSubtitle: 'Celebrate the holiday season with India’s top PC gaming vaults at Flat 50% OFF. Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim.',
     heroCtaText: 'Browse Bundles (50% OFF)',
     heroSecondaryText: 'Instant digital delivery • 100% verified setup',
     instagramUrl: 'https://wa.me/message/JM3YAJDN36QQC1',
     primaryChannelType: 'whatsapp',
     channelHandle: 'WhatsApp Business',
-    accentColor: '#f59e0b',
-    footerText: '© 2026 Gamers Planet. Shubh Deepavali • Direct verified delivery guaranteed.',
-    supportNote: 'Message us on WhatsApp Business to claim your 50% Diwali discount.',
-    announcementText: '🪔 SHUBH DIWALI SALE: FLAT 50% OFF ON ALL PC GAME BUNDLES! MESSAGE ON WHATSAPP BUSINESS 🪔'
+    accentColor: '#dc2626',
+    footerText: '© 2026 Gamers Planet. Holiday Edition • Direct verified delivery guaranteed.',
+    supportNote: 'Message us on WhatsApp Business to claim your 50% Christmas offer.',
+    announcementText: 'CHRISTMAS MEGA SALE: FLAT 50% OFF ON ALL PC GAME BUNDLES · MESSAGE ON WHATSAPP BUSINESS'
   });
 
   const [bundles, setBundles] = useState<Bundle[]>([]);

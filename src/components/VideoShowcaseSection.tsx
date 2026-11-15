@@ -326,7 +326,7 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
 
             <div className="flex items-center gap-3">
               <div className="text-right">
-                <div className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Diwali Deal</div>
+                <div className="text-[10px] text-red-400 font-bold uppercase tracking-wider">Christmas Deal</div>
                 <div className="text-sm font-black text-amber-400 font-gaming">
                   50% OFF
                 </div>
@@ -457,8 +457,8 @@ export const VideoShowcaseSection: React.FC<VideoShowcaseSectionProps> = ({
                     <div className="text-xs font-bold text-white font-gaming truncate leading-snug">
                       {b.title}
                     </div>
-                    <div className="text-[10px] text-amber-400 font-bold mt-0.5 flex items-center gap-1">
-                      <span>🪔 50% OFF</span>
+                    <div className="text-[10px] text-red-400 font-bold mt-0.5 flex items-center gap-1">
+                      <span>❄️ 50% OFF</span>
                       <span className="text-slate-500">•</span>
                       <span className="text-slate-400 font-medium">{b.gameCount > 1 ? `${b.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'}</span>
                     </div>

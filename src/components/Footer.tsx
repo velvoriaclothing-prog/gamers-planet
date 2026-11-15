@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ settings }) => {
               </span>
             </div>
             <p className="text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
-              Curated PC game bundles, instant digital access, and verified support. Diwali Sale: Flat 50% OFF on all bundles.
+              Curated PC game bundles, instant digital access, and verified support. Christmas Sale: Flat 50% OFF on all bundles.
             </p>
           </div>
 

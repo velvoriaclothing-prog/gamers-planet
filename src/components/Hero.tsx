@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Gamepad2, ShieldCheck, Zap, Star, ArrowRight, Flame } from 'lucide-react';
+import { Sparkles, Gamepad2, ShieldCheck, Zap, Star, ArrowRight, Flame, Snowflake } from 'lucide-react';
 import { SiteSettings } from '../types/index.js';
 import { EditableText } from './live-edit/EditableText.js';
 import { useLanguage } from '../context/LanguageContext.js';
@@ -37,22 +37,22 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
         </div>
       )}
 
-      {/* Subtle architectural ambient glows - restrained and deep */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-amber-500/[0.07] blur-[150px] pointer-events-none rounded-full z-0" />
-      <div className="absolute -bottom-10 right-10 w-[300px] h-[250px] bg-amber-600/[0.04] blur-[120px] pointer-events-none rounded-full z-0" />
+      {/* Subtle architectural ambient glows - holiday crimson & pine */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[340px] bg-red-600/[0.08] blur-[150px] pointer-events-none rounded-full z-0" />
+      <div className="absolute -bottom-10 right-10 w-[300px] h-[250px] bg-emerald-600/[0.05] blur-[120px] pointer-events-none rounded-full z-0" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* Festive Diwali Announcement Bar */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-red-600/25 via-amber-500/25 to-yellow-500/20 border border-amber-500/40 text-amber-300 text-xs font-bold backdrop-blur-md shadow-[0_0_20px_rgba(245,158,11,0.25)]">
-          <span className="text-sm">🪔</span>
+        {/* Festive Christmas Announcement Bar */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-red-600/20 via-red-500/15 to-emerald-600/20 border border-red-500/35 text-zinc-100 text-xs font-bold backdrop-blur-md shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+          <Snowflake className="w-3.5 h-3.5 text-sky-300 shrink-0" />
           <EditableText
             textKey="announcementText"
-            defaultText="🪔 SHUBH DIWALI SALE: FLAT 50% OFF ON ALL BUNDLES! MESSAGE ON WHATSAPP BUSINESS 🪔"
+            defaultText="CHRISTMAS MEGA SALE: FLAT 50% OFF ON ALL BUNDLES · MESSAGE ON WHATSAPP BUSINESS"
             className="truncate max-w-xs sm:max-w-xl font-bold tracking-wide"
             label="Store Announcement Bar"
           />
-          <span className="text-sm">🪔</span>
+          <Snowflake className="w-3.5 h-3.5 text-sky-300 shrink-0" />
         </div>
 
         {/* Hero Title */}
@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
           <EditableText
             as="h1"
             textKey="heroHeading"
-            defaultText={settings.heroHeading || '🪔 DIWALI MEGA SALE — FLAT 50% OFF'}
+            defaultText={settings.heroHeading || 'CHRISTMAS MEGA SALE — FLAT 50% OFF'}
             className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight font-gaming uppercase text-white max-w-4xl mx-auto leading-[1.12] [text-wrap:balance]"
             label="Hero Main Headline"
           />
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
             as="p"
             multiline
             textKey="heroSubtitle"
-            defaultText="Celebrate the Festival of Lights with India’s top PC gaming vaults at Flat 50% OFF! Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim."
+            defaultText="Celebrate the holiday season with India’s top PC gaming vaults at Flat 50% OFF. Verified instant digital delivery with lifetime access. Message us on WhatsApp Business to claim."
             className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal [text-wrap:balance]"
             label="Hero Subtitle"
           />
@@ -82,9 +82,9 @@ export const Hero: React.FC<HeroProps> = ({ settings }) => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
           <Link
             to="/bundles"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(239,68,68,0.4)] hover:shadow-[0_0_35px_rgba(245,158,11,0.6)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide whitespace-nowrap shrink-0"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-extrabold text-xs sm:text-sm shadow-[0_0_25px_rgba(220,38,38,0.4)] hover:shadow-[0_0_35px_rgba(220,38,38,0.55)] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer font-gaming tracking-wide whitespace-nowrap shrink-0"
           >
-            <span className="text-base">🪔</span>
+            <Snowflake className="w-4 h-4 text-sky-200 shrink-0" />
             <span>Browse Bundles (50% OFF)</span>
             <ArrowRight className="w-4 h-4 text-white" />
           </Link>

@@ -55,8 +55,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform">
                   <Flame className="w-6 h-6 fill-amber-400 text-amber-400" />
                 </div>
-                <span className="px-2.5 py-1 rounded-md bg-gradient-to-r from-red-600 to-amber-500 text-white text-[10px] font-black font-gaming uppercase tracking-wider shadow">
-                  🪔 50% OFF
+                <span className="px-2.5 py-1 rounded-md bg-gradient-to-r from-red-600 to-emerald-600 text-white text-[10px] font-black font-gaming uppercase tracking-wider shadow">
+                  ❄️ 50% OFF
                 </span>
               </div>
               <h3 className="text-lg font-bold text-white font-gaming group-hover:text-amber-300 transition-colors">

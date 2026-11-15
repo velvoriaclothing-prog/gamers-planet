@@ -4,7 +4,8 @@ import {
   PhoneCall,
   ArrowRight,
   UserCheck,
-  Check
+  Check,
+  Snowflake
 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { BundleGrid } from '../components/BundleGrid.js';
@@ -55,8 +56,9 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
           <div className="bg-[#121215] border border-white/[0.07] hover:border-white/[0.15] rounded-xl p-5 sm:p-6 flex flex-col justify-between gap-5 transition-colors">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
-                <span className="text-xs font-medium text-amber-400">
-                  🪔 Diwali VIP Access · Lifetime ₹199
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400">
+                  <Snowflake className="w-3.5 h-3.5 text-sky-300 shrink-0" />
+                  <span>Christmas VIP Access · Lifetime ₹199</span>
                 </span>
                 <span className="text-xs text-zinc-500">WhatsApp Business</span>
               </div>
@@ -99,7 +101,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-xs font-medium text-red-400">
-                  50% Diwali OFF · Individual Titles
+                  Christmas 50% OFF · Individual Titles
                 </span>
                 <span className="text-xs text-zinc-500">WhatsApp Business</span>
               </div>

@@ -23,7 +23,7 @@ export function getBundleShareUrl(bundle: Bundle): string {
 export async function shareBundleLink(bundle: Bundle): Promise<ShareResult> {
   const url = getBundleShareUrl(bundle);
   const title = `${bundle.title} — Gamers Planet`;
-  const text = `🪔 Diwali Dhamaka: FLAT 50% OFF on ${bundle.title}! Includes ${
+  const text = `❄️ Christmas Sale: FLAT 50% OFF on ${bundle.title}! Includes ${
     bundle.gameCount > 1 ? `${bundle.gameCount.toLocaleString('en-IN')} Games` : 'Steam Unlock'
   } with instant access. Watch the full preview video and claim 50% OFF:`;
 

@@ -13,7 +13,8 @@ import {
   Video,
   PhoneCall,
   ArrowRight,
-  Lock
+  Lock,
+  Snowflake
 } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
@@ -352,8 +353,9 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
           <div className="p-5 sm:p-8 space-y-7">
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-5 border-b border-white/[0.07] pb-6">
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2 text-xs font-medium text-amber-400">
-                  <span>🪔 Diwali Special · Flat 50% OFF</span>
+                <div className="flex items-center gap-2 text-xs font-medium text-red-400">
+                  <Snowflake className="w-3.5 h-3.5 text-sky-300 shrink-0" />
+                  <span>Christmas Special · Flat 50% OFF</span>
                   {bundle.category && (
                     <>
                       <span className="text-zinc-600">·</span>
@@ -452,7 +454,7 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
 
             <div className="p-4 rounded-xl bg-[#16161b] border border-white/[0.07] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="space-y-1 text-xs text-zinc-300">
-                <div className="font-semibold text-white">How to claim your 50% Diwali discount:</div>
+                <div className="font-semibold text-white">How to claim your 50% Christmas offer:</div>
                 <p className="text-zinc-400">
                   Message us on <span className="text-zinc-200 font-medium">WhatsApp Business</span>, pay via UPI / GPay / PhonePe, and get instant setup access in 3–5 minutes.
                 </p>
@@ -501,7 +503,10 @@ export const SingleBundlePage: React.FC<SingleBundlePageProps> = ({
       <div className="lg:hidden fixed bottom-12 left-0 right-0 z-30 bg-[#09090b]/95 backdrop-blur-xl border-t border-white/[0.08] px-4 py-2.5">
         <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
           <div className="min-w-0">
-            <div className="text-[10px] font-semibold text-amber-400">🪔 Diwali 50% OFF</div>
+            <div className="text-[10px] font-semibold text-red-400 flex items-center gap-1">
+              <Snowflake className="w-3 h-3 text-sky-300 shrink-0" />
+              <span>Christmas 50% OFF</span>
+            </div>
             <div className="text-xs font-medium text-white truncate">WhatsApp Business</div>
           </div>
 

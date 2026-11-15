@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Gamepad2, CheckCircle2, ShieldCheck, Zap, PhoneCall, ArrowRight, Video, SkipForward, SkipBack, Share2, Check, Lock } from 'lucide-react';
+import { X, Gamepad2, CheckCircle2, ShieldCheck, Zap, PhoneCall, ArrowRight, Video, SkipForward, SkipBack, Share2, Check, Lock, Snowflake } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { getChannelRedirectInfo } from '../utils/channelRedirect.js';
 import { shareBundleLink } from '../utils/shareBundle.js';
@@ -322,8 +322,9 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             {/* Header Row */}
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-white/[0.07] pb-6">
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2 text-xs font-medium text-amber-400">
-                  <span>🪔 Diwali Special · Flat 50% OFF</span>
+                <div className="flex items-center gap-2 text-xs font-medium text-red-400">
+                  <Snowflake className="w-3.5 h-3.5 text-sky-300 shrink-0" />
+                  <span>Christmas Special · Flat 50% OFF</span>
                   {bundle.category && (
                     <>
                       <span className="text-zinc-600">·</span>
@@ -427,7 +428,7 @@ export const BundleModal: React.FC<BundleModalProps> = ({
             {/* How to Order */}
             <div className="p-4 rounded-xl bg-[#16161b] border border-white/[0.07] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="space-y-1 text-xs text-zinc-300">
-                <div className="font-semibold text-white">How to claim your 50% Diwali discount:</div>
+                <div className="font-semibold text-white">How to claim your 50% Christmas offer:</div>
                 <p className="text-zinc-400">
                   Message us on <span className="text-zinc-200 font-medium">WhatsApp Business</span>, pay easily via UPI / GPay / PhonePe, and get instant setup access in 3–5 minutes.
                 </p>

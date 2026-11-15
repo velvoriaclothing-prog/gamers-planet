@@ -105,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               Gamers Planet
             </span>
             <span className="text-[10px] font-bold tracking-[0.14em] uppercase text-red-500 mt-0.5 whitespace-nowrap">
-              DIWALI · 50% OFF
+              CHRISTMAS · 50% OFF
             </span>
           </div>
         </button>

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Gamepad2, Play, Search, Edit3, Share2, Check } from 'lucide-react';
+import { Gamepad2, Play, Search, Edit3, Share2, Check, Snowflake } from 'lucide-react';
 import { Bundle, SiteSettings } from '../types/index.js';
 import { useLiveEdit } from './live-edit/LiveEditContext.js';
 import { shareBundleLink } from '../utils/shareBundle.js';
@@ -94,8 +94,9 @@ export const BundleGrid: React.FC<BundleGridProps> = ({
           <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Game Bundles
           </h1>
-          <span className="text-xs font-semibold text-amber-400 tracking-wide">
-            🪔 Diwali Sale · Flat 50% OFF
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-400 tracking-wide">
+            <Snowflake className="w-3.5 h-3.5 text-sky-300 shrink-0" />
+            <span>Christmas Sale · Flat 50% OFF</span>
           </span>
         </div>
         <p className="text-sm text-zinc-400 leading-relaxed">
